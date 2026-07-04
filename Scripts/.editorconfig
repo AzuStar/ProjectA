@@ -1,0 +1,5 @@
+[*.cs]
+
+noxrat_namespace_root = ProjectA.Game
+noxrat_namespace_scope_dir = Scripts
+noxrat_namespace_folder_traversal_depth = 2
