@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="ProjectA-repo"
+run/main_scene="uid://bgr3gte8b0glk"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -22,6 +22,8 @@ MCPGameInspector="*res://addons/godot_mcp/mcp_game_inspector_service.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -33,6 +35,10 @@ project/assembly_name="ProjectA-repo"
 
 enabled=PackedStringArray("res://addons/font_auto_size_labels/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
 
+[global_group]
+
+navmesh=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -41,3 +47,4 @@ enabled=PackedStringArray("res://addons/font_auto_size_labels/plugin.cfg", "res:
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.010199999, 0.020099998, 0.03, 1)
