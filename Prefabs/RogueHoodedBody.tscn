@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://eegarh587ynu"]
+
+[ext_resource type="PackedScene" uid="uid://bvf1jjy8vfrgw" path="res://Assets/Adventurers/Chars/Rogue_Hooded.glb" id="1_fqq0r"]
+
+[node name="Rogue_Hooded" unique_id=1702911868 instance=ExtResource("1_fqq0r")]

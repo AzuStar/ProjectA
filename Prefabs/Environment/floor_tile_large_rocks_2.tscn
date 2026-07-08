@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dyhyixr5adces"]
+
+[ext_resource type="PackedScene" uid="uid://berjujve2c53v" path="res://Assets/Dungeon/floor_tile_large_rocks.gltf" id="1_eyklw"]
+[ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_m4d12"]
+
+[node name="floor_tile_large_rocks2" unique_id=890485070 instance=ExtResource("1_eyklw")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=705666764]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=849445998]
+shape = ExtResource("2_m4d12")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="StaticBody3D" index="1" unique_id=1431441915]
+vertices = PackedVector3Array(1.201211, 0, 0.35815188, 1.0010449, 0, -0.5572079, 0.16179177, 0, -1.3079078, -0.6179982, 0, -1.3307879, -1.3628885, 0, -0.21840936, -1.3885901, 0, 0.5327967, -1.3088236, 0, 0.9062325, -0.39849782, 0, 1.1922112, -0.072695255, 0, 1.282969, 0.54594404, 0, 1.0980742)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

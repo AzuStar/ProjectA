@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://406e0tca2qng"]
+
+[ext_resource type="PackedScene" uid="uid://c8r763vnd82d2" path="res://Assets/Dungeon/coin.gltf" id="1_vciaj"]
+[ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="2_flwta"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Shaders/InverseHullInteractible.tres" id="3_ovrdm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b60pf"]
+next_pass = ExtResource("3_ovrdm")
+albedo_texture = ExtResource("2_flwta")
+
+[node name="coin2" unique_id=1707152545 instance=ExtResource("1_vciaj")]
+
+[node name="coin" parent="." index="0" unique_id=1210474524]
+surface_material_override/0 = SubResource("StandardMaterial3D_b60pf")

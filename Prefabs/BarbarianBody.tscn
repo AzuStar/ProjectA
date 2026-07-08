@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c2u4bf1tskv2e"]
+
+[ext_resource type="PackedScene" uid="uid://dn42xifvfwrp" path="res://Assets/Adventurers/Chars/Barbarian.glb" id="1_gfu5w"]
+[ext_resource type="Texture2D" uid="uid://cng4ug3nxoqp2" path="res://Assets/Adventurers/Chars/barbarian_texture.png" id="2_6yqft"]
+[ext_resource type="Material" uid="uid://cfeegs8ko15e2" path="res://Assets/test_outline.tres" id="3_6yqft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr1ke"]
+next_pass = ExtResource("3_6yqft")
+albedo_texture = ExtResource("2_6yqft")
+
+[node name="Barbarian" unique_id=1956060521 instance=ExtResource("1_gfu5w")]
+
+[node name="Barbarian_ArmLeft" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="0" unique_id=788390752]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_ArmRight" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="1" unique_id=714189837]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_BearHat" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="2" unique_id=1671985015]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_Body" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="3" unique_id=1453835109]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_Head" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="4" unique_id=1237430779]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_LegLeft" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="5" unique_id=506907943]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")
+
+[node name="Barbarian_LegRight" parent="Rig_Medium/Skeleton3D" parent_id_path=PackedInt32Array(168492126) index="6" unique_id=664436308]
+surface_material_override/0 = SubResource("StandardMaterial3D_qr1ke")

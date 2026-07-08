@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b84h0wd4pj6fr"]
+
+[ext_resource type="Shader" uid="uid://buhctrmv382aj" path="res://Shaders/InverseHullOutline.gdshader" id="1_owtgj"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_owtgj")
+shader_parameter/outline_color = Color(0.02, 0.02, 0.025, 1)
+shader_parameter/thickness = 0.035
+shader_parameter/outline_energy = 1.0
+shader_parameter/outline_transparency = 1.0
+shader_parameter/use_vertex_normals = true
+shader_parameter/radial_origin = Vector3(0, 0.05, 0)
+shader_parameter/merge_group = false
+shader_parameter/merge_depth_range = 10.0

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dfgmeqqieasst"]
+
+[ext_resource type="PackedScene" uid="uid://406e0tca2qng" path="res://Prefabs/Environment/coin_2.tscn" id="1_hislq"]
+[ext_resource type="Script" uid="uid://c3dktqcnn7blu" path="res://Scripts/CoinPickupArea3D.cs" id="1_l2hko"]
+[ext_resource type="Script" uid="uid://hctppbd6ugwe" path="res://Scripts/ParentAxisRotator3D.cs" id="2_l2hko"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lprbf"]
+radius = 0.7415121
+
+[sub_resource type="QuadMesh" id="QuadMesh_7qlpj"]
+
+[node name="CoinPickup" type="Area3D" unique_id=1523782485]
+script = ExtResource("1_l2hko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=545002508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_lprbf")
+
+[node name="coin2" parent="." unique_id=1707152545 instance=ExtResource("1_hislq")]
+transform = Transform3D(5.0314544e-08, 1.1510624, 1.6355593, 2, -8.742277e-08, -2.4572746e-15, 7.149258e-08, 1.6355593, -1.1510624, 0, 1.5, 0)
+
+[node name="Node" type="Node" parent="coin2" unique_id=412006111]
+script = ExtResource("2_l2hko")
+rotationSpeedDegreesPerSecond = Vector3(0, 70, 0)
+enabledInEditor = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1770241087]
+visible = false
+draw_pass_1 = SubResource("QuadMesh_7qlpj")
