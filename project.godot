@@ -16,9 +16,6 @@ config/features=PackedStringArray("4.7", "C#", "Mobile")
 
 [autoload]
 
-MCPScreenshot="*res://addons/godot_mcp/mcp_screenshot_service.gd"
-MCPInputService="*res://addons/godot_mcp/mcp_input_service.gd"
-MCPGameInspector="*res://addons/godot_mcp/mcp_game_inspector_service.gd"
 
 [display]
 
@@ -33,7 +30,7 @@ project/assembly_name="ProjectA-repo"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/font_auto_size_labels/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
+enabled=PackedStringArray("res://addons/font_auto_size_labels/plugin.cfg")
 
 [global_group]
 
