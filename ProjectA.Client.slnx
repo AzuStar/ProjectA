@@ -4,5 +4,5 @@
     <BuildType Name="ExportDebug" />
     <BuildType Name="ExportRelease" />
   </Configurations>
-  <Project Path="ProjectA-repo.csproj" />
+  <Project Path="ProjectA.Client.csproj" />
 </Solution>
