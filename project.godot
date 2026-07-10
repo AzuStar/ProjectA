@@ -14,8 +14,6 @@ config/name="ProjectA-repo"
 run/main_scene="uid://bgr3gte8b0glk"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 
-[autoload]
-
 [display]
 
 window/size/viewport_width=1920
@@ -38,6 +36,7 @@ navmesh=""
 [physics]
 
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 
