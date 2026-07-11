@@ -5,6 +5,9 @@
 
 [sub_resource type="World3D" id="World3D_e3r5u"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_t24r6"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Bootstrap" type="Node" unique_id=607440252]
 
 [node name="Main" type="CanvasLayer" parent="." unique_id=1032508939]
@@ -29,8 +32,13 @@ render_target_update_mode = 4
 
 [node name="DroneGame" parent="Main/GAME_SVC/SubViewport" unique_id=343881708 instance=ExtResource("2_t24r6")]
 
+[node name="SubViewport" parent="Main/GAME_SVC/SubViewport/DroneGame" index="3" unique_id=1497296787]
+transparent_bg = true
+
+[node name="TextureRect" parent="Main/GAME_SVC/SubViewport/DroneGame" index="4" unique_id=1291432381]
+texture = SubResource("ViewportTexture_t24r6")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Main" unique_id=1398127279]
-visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -41,4 +49,6 @@ transparent_bg = true
 handle_input_locally = false
 use_hdr_2d = true
 size = Vector2i(1920, 1080)
-render_target_update_mode = 0
+render_target_update_mode = 4
+
+[editable path="Main/GAME_SVC/SubViewport/DroneGame"]

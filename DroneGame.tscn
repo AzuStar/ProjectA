@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bu1fsshdiwhq7"]
 
 [ext_resource type="Script" uid="uid://ctsntiota8qfx" path="res://Scripts/DroneGame/PlayerController.cs" id="1_w8nwk"]
+[ext_resource type="Script" uid="uid://dpiq3jmbbcki8" path="res://Scripts/DroneGame/DoneViewTexture.cs" id="2_pd044"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fupvj"]
 
@@ -11,7 +12,13 @@ size = Vector2(20, 20)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fupvj"]
 
-[node name="DroneGame" type="Node3D" unique_id=343881708]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
+size = Vector3(0.5, 0.3, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fupvj"]
+size = Vector3(0.5, 0.3, 0.5)
+
+[node name="DroneGame" type="Node" unique_id=1708420892]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1596932814]
 transform = Transform3D(0.70710677, -0.6123724, 0.35355335, 0, 0.49999997, 0.8660254, -0.70710677, -0.6123724, 0.35355335, 0, 4, 0)
@@ -24,17 +31,50 @@ shape = SubResource("WorldBoundaryShape3D_fupvj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ProtoFloor" unique_id=831200652]
 mesh = SubResource("PlaneMesh_fupvj")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=663472309]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=663472309]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 script = ExtResource("1_w8nwk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=282505167]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=282505167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_fupvj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1133505534]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1133505534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_fupvj")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=593873355]
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=593873355]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 4, 4)
+current = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1497296787]
+
+[node name="Drone" type="RigidBody3D" parent="SubViewport" unique_id=665898486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Drone" unique_id=26086938]
+shape = SubResource("BoxShape3D_fupvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Drone" unique_id=1432724207]
+mesh = SubResource("BoxMesh_fupvj")
+
+[node name="DroneCamera" type="Camera3D" parent="SubViewport/Drone" unique_id=1171098154]
+current = true
+
+[node name="MonitorRect" type="ColorRect" parent="." unique_id=1178570323]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 88.0
+color = Color(0.25823662, 0.5002912, 0.6398296, 1)
+
+[node name="DroneViewTexture" type="TextureRect" parent="MonitorRect" unique_id=1291432381 node_paths=PackedStringArray("_subViewport")]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 72.0
+script = ExtResource("2_pd044")
+_subViewport = NodePath("../../SubViewport")
