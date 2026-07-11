@@ -64,6 +64,7 @@ _viewRect = NodePath("MonitorRect")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -2)
 motion_mode = 1
 script = ExtResource("2_b6yky")
+_acceleration = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroneHandler/SubViewport/Drone" unique_id=26086938]
 shape = SubResource("BoxShape3D_fupvj")

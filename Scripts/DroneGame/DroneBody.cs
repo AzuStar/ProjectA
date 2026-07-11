@@ -2,6 +2,9 @@ using Godot;
 
 public partial class DroneBody : CharacterBody3D
 {
+	[Export] private float _maxSpeed = 10.0f;
+	[Export] private float _acceleration = 10.0f;
+	
 	private bool _inputActive;
 	
 	public override void _Ready()
@@ -12,14 +15,17 @@ public partial class DroneBody : CharacterBody3D
 	public override void _Process(double delta)
 	{
 		Vector3 direction = GetMovementInput();
+		Vector3 desiredVelocity;
 		if (direction.LengthSquared() > 0.0f)
 		{
-			Velocity = direction;
+			desiredVelocity = direction * _maxSpeed;
 		}
 		else
 		{
-			Velocity = Vector3.Zero;
+			desiredVelocity = Vector3.Zero;
 		}
+
+		Velocity = Velocity.MoveToward(desiredVelocity, _acceleration * (float)delta);
 
 		MoveAndSlide();
 	}
