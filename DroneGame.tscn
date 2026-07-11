@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bu1fsshdiwhq7"]
+
+[ext_resource type="Script" uid="uid://ctsntiota8qfx" path="res://Scripts/DroneGame/PlayerController.cs" id="1_w8nwk"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fupvj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fupvj"]
+size = Vector2(20, 20)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fupvj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fupvj"]
+
+[node name="DroneGame" type="Node3D" unique_id=343881708]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1596932814]
+transform = Transform3D(0.70710677, -0.6123724, 0.35355335, 0, 0.49999997, 0.8660254, -0.70710677, -0.6123724, 0.35355335, 0, 4, 0)
+
+[node name="ProtoFloor" type="StaticBody3D" parent="." unique_id=918701293]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProtoFloor" unique_id=820509024]
+shape = SubResource("WorldBoundaryShape3D_fupvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ProtoFloor" unique_id=831200652]
+mesh = SubResource("PlaneMesh_fupvj")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=663472309]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+script = ExtResource("1_w8nwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=282505167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fupvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1133505534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_fupvj")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=593873355]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 4, 4)

@@ -1,17 +1,9 @@
 [gd_scene format=3 uid="uid://bgr3gte8b0glk"]
 
 [ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="1_t24r6"]
-
-[sub_resource type="Environment" id="Environment_c4w2e"]
-ambient_light_source = 3
-glow_enabled = true
-glow_intensity = 2.03
-glow_blend_mode = 2
-glow_hdr_threshold = 0.95
-glow_hdr_luminance_cap = 40.44
+[ext_resource type="PackedScene" uid="uid://bu1fsshdiwhq7" path="res://DroneGame.tscn" id="2_t24r6"]
 
 [sub_resource type="World3D" id="World3D_e3r5u"]
-environment = SubResource("Environment_c4w2e")
 
 [node name="Bootstrap" type="Node" unique_id=607440252]
 
@@ -30,11 +22,15 @@ stretch_shrink = 8
 
 [node name="SubViewport" type="SubViewport" parent="Main/GAME_SVC" unique_id=2037936749]
 world_3d = SubResource("World3D_e3r5u")
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(240, 135)
 render_target_update_mode = 4
 
+[node name="DroneGame" parent="Main/GAME_SVC/SubViewport" unique_id=343881708 instance=ExtResource("2_t24r6")]
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Main" unique_id=1398127279]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -45,4 +41,4 @@ transparent_bg = true
 handle_input_locally = false
 use_hdr_2d = true
 size = Vector2i(1920, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
