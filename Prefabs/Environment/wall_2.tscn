@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://3etpceq6dxpv"]
+
+[ext_resource type="PackedScene" uid="uid://cek6m3ypyjnau" path="res://Assets/Dungeon/wall.gltf" id="1_uk011"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_rbgmg"]
+
+[node name="wall2" unique_id=1013068434 instance=ExtResource("1_uk011")]
+
+[node name="wall" parent="." index="0" unique_id=20699348]
+surface_material_override/0 = ExtResource("2_rbgmg")

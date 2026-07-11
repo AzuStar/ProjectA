@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drbrx1s6minf3"]
+
+[ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="1_ylal7"]
+[ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="2_4iwma"]
+
+[sub_resource type="Gradient" id="Gradient_ylal7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.106451616, 0.43225807, 0.7387097, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.58, 0.58, 0.58, 1, 0.23225807, 0.23225807, 0.23225807, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4iwma"]
+gradient = SubResource("Gradient_ylal7")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ylal7")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2_4iwma")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 5
+shader_parameter/wrap = 9.49999998667295e-08
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.0050000002375
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(0.15, 0.15, 0.15, 0.015686275)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = SubResource("GradientTexture1D_4iwma")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.025

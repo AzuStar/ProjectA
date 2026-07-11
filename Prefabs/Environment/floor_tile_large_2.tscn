@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://du2o2cw5lamyi"]
+
+[ext_resource type="PackedScene" uid="uid://v1jlbdgjfw6d" path="res://Assets/Dungeon/floor_tile_large.gltf" id="1_q5khb"]
+[ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_anqho"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_tgcvw"]
+
+[node name="floor_tile_large2" unique_id=1853447348 instance=ExtResource("1_q5khb")]
+
+[node name="floor_tile_large" parent="." index="0" unique_id=1313341032]
+surface_material_override/0 = ExtResource("2_tgcvw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1007656689]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=825860136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0016479492, -0.023803711, -0.0041503906)
+shape = ExtResource("2_anqho")
