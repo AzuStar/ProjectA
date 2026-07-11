@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://botf4iwaysgo1"]
+
+[ext_resource type="Script" uid="uid://csu63dg6qesht" path="res://Personal/ScalesStuff/Scripts/StateMachine.cs" id="1_fkktm"]
+[ext_resource type="Script" uid="uid://b112ef8ch41rj" path="res://Personal/ScalesStuff/Scripts/PatrollingState.cs" id="2_6wlyd"]
+[ext_resource type="Script" uid="uid://c4jqghd77arba" path="res://Personal/ScalesStuff/Scripts/ChasingState.cs" id="3_qnmc5"]
+[ext_resource type="Script" uid="uid://bcvqcaajdy6jf" path="res://Personal/ScalesStuff/Scripts/RetreatState.cs" id="4_m8xcb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_he7nk"]
+
+[sub_resource type="Sky" id="Sky_td3ka"]
+sky_material = SubResource("ProceduralSkyMaterial_he7nk")
+
+[sub_resource type="Environment" id="Environment_061ej"]
+background_mode = 2
+sky = SubResource("Sky_td3ka")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_td3ka"]
+size = Vector2(16, 8)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_061ej"]
+
+[node name="World" type="Node3D" unique_id=1657155500]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2030061590]
+transform = Transform3D(1, 0, 0, 0, 0.62247753, 0.7826377, 0, -0.7826377, 0.62247753, 0, 6.0096035, 2.2445946)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1013186641]
+environment = SubResource("Environment_061ej")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=876763824]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 1, 0)
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=390443133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9403257)
+mesh = SubResource("PlaneMesh_td3ka")
+
+[node name="Enemy" type="MeshInstance3D" parent="." unique_id=803622978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.473947, 1.0119696, -0.88530326)
+mesh = SubResource("CapsuleMesh_061ej")
+
+[node name="EnemyStateMachine" type="Node" parent="Enemy" unique_id=228476804 node_paths=PackedStringArray("startingState")]
+script = ExtResource("1_fkktm")
+startingState = NodePath("PatrollingState")
+
+[node name="PatrollingState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=1042541737]
+script = ExtResource("2_6wlyd")
+
+[node name="ChasingState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=447873239]
+script = ExtResource("3_qnmc5")
+
+[node name="RetreatState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=1751774701]
+script = ExtResource("4_m8xcb")
