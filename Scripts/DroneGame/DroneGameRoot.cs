@@ -1,5 +1,8 @@
 using Godot;
 
+/// <summary>
+/// Level root.
+/// </summary>
 public partial class DroneGameRoot : Node
 {
 	[Export] private PlayerController _player;

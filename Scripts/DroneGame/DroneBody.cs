@@ -4,15 +4,46 @@ public partial class DroneBody : CharacterBody3D
 {
 	[Export] private float _maxSpeed = 10.0f;
 	[Export] private float _acceleration = 10.0f;
+	[Export] private float _lookSensitivity = 1.0f;
 	
 	private bool _inputActive;
-	
+	private Vector2 _pendingLookMotion;
+
 	public override void _Ready()
 	{
 		_inputActive = false;
 	}
 
-	public override void _Process(double delta)
+	public void PassInput(InputEvent ev)
+	{
+		if (ev is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+		{
+			_pendingLookMotion = mouseMotion.Relative;
+		}
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		ProcessLook(delta);
+		ProcessMovement(delta);
+	}
+
+	private void ProcessLook(double delta)
+	{
+		if (!_inputActive)
+		{
+			return;
+		}
+
+		if (_pendingLookMotion.LengthSquared() > 0.0f)
+		{
+			float sens = _lookSensitivity * 0.01f;
+			Rotate(Vector3.Down, _pendingLookMotion.X * sens * (float)delta);
+			_pendingLookMotion = Vector2.Zero;	
+		}
+	}
+
+	private void ProcessMovement(double delta)
 	{
 		Vector3 direction = GetMovementInput();
 		Vector3 desiredVelocity;

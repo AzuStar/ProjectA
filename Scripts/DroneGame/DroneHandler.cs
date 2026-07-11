@@ -10,4 +10,9 @@ public partial class DroneHandler : Node
         _droneBody.SetInputActive(inputActive);
         _viewRect.Visible = inputActive; // Slide in and out later?
     }
+
+    public override void _Input(InputEvent ev)
+    {
+        _droneBody.PassInput(ev);
+    }
 }

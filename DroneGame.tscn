@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bkot2eifpbex2" path="res://Scripts/DroneGame/DroneBody.cs" id="2_b6yky"]
 [ext_resource type="Script" uid="uid://dpiq3jmbbcki8" path="res://Scripts/DroneGame/DroneViewTexture.cs" id="2_pd044"]
 [ext_resource type="Script" uid="uid://ca302uwggxvyy" path="res://Scripts/DroneGame/DroneHandler.cs" id="3_r813u"]
+[ext_resource type="Script" uid="uid://0w264bobrl45" path="res://Scripts/MouseCapture.cs" id="6_roac0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fupvj"]
 
@@ -25,6 +26,9 @@ size = Vector3(0.5, 0.3, 0.5)
 script = ExtResource("1_is18b")
 _player = NodePath("Player")
 _droneHandler = NodePath("DroneHandler")
+
+[node name="MouseCapture" type="Node" parent="." unique_id=1955712566]
+script = ExtResource("6_roac0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1596932814]
 transform = Transform3D(0.70710677, -0.6123724, 0.35355335, 0, 0.49999997, 0.8660254, -0.70710677, -0.6123724, 0.35355335, 0, 4, 0)
@@ -59,12 +63,14 @@ _droneBody = NodePath("SubViewport/Drone")
 _viewRect = NodePath("MonitorRect")
 
 [node name="SubViewport" type="SubViewport" parent="DroneHandler" unique_id=1497296787]
+handle_input_locally = false
 
 [node name="Drone" type="CharacterBody3D" parent="DroneHandler/SubViewport" unique_id=746073904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -2)
 motion_mode = 1
 script = ExtResource("2_b6yky")
 _acceleration = 15.0
+_lookSensitivity = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DroneHandler/SubViewport/Drone" unique_id=26086938]
 shape = SubResource("BoxShape3D_fupvj")
@@ -83,8 +89,8 @@ offset_bottom = 128.0
 color = Color(0.25823662, 0.5002912, 0.6398296, 1)
 
 [node name="DroneViewTexture" type="TextureRect" parent="DroneHandler/MonitorRect" unique_id=1291432381 node_paths=PackedStringArray("_subViewport")]
-custom_minimum_size = Vector2(64, 64)
-custom_maximum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(204, 104)
+custom_maximum_size = Vector2(204, 104)
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
