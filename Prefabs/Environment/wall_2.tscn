@@ -7,3 +7,9 @@
 
 [node name="wall" parent="." index="0" unique_id=20699348]
 surface_material_override/0 = ExtResource("2_rbgmg")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="1" unique_id=1016077306]
+height = 4.0
+vertices = PackedVector3Array(2.0021982, 0, 0.49958292, 1.9897327, 0, -0.47869012, -1.9935341, 0, -0.48193094, -1.9906139, 0, 0.49019137)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

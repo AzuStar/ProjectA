@@ -1,10 +1,11 @@
 using Godot;
 using ProjectA.Game.Player;
-using ProjectA.Game.Singletons;
+using ProjectA.Game.Levels;
+using ProjectA.Game.Inventory;
 
 namespace ProjectA.Game;
 
-public partial class CoinPickupArea3D : Area3D
+public partial class KeyPickupArea3D : Area3D
 {
     private bool _pickedUp;
 
@@ -18,15 +19,8 @@ public partial class CoinPickupArea3D : Area3D
         if (_pickedUp || body is not PlayerCharacterController)
             return;
 
-        PlayerSingleton? playerSingleton = PlayerSingleton.Instance;
-        if (playerSingleton == null)
-        {
-            GD.PushError($"{nameof(CoinPickupArea3D)} requires {nameof(PlayerSingleton)} autoload.");
-            return;
-        }
-
         _pickedUp = true;
-        playerSingleton.CoinsCollected++;
+        LevelInstance.Current.AddItem(new KeyItem());
         QueueFree();
     }
 }

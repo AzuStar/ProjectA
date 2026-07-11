@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ctmnc7oyrj3fn"]
+
+[ext_resource type="PackedScene" uid="uid://xschkgab12v2" path="res://Assets/Dungeon/wall_half.gltf" id="1_ewriw"]
+
+[node name="wall_half2" unique_id=23494475 instance=ExtResource("1_ewriw")]

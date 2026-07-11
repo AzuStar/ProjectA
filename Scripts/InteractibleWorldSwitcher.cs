@@ -1,4 +1,6 @@
 using Godot;
+using ProjectA.Game.Player;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game;
 
@@ -83,9 +85,7 @@ public partial class InteractibleWorldSwitcher : Area3D
     private void ToggleWorld()
     {
         if (Bootstrap.Instance?.gameSvc.Material is not ShaderMaterial pixelMaterial)
-        {
             return;
-        }
 
         bool current = pixelMaterial.GetShaderParameter("use_palette").AsBool();
         pixelMaterial.SetShaderParameter("use_palette", !current);

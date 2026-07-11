@@ -1,6 +1,6 @@
 using Godot;
 
-namespace ProjectA.Game;
+namespace ProjectA.Game.Singletons;
 
 [Tool]
 public partial class CameraSpringArmSingleton : Node3D

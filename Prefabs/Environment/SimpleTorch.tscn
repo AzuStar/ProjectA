@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cfgklodgpfuho"]
 
-[ext_resource type="PackedScene" uid="uid://8ds1kg8ayxqq" path="res://Assets/Dungeon/torch.gltf" id="1_o54wd"]
-[ext_resource type="Script" uid="uid://cpkct54qbf2qy" path="res://Scripts/TorchLightFlicker3D.cs" id="2_c4w2e"]
+[ext_resource type="PackedScene" uid="uid://8ds1kg8ayxqq" path="res://Assets/Dungeon/torch.gltf" id="1_ash17"]
+[ext_resource type="Script" uid="uid://b7a5vv43l2sik" path="res://Scripts/Torch.cs" id="2_llxhp"]
+[ext_resource type="Script" uid="uid://cpkct54qbf2qy" path="res://Scripts/TorchLightFlicker3D.cs" id="3_aeofi"]
+[ext_resource type="Script" uid="uid://btvyxxmud2foi" path="res://Scripts/TorchLighterArea3D.cs" id="4_mox3h"]
 
 [sub_resource type="Gradient" id="Gradient_o54wd"]
 offsets = PackedFloat32Array(0, 0.08, 0.22, 0.55, 0.9532374)
@@ -53,21 +55,29 @@ lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_o54wd")
 size = Vector2(0.1, 0.1)
 
-[node name="torch2" unique_id=1246398029 instance=ExtResource("1_o54wd")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yjx35"]
+radius = 4.0
+
+[node name="SimpleTorch" unique_id=1246398029 node_paths=PackedStringArray("lights", "particles") instance=ExtResource("1_ash17")]
+script = ExtResource("2_llxhp")
+lights = [NodePath("SpotLight3D")]
+particles = [NodePath("GPUParticles3D")]
 
 [node name="SpotLight3D" type="OmniLight3D" parent="." index="1" unique_id=1862631902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5263528, 0)
+visible = false
 light_color = Color(1, 0.60784316, 0.23921569, 1)
 light_energy = 2.0
 omni_range = 50.0
 omni_attenuation = 1.388
-script = ExtResource("2_c4w2e")
+script = ExtResource("3_aeofi")
 BaseEnergy = 3.0
 BaseRange = 50.0
 RangeFlickerAmount = 5.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2" unique_id=1835690362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55526334, 0)
+emitting = false
 amount = 32
 lifetime = 4.0
 speed_scale = 3.5
@@ -75,3 +85,9 @@ transform_align = 1
 transform_align_channel_filter = 3
 process_material = SubResource("ParticleProcessMaterial_yjx35")
 draw_pass_1 = SubResource("QuadMesh_lgqpe")
+
+[node name="TorchLighterArea3d" type="Area3D" parent="." index="3" unique_id=1790883564]
+script = ExtResource("4_mox3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TorchLighterArea3d" index="0" unique_id=1622342949]
+shape = SubResource("SphereShape3D_yjx35")

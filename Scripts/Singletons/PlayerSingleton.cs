@@ -1,10 +1,16 @@
 using Godot;
+using ProjectA.Game.Player;
+using ProjectA.Game.Utils;
 
-namespace ProjectA.Game;
+namespace ProjectA.Game.Singletons;
 
 public partial class PlayerSingleton : Node
 {
-    public static PlayerSingleton? Instance { get; private set; }
+    // this needs to be guaranteed to exist for the game to function
+    public static PlayerSingleton Instance { get; private set; }
+
+    [Export]
+    public PlayerDroneDuo playerDuo;
 
     private int _coinsCollected;
 
@@ -55,4 +61,19 @@ public partial class PlayerSingleton : Node
             COINS PICKED UP: {CoinsCollected}
             PATTED BAX: {BaxPattedTimes} times
             """;
+
+    /// <summary>
+    /// Releases the duo into singleton custody
+    /// </summary>
+    public static void ReleaseTheDuo()
+    {
+        Instance.playerDuo.MoveToParent(Instance);
+        Instance.playerDuo.player.GlobalPosition = Vector3.Zero;
+        Instance.playerDuo.drone.GlobalPosition = Vector3.Zero;
+    }
+
+    public static PlayerDroneDuo AcquireDuo()
+    {
+        return Instance.playerDuo;
+    }
 }

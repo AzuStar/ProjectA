@@ -1,6 +1,7 @@
 using Godot;
+using ProjectA.Game.Singletons;
 
-namespace ProjectA.Game;
+namespace ProjectA.Game.Player;
 
 public partial class PlayerCharacterController : CharacterBody3D
 {
@@ -22,6 +23,8 @@ public partial class PlayerCharacterController : CharacterBody3D
     [Export]
     public bool DriveCameraSmoothingTarget = true;
 
+    public bool acceptInput = true;
+
     private AnimationPlayer? _animationPlayer;
     private string _currentAnimation = string.Empty;
 
@@ -33,6 +36,12 @@ public partial class PlayerCharacterController : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!acceptInput)
+        {
+            PlayAnimation(IdleAnimation);
+            return;
+        }
+
         Vector3 direction = GetMovementDirection();
 
         if (direction == Vector3.Zero)

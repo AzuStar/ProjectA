@@ -1,5 +1,5 @@
 using Godot;
 
-namespace ProjectA.Game;
+namespace ProjectA.Game.Singletons;
 
 public partial class MusicPlayerSingleton : Node { }

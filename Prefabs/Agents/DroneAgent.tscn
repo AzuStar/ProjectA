@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cmxbat8j31876"]
+
+[ext_resource type="Script" uid="uid://dxqc6i1kvfcb4" path="res://Scripts/Player/DroneCharacterController.cs" id="1_cwkdp"]
+[ext_resource type="PackedScene" uid="uid://eegarh587ynu" path="res://Prefabs/Agents/DroneBody.tscn" id="2_cwkdp"]
+[ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_on3mu"]
+[ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_e8pqj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
+height = 2.3637695
+
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627]
+script = ExtResource("1_cwkdp")
+
+[node name="DroneBody" parent="." unique_id=1702911868 instance=ExtResource("2_cwkdp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
+shape = SubResource("CapsuleShape3D_yjx35")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
+root_node = NodePath("../DroneBody")
+libraries/KayKitAnim = ExtResource("3_on3mu")
+libraries/KayKitAnimMovement = ExtResource("4_e8pqj")

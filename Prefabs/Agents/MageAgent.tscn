@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cwniokwtugyi2"]
+
+[ext_resource type="Script" uid="uid://d0uknj1drr2gr" path="res://Scripts/Player/PlayerCharacterController.cs" id="1_a44bu"]
+[ext_resource type="PackedScene" uid="uid://bflahou4nlmvh" path="res://Prefabs/Agents/RogueBody.tscn" id="2_a44bu"]
+[ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_ym27m"]
+[ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_t12g8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
+height = 2.3637695
+
+[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627]
+script = ExtResource("1_a44bu")
+
+[node name="RogueBody" parent="." unique_id=966960816 instance=ExtResource("2_a44bu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
+shape = SubResource("CapsuleShape3D_yjx35")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
+root_node = NodePath("../RogueBody")
+libraries/KayKitAnim = ExtResource("3_ym27m")
+libraries/KayKitAnimMovement = ExtResource("4_t12g8")
