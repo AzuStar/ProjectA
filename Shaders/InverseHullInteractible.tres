@@ -6,7 +6,7 @@
 render_priority = 0
 shader = ExtResource("1_xsqll")
 shader_parameter/outline_color = Color(0.9896667, 1, 0.38, 1)
-shader_parameter/thickness = 0.054000002564999997
+shader_parameter/thickness = 0.05400000256499999
 shader_parameter/outline_energy = 2.07999995350784
 shader_parameter/outline_transparency = 1.0
 shader_parameter/use_vertex_normals = false

@@ -62,10 +62,9 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(960, 540)
 render_target_update_mode = 4
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Main" unique_id=1398127279]
 [node name="GameRoot" parent="Main/GAME_SVC/SubViewport" unique_id=2066864038 instance=ExtResource("1_e3r5u")]
 
-[node name="UI_SVC" type="SubViewportContainer" parent="Main" unique_id=1398127279]
+[node name="UI_SVC" type="SubViewportContainer" parent="Main" unique_id=420112639]
 offset_right = 1920.0
 offset_bottom = 1080.0
 
