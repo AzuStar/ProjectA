@@ -2,8 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://berjujve2c53v" path="res://Assets/Dungeon/floor_tile_large_rocks.gltf" id="1_eyklw"]
 [ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_m4d12"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_oi8p3"]
 
 [node name="floor_tile_large_rocks2" unique_id=890485070 instance=ExtResource("1_eyklw")]
+
+[node name="floor_tile_large_rocks" parent="." index="0" unique_id=804119152]
+surface_material_override/0 = ExtResource("2_oi8p3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=705666764]
 

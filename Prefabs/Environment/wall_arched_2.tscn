@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://mqrd1wrymrrh"]
 
 [ext_resource type="PackedScene" uid="uid://bmnde7uc6s8n3" path="res://Assets/Dungeon/wall_arched.gltf" id="1_uuf1j"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_vn8o3"]
 
 [node name="wall_arched2" unique_id=1716974948 instance=ExtResource("1_uuf1j")]
+
+[node name="wall_arched" parent="." index="0" unique_id=250760533]
+surface_material_override/0 = ExtResource("2_vn8o3")
