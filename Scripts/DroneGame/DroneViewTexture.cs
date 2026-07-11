@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class DoneViewTexture : TextureRect
+public partial class DroneViewTexture : TextureRect
 {
 	[Export] private SubViewport _subViewport;
 
