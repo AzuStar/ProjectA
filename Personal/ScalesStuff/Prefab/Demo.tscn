@@ -14,15 +14,30 @@ sky_material = SubResource("ProceduralSkyMaterial_he7nk")
 background_mode = 2
 sky = SubResource("Sky_td3ka")
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_he7nk"]
+vertices = PackedVector3Array(-14.5, 0.27089643, -23.60342, -14.5, 0.27089643, -0.60342026, -12.5, 0.27089643, -0.60342026, -12.5, 0.27089643, -23.60342, 1, 9.270897, -1.1034203, 0.75, 9.270897, -15.60342, 0.75, 9.270897, -1.1034203, -4.25, 9.270897, -1.1034203, -4.5, 9.270897, -15.60342, -4.5, 9.270897, -1.1034203, -11.5, 9.020897, -23.60342, -11.25, 9.020897, -23.10342, 7.5, 9.020897, -23.10342, 11.25, 9.020897, -23.35342, -11.25, 9.270897, -0.60342026, -11.25, 9.270897, -1.1034203, 7.75, 9.020897, -23.10342, 7.5, 9.270897, -1.1034203, 7.75, 9.270897, -0.85342026, 14.5, 0.27089643, -23.60342, 12.25, 0.27089643, -23.60342, 12, 0.27089643, -22.35342, 14.5, 0.27089643, -0.60342026, 8.75, 0.27089643, -0.60342026, 8.75, 0.27089643, -22.35342, -10.25, 0.27089643, -15.10342, -5.5, 0.27089643, -14.85342, -5.5, 0.27089643, -16.35342, -4.25, 0.27089643, -16.60342, -4.25, 0.27089643, -22.35342, -10.25, 0.27089643, -22.35342, -3.25, 0.27089643, -16.35342, -3.25, 0.27089643, -14.35342, -0.25, 0.27089643, -14.35342, -0.25, 0.27089643, -16.35342, -0.5, 0.27089643, -22.35342, 1.75, 0.27089643, -16.60342, 2, 0.27089643, -14.35342, 6.5, 0.27089643, -14.35342, 6.5, 0.27089643, -22.35342, -10.25, 0.27089643, -1.8534203, -5.5, 0.27089643, -1.8534203, -3.25, 0.27089643, -1.8534203, -0.25, 0.27089643, -1.8534203, 2, 0.27089643, -1.8534203, 6.5, 0.27089643, -1.8534203)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(9, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 10), PackedInt32Array(12, 13, 16), PackedInt32Array(12, 16, 17), PackedInt32Array(17, 16, 18), PackedInt32Array(11, 15, 10), PackedInt32Array(18, 4, 17), PackedInt32Array(6, 4, 18), PackedInt32Array(6, 18, 7), PackedInt32Array(7, 18, 14), PackedInt32Array(15, 9, 14), PackedInt32Array(9, 7, 14), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(24, 21, 23), PackedInt32Array(23, 21, 22), PackedInt32Array(27, 26, 25), PackedInt32Array(29, 28, 27), PackedInt32Array(29, 27, 30), PackedInt32Array(30, 27, 25), PackedInt32Array(34, 33, 31), PackedInt32Array(31, 33, 32), PackedInt32Array(31, 28, 34), PackedInt32Array(34, 28, 35), PackedInt32Array(35, 28, 29), PackedInt32Array(38, 37, 36), PackedInt32Array(35, 36, 34), PackedInt32Array(35, 39, 36), PackedInt32Array(36, 39, 38), PackedInt32Array(41, 40, 26), PackedInt32Array(26, 40, 25), PackedInt32Array(43, 42, 33), PackedInt32Array(33, 42, 32), PackedInt32Array(45, 44, 38), PackedInt32Array(38, 44, 37)]
+geometry_parsed_geometry_type = 0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_td3ka"]
-size = Vector2(16, 8)
+size = Vector2(30, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_td3ka"]
+size = Vector3(1, 4.2524414, 15.926697)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qnmc5"]
+size = Vector3(1, 4.2524414, 23.352524)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_061ej"]
 
-[node name="World" type="Node3D" unique_id=1657155500]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qnmc5"]
+points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+
+[node name="World" type="Node3D" unique_id=91665971]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2030061590]
-transform = Transform3D(1, 0, 0, 0, 0.62247753, 0.7826377, 0, -0.7826377, 0.62247753, 0, 6.0096035, 2.2445946)
+transform = Transform3D(-0.99904823, -0.04072307, 0.015629934, 0, 0.35832423, 0.9335972, -0.04361953, 0.9327086, -0.3579832, -1.9747456, 22.848236, -18.890501)
+current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1013186641]
 environment = SubResource("Environment_061ej")
@@ -30,23 +45,65 @@ environment = SubResource("Environment_061ej")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=876763824]
 transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 1, 0)
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=390443133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9403257)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=690233919]
+navigation_mesh = SubResource("NavigationMesh_he7nk")
+
+[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=390443133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.049588)
 mesh = SubResource("PlaneMesh_td3ka")
 
-[node name="Enemy" type="MeshInstance3D" parent="." unique_id=803622978]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.473947, 1.0119696, -0.88530326)
-mesh = SubResource("CapsuleMesh_061ej")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1326447926]
+transform = Transform3D(1, 0, 0, 0, 2.0669374, 0, 0, 0, 1, 0.80123377, 4.380907, 3.954071)
+mesh = SubResource("BoxMesh_td3ka")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1859314038]
+transform = Transform3D(1, 0, 0, 0, 2.0669374, 0, 0, 0, 1, -4.4959245, 4.380907, 3.954071)
+mesh = SubResource("BoxMesh_td3ka")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=449476164]
+transform = Transform3D(-4.3711385e-08, 0, 1.2211133, 0, 2.0669374, 0, -0.99999994, 0, -5.337656e-08, -1.8555429, 4.3975124, 11.241878)
+mesh = SubResource("BoxMesh_td3ka")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1863535736]
+transform = Transform3D(0.99999994, 0, 0, 0, 2.0669374, 0, 0, 0, 0.99999994, 7.521508, 4.165662, -0.37757206)
+mesh = SubResource("BoxMesh_qnmc5")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1432835644]
+transform = Transform3D(0.99999994, 0, 0, 0, 2.0669374, 0, 0, 0, 0.99999994, -11.448464, 4.165662, -0.37757206)
+mesh = SubResource("BoxMesh_qnmc5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=678755226]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 2.0669374, 0, -0.99999994, 0, -4.3711385e-08, -0.057256937, 4.165662, -11.516381)
+mesh = SubResource("BoxMesh_qnmc5")
+
+[node name="Enemy" type="CharacterBody3D" parent="." unique_id=402150138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93927, 1.5240588, -2.905587)
 
 [node name="EnemyStateMachine" type="Node" parent="Enemy" unique_id=228476804 node_paths=PackedStringArray("startingState")]
 script = ExtResource("1_fkktm")
 startingState = NodePath("PatrollingState")
 
-[node name="PatrollingState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=1042541737]
+[node name="PatrollingState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=1042541737 node_paths=PackedStringArray("navigationAgent", "Route", "Character")]
 script = ExtResource("2_6wlyd")
+navigationAgent = NodePath("../../NavigationAgent3D")
+Route = NodePath("../../PositionA")
+Character = NodePath("../..")
+CharacterSpeed = 5.0
 
 [node name="ChasingState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=447873239]
 script = ExtResource("3_qnmc5")
 
 [node name="RetreatState" type="Node" parent="Enemy/EnemyStateMachine" unique_id=1751774701]
 script = ExtResource("4_m8xcb")
+
+[node name="Mesh" type="MeshInstance3D" parent="Enemy" unique_id=803622978]
+mesh = SubResource("CapsuleMesh_061ej")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy" unique_id=1625403626]
+shape = SubResource("ConvexPolygonShape3D_qnmc5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy" unique_id=791380682]
+debug_enabled = true
+
+[node name="PositionA" type="Node3D" parent="Enemy" unique_id=2113446430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.709465, 0, -0.9054673)

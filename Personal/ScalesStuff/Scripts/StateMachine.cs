@@ -44,7 +44,7 @@ public partial class StateMachine : Node
 	{
 		if (state != currentState) return;
 
-		IState newState = states[newState.ToString().ToLower()];
+		IState newState = states[newStateName.ToString().ToLower()];
 		if (newState == null) return;
 
 		if (currentState != null) currentState.Exit();
