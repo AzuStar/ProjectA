@@ -9,7 +9,7 @@ radius = 0.2
 [node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("fpsCamera")]
 motion_mode = 1
 script = ExtResource("1_cwkdp")
-SpawnHeightOffset = 2.5
+MaximumSpeed = 12.0
 fpsCamera = NodePath("CameraAttachment")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]

@@ -6,7 +6,13 @@ namespace ProjectA.Game.Player;
 public partial class DroneCharacterController : CharacterBody3D
 {
     [Export]
-    public float Speed = 4.0f;
+    public float MaximumSpeed = 4.0f;
+
+    [Export]
+    public float Acceleration = 8.0f;
+
+    [Export]
+    public float BounceRestitution = 0.5f;
 
     [Export]
     public bool RotateTowardInput = true;
@@ -38,19 +44,25 @@ public partial class DroneCharacterController : CharacterBody3D
         }
 
         Vector3 direction = GetMovementDirection();
-
-        if (direction == Vector3.Zero)
-        {
-            return;
-        }
-
-        Move(direction);
-    }
-
-    private void Move(Vector3 direction)
-    {
-        Velocity = direction * Speed;
+        Vector3 desiredVelocity = direction * MaximumSpeed;
+        Velocity = Velocity.MoveToward(desiredVelocity, Acceleration * (float)delta);
         MoveAndSlide();
+
+        bool bounced = false;
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision3D slideCollision = GetSlideCollision(i);
+            if (slideCollision != null)
+            {
+                bounced = true;
+                Vector3 normal = slideCollision.GetNormal();
+                Velocity = Velocity.Bounce(normal);
+            }
+        }
+        if (bounced)
+        {
+            Velocity *= BounceRestitution;
+        }
     }
 
     private Vector3 GetMovementDirection()
@@ -58,15 +70,9 @@ public partial class DroneCharacterController : CharacterBody3D
         Vector3 inputDirection = GetInputDirection();
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
-
-        Basis cameraBasis = fpsCamera.fpsCamera.GlobalTransform.Basis;
-        Vector3 forward = -cameraBasis.Z;
-        Vector3 right = cameraBasis.X;
-
-        forward.Y = 0.0f;
-        right.Y = 0.0f;
-
-        return (right.Normalized() * inputDirection.X - forward.Normalized() * inputDirection.Z).Normalized();
+        
+        Basis cameraBasis = fpsCamera.fpsCamera.GlobalBasis;
+        return cameraBasis * inputDirection;
     }
 
     private static Vector3 GetInputDirection()
@@ -93,7 +99,17 @@ public partial class DroneCharacterController : CharacterBody3D
             direction.X += 1.0f;
         }
 
-        return direction == Vector3.Zero ? Vector3.Zero : direction.Normalized();
+        if (Input.IsKeyPressed(Key.Ctrl))
+        {
+            direction.Y -= 1.0f;
+        }
+
+        if (Input.IsKeyPressed(Key.Space))
+        {
+            direction.Y += 1.0f;
+        }
+
+        return direction.LengthSquared() > 0.0f ? direction.Normalized() : Vector3.Zero;
     }
 
     public void EnableDrone(Vector3 basePosition)
