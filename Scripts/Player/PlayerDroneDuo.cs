@@ -46,26 +46,25 @@ public partial class PlayerDroneDuo : Node3D
         }
     }
 
-    public void DisableDrone()
+    private void SetDroneEnabled(bool droneEnabled)
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
-        _droneSummoned = false;
-        drone.DisableDrone();
-        player.EnablePlayer();
+        _droneSummoned = droneEnabled;
+        if (!droneEnabled)
+        {
+            drone.DisableDrone();
+            player.EnablePlayer();
+        }
+        else
+        {
+            player.DisablePlayerForDrone();
+            drone.EnableDrone(player.GlobalPosition + Vector3.Up);
+        }
     }
 
     private void ToggleDrone()
     {
-        if (_droneSummoned)
-        {
-            DisableDrone();
-            return;
-        }
-
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-        _droneSummoned = true;
-        player.DisablePlayerForDrone();
-        drone.EnableDrone(player.GlobalPosition);
+        SetDroneEnabled(!_droneSummoned);
     }
 
     private FpsCamera GetActiveCamera()
@@ -80,7 +79,7 @@ public partial class PlayerDroneDuo : Node3D
         player.acceptInput = true;
         player.DriveCameraSmoothingTarget = true;
 
-        DisableDrone();
+        SetDroneEnabled(false);
 
         GetActiveCamera().ResetOrientation();
 
@@ -90,7 +89,7 @@ public partial class PlayerDroneDuo : Node3D
 
     public void Unprepare()
     {
-        DisableDrone();
+        SetDroneEnabled(false);
 
         _isPrepared = false;
     }
