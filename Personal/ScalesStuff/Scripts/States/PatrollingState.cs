@@ -5,16 +5,22 @@ public partial class PatrollingState : Node, IState
 {
 	public event EventHandler<IState,String> TransitionEvent;
 	[Export] NavigationAgent3D navigationAgent;
-	[Export] Node3D[] Route;
-	[Export] CharacterBody3D Character;
-	[Export] float CharacterSpeed;
-	
-	Vector3 currentGoal;
+
+	Node3D[] Route;
+	float CharacterSpeed;
 	int currentIndex=0;
+	CharacterBody3D Character;
+	Vector3 currentGoal;
+
+	public void SetRoute(Node3D[] _route) => Route = _route;
+	public void SetCharacterSpeed(float _speed) => CharacterSpeed = _speed;
+	public void SetCharacter(CharacterBody3D _character) => Character = _character;
+
 	public void Enter()
 	{
 		//TransitionEvent?.Invoke(this,"ChasingState");
 		GD.Print("Patroll");
+		GD.Print(Route.Length);
 		currentGoal = Vector3.Zero;
 		currentGoal.X=Route[currentIndex].GlobalPosition.X;
 		currentGoal.Z=Route[currentIndex].GlobalPosition.Z;

@@ -4,13 +4,17 @@ using System;
 public partial class SearchState : Node, IState
 {
 	public event EventHandler<IState,String> TransitionEvent;
-	[Export] float SearchTime=2.0f;
 	[Export] Timer searchTimer;
-	[Export] CharacterBody3D Character;
-	[Export] float TurnDurations=3f;
+
+	CharacterBody3D Character;
+	float SearchTime;
+	float TurnDurations;
 	Tween tween;
 
-
+	public void SetCharacter(CharacterBody3D value) =>Character = value;
+	public void SetSearchTime(float value) => SearchTime=value;
+	public void SetTurnDurations(float value) => TurnDurations=value;
+	
 	public void Enter()
 	{
 		GD.Print("Searching Enter");

@@ -6,12 +6,15 @@ public partial class ChasingState : Node, IState
 	public event EventHandler<IState,String> TransitionEvent;	
 	
 	[Export] NavigationAgent3D navigationAgent;
-	[Export] CharacterBody3D Character;
-	[Export] float CharacterSpeed;
 
+	float CharacterSpeed;
+	CharacterBody3D Character;
 	Vector3 currentGoal;
-
 	Node3D goal;
+
+	public void SetCharacterSpeed(float value) =>CharacterSpeed = value;
+	public void SetCharacter(CharacterBody3D value) =>Character = value;
+
 	public void SetGoal(Node3D _goal)
 	{ 
 		if (goal == null) goal = _goal;

@@ -9,7 +9,7 @@ public partial class StateMachine : Node
 	[Export]
 	public Node startingState;
 
-	public override void _Ready()
+	public void StateMachineSetUp()
 	{
 		//populate the dictionary with the children
 		foreach (GodotObject child in GetChildren())
