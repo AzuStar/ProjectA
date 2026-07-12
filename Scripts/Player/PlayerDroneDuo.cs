@@ -58,7 +58,7 @@ public partial class PlayerDroneDuo : Node3D
         else
         {
             player.DisablePlayerForDrone();
-            drone.EnableDrone(player.GlobalPosition + Vector3.Up);
+            drone.EnableDrone(player.GlobalPosition);
         }
     }
 

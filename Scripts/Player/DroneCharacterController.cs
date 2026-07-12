@@ -5,34 +5,22 @@ namespace ProjectA.Game.Player;
 
 public partial class DroneCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "KayKitAnimMovement/Jump_Idle";
-
     [Export]
     public float Speed = 4.0f;
-
-    [Export]
-    public double AnimationBlendSeconds = 0.15;
 
     [Export]
     public bool RotateTowardInput = true;
 
     [Export]
-    public bool DriveAnimationPlayer = true;
+    public float SpawnHeightOffset = 2.5f;
 
     [Export]
     public bool DriveCameraSmoothingTarget = true;
 
     [Export]
-    public Node3D visualRoot;
-
-    [Export]
-    private AnimationPlayer animationPlayer;
-
-    [Export]
     public FpsCamera fpsCamera;
 
     public bool acceptInput;
-    private string _currentAnimation = string.Empty;
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
 
@@ -40,14 +28,12 @@ public partial class DroneCharacterController : CharacterBody3D
     {
         _enabledCollisionLayer = CollisionLayer;
         _enabledCollisionMask = CollisionMask;
-        PlayAnimation(IdleAnimation);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         if (!acceptInput)
         {
-            PlayAnimation(IdleAnimation);
             return;
         }
 
@@ -55,7 +41,6 @@ public partial class DroneCharacterController : CharacterBody3D
 
         if (direction == Vector3.Zero)
         {
-            PlayAnimation(IdleAnimation);
             return;
         }
 
@@ -111,26 +96,14 @@ public partial class DroneCharacterController : CharacterBody3D
         return direction == Vector3.Zero ? Vector3.Zero : direction.Normalized();
     }
 
-    private void PlayAnimation(string animationName)
+    public void EnableDrone(Vector3 basePosition)
     {
-        if (!DriveAnimationPlayer || _currentAnimation == animationName)
-        {
-            return;
-        }
-
-        animationPlayer.Play(animationName, AnimationBlendSeconds);
-        _currentAnimation = animationName;
-    }
-
-    public void EnableDrone(Vector3 position)
-    {
-        GlobalPosition = position;
+        GlobalPosition = basePosition + (Vector3.Up * SpawnHeightOffset);
         Visible = true;
         acceptInput = true;
         ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = _enabledCollisionLayer;
         CollisionMask = _enabledCollisionMask;
-        visualRoot.Visible = false;
         fpsCamera.SetActive(true);
     }
 

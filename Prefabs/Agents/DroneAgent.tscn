@@ -1,47 +1,25 @@
 [gd_scene format=3 uid="uid://cmxbat8j31876"]
 
 [ext_resource type="Script" uid="uid://dxqc6i1kvfcb4" path="res://Scripts/Player/DroneCharacterController.cs" id="1_cwkdp"]
-[ext_resource type="PackedScene" uid="uid://eegarh587ynu" path="res://Prefabs/Agents/DroneBody.tscn" id="2_cwkdp"]
-[ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_on3mu"]
-[ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_e8pqj"]
 [ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="5_on3mu"]
-[ext_resource type="ArrayMesh" uid="uid://sx76dr2jwmnc" path="res://Resources/ArmMesh.tres" id="5_xen3a"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
-height = 2.3637695
+[sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
+radius = 0.2
 
-[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "fpsCamera")]
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("fpsCamera")]
+motion_mode = 1
 script = ExtResource("1_cwkdp")
-visualRoot = NodePath("DroneBody")
-animationPlayer = NodePath("AnimationPlayer")
+SpawnHeightOffset = 2.5
 fpsCamera = NodePath("CameraAttachment")
 
-[node name="DroneBody" parent="." unique_id=1702911868 instance=ExtResource("2_cwkdp")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-visible = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
-shape = SubResource("CapsuleShape3D_yjx35")
+shape = SubResource("SphereShape3D_yec2f")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
-root_node = NodePath("../DroneBody")
-libraries/KayKitAnim = ExtResource("3_on3mu")
-libraries/KayKitAnimMovement = ExtResource("4_e8pqj")
-
-[node name="CameraAttachment" type="Node3D" parent="." unique_id=1210495131 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera", "handMesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5837654, 0)
+[node name="CameraAttachment" type="Node3D" parent="." unique_id=1210495131 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera")]
 script = ExtResource("5_on3mu")
 applyYRotationTo = NodePath("..")
 fpsCamera = NodePath("Camera3D")
-handMesh = NodePath("RogueHooded_ArmRight")
 
 [node name="Camera3D" type="Camera3D" parent="CameraAttachment" unique_id=2145778052]
 physics_interpolation_mode = 1
 size = 15.054
-
-[node name="RogueHooded_ArmRight" type="MeshInstance3D" parent="CameraAttachment" unique_id=1984190480]
-transform = Transform3D(0.090085216, 0.009945501, -0.9958844, -0.10973431, 0.993961, 0, 0.98987025, 0.109282695, 0.09063255, 0.55, -1.567, -0.081)
-mesh = ExtResource("5_xen3a")
