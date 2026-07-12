@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlckr8nbmk2jo" path="res://Prefabs/Pickupables/PickupableKey.tscn" id="9_c2cqn"]
 [ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="10_hhpqe"]
 [ext_resource type="PackedScene" uid="uid://bydhgekbbv2w2" path="res://Prefabs/Triggers/FloorButton.tscn" id="11_gafx7"]
+[ext_resource type="PackedScene" uid="uid://cmvciixi2tlfk" path="res://Prefabs/DeathZone.tscn" id="13_3nkid"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
@@ -25,10 +26,11 @@ filter_baking_aabb = AABB(-150, -1, -150, 300, 2, 300)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qlpj"]
 size = Vector3(4.88916, 3.1235962, 4.3796387)
 
-[node name="Level1" type="Node3D" unique_id=2066864038 node_paths=PackedStringArray("spawnPoint", "completionArea")]
+[node name="Level1" type="Node3D" unique_id=2066864038 node_paths=PackedStringArray("spawnPoint", "completionArea", "_gameOverLabel")]
 script = ExtResource("1_t7mvc")
 spawnPoint = NodePath("Spawn")
 completionArea = NodePath("Exit")
+_gameOverLabel = NodePath("CanvasLayer/ProtoGameOverLabel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=405574919]
 transform = Transform3D(-4.371139e-08, -0.104528464, 0.9945219, 0, 0.9945219, 0.104528464, -1, 4.5690842e-09, -4.3471935e-08, 0, 0, 0)
@@ -929,3 +931,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 12)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Exit" unique_id=2109915452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7430725, 1.9497247, 0.12791824)
 shape = SubResource("BoxShape3D_7qlpj")
+
+[node name="DeathZone" parent="." unique_id=1938282717 instance=ExtResource("13_3nkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=495575130]
+
+[node name="ProtoGameOverLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=864939675]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -46.0
+offset_right = 239.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center][font_size=36]You died![/font_size]
+[font_size=24]Press R to restart[/font_size][/center]"
+scroll_active = false

@@ -4,6 +4,9 @@ using ProjectA.Game.Utils;
 
 namespace ProjectA.Game.Singletons;
 
+/// <summary>
+/// Contains persistent player state. PlayerDroneDuo is stateless.
+/// </summary>
 public partial class PlayerSingleton : Node
 {
     // this needs to be guaranteed to exist for the game to function
@@ -11,6 +14,8 @@ public partial class PlayerSingleton : Node
 
     [Export]
     public PlayerDroneDuo playerDuo;
+
+    private bool _isPlayerDuoPrepared;
 
     [Export]
     public float MouseSensitivity = 0.0025f;

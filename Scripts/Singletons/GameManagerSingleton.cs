@@ -4,6 +4,9 @@ using ProjectA.Game.Levels;
 
 namespace ProjectA.Game.Singletons;
 
+/// <summary>
+/// Contains all level management.
+/// </summary>
 public partial class GameManagerSingleton : Node
 {
     public static GameManagerSingleton Instance { get; private set; }
@@ -16,6 +19,8 @@ public partial class GameManagerSingleton : Node
 
     [Export]
     public float delayBeforeLevelIsShown = 0.2f;
+
+    private static LevelInstance _currentLevelInstance;
 
     public override void _EnterTree()
     {
@@ -36,8 +41,10 @@ public partial class GameManagerSingleton : Node
 
     public static void MoveToNextLevel()
     {
-        var instance = LoadLevelInstance(++Instance.currentLevel);
-        Bootstrap.GetGameSvc().AddChild(instance);
+        UnloadCurrentLevel();
+
+        _currentLevelInstance = LoadLevelInstance(++Instance.currentLevel);
+        Bootstrap.GetGameSvc().AddChild(_currentLevelInstance);
     }
 
     public static void UpdateCurrentLevel(int levelId)
@@ -45,7 +52,7 @@ public partial class GameManagerSingleton : Node
         Instance.currentLevel = levelId;
     }
 
-    public static LevelInstance LoadLevelInstance(int levelId)
+    private static LevelInstance LoadLevelInstance(int levelId)
     {
         if (levelId > Instance.gameLevels.Count || levelId < 0)
             return null;
@@ -54,5 +61,21 @@ public partial class GameManagerSingleton : Node
 
         instance.levelId = levelId;
         return instance;
+    }
+
+    private static void UnloadCurrentLevel()
+    {
+        if (_currentLevelInstance != null)
+        {
+            _currentLevelInstance.QueueFree();
+            _currentLevelInstance = null;
+        }
+    }
+
+    public static void ReloadCurrentLevel()
+    {
+        UnloadCurrentLevel();
+        _currentLevelInstance = LoadLevelInstance(Instance.currentLevel);
+        Bootstrap.GetGameSvc().AddChild(_currentLevelInstance);
     }
 }

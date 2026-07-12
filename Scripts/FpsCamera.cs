@@ -19,6 +19,13 @@ public partial class FpsCamera : Node3D
     [Export]
     public float maxPitchDegrees = 85.0f;
 
+    private Vector3 _startingRotation;
+
+    public override void _Ready()
+    {
+        _startingRotation = Rotation;
+    }
+
     public void ApplyMouseLook(Vector2 relative, float mouseSensitivity)
     {
         applyYRotationTo.RotateY(-relative.X * mouseSensitivity);
@@ -36,5 +43,11 @@ public partial class FpsCamera : Node3D
     {
         Visible = active;
         fpsCamera.Current = active;
+    }
+
+    public void ResetOrientation()
+    {
+        Rotation = _startingRotation;
+        applyYRotationTo.Rotation = Vector3.Zero;
     }
 }
