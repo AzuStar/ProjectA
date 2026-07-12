@@ -30,7 +30,13 @@ public partial class LevelInstance : Node3D
         Playing,
         Dead,
     }
-    public GameState CurrentGameState { get; private set; } = GameState.Undefined;
+    private GameState _currentGameState;
+
+    public GameState CurrentGameState
+    {
+        get => _currentGameState;
+        set => SetGameState(value);
+    }
 
     public override void _Ready()
     {
@@ -57,8 +63,21 @@ public partial class LevelInstance : Node3D
             Current = null;
     }
 
+    public override void _Input(InputEvent ev)
+    {
+        if (_currentGameState == GameState.Dead && ev is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.R)
+        {
+            GameManagerSingleton.ReloadCurrentLevel();
+        }
+    }
+
     private void SetGameState(GameState newState)
     {
+        if (newState == _currentGameState)
+        {
+            return;
+        }
+
         switch (newState)
         {
             case GameState.Undefined:
@@ -69,9 +88,9 @@ public partial class LevelInstance : Node3D
                 _duo.Kill();
                 break;
         }
-
-        CurrentGameState = newState;
-        GD.Print("New game state: " + CurrentGameState);
+        
+        _currentGameState = newState;
+        GD.Print("New game state: " + _currentGameState);
     }
 
     public void AddItem(Item item)
