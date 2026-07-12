@@ -1,5 +1,6 @@
 using Godot;
 using ProjectA.Game;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Player;
 
@@ -12,7 +13,10 @@ public partial class DroneCharacterController : CharacterBody3D
     public float Acceleration = 8.0f;
 
     [Export]
-    public float BounceRestitution = 0.5f;
+    public float WallBounceRestitution = 0.5f;
+
+    [Export]
+    public float LeashSphereBounceRestitution = 0.1f;
 
     [Export]
     public bool RotateTowardInput = true;
@@ -30,6 +34,8 @@ public partial class DroneCharacterController : CharacterBody3D
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
 
+    private Node3D _leashRoot;
+
     public override void _Ready()
     {
         _enabledCollisionLayer = CollisionLayer;
@@ -45,8 +51,24 @@ public partial class DroneCharacterController : CharacterBody3D
 
         Vector3 direction = GetMovementDirection();
         Vector3 desiredVelocity = direction * MaximumSpeed;
+
         Velocity = Velocity.MoveToward(desiredVelocity, Acceleration * (float)delta);
         MoveAndSlide();
+
+        Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
+        float currentLeashLengthSqr = leashVector.LengthSquared();
+        float maxLeashLengthSqr = PlayerSingleton.Instance.maxDroneLeashRange * PlayerSingleton.Instance.maxDroneLeashRange;
+
+        if (currentLeashLengthSqr > maxLeashLengthSqr)
+        {
+            Vector3 leashVectorNormalized = leashVector.Normalized();
+            
+            // Pull back.
+            GlobalPosition = _leashRoot.GlobalPosition + (leashVectorNormalized * PlayerSingleton.Instance.maxDroneLeashRange);
+
+            // Bounce off the sphere with restitution
+            Velocity = Velocity.Bounce(-leashVectorNormalized) * LeashSphereBounceRestitution;
+        }
 
         bool bounced = false;
         for (int i = 0; i < GetSlideCollisionCount(); i++)
@@ -61,7 +83,7 @@ public partial class DroneCharacterController : CharacterBody3D
         }
         if (bounced)
         {
-            Velocity *= BounceRestitution;
+            Velocity *= WallBounceRestitution;
         }
     }
 
@@ -112,8 +134,9 @@ public partial class DroneCharacterController : CharacterBody3D
         return direction.LengthSquared() > 0.0f ? direction.Normalized() : Vector3.Zero;
     }
 
-    public void EnableDrone(Vector3 basePosition, float baseBearing)
+    public void EnableDrone(Vector3 basePosition, float baseBearing, Node3D leashRoot)
     {
+        _leashRoot = leashRoot;
         GlobalPosition = basePosition + (Vector3.Up * SpawnHeightOffset);
         GlobalRotation = Vector3.Up * baseBearing;
         Visible = true;
