@@ -4,8 +4,10 @@ using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game;
 
-public partial class CoinPickupArea3D : Area3D
+public partial class PickupArea3D : Area3D
 {
+    [Export] private PickupKind _pickupKind;
+
     private bool _pickedUp;
 
     public override void _Ready()
@@ -21,12 +23,20 @@ public partial class CoinPickupArea3D : Area3D
         PlayerSingleton? playerSingleton = PlayerSingleton.Instance;
         if (playerSingleton == null)
         {
-            GD.PushError($"{nameof(CoinPickupArea3D)} requires {nameof(PlayerSingleton)} autoload.");
+            GD.PushError($"{nameof(PickupArea3D)} requires {nameof(PlayerSingleton)} autoload.");
             return;
         }
-
         _pickedUp = true;
-        playerSingleton.CoinsCollected++;
+        // TODO: Ideally emit signals instead?
+        switch (_pickupKind)
+        {
+            case PickupKind.Coin:
+                playerSingleton.CoinsCollected++;
+                break;
+            case PickupKind.Key:
+                playerSingleton.KeysHeld++;
+                break;
+        }
         QueueFree();
     }
 }

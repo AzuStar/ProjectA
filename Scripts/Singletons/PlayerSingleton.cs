@@ -13,6 +13,7 @@ public partial class PlayerSingleton : Node
     public PlayerDroneDuo playerDuo;
 
     private int _coinsCollected;
+    private int _keysHeld;
 
     public int CoinsCollected
     {
@@ -23,6 +24,19 @@ public partial class PlayerSingleton : Node
                 return;
 
             _coinsCollected = value;
+            UpdateText();
+        }
+    }
+
+    public int KeysHeld
+    {
+        get => _keysHeld;
+        set
+        {
+            if (_keysHeld == value)
+                return;
+            
+            _keysHeld = value;
             UpdateText();
         }
     }
@@ -59,6 +73,7 @@ public partial class PlayerSingleton : Node
     public string CompileText() =>
         $"""
             COINS PICKED UP: {CoinsCollected}
+            KEYS: {KeysHeld}
             PATTED BAX: {BaxPattedTimes} times
             """;
 
