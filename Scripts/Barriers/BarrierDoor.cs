@@ -11,7 +11,7 @@ public partial class BarrierDoor : Barrier
     public Area3D unlockArea;
 
     [Export]
-    public NavigationObstacle3D navigationObstacle;
+    public NavigationLink3D navigationLink;
 
     public override void _Ready()
     {
@@ -28,6 +28,7 @@ public partial class BarrierDoor : Barrier
 
         Open();
 
-        navigationObstacle.AffectNavigationMesh = false;
+        // Let non-players pass through the door
+        navigationLink.Enabled = true;
     }
 }
