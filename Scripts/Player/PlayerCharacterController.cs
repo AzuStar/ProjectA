@@ -1,5 +1,5 @@
 using Godot;
-using ProjectA.Game.Singletons;
+using ProjectA.Game;
 
 namespace ProjectA.Game.Player;
 
@@ -23,14 +23,20 @@ public partial class PlayerCharacterController : CharacterBody3D
     [Export]
     public bool DriveCameraSmoothingTarget = true;
 
-    public bool acceptInput = true;
+    [Export]
+    public Node3D visualRoot;
 
-    private AnimationPlayer? _animationPlayer;
+    [Export]
+    private AnimationPlayer animationPlayer;
+
+    [Export]
+    public FpsCamera fpsCamera;
+
+    public bool acceptInput = true;
     private string _currentAnimation = string.Empty;
 
     public override void _Ready()
     {
-        _animationPlayer = DriveAnimationPlayer ? GetNodeOrNull<AnimationPlayer>("AnimationPlayer") : null;
         PlayAnimation(IdleAnimation);
     }
 
@@ -46,19 +52,11 @@ public partial class PlayerCharacterController : CharacterBody3D
 
         if (direction == Vector3.Zero)
         {
-            UpdateCameraSmoothingTarget();
             PlayAnimation(IdleAnimation);
             return;
         }
 
         Move(direction);
-        UpdateCameraSmoothingTarget();
-
-        if (RotateTowardInput)
-        {
-            LookAt(GlobalPosition + direction, Vector3.Up);
-        }
-
         PlayAnimation(WalkingAnimation);
     }
 
@@ -68,27 +66,20 @@ public partial class PlayerCharacterController : CharacterBody3D
         MoveAndSlide();
     }
 
-    private void UpdateCameraSmoothingTarget()
-    {
-        if (!DriveCameraSmoothingTarget)
-            return;
-
-        CameraSpringArmSingleton? springArm = CameraSpringArmSingleton.Instance;
-        if (springArm != null)
-            springArm.smoothingTargetPosition = GlobalPosition;
-    }
-
     private Vector3 GetMovementDirection()
     {
         Vector3 inputDirection = GetInputDirection();
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
 
-        CameraSpringArmSingleton? springArm = CameraSpringArmSingleton.Instance;
-        if (springArm == null)
-            return inputDirection;
+        Basis cameraBasis = fpsCamera.fpsCamera.GlobalTransform.Basis;
+        Vector3 forward = -cameraBasis.Z;
+        Vector3 right = cameraBasis.X;
 
-        return inputDirection.Rotated(Vector3.Up, springArm.MovementYawRadians).Normalized();
+        forward.Y = 0.0f;
+        right.Y = 0.0f;
+
+        return (right.Normalized() * inputDirection.X - forward.Normalized() * inputDirection.Z).Normalized();
     }
 
     private static Vector3 GetInputDirection()
@@ -120,12 +111,28 @@ public partial class PlayerCharacterController : CharacterBody3D
 
     private void PlayAnimation(string animationName)
     {
-        if (!DriveAnimationPlayer || _animationPlayer == null || _currentAnimation == animationName)
+        if (!DriveAnimationPlayer || _currentAnimation == animationName)
         {
             return;
         }
 
-        _animationPlayer.Play(animationName, AnimationBlendSeconds);
+        animationPlayer.Play(animationName, AnimationBlendSeconds);
         _currentAnimation = animationName;
+    }
+
+    public void EnablePlayer()
+    {
+        acceptInput = true;
+        ProcessMode = ProcessModeEnum.Inherit;
+        visualRoot.Visible = false;
+        fpsCamera.SetActive(true);
+    }
+
+    public void DisablePlayerForDrone()
+    {
+        acceptInput = false;
+        visualRoot.Visible = true;
+        fpsCamera.SetActive(false);
+        PlayAnimation(IdleAnimation);
     }
 }

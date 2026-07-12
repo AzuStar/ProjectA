@@ -12,6 +12,9 @@ public partial class PlayerSingleton : Node
     [Export]
     public PlayerDroneDuo playerDuo;
 
+    [Export]
+    public float MouseSensitivity = 0.0025f;
+
     private int _coinsCollected;
 
     public int CoinsCollected
@@ -49,6 +52,12 @@ public partial class PlayerSingleton : Node
     public override void _Ready()
     {
         UpdateText();
+    }
+
+    // pass input from root node through svc
+    public override void _Input(InputEvent @event)
+    {
+        playerDuo.HandleInput(@event, MouseSensitivity);
     }
 
     public void UpdateText()

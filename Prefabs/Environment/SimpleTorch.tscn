@@ -68,11 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5263528, 0)
 visible = false
 light_color = Color(1, 0.60784316, 0.23921569, 1)
 light_energy = 2.0
-omni_range = 40.0
+omni_range = 20.0
 omni_attenuation = 1.388
 script = ExtResource("3_aeofi")
 BaseEnergy = 3.0
-BaseRange = 40.0
+BaseRange = 20.0
 RangeFlickerAmount = 5.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2" unique_id=1835690362]
