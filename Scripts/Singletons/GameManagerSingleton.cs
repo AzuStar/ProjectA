@@ -4,6 +4,9 @@ using ProjectA.Game.Levels;
 
 namespace ProjectA.Game.Singletons;
 
+/// <summary>
+/// Contains all level management.
+/// </summary>
 public partial class GameManagerSingleton : Node
 {
     public static GameManagerSingleton Instance { get; private set; }

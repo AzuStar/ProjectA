@@ -7,6 +7,9 @@ using ProjectA.Game.Utils;
 
 namespace ProjectA.Game.Levels;
 
+/// <summary>
+/// Contains all level state.
+/// </summary>
 public partial class LevelInstance : Node3D
 {
     // read, but dont set. bish

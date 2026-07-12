@@ -4,6 +4,9 @@ using ProjectA.Game.Utils;
 
 namespace ProjectA.Game.Singletons;
 
+/// <summary>
+/// Contains persistent player state. PlayerDroneDuo is stateless.
+/// </summary>
 public partial class PlayerSingleton : Node
 {
     // this needs to be guaranteed to exist for the game to function
