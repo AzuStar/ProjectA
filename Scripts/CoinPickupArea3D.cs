@@ -1,4 +1,6 @@
 using Godot;
+using ProjectA.Game.Player;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game;
 

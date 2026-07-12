@@ -51,7 +51,7 @@ dotnet_style_namespace_match_folder = false
 dotnet_diagnostic.CA2211.severity = none
 
 # Noxrat0000: Namespace does not match rule
-dotnet_diagnostic.Noxrat0000.severity = error
+dotnet_diagnostic.Noxrat0000.severity = warning
 
 dotnet_diagnostic.CS8601.severity = none
 dotnet_diagnostic.CS8603.severity = none

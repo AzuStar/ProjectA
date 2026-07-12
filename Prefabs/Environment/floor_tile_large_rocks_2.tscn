@@ -4,9 +4,12 @@
 [ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_m4d12"]
 [ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_oi8p3"]
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_visvh"]
+points = PackedVector3Array(1.201, -1, 0.358, 1.001, -1, -0.557, 0.162, -1, -1.308, -0.618, -1, -1.331, -1.363, -1, -0.218, -1.389, -1, 0.533, -1.309, -1, 0.906, -0.398, -1, 1.192, -0.073, -1, 1.283, 0.546, -1, 1.098, 1.201, 5, 0.358, 1.001, 5, -0.557, 0.162, 5, -1.308, -0.618, 5, -1.331, -1.363, 5, -0.218, -1.389, 5, 0.533, -1.309, 5, 0.906, -0.398, 5, 1.192, -0.073, 5, 1.283, 0.546, 5, 1.098)
+
 [node name="floor_tile_large_rocks2" unique_id=890485070 instance=ExtResource("1_eyklw")]
 
-[node name="floor_tile_large_rocks" parent="." index="0" unique_id=804119152]
+[node name="floor_tile_large_rocks" parent="." index="0" unique_id=2048481913]
 surface_material_override/0 = ExtResource("2_oi8p3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=705666764]
@@ -14,7 +17,5 @@ surface_material_override/0 = ExtResource("2_oi8p3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=849445998]
 shape = ExtResource("2_m4d12")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="StaticBody3D" index="1" unique_id=1431441915]
-vertices = PackedVector3Array(1.201211, 0, 0.35815188, 1.0010449, 0, -0.5572079, 0.16179177, 0, -1.3079078, -0.6179982, 0, -1.3307879, -1.3628885, 0, -0.21840936, -1.3885901, 0, 0.5327967, -1.3088236, 0, 0.9062325, -0.39849782, 0, 1.1922112, -0.072695255, 0, 1.282969, 0.54594404, 0, 1.0980742)
-affect_navigation_mesh = true
-carve_navigation_mesh = true
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1772346845]
+shape = SubResource("ConvexPolygonShape3D_visvh")

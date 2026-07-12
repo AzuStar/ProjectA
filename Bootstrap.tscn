@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://bgr3gte8b0glk"]
 
 [ext_resource type="Script" uid="uid://bma2334p4ctfc" path="res://Scripts/Bootstrap.cs" id="1_7co74"]
-[ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/GameRoot.tscn" id="1_e3r5u"]
-[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="1_t24r6"]
+[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_im3w0"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="3_kdtu6"]
-[ext_resource type="Script" uid="uid://dy5wagubw4myd" path="res://Scripts/UiRootSingleton.cs" id="3_pkoba"]
-[ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/PlayerSingleton.cs" id="4_8ur1m"]
-[ext_resource type="Script" uid="uid://caypo3y062ki" path="res://Scripts/MusicPlayerSingleton.cs" id="5_pkoba"]
+[ext_resource type="Script" uid="uid://dy5wagubw4myd" path="res://Scripts/UI/UiRootSingleton.cs" id="3_kp64o"]
+[ext_resource type="Script" uid="uid://deiy5auule1q2" path="res://Scripts/UI/UiMainMenu.cs" id="4_kp64o"]
+[ext_resource type="PackedScene" uid="uid://bso1s6m7sd8yo" path="res://Prefabs/PlayerCharacterDuo.tscn" id="5_pkoba"]
+[ext_resource type="Script" uid="uid://ccx2buybnyh6u" path="res://Scripts/Singletons/GameManagerSingleton.cs" id="6_og2uw"]
+[ext_resource type="Script" uid="uid://caypo3y062ki" path="res://Scripts/Singletons/MusicPlayerSingleton.cs" id="6_u7nj1"]
+[ext_resource type="Script" uid="uid://84jcahrspmdg" path="res://Scripts/UI/UiLevelMenu.cs" id="7_kp64o"]
+[ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/Levels/Level1.tscn" id="8_0sf5x"]
+[ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
+[ext_resource type="Script" uid="uid://dghprw43hgvb0" path="res://Scripts/UI/UiDeathMenu.cs" id="8_im3w0"]
+[ext_resource type="Script" uid="uid://doxtcc2k7aoc6" path="res://Scripts/UI/UiEscMenu.cs" id="8_kp64o"]
+[ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
+[ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -35,6 +43,14 @@ adjustment_enabled = true
 environment = SubResource("Environment_c4w2e")
 camera_attributes = SubResource("CameraAttributesPractical_7fejw")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rxdy"]
+bg_color = Color(0.3774, 0.51, 0.40392002, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5wt0"]
+bg_color = Color(0.53, 0.32224, 0.27029997, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qlpj"]
+
 [node name="Bootstrap" type="Node" unique_id=607440252 node_paths=PackedStringArray("gameSvc", "uiSvc")]
 script = ExtResource("1_7co74")
 gameSvc = NodePath("Main/GAME_SVC")
@@ -44,14 +60,13 @@ uiSvc = NodePath("Main/UI_SVC")
 
 [node name="GAME_SVC" type="SubViewportContainer" parent="Main" unique_id=1018053811]
 texture_filter = 1
-material = ExtResource("1_t24r6")
+material = ExtResource("2_im3w0")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
-stretch_shrink = 2
 
 [node name="SubViewport" type="SubViewport" parent="Main/GAME_SVC" unique_id=2037936749]
 world_3d = SubResource("World3D_e3r5u")
@@ -59,10 +74,8 @@ handle_input_locally = false
 scaling_3d_mode = 5
 anisotropic_filtering_level = 3
 canvas_item_default_texture_filter = 0
-size = Vector2i(960, 540)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
-
-[node name="GameRoot" parent="Main/GAME_SVC/SubViewport" unique_id=2066864038 instance=ExtResource("1_e3r5u")]
 
 [node name="UI_SVC" type="SubViewportContainer" parent="Main" unique_id=420112639]
 offset_right = 1920.0
@@ -77,20 +90,77 @@ use_hdr_2d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("firstLabel")]
+[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("levelMenu", "escMenu", "mainMenu", "deathMenu")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_pkoba")
-firstLabel = NodePath("AutoSizeRichTextLabel")
+script = ExtResource("3_kp64o")
+levelMenu = NodePath("LevelMenu")
+escMenu = NodePath("EscMenu")
+mainMenu = NodePath("MainMenu")
+deathMenu = NodePath("DeathMenu")
 
-[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root" unique_id=2012263704]
+[node name="MainMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=1790300469 node_paths=PackedStringArray("playLevel0")]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_kp64o")
+playLevel0 = NodePath("Button")
+
+[node name="Button" type="Button" parent="Main/UI_SVC/SubViewport/Root/MainMenu" unique_id=170312426]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.000002
+anchor_right = 24.000002
+offset_left = -93.00006
+offset_top = 544.0
+offset_right = 92.99994
+offset_bottom = 624.0
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/MainMenu/Button" unique_id=1571038564]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]ENTER LEVEL 1[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="LevelMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=1077270659 node_paths=PackedStringArray("persistentState", "inventoryLabel")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_kp64o")
+persistentState = NodePath("PersistentLabel")
+inventoryLabel = NodePath("InventoryLabel")
+
+[node name="PersistentLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/LevelMenu" unique_id=2012263704]
 layout_mode = 0
-offset_right = 381.0
-offset_bottom = 154.0
+offset_right = 589.0
+offset_bottom = 332.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "COINS PICKED UP: X
@@ -102,10 +172,265 @@ _current_font_size = 32
 _editor_defaults_set = true
 metadata/_custom_type_script = "uid://co0lo02vnu10n"
 
+[node name="InventoryLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/LevelMenu" unique_id=1253593329]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -749.0
+offset_bottom = 431.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "INVENTORY"
+scroll_active = false
+script = ExtResource("3_kdtu6")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="EscMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=183837145 node_paths=PackedStringArray("exitButton", "resumeButton", "restartLevelButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_kp64o")
+exitButton = NodePath("Exit")
+resumeButton = NodePath("Resume")
+restartLevelButton = NodePath("RestartLevel")
+
+[node name="RestartLevel" type="Button" parent="Main/UI_SVC/SubViewport/Root/EscMenu" unique_id=298007722]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -143.0
+offset_right = 208.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/EscMenu/RestartLevel" unique_id=2023349939]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]RESET LEVEL[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+metadata/_edit_lock_ = true
+
+[node name="Resume" type="Button" parent="Main/UI_SVC/SubViewport/Root/EscMenu" unique_id=25152515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = 540.0
+offset_right = -1108.0
+offset_bottom = -353.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/EscMenu/Resume" unique_id=982354948]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]Resume[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+metadata/_edit_lock_ = true
+
+[node name="Exit" type="Button" parent="Main/UI_SVC/SubViewport/Root/EscMenu" unique_id=2012626794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1102.0
+offset_top = 540.0
+offset_right = -358.0
+offset_bottom = -353.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_k5wt0")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/EscMenu/Exit" unique_id=1828888472]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]Exit[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+metadata/_edit_lock_ = true
+
+[node name="DeathMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=1194354254 node_paths=PackedStringArray("backtoMainMenu", "restartLevelButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_im3w0")
+backtoMainMenu = NodePath("BacktoMainMenu")
+restartLevelButton = NodePath("RestartLevel")
+
+[node name="RestartLevel" type="Button" parent="Main/UI_SVC/SubViewport/Root/DeathMenu" unique_id=80066941]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -401.0
+offset_right = -75.0
+offset_bottom = -265.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/DeathMenu/RestartLevel" unique_id=844838077]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]RESET LEVEL[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+metadata/_edit_lock_ = true
+
+[node name="GameOverLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/DeathMenu" unique_id=1208175092]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -94.0
+offset_right = 352.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 1
+bbcode_enabled = true
+text = "[center][font_size=36]You died![/font_size]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 1
+_current_font_size = 1
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="BacktoMainMenu" type="Button" parent="Main/UI_SVC/SubViewport/Root/DeathMenu" unique_id=815724053]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 137.0
+offset_top = -403.0
+offset_right = 415.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7qlpj")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Main/UI_SVC/SubViewport/Root/DeathMenu/BacktoMainMenu" unique_id=1334665203]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]BACK TO MAIN MENU[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kdtu6")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+metadata/_edit_lock_ = true
+
 [node name="Singletons" type="Node" parent="." unique_id=312137959]
 
-[node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
-script = ExtResource("4_8ur1m")
-
 [node name="MusicPlayerSingleton" type="Node" parent="Singletons" unique_id=411959746]
-script = ExtResource("5_pkoba")
+script = ExtResource("6_u7nj1")
+
+[node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
+script = ExtResource("6_og2uw")
+gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"), ExtResource("10_4rxdy")])
+
+[node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
+script = ExtResource("8_awdqo")
+duoToUse = ExtResource("5_pkoba")
