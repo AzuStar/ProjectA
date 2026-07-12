@@ -1,4 +1,5 @@
 using Godot;
+using ProjectA.Game.Levels;
 using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Player;
@@ -31,6 +32,11 @@ public partial class PlayerDroneDuo : Node3D
 
     public void HandleInput(InputEvent @event, float mouseSensitivity)
     {
+        if (LevelInstance.Current == null || LevelInstance.Current.CurrentGameState != LevelInstance.GameState.Playing)
+        {
+            return;
+        }
+
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
             GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
