@@ -13,19 +13,10 @@ public partial class PlayerDroneDuo : Node3D
     [Export]
     public DroneCharacterController drone;
 
-    private bool _isPrepared;
-    private ulong _preparationTime;
-
     public DuoTarget currentlyActivePart = DuoTarget.PLAYER;
-
-    // Have to delay this because the player is not respawned when the level restarts so the physics system still sees trigger overlaps
-    // This waits for half a second, a cleaner fix probably exists, if you have time go ahead
-    public bool IsPrepared => _isPrepared && Time.GetTicksMsec() > _preparationTime + 500UL;
 
     public override void _Ready()
     {
-        _isPrepared = false;
-        _preparationTime = 0UL;
         currentlyActivePart = DuoTarget.PLAYER;
     }
 
@@ -96,16 +87,11 @@ public partial class PlayerDroneDuo : Node3D
         DisableDrone();
 
         GetActiveCamera().ResetPose();
-
-        _isPrepared = true;
-        _preparationTime = Time.GetTicksMsec();
     }
 
     public void Unprepare()
     {
         DisableDrone();
-
-        _isPrepared = false;
     }
 
     public void Kill()
@@ -113,6 +99,5 @@ public partial class PlayerDroneDuo : Node3D
         // Both parts become unusable.
         player.acceptInput = false;
         drone.acceptInput = false;
-        _isPrepared = false;
     }
 }
