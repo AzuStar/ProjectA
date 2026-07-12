@@ -3,29 +3,39 @@ using Godot.Collections;
 
 namespace ProjectA.Game;
 
+[Tool]
 public partial class Torch : Node3D
 {
+    private bool litup;
+
+    [Export]
+    public bool Litup
+    {
+        get => litup;
+        set
+        {
+            litup = value;
+            ApplyLitup();
+        }
+    }
+
     [Export]
     public Array<OmniLight3D> lights = new();
 
     [Export]
     public Array<GpuParticles3D> particles = new();
 
-    public void Lighten()
+    public override void _Ready()
     {
-        foreach (OmniLight3D light in lights)
-            light.Visible = true;
-
-        foreach (GpuParticles3D particle in particles)
-            particle.Emitting = true;
+        ApplyLitup();
     }
 
-    public void Darken()
+    private void ApplyLitup()
     {
         foreach (OmniLight3D light in lights)
-            light.Visible = false;
+            light.Visible = litup;
 
         foreach (GpuParticles3D particle in particles)
-            particle.Emitting = false;
+            particle.Emitting = litup;
     }
 }

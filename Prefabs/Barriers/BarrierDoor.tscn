@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4dc44nt3damh" path="res://Prefabs/Environment/wall_doorway_2.tscn" id="1_7r6nv"]
 [ext_resource type="Script" uid="uid://bn5mgl4ex4n0c" path="res://Scripts/Barriers/BarrierDoor.cs" id="2_7r6nv"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="3_gerni"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unlock"]
 size = Vector3(5, 3.2, 5)
@@ -20,6 +21,12 @@ collisionObject = NodePath("DoorBody")
 visualRoot = NodePath("wall_doorway2/wall_doorway/wall_doorway_door")
 
 [node name="wall_doorway2" parent="." unique_id=109700311 instance=ExtResource("1_7r6nv")]
+
+[node name="wall_doorway" parent="wall_doorway2" index="0" unique_id=2017456638]
+surface_material_override/0 = ExtResource("3_gerni")
+
+[node name="wall_doorway_door" parent="wall_doorway2/wall_doorway" index="0" unique_id=2115001252]
+surface_material_override/0 = ExtResource("3_gerni")
 
 [node name="UnlockArea" type="Area3D" parent="." unique_id=2013166422]
 

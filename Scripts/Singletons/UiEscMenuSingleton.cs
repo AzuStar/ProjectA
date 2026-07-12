@@ -1,4 +1,5 @@
 using Godot;
+using ProjectA.Game;
 
 namespace ProjectA.Game.Singletons;
 
@@ -51,13 +52,13 @@ public partial class UiEscMenuSingleton : Control
     {
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        GetTree().Paused = true;
+        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Disabled;
     }
 
     public void ResumeGame()
     {
         Visible = false;
-        GetTree().Paused = false;
+        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Inherit;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 

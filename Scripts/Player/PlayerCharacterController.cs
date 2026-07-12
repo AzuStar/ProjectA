@@ -12,6 +12,12 @@ public partial class PlayerCharacterController : CharacterBody3D
     public float Speed = 4.0f;
 
     [Export]
+    public float JumpVelocity = 6.0f;
+
+    [Export]
+    public float Gravity = 24.0f;
+
+    [Export]
     public double AnimationBlendSeconds = 0.15;
 
     [Export]
@@ -34,6 +40,7 @@ public partial class PlayerCharacterController : CharacterBody3D
 
     public bool acceptInput = true;
     private string _currentAnimation = string.Empty;
+    private bool _jumpWasPressed;
 
     public override void _Ready()
     {
@@ -50,19 +57,31 @@ public partial class PlayerCharacterController : CharacterBody3D
 
         Vector3 direction = GetMovementDirection();
 
-        if (direction == Vector3.Zero)
-        {
-            PlayAnimation(IdleAnimation);
-            return;
-        }
-
-        Move(direction);
-        PlayAnimation(WalkingAnimation);
+        Move(direction, delta);
+        PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
     }
 
-    private void Move(Vector3 direction)
+    private void Move(Vector3 direction, double delta)
     {
-        Velocity = direction * Speed;
+        Vector3 velocity = Velocity;
+
+        velocity.X = direction.X * Speed;
+        velocity.Z = direction.Z * Speed;
+
+        bool jumpPressed = Input.IsKeyPressed(Key.Space);
+
+        if (IsOnFloor())
+        {
+            if (jumpPressed && !_jumpWasPressed)
+                velocity.Y = JumpVelocity;
+        }
+        else
+        {
+            velocity.Y -= Gravity * (float)delta;
+        }
+
+        _jumpWasPressed = jumpPressed;
+        Velocity = velocity;
         MoveAndSlide();
     }
 
