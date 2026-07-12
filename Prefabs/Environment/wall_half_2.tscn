@@ -2,4 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://xschkgab12v2" path="res://Assets/Dungeon/wall_half.gltf" id="1_ewriw"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ewriw"]
+size = Vector3(2, 4, 1)
+
 [node name="wall_half2" unique_id=23494475 instance=ExtResource("1_ewriw")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=912686151]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=181036777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_ewriw")

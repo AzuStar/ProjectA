@@ -3,13 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://cek6m3ypyjnau" path="res://Assets/Dungeon/wall.gltf" id="1_uk011"]
 [ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_rbgmg"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
+size = Vector3(4, 4, 1)
+
 [node name="wall2" unique_id=1013068434 instance=ExtResource("1_uk011")]
 
-[node name="wall" parent="." index="0" unique_id=20699348]
+[node name="wall" parent="." index="0" unique_id=1058686380]
 surface_material_override/0 = ExtResource("2_rbgmg")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="1" unique_id=1016077306]
-height = 4.0
-vertices = PackedVector3Array(2.0021982, 0, 0.49958292, 1.9897327, 0, -0.47869012, -1.9935341, 0, -0.48193094, -1.9906139, 0, 0.49019137)
-affect_navigation_mesh = true
-carve_navigation_mesh = true
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=927848013]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=13156331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fupvj")
