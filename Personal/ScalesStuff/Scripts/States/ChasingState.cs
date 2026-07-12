@@ -1,28 +1,41 @@
 using Godot;
 using System;
 
-public partial class PatrollingState : Node, IState
+public partial class ChasingState : Node, IState
 {
-	public event EventHandler<IState,String> TransitionEvent;
+	public event EventHandler<IState,String> TransitionEvent;	
+	
 	[Export] NavigationAgent3D navigationAgent;
-	[Export] Node3D[] Route;
 	[Export] CharacterBody3D Character;
 	[Export] float CharacterSpeed;
-	
+
 	Vector3 currentGoal;
-	int currentIndex=0;
+
+	Node3D goal;
+	public void SetGoal(Node3D _goal)
+	{ 
+		if (goal == null) goal = _goal;
+
+		currentGoal = Vector3.Zero;
+		currentGoal.X=goal.GlobalPosition.X;
+		currentGoal.Z=goal.GlobalPosition.Z;
+
+		navigationAgent.TargetPosition = currentGoal;
+	}
+	
 	public void Enter()
 	{
-		//TransitionEvent?.Invoke(this,"ChasingState");
-		GD.Print("Patroll");
+		if (goal == null) return;
+
 		currentGoal = Vector3.Zero;
-		currentGoal.X=Route[currentIndex].GlobalPosition.X;
-		currentGoal.Z=Route[currentIndex].GlobalPosition.Z;
-		
+		currentGoal.X=goal.GlobalPosition.X;
+		currentGoal.Z=goal.GlobalPosition.Z;
+
 		navigationAgent.TargetPosition = currentGoal;
 	}
 	public void Exit()
 	{
+		goal = null;
 		return;
 	}
 	public void StateUpdate(double _delta)
@@ -31,23 +44,15 @@ public partial class PatrollingState : Node, IState
 	}
 	public void StatePhysicsUpdate(double _delta)
 	{
+		
+		
 		Vector3 currentPosition = Vector3.Zero;
 		currentPosition.X = Character.GlobalPosition.X;
 		currentPosition.Z = Character.GlobalPosition.Z;
 		
 		if(currentPosition.DistanceTo(currentGoal)<=0.1)
 		{
-			currentIndex++;
-
-			if (currentIndex>Route.Length-1) currentIndex = 0;
-			currentGoal = Vector3.Zero;
-			currentGoal.X = Route[currentIndex].GlobalPosition.X;
-			currentGoal.Z = Route[currentIndex].GlobalPosition.Z;
-		
-			navigationAgent.TargetPosition = currentGoal;
-
-			GD.Print("new target "+Route[currentIndex].GlobalPosition.Z);
-			return;	
+			TransitionEvent?.Invoke(this,"RetreatState");
 		}
 
 		Vector3 destination = navigationAgent.GetNextPathPosition();
@@ -58,8 +63,6 @@ public partial class PatrollingState : Node, IState
 		Character.LookAt(destination);
 		Character.MoveAndSlide();
 
-		return;
 	}
 
-	public void ChaseTime() => TransitionEvent?.Invoke(this,"ChasingState");
 }
