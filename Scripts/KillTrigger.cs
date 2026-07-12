@@ -1,7 +1,6 @@
 using Godot;
 using ProjectA.Game.Levels;
 using ProjectA.Game.Player;
-using ProjectA.Game.Singletons;
 
 public partial class KillTrigger : Area3D
 {
@@ -12,7 +11,7 @@ public partial class KillTrigger : Area3D
 
 	private void HandleBodyEntered(Node3D body)
 	{
-		if (body is not PlayerCharacterController)
+		if (!LevelInstance.Current.IsPlayerDuoPrepared || body is not PlayerCharacterController)
 		{
 			return;
 		}

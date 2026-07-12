@@ -26,6 +26,7 @@ public partial class LevelInstance : Node3D
     public LevelInventory inventory = new();
 
     private PlayerDroneDuo _duo;
+    public bool IsPlayerDuoPrepared => _duo.IsPrepared;
 
     public enum GameState
     {
@@ -126,13 +127,7 @@ public partial class LevelInstance : Node3D
     protected void PrepareDuo(PlayerDroneDuo duo)
     {
         duo.MoveToParent(this);
-
-        duo.player.GlobalPosition = spawnPoint.GlobalPosition;
-        duo.player.ProcessMode = ProcessModeEnum.Inherit;
-        duo.player.acceptInput = true;
-        duo.player.DriveCameraSmoothingTarget = true;
-
-        duo.DisableDrone();
+        duo.Prepare(spawnPoint.GlobalPosition);
     }
 
     private void OnBodyEntered(Node3D body)

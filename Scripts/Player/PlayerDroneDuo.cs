@@ -13,7 +13,16 @@ public partial class PlayerDroneDuo : Node3D
     [Export]
     public DroneCharacterController drone;
 
+    private bool _isPrepared;
     private bool _droneSummoned;
+
+    public bool IsPrepared => _isPrepared;
+
+    public override void _Ready()
+    {
+        _isPrepared = false;
+        _droneSummoned = false;
+    }
 
     public override void _Input(InputEvent @event)
     {
@@ -57,10 +66,23 @@ public partial class PlayerDroneDuo : Node3D
         drone.DriveCameraSmoothingTarget = droneActive;
     }
 
+    public void Prepare(Vector3 spawnPosition)
+    {
+        player.GlobalPosition = spawnPosition;
+        player.ProcessMode = ProcessModeEnum.Inherit;
+        player.acceptInput = true;
+        player.DriveCameraSmoothingTarget = true;
+
+        DisableDrone();
+
+        _isPrepared = true;
+    }
+
     public void Kill()
     {
         // Both parts become unusable.
         player.acceptInput = false;
         drone.acceptInput = false;
+        _isPrepared = false;
     }
 }

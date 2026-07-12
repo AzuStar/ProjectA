@@ -15,6 +15,8 @@ public partial class PlayerSingleton : Node
     [Export]
     public PlayerDroneDuo playerDuo;
 
+    private bool _isPlayerDuoPrepared;
+
     private int _coinsCollected;
 
     public int CoinsCollected
