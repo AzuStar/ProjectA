@@ -40,25 +40,26 @@ searchTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="EnemyStateMachine/SearchState" unique_id=1975412329]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=313773104]
+[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=313773104]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_061ej")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=1330212780]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerMesh" unique_id=1330212780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49105453, 0.60599995)
 mesh = SubResource("BoxMesh_he7nk")
 
-[node name="RayCast3D" type="RayCast3D" parent="Mesh" unique_id=370044721]
+[node name="RayCast3D" type="RayCast3D" parent="PlayerMesh" unique_id=370044721]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, 10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 script = ExtResource("6_qa3go")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1444036425]
 shape = SubResource("ConvexPolygonShape3D_qnmc5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1568647860]
-debug_enabled = true
 
-[connection signal="PlayerFound" from="Mesh/RayCast3D" to="EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerFound" from="Mesh/RayCast3D" to="EnemyStateMachine/SearchState" method="TargetFound"]
-[connection signal="PlayerPosition" from="Mesh/RayCast3D" to="EnemyStateMachine/ChasingState" method="SetGoal"]
+[connection signal="PlayerFound" from="PlayerMesh/RayCast3D" to="EnemyStateMachine/PatrollingState" method="ChaseTime"]
+[connection signal="PlayerFound" from="PlayerMesh/RayCast3D" to="EnemyStateMachine/SearchState" method="TargetFound"]
+[connection signal="PlayerPosition" from="PlayerMesh/RayCast3D" to="EnemyStateMachine/ChasingState" method="SetGoal"]
