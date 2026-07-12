@@ -14,13 +14,16 @@ public partial class PlayerDroneDuo : Node3D
     public DroneCharacterController drone;
 
     private bool _isPrepared;
+    private ulong _preparationFrame;
     private bool _droneSummoned;
 
-    public bool IsPrepared => _isPrepared;
+    // Have to be processed for at least one frame since the player persists between scene reloads and hits stale triggers.
+    public bool IsPrepared => _isPrepared && Engine.GetProcessFrames() > _preparationFrame;
 
     public override void _Ready()
     {
         _isPrepared = false;
+        _preparationFrame = 0;
         _droneSummoned = false;
     }
 
@@ -79,6 +82,7 @@ public partial class PlayerDroneDuo : Node3D
         DisableDrone();
 
         _isPrepared = true;
+        _preparationFrame = Engine.GetProcessFrames();
     }
 
     public void Unprepare()
