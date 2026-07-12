@@ -14,7 +14,7 @@ public partial class TorchLighterArea3D : Area3D
     {
         if (body is PlayerCharacterController or DroneCharacterController)
         {
-            GetParent<Torch>()?.Lighten();
+            GetParent<Torch>().Litup = true;
         }
     }
 }
