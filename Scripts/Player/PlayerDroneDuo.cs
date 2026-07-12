@@ -78,6 +78,13 @@ public partial class PlayerDroneDuo : Node3D
         _isPrepared = true;
     }
 
+    public void Unprepare()
+    {
+        DisableDrone();
+
+        _isPrepared = false;
+    }
+
     public void Kill()
     {
         // Both parts become unusable.

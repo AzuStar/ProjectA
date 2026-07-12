@@ -71,6 +71,7 @@ public partial class LevelInstance : Node3D
     {
         if (_currentGameState == GameState.Dead && ev is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.R)
         {
+            TeardownDuo(_duo); // Move singleton player out of the level before unloading it
             GameManagerSingleton.ReloadCurrentLevel();
         }
     }
@@ -128,6 +129,12 @@ public partial class LevelInstance : Node3D
     {
         duo.MoveToParent(this);
         duo.Prepare(spawnPoint.GlobalPosition);
+    }
+
+    protected void TeardownDuo(PlayerDroneDuo duo)
+    {
+        duo.Unprepare();
+        duo.MoveToParent(PlayerSingleton.Instance);
     }
 
     private void OnBodyEntered(Node3D body)
