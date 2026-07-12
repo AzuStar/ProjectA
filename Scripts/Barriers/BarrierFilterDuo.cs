@@ -19,6 +19,7 @@ public partial class BarrierFilterDuo : Barrier
 
     public override void _Ready()
     {
+        base._Ready();
         filterArea.BodyEntered += OnBodyEntered;
         filterArea.BodyExited += OnBodyExited;
     }

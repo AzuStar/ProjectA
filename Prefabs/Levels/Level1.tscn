@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cfgklodgpfuho" path="res://Prefabs/Environment/SimpleTorch.tscn" id="8_t7mvc"]
 [ext_resource type="PackedScene" uid="uid://dlckr8nbmk2jo" path="res://Prefabs/Pickupables/PickupableKey.tscn" id="9_c2cqn"]
 [ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="10_hhpqe"]
+[ext_resource type="PackedScene" uid="uid://bydhgekbbv2w2" path="res://Prefabs/Triggers/FloorButton.tscn" id="11_gafx7"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
@@ -896,6 +897,10 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.9999976, 0, 54)
 
 [node name="--- Separator ---" type="Node" parent="." unique_id=1982045897]
+
+[node name="FloorButton" parent="." unique_id=644225715 node_paths=PackedStringArray("_triggerable") instance=ExtResource("11_gafx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -11)
+_triggerable = NodePath("../Doors/BarrierDoor2")
 
 [node name="CameraSpringArm" type="Node3D" parent="." unique_id=1565006594 node_paths=PackedStringArray("camera")]
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 16.002537, 1.4305115e-06, -7.0663795)

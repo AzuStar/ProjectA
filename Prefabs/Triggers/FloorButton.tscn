@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bydhgekbbv2w2"]
+
+[ext_resource type="Script" uid="uid://c8ljoaetmsrv1" path="res://Scripts/Interaction/TriggerVolume.cs" id="1_sxg3c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fupvj"]
+size = Vector3(4, 0.25, 4)
+
+[node name="FloorButton" type="Area3D" unique_id=644225715 node_paths=PackedStringArray("_triggerable")]
+script = ExtResource("1_sxg3c")
+_triggerable = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=150927878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_fupvj")
+debug_color = Color(0.7466631, 0.46248686, 0, 0.41960785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=205483133]
+mesh = SubResource("BoxMesh_fupvj")
