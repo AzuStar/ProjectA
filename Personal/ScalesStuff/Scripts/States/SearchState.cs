@@ -48,7 +48,7 @@ public partial class SearchState : Node, IState
 
 	void OnTimerTimeOut()
 	{
-		TransitionEvent?.Invoke(this,"RetreatState");
+		TransitionEvent?.Invoke(this,"PatrollingState");
 	}
 	public void TargetFound()
 	{
