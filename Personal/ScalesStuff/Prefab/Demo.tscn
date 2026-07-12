@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b112ef8ch41rj" path="res://Personal/ScalesStuff/Scripts/States/PatrollingState.cs" id="2_6wlyd"]
 [ext_resource type="Script" uid="uid://c4jqghd77arba" path="res://Personal/ScalesStuff/Scripts/States/ChasingState.cs" id="3_qnmc5"]
 [ext_resource type="Script" uid="uid://bcvqcaajdy6jf" path="res://Personal/ScalesStuff/Scripts/States/RetreatState.cs" id="4_m8xcb"]
+[ext_resource type="Script" uid="uid://cqrpxb2v7jmpq" path="res://Personal/ScalesStuff/Scripts/States/SearchState.cs" id="5_fhitv"]
 [ext_resource type="Script" uid="uid://djtf07higgryd" path="res://Personal/ScalesStuff/Scripts/EnemyView.cs" id="5_m8xcb"]
 [ext_resource type="Script" uid="uid://c70es3gaqvc66" path="res://Personal/ScalesStuff/Scripts/Testing Scripts/PlayerMovement.cs" id="6_cul0n"]
 
@@ -196,6 +197,14 @@ CharacterSpeed = 5.0
 [node name="RetreatState" type="Node" parent="NavigationRegion3D/Enemy/EnemyStateMachine" unique_id=1170430025]
 script = ExtResource("4_m8xcb")
 
+[node name="SearchState" type="Node" parent="NavigationRegion3D/Enemy/EnemyStateMachine" unique_id=568230521 node_paths=PackedStringArray("searchTimer", "Character")]
+script = ExtResource("5_fhitv")
+searchTimer = NodePath("Timer")
+Character = NodePath("../..")
+TurnDurations = 1.0
+
+[node name="Timer" type="Timer" parent="NavigationRegion3D/Enemy/EnemyStateMachine/SearchState" unique_id=832826214]
+
 [node name="Mesh" type="MeshInstance3D" parent="NavigationRegion3D/Enemy" unique_id=503583796]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_061ej")
@@ -206,56 +215,6 @@ mesh = SubResource("BoxMesh_he7nk")
 
 [node name="RayCast3D" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=1045187404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D2" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=362614226]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D3" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=1845243893]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D4" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=1828824566]
-transform = Transform3D(0.9238795, 0, 0.38268346, 0, 1, 0, -0.38268346, 0, 0.9238795, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D5" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=328058976]
-transform = Transform3D(0.9238795, 0, -0.38268346, 0, 1, 0, 0.38268346, 0, 0.9238795, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D6" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=213773361]
-transform = Transform3D(0.9809552, 0, -0.19423436, 0, 1, 0, 0.19423436, 0, 0.9809552, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D7" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=283311571]
-transform = Transform3D(0.8319541, 0, -0.55484444, 0, 1, 0, 0.55484444, 0, 0.8319541, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D8" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=774093674]
-transform = Transform3D(0.9809552, 0, 0.19423436, 0, 1, 0, -0.19423436, 0, 0.9809552, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D9" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=103143127]
-transform = Transform3D(0.8319541, 0, 0.55484444, 0, 1, 0, -0.55484444, 0, 0.8319541, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D10" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=781354533]
-transform = Transform3D(0.55629563, 0, 0.8309845, 0, 1, 0, -0.8309845, 0, 0.55629563, 0, 0.5, 0)
-target_position = Vector3(0, 0, 10)
-script = ExtResource("5_m8xcb")
-
-[node name="RayCast3D11" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=1247478301]
-transform = Transform3D(0.55484444, 0, -0.8319541, 0, 1, 0, 0.8319541, 0, 0.55484444, 0, 0.5, 0)
 target_position = Vector3(0, 0, 10)
 script = ExtResource("5_m8xcb")
 
@@ -304,24 +263,5 @@ mesh = SubResource("CapsuleMesh_td3ka")
 shape = SubResource("ConvexPolygonShape3D_cul0n")
 
 [connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
+[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D" to="NavigationRegion3D/Enemy/EnemyStateMachine/SearchState" method="TargetFound"]
 [connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D2" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D2" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D3" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D3" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D4" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D4" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D5" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D5" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D6" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D6" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D7" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D7" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D8" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D8" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D9" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D9" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D10" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D10" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
-[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D11" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
-[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D11" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]

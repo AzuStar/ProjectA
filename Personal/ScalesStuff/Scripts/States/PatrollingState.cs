@@ -43,7 +43,6 @@ public partial class PatrollingState : Node, IState
 			if (currentIndex>=Route.Length){ 
 				currentIndex = 0;
 			}
-			GD.Print("current index: "+currentIndex);
 			
 			currentGoal = Vector3.Zero;
 			currentGoal.X = Route[currentIndex].GlobalPosition.X;
@@ -51,7 +50,6 @@ public partial class PatrollingState : Node, IState
 		
 			navigationAgent.TargetPosition = currentGoal;
 
-			GD.Print("new target "+Route[currentIndex].Name);
 			return;	
 		}
 

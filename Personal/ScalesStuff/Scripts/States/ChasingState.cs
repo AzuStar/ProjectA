@@ -44,15 +44,14 @@ public partial class ChasingState : Node, IState
 	}
 	public void StatePhysicsUpdate(double _delta)
 	{
-		
-		
 		Vector3 currentPosition = Vector3.Zero;
 		currentPosition.X = Character.GlobalPosition.X;
 		currentPosition.Z = Character.GlobalPosition.Z;
 		
 		if(currentPosition.DistanceTo(currentGoal)<=0.1)
 		{
-			TransitionEvent?.Invoke(this,"RetreatState");
+			TransitionEvent?.Invoke(this,"SearchState");
+			return;
 		}
 
 		Vector3 destination = navigationAgent.GetNextPathPosition();

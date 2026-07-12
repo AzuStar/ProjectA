@@ -1,6 +1,57 @@
 using Godot;
 using System;
 
-public partial class SearchState : Node
+public partial class SearchState : Node, IState
 {
+	public event EventHandler<IState,String> TransitionEvent;
+	[Export] float SearchTime=2.0f;
+	[Export] Timer searchTimer;
+	[Export] CharacterBody3D Character;
+	[Export] float TurnDurations=3f;
+	Tween tween;
+
+
+	public void Enter()
+	{
+		GD.Print("Searching Enter");
+		searchTimer.Timeout += OnTimerTimeOut;
+		searchTimer.WaitTime = SearchTime;
+		searchTimer.Start();
+
+		tween = GetTree().CreateTween();
+		tween.SetLoops();
+
+		Vector3 left = Vector3.Zero;
+		left.Y =  Mathf.DegToRad(Character.RotationDegrees.Y-90f);
+		Vector3 right = Vector3.Zero;
+		right.Y= Mathf.DegToRad(Character.RotationDegrees.Y+90f);
+		
+		
+		tween.TweenProperty(Character,"rotation",left,TurnDurations);
+		tween.TweenProperty(Character,"rotation",right,TurnDurations);
+		return;
+	}
+	public void Exit() 
+	{
+		searchTimer.Timeout -=OnTimerTimeOut;
+		searchTimer.Stop();
+
+		tween?.Kill();
+		tween = null;
+		return;
+	}
+	public void StateUpdate(double _delta) {return;}
+	public void StatePhysicsUpdate(double _delta) 
+	{
+		return;
+	}
+
+	void OnTimerTimeOut()
+	{
+		TransitionEvent?.Invoke(this,"RetreatState");
+	}
+	public void TargetFound()
+	{
+		TransitionEvent?.Invoke(this,"ChasingState");
+	}
 }
