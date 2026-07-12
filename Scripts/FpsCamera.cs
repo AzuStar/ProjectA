@@ -47,11 +47,16 @@ public partial class FpsCamera : Node3D
         fpsCamera.Current = active;
     }
 
-    public void ResetOrientation()
+    public void ResetPose()
     {
         Rotation = _startingRotation;
         Position = _startingPosition;
         applyYRotationTo.Rotation = Vector3.Zero;
+    }
+
+    public void SetBearing(float bearing)
+    {
+        Rotation = Vector3.Up * bearing;
     }
 
     public void PanOutForDeath()

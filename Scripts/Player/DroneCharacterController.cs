@@ -159,13 +159,13 @@ public partial class DroneCharacterController : CharacterBody3D
     {
         _leashRoot = leashRoot;
         GlobalPosition = basePosition + (Vector3.Up * SpawnHeightOffset);
-        GlobalRotation = Vector3.Up * baseBearing;
         Visible = true;
         acceptInput = true;
         ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = _enabledCollisionLayer;
         CollisionMask = _enabledCollisionMask;
-        fpsCamera.ResetOrientation();
+        fpsCamera.ResetPose();
+        fpsCamera.SetBearing(baseBearing);
         fpsCamera.SetActive(true);
 
         Velocity = Vector3.Zero;
