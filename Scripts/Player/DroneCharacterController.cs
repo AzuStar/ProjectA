@@ -168,6 +168,8 @@ public partial class DroneCharacterController : CharacterBody3D
         fpsCamera.ResetOrientation();
         fpsCamera.SetActive(true);
 
+        Velocity = Vector3.Zero;
+
         Bootstrap.GetGameSubViewportContainer().Material = droneScreenMaterial;
     }
 
