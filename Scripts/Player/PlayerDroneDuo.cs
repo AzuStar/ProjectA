@@ -14,16 +14,17 @@ public partial class PlayerDroneDuo : Node3D
     public DroneCharacterController drone;
 
     private bool _isPrepared;
-    private ulong _preparationFrame;
+    private ulong _preparationTime;
     private bool _droneSummoned;
 
-    // Have to be processed for at least one frame since the player persists between scene reloads and hits stale triggers.
-    public bool IsPrepared => _isPrepared && Engine.GetProcessFrames() > _preparationFrame;
+    // Have to delay this because the player is not respawned when the level restarts so the physics system still sees trigger overlaps
+    // This waits for half a second, a cleaner fix probably exists, if you have time go ahead
+    public bool IsPrepared => _isPrepared && Time.GetTicksMsec() > _preparationTime + 500UL;
 
     public override void _Ready()
     {
         _isPrepared = false;
-        _preparationFrame = 0;
+        _preparationTime = 0UL;
         _droneSummoned = false;
     }
 
@@ -84,7 +85,7 @@ public partial class PlayerDroneDuo : Node3D
         GetActiveCamera().ResetOrientation();
 
         _isPrepared = true;
-        _preparationFrame = Engine.GetProcessFrames();
+        _preparationTime = Time.GetTicksMsec();
     }
 
     public void Unprepare()
