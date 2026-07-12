@@ -361,6 +361,7 @@ tracks/24/keys = PackedFloat32Array(0, 1, 0.99589103, -1.2840721e-07, -1.6118024
 [sub_resource type="Animation" id="Animation_wsj30"]
 resource_name = "Jump_Idle"
 length = 1.0666667
+loop_mode = 1
 tracks/0/type = "rotation_3d"
 tracks/0/imported = true
 tracks/0/enabled = true

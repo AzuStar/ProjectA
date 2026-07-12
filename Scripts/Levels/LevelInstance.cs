@@ -48,7 +48,7 @@ public partial class LevelInstance : Node3D
     public override void _Ready()
     {
         // PlayerSingleton.
-        completionArea.BodyEntered += OnBodyEntered;
+        completionArea.BodyEntered += OnLevelComplete;
         _duo = PlayerSingleton.AcquireDuo();
 
         PrepareDuo(_duo);
@@ -143,10 +143,12 @@ public partial class LevelInstance : Node3D
         PlayerSingleton.ReleaseTheDuo();
     }
 
-    private void OnBodyEntered(Node3D body)
+    private void OnLevelComplete(Node3D body)
     {
-        if (body is not PlayerCharacterController player)
+        if (body is not PlayerCharacterController player || Current == null)
             return;
+
+        Current = null;
 
         PlayerSingleton.ReleaseTheDuo();
         QueueFree();

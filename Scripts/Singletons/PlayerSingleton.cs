@@ -17,6 +17,9 @@ public partial class PlayerSingleton : Node
 
     private bool _isPlayerDuoPrepared;
 
+    [Export]
+    public float MouseSensitivity = 0.0025f;
+
     private int _coinsCollected;
 
     public int CoinsCollected
@@ -56,6 +59,12 @@ public partial class PlayerSingleton : Node
         UpdateText();
     }
 
+    // pass input from root node through svc
+    public override void _Input(InputEvent @event)
+    {
+        playerDuo.HandleInput(@event, MouseSensitivity);
+    }
+
     public void UpdateText()
     {
         UiRootSingleton.Instance?.firstLabel.Text = CompileText();
@@ -73,8 +82,6 @@ public partial class PlayerSingleton : Node
     public static void ReleaseTheDuo()
     {
         Instance.playerDuo.MoveToParent(Instance);
-        Instance.playerDuo.player.GlobalPosition = Vector3.Zero;
-        Instance.playerDuo.drone.GlobalPosition = Vector3.Zero;
     }
 
     public static PlayerDroneDuo AcquireDuo()

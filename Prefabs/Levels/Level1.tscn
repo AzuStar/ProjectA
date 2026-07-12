@@ -906,7 +906,7 @@ _triggerable = NodePath("../Doors/BarrierDoor2")
 _oneShot = true
 
 [node name="CameraSpringArm" type="Node3D" parent="." unique_id=1565006594 node_paths=PackedStringArray("camera")]
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 16.002537, 1.4305115e-06, -7.0663795)
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, -3.9974632, 1.4305115e-06, 29.93362)
 script = ExtResource("6_6twq1")
 camera = NodePath("Camera3D")
 cameraRotationDegrees = Vector3(-30.27, -45, 0)

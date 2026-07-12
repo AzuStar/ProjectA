@@ -24,8 +24,14 @@ public partial class PlayerDroneDuo : Node3D
         _droneSummoned = false;
     }
 
-    public override void _Input(InputEvent @event)
+    public void HandleInput(InputEvent @event, float mouseSensitivity)
     {
+        if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+        {
+            GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
+            return;
+        }
+
         if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
             return;
 
@@ -38,10 +44,10 @@ public partial class PlayerDroneDuo : Node3D
 
     public void DisableDrone()
     {
+        Input.MouseMode = Input.MouseModeEnum.Captured;
         _droneSummoned = false;
         drone.DisableDrone();
-        player.acceptInput = true;
-        player.DriveCameraSmoothingTarget = true;
+        player.EnablePlayer();
     }
 
     private void ToggleDrone()
@@ -52,18 +58,15 @@ public partial class PlayerDroneDuo : Node3D
             return;
         }
 
+        Input.MouseMode = Input.MouseModeEnum.Captured;
         _droneSummoned = true;
+        player.DisablePlayerForDrone();
         drone.EnableDrone(player.GlobalPosition);
-        SetActiveCharacter(droneActive: true);
     }
 
-    private void SetActiveCharacter(bool droneActive)
+    private FpsCamera GetActiveCamera()
     {
-        player.acceptInput = !droneActive;
-        player.DriveCameraSmoothingTarget = !droneActive;
-
-        drone.acceptInput = droneActive;
-        drone.DriveCameraSmoothingTarget = droneActive;
+        return _droneSummoned ? drone.fpsCamera : player.fpsCamera;
     }
 
     public void Prepare(Vector3 spawnPosition)
