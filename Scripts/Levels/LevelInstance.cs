@@ -21,6 +21,9 @@ public partial class LevelInstance : Node3D
     [Export]
     public Area3D completionArea;
 
+    [Export]
+    public RichTextLabel _gameOverLabel;
+
     public static LevelInstance Current { get; private set; }
 
     public LevelInventory inventory = new();
@@ -95,6 +98,10 @@ public partial class LevelInstance : Node3D
         }
         
         _currentGameState = newState;
+
+        // Temporary, send switch events to a UI handler?
+        _gameOverLabel.Visible = newState == GameState.Dead;
+
         GD.Print("New game state: " + _currentGameState);
     }
 
