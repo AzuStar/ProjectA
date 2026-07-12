@@ -14,9 +14,11 @@ public partial class Bootstrap : Node
     [Export]
     public SubViewportContainer uiSvc;
 
-    public static SubViewport GetGameSvc() => Instance.gameSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetGameSubViewportContainer() => Instance.gameSvc;
+    public static SubViewport GetGameSubViewport() => GetGameSubViewportContainer().GetChild<SubViewport>(0);
 
-    public static SubViewport GetUiSvc() => Instance.uiSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetUiSubViewportContainer() => Instance.uiSvc;
+    public static SubViewport GetUiSubViewport() => GetUiSubViewportContainer().GetChild<SubViewport>(0);
 
     public override void _EnterTree()
     {

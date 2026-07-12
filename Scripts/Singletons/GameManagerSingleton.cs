@@ -44,7 +44,7 @@ public partial class GameManagerSingleton : Node
         UnloadCurrentLevel();
 
         _currentLevelInstance = LoadLevelInstance(++Instance.currentLevel);
-        Bootstrap.GetGameSvc().AddChild(_currentLevelInstance);
+        Bootstrap.GetGameSubViewport().AddChild(_currentLevelInstance);
     }
 
     public static void UpdateCurrentLevel(int levelId)
@@ -76,6 +76,6 @@ public partial class GameManagerSingleton : Node
     {
         UnloadCurrentLevel();
         _currentLevelInstance = LoadLevelInstance(Instance.currentLevel);
-        Bootstrap.GetGameSvc().AddChild(_currentLevelInstance);
+        Bootstrap.GetGameSubViewport().AddChild(_currentLevelInstance);
     }
 }

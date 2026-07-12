@@ -52,13 +52,13 @@ public partial class UiEscMenuSingleton : Control
     {
         Visible = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
-        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Disabled;
+        Bootstrap.GetGameSubViewport().ProcessMode = ProcessModeEnum.Disabled;
     }
 
     public void ResumeGame()
     {
         Visible = false;
-        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Inherit;
+        Bootstrap.GetGameSubViewport().ProcessMode = ProcessModeEnum.Inherit;
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
