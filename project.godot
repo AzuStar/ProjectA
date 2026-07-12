@@ -38,6 +38,8 @@ folder_colors={
 [global_group]
 
 navmesh=""
+Player=""
+Enemy=""
 
 [physics]
 

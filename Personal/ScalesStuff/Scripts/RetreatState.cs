@@ -7,6 +7,7 @@ public event EventHandler<IState,String> TransitionEvent;
 
 	public void Enter()
 	{
+		GD.Print("Retreat Enter");
 		return;
 	}
 	public void Exit()

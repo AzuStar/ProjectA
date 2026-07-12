@@ -14,13 +14,12 @@ public partial class PatrollingState : Node, IState
 	public void Enter()
 	{
 		//TransitionEvent?.Invoke(this,"ChasingState");
+		GD.Print("Patroll");
 		currentGoal = Vector3.Zero;
 		currentGoal.X=Route[currentIndex].GlobalPosition.X;
 		currentGoal.Z=Route[currentIndex].GlobalPosition.Z;
 		
-		GD.Print("new target "+currentGoal.X+" , "+currentGoal.Z);
 		navigationAgent.TargetPosition = currentGoal;
-		return;
 	}
 	public void Exit()
 	{
@@ -61,4 +60,6 @@ public partial class PatrollingState : Node, IState
 
 		return;
 	}
+
+	public void ChaseTime() => TransitionEvent?.Invoke(this,"ChasingState");
 }

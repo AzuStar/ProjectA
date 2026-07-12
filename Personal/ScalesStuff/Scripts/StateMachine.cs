@@ -50,5 +50,6 @@ public partial class StateMachine : Node
 		if (currentState != null) currentState.Exit();
 		newState.Enter();
 		currentState=newState;
+
 	}
 }

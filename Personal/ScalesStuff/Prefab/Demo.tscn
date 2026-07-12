@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b112ef8ch41rj" path="res://Personal/ScalesStuff/Scripts/PatrollingState.cs" id="2_6wlyd"]
 [ext_resource type="Script" uid="uid://c4jqghd77arba" path="res://Personal/ScalesStuff/Scripts/ChasingState.cs" id="3_qnmc5"]
 [ext_resource type="Script" uid="uid://bcvqcaajdy6jf" path="res://Personal/ScalesStuff/Scripts/RetreatState.cs" id="4_m8xcb"]
+[ext_resource type="Script" uid="uid://djtf07higgryd" path="res://Personal/ScalesStuff/Scripts/EnemyView.cs" id="5_m8xcb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_he7nk"]
 
@@ -36,6 +37,11 @@ size = Vector3(1, 4.2524414, 23.352524)
 size = Vector3(0.30114746, 0.2409668, 0.38085938)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qnmc5"]
+points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_td3ka"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cul0n"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
 [node name="World" type="Node3D" unique_id=91665971]
@@ -95,8 +101,11 @@ Route = [NodePath("../../../PositionA"), NodePath("../../../PositionA2"), NodePa
 Character = NodePath("../..")
 CharacterSpeed = 5.0
 
-[node name="ChasingState" type="Node" parent="NavigationRegion3D/Enemy/EnemyStateMachine" unique_id=1075508471]
+[node name="ChasingState" type="Node" parent="NavigationRegion3D/Enemy/EnemyStateMachine" unique_id=1075508471 node_paths=PackedStringArray("navigationAgent", "Character") groups=["Enemy"]]
 script = ExtResource("3_qnmc5")
+navigationAgent = NodePath("../../NavigationAgent3D")
+Character = NodePath("../..")
+CharacterSpeed = 5.0
 
 [node name="RetreatState" type="Node" parent="NavigationRegion3D/Enemy/EnemyStateMachine" unique_id=1170430025]
 script = ExtResource("4_m8xcb")
@@ -112,6 +121,7 @@ mesh = SubResource("BoxMesh_he7nk")
 [node name="RayCast3D" type="RayCast3D" parent="NavigationRegion3D/Enemy/Mesh" unique_id=1045187404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, 0, 10)
+script = ExtResource("5_m8xcb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Enemy" unique_id=1291557785]
 shape = SubResource("ConvexPolygonShape3D_qnmc5")
@@ -145,3 +155,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0309734, 1.5240588, -19.43
 
 [node name="PositionA9" type="Node3D" parent="NavigationRegion3D" unique_id=674239366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0309734, 1.5240588, -3.4862652)
+
+[node name="Player" type="CharacterBody3D" parent="NavigationRegion3D" unique_id=2118218961 groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 1.5204477, -19.523)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Player" unique_id=1089098834]
+mesh = SubResource("CapsuleMesh_td3ka")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Player" unique_id=861199409]
+shape = SubResource("ConvexPolygonShape3D_cul0n")
+
+[connection signal="PlayerFound" from="NavigationRegion3D/Enemy/Mesh/RayCast3D" to="NavigationRegion3D/Enemy/EnemyStateMachine/PatrollingState" method="ChaseTime"]
+[connection signal="PlayerPosition" from="NavigationRegion3D/Enemy/Mesh/RayCast3D" to="NavigationRegion3D/Enemy/EnemyStateMachine/ChasingState" method="SetGoal"]
