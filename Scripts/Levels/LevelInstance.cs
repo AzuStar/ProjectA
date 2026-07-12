@@ -24,16 +24,22 @@ public partial class LevelInstance : Node3D
 
     private PlayerDroneDuo _duo;
 
-    public override async void _Ready()
+    public enum GameState
+    {
+        Undefined,
+        Playing,
+        Dead,
+    }
+    public GameState CurrentGameState { get; private set; } = GameState.Undefined;
+
+    public override void _Ready()
     {
         // PlayerSingleton.
         completionArea.BodyEntered += OnBodyEntered;
         _duo = PlayerSingleton.AcquireDuo();
 
-        // cheers godot, very cool
-        // https://github.com/godotengine/godot/issues/84677
-        await ToSignal(GetTree().CreateTimer(0.1), SceneTreeTimer.SignalName.Timeout);
         PrepareDuo(_duo);
+        SetGameState(GameState.Playing);
     }
 
     public override void _EnterTree()
@@ -49,6 +55,23 @@ public partial class LevelInstance : Node3D
         InventoryUiSingleton.Instance.ClearInventory();
         if (Current == this)
             Current = null;
+    }
+
+    private void SetGameState(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Undefined:
+                break;
+            case GameState.Playing:
+                break;
+            case GameState.Dead:
+                _duo.Kill();
+                break;
+        }
+
+        CurrentGameState = newState;
+        GD.Print("New game state: " + CurrentGameState);
     }
 
     public void AddItem(Item item)
@@ -82,12 +105,7 @@ public partial class LevelInstance : Node3D
     {
         duo.MoveToParent(this);
 
-        Vector3 spawnPosition = NavigationServer3D.MapGetClosestPoint(
-            GetWorld3D().NavigationMap,
-            spawnPoint.GlobalPosition
-        );
-
-        duo.player.GlobalPosition = spawnPosition;
+        duo.player.GlobalPosition = spawnPoint.GlobalPosition;
         duo.player.ProcessMode = ProcessModeEnum.Inherit;
         duo.player.acceptInput = true;
         duo.player.DriveCameraSmoothingTarget = true;

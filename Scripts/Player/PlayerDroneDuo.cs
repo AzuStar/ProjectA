@@ -56,4 +56,11 @@ public partial class PlayerDroneDuo : Node3D
         drone.acceptInput = droneActive;
         drone.DriveCameraSmoothingTarget = droneActive;
     }
+
+    public void Kill()
+    {
+        // Both parts become unusable.
+        player.acceptInput = false;
+        drone.acceptInput = false;
+    }
 }
