@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cttqv0es8hiau"]
-
-[ext_resource type="PackedScene" uid="uid://dhefbillqkqea" path="res://Assets/Dungeon/torch_lit.gltf" id="1_6o4mn"]
-
-[node name="torch_lit2" unique_id=547093685 instance=ExtResource("1_6o4mn")]
-
-[node name="SpotLight3D" type="OmniLight3D" parent="." index="1" unique_id=721554708]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52721685, 0)
-shadow_enabled = true

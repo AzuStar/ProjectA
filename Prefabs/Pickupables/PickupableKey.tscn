@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dlckr8nbmk2jo"]
+
+[ext_resource type="Script" uid="uid://djsbg0soiolpq" path="res://Scripts/KeyPickupArea3D.cs" id="1_2w2ct"]
+[ext_resource type="PackedScene" uid="uid://q8to7kiiljtw" path="res://Prefabs/Environment/key_gold_2.tscn" id="2_2w2ct"]
+[ext_resource type="Script" uid="uid://hctppbd6ugwe" path="res://Scripts/ParentAxisRotator3D.cs" id="3_0w31r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lprbf"]
+radius = 0.7415121
+
+[sub_resource type="QuadMesh" id="QuadMesh_7qlpj"]
+
+[node name="KeyPickup" type="Area3D" unique_id=1523782485]
+script = ExtResource("1_2w2ct")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=545002508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_lprbf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1770241087]
+visible = false
+draw_pass_1 = SubResource("QuadMesh_7qlpj")
+
+[node name="key_gold2" parent="." unique_id=1068505073 instance=ExtResource("2_2w2ct")]
+transform = Transform3D(0.7585099, 0, 0.6516615, 0, 1, 0, -0.6516615, 0, 0.7585099, 0, 1.5, 0)
+
+[node name="Node" type="Node" parent="key_gold2" unique_id=412006111]
+script = ExtResource("3_0w31r")
+rotationSpeedDegreesPerSecond = Vector3(0, 70, 0)
+enabledInEditor = true

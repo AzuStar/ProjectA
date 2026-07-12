@@ -3,7 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://bmnde7uc6s8n3" path="res://Assets/Dungeon/wall_arched.gltf" id="1_uuf1j"]
 [ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_vn8o3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn8o3"]
+size = Vector3(4, 4, 1)
+
 [node name="wall_arched2" unique_id=1716974948 instance=ExtResource("1_uuf1j")]
 
-[node name="wall_arched" parent="." index="0" unique_id=250760533]
+[node name="wall_arched" parent="." index="0" unique_id=1367725831]
 surface_material_override/0 = ExtResource("2_vn8o3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1511658360]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1158353147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_vn8o3")

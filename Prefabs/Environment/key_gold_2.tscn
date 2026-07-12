@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://q8to7kiiljtw"]
+
+[ext_resource type="PackedScene" uid="uid://fal1o2pg7ytc" path="res://Assets/Dungeon/key_gold.gltf" id="1_vk8qn"]
+
+[node name="key_gold2" unique_id=1068505073 instance=ExtResource("1_vk8qn")]
+
+[node name="key_gold" parent="." index="0" unique_id=955205973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23561096, 0, 0)

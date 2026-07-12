@@ -1,11 +1,13 @@
 <Project Sdk="Godot.NET.Sdk/4.7.0">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <CodeAnalysisRuleSet>/home/kilanth/Documents/Git/project-a-repo/ProjectAGame/.vscode/ruleset.xml</CodeAnalysisRuleSet>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <Nullable>enable</Nullable>
     <RootNamespace>ProjectA</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MessagePack" Version="3.1.8" />
     <PackageReference Include="noxrat.analyzers" Version="2.0.0" />
   </ItemGroup>
 </Project>
