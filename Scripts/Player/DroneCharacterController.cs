@@ -5,8 +5,7 @@ namespace ProjectA.Game.Player;
 
 public partial class DroneCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "KayKitAnim/Idle_A";
-    private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    private const string IdleAnimation = "KayKitAnimMovement/Jump_idle";
 
     [Export]
     public float Speed = 4.0f;
@@ -63,7 +62,6 @@ public partial class DroneCharacterController : CharacterBody3D
             LookAt(GlobalPosition + direction, Vector3.Up);
         }
 
-        PlayAnimation(WalkingAnimation);
     }
 
     private void Move(Vector3 direction)

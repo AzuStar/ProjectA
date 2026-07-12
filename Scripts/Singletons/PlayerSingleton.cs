@@ -68,8 +68,6 @@ public partial class PlayerSingleton : Node
     public static void ReleaseTheDuo()
     {
         Instance.playerDuo.MoveToParent(Instance);
-        Instance.playerDuo.player.GlobalPosition = Vector3.Zero;
-        Instance.playerDuo.drone.GlobalPosition = Vector3.Zero;
     }
 
     public static PlayerDroneDuo AcquireDuo()

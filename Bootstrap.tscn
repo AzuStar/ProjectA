@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/Levels/Level1.tscn" id="8_0sf5x"]
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
 [ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
+[ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -180,7 +181,7 @@ script = ExtResource("6_u7nj1")
 
 [node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
 script = ExtResource("6_og2uw")
-gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh")])
+gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"), ExtResource("10_4rxdy")])
 
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634 node_paths=PackedStringArray("playerDuo")]
 script = ExtResource("8_awdqo")

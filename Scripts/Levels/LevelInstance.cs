@@ -27,7 +27,7 @@ public partial class LevelInstance : Node3D
     public override async void _Ready()
     {
         // PlayerSingleton.
-        completionArea.BodyEntered += OnBodyEntered;
+        completionArea.BodyEntered += OnLevelComplete;
         _duo = PlayerSingleton.AcquireDuo();
 
         // cheers godot, very cool
@@ -95,10 +95,12 @@ public partial class LevelInstance : Node3D
         duo.DisableDrone();
     }
 
-    private void OnBodyEntered(Node3D body)
+    private void OnLevelComplete(Node3D body)
     {
-        if (body is not PlayerCharacterController player)
+        if (body is not PlayerCharacterController player || Current == null)
             return;
+
+        Current = null;
 
         PlayerSingleton.ReleaseTheDuo();
         QueueFree();
