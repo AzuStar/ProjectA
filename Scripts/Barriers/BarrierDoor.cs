@@ -25,12 +25,18 @@ public partial class BarrierDoor : Barrier
         if (body is not PlayerCharacterController)
             return;
 
+        // Do we have a key to open the door with?
         // This region is when you're approaching a door with a key to unlock it.
         // Doesn't apply when pressing a trigger somewhere else.
-        if (!LevelInstance.Current.RemoveOneItem(ItemType.Key))
+        // Subtracting the key after opening as it might still fail for other reasons.
+        if (!IsOpen && !LevelInstance.Current.HasItem(ItemType.Key))
             return;
 
-        TryOpen();
+        bool opened = TryOpen();
+        if (opened)
+        {
+            LevelInstance.Current.RemoveOneItem(ItemType.Key);
+        }
     }
 
     public override bool TryOpen()

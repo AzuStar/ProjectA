@@ -64,6 +64,11 @@ public partial class LevelInstance : Node3D
         return removed;
     }
 
+    public bool HasItem(ItemType itemType)
+    {
+        return inventory.Has(itemType);
+    }
+
     public string CompileInventoryText()
     {
         string[] lines = new string[inventory.items.Count];

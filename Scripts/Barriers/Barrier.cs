@@ -15,7 +15,7 @@ public abstract partial class Barrier : Triggerable
     private uint _openCount;
     private uint _originalCollisionLayer;
 
-    private bool IsOpen => _openCount > 0;
+    protected bool IsOpen => _openCount > 0;
 
     public override void _Ready()
     {
