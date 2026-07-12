@@ -935,7 +935,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7430725, 1.9497247, 0.1279
 shape = SubResource("BoxShape3D_7qlpj")
 
 [node name="DeathZone" type="Area3D" parent="." unique_id=1583304297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 31)
 monitorable = false
 script = ExtResource("13_3nkid")
 
