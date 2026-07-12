@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using ProjectA.Game.Levels;
+using ProjectA.Game.UI;
 
 namespace ProjectA.Game.Singletons;
 
@@ -20,7 +21,7 @@ public partial class GameManagerSingleton : Node
     [Export]
     public float delayBeforeLevelIsShown = 0.2f;
 
-    private static LevelInstance _currentLevelInstance;
+    public static LevelInstance currentLevelInstance;
 
     public override void _EnterTree()
     {
@@ -41,10 +42,9 @@ public partial class GameManagerSingleton : Node
 
     public static void MoveToNextLevel()
     {
+        UiRootSingleton.Instance.mainMenu.Hide();
         UnloadCurrentLevel();
-
-        _currentLevelInstance = LoadLevelInstance(++Instance.currentLevel);
-        Bootstrap.GetGameSubViewport().AddChild(_currentLevelInstance);
+        OpenLevel(LoadLevelInstance(++Instance.currentLevel));
     }
 
     public static void UpdateCurrentLevel(int levelId)
@@ -63,19 +63,35 @@ public partial class GameManagerSingleton : Node
         return instance;
     }
 
-    private static void UnloadCurrentLevel()
+    public static void OpenLevel(LevelInstance level)
     {
-        if (_currentLevelInstance != null)
-        {
-            _currentLevelInstance.QueueFree();
-            _currentLevelInstance = null;
-        }
+        currentLevelInstance = level;
+        Bootstrap.GetGameSubViewport().AddChild(currentLevelInstance);
+    }
+
+    public static bool UnloadCurrentLevel()
+    {
+        if (currentLevelInstance == null)
+            return false;
+
+        currentLevelInstance.QueueFree();
+        currentLevelInstance = null;
+        return true;
     }
 
     public static void ReloadCurrentLevel()
     {
         UnloadCurrentLevel();
-        _currentLevelInstance = LoadLevelInstance(Instance.currentLevel);
-        Bootstrap.GetGameSubViewport().AddChild(_currentLevelInstance);
+        OpenLevel(LoadLevelInstance(Instance.currentLevel));
+    }
+
+    public static void BackToMainMenu()
+    {
+        UnloadCurrentLevel();
+        Instance.currentLevel = -1;
+        UiRootSingleton.Instance.escMenu.Hide();
+        UiRootSingleton.Instance.levelMenu.Hide();
+        UiRootSingleton.Instance.mainMenu.Show();
+        UiRootSingleton.Instance.deathMenu.Hide();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using ProjectA.Game.Inventory;
 
-namespace ProjectA.Game.Table;
+namespace ProjectA.Game.Tables;
 
 public static class ItemStringsTable
 {

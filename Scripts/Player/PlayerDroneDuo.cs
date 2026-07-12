@@ -1,6 +1,4 @@
 using Godot;
-using ProjectA.Game.Levels;
-using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Player;
 
@@ -17,7 +15,8 @@ public partial class PlayerDroneDuo : Node3D
 
     private bool _isPrepared;
     private ulong _preparationTime;
-    private bool _droneSummoned;
+
+    public DuoTarget currentlyActivePart = DuoTarget.PLAYER;
 
     // Have to delay this because the player is not respawned when the level restarts so the physics system still sees trigger overlaps
     // This waits for half a second, a cleaner fix probably exists, if you have time go ahead
@@ -27,15 +26,13 @@ public partial class PlayerDroneDuo : Node3D
     {
         _isPrepared = false;
         _preparationTime = 0UL;
-        _droneSummoned = false;
+        currentlyActivePart = DuoTarget.PLAYER;
     }
 
     public void HandleInput(InputEvent @event, float mouseSensitivity)
     {
-        if (LevelInstance.Current == null || LevelInstance.Current.CurrentGameState != LevelInstance.GameState.Playing)
-        {
+        if (!ActivePartAcceptsInput())
             return;
-        }
 
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
@@ -53,31 +50,41 @@ public partial class PlayerDroneDuo : Node3D
         }
     }
 
-    private void SetDroneEnabled(bool droneEnabled)
+    private void DisableDrone()
     {
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-        _droneSummoned = droneEnabled;
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        currentlyActivePart = DuoTarget.PLAYER;
+        drone.LeaveThisController();
+        player.EnterThisController();
+    }
 
-        if (!droneEnabled)
-        {
-            drone.DisableDrone();
-            player.EnablePlayer();
-        }
-        else
-        {
-            player.DisablePlayerForDrone();
-            drone.EnableDrone(player.GlobalPosition, player.GlobalRotation.Y, player);
-        }
+    private void EnableDrone()
+    {
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        currentlyActivePart = DuoTarget.DRONE;
+        player.LeaveThisController();
+        drone.EnterThisController(player.GlobalPosition, player.GlobalRotation.Y, player);
     }
 
     private void ToggleDrone()
     {
-        SetDroneEnabled(!_droneSummoned);
+        if (currentlyActivePart == DuoTarget.DRONE)
+        {
+            DisableDrone();
+            return;
+        }
+
+        EnableDrone();
     }
 
     private FpsCamera GetActiveCamera()
     {
-        return _droneSummoned ? drone.fpsCamera : player.fpsCamera;
+        return currentlyActivePart == DuoTarget.DRONE ? drone.fpsCamera : player.fpsCamera;
+    }
+
+    private bool ActivePartAcceptsInput()
+    {
+        return currentlyActivePart == DuoTarget.DRONE ? drone.acceptInput : player.acceptInput;
     }
 
     public void Prepare(Vector3 spawnPosition)
@@ -85,9 +92,8 @@ public partial class PlayerDroneDuo : Node3D
         player.GlobalPosition = spawnPosition;
         player.ProcessMode = ProcessModeEnum.Inherit;
         player.acceptInput = true;
-        player.DriveCameraSmoothingTarget = true;
 
-        SetDroneEnabled(false);
+        DisableDrone();
 
         GetActiveCamera().ResetOrientation();
 
@@ -97,7 +103,7 @@ public partial class PlayerDroneDuo : Node3D
 
     public void Unprepare()
     {
-        SetDroneEnabled(false);
+        DisableDrone();
 
         _isPrepared = false;
     }

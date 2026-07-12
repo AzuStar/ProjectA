@@ -155,7 +155,7 @@ public partial class DroneCharacterController : CharacterBody3D
         return direction.LengthSquared() > 0.0f ? direction.Normalized() : Vector3.Zero;
     }
 
-    public void EnableDrone(Vector3 basePosition, float baseBearing, Node3D leashRoot)
+    public void EnterThisController(Vector3 basePosition, float baseBearing, Node3D leashRoot)
     {
         _leashRoot = leashRoot;
         GlobalPosition = basePosition + (Vector3.Up * SpawnHeightOffset);
@@ -173,7 +173,7 @@ public partial class DroneCharacterController : CharacterBody3D
         Bootstrap.GetGameSubViewportContainer().Material = droneScreenMaterial;
     }
 
-    public void DisableDrone()
+    public void LeaveThisController()
     {
         acceptInput = false;
         Visible = false;

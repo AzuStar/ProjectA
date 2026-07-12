@@ -4,8 +4,8 @@
 
 [resource]
 shader = ExtResource("1_7fejw")
-shader_parameter/target_x_pixel_count = 480
-shader_parameter/target_y_pixel_count = 270
+shader_parameter/target_x_pixel_count = 1920
+shader_parameter/target_y_pixel_count = 1080
 shader_parameter/color_steps = 12
 shader_parameter/edge_strength = 0.5
 shader_parameter/sharpness = 0.822000039045
