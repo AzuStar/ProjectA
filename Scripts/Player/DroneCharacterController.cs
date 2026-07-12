@@ -112,14 +112,16 @@ public partial class DroneCharacterController : CharacterBody3D
         return direction.LengthSquared() > 0.0f ? direction.Normalized() : Vector3.Zero;
     }
 
-    public void EnableDrone(Vector3 basePosition)
+    public void EnableDrone(Vector3 basePosition, float baseBearing)
     {
         GlobalPosition = basePosition + (Vector3.Up * SpawnHeightOffset);
+        GlobalRotation = Vector3.Up * baseBearing;
         Visible = true;
         acceptInput = true;
         ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = _enabledCollisionLayer;
         CollisionMask = _enabledCollisionMask;
+        fpsCamera.ResetOrientation();
         fpsCamera.SetActive(true);
     }
 
