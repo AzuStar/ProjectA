@@ -64,7 +64,6 @@ public partial class LevelInstance : Node3D
 
     public override void _ExitTree()
     {
-        PlayerSingleton.ReleaseTheDuo();
         InventoryUiSingleton.Instance.ClearInventory();
         if (Current == this)
             Current = null;
@@ -141,7 +140,7 @@ public partial class LevelInstance : Node3D
     protected void TeardownDuo(PlayerDroneDuo duo)
     {
         duo.Unprepare();
-        duo.MoveToParent(PlayerSingleton.Instance);
+        PlayerSingleton.ReleaseTheDuo();
     }
 
     private void OnBodyEntered(Node3D body)
