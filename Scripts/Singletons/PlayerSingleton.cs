@@ -20,8 +20,11 @@ public partial class PlayerSingleton : Node
     [Export]
     public float MouseSensitivity = 0.0025f;
 
-    [Export]
-    public float maxDroneLeashRange = 10.0f;
+    [ExportCategory("Drone Leash")]
+    [Export] public float maxDroneLeashRange = 10.0f;
+    [Export] public Vector2 droneScreenMaterialCloseDimensions;
+    [Export] public Vector2 droneScreenMaterialFarDimensions;
+    [Export] public Curve droneScreenMaterialDimensionsCurve;
 
     private int _coinsCollected;
 

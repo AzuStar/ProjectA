@@ -14,9 +14,6 @@ public partial class PlayerDroneDuo : Node3D
     [Export]
     public DroneCharacterController drone;
 
-    [Export]
-    public Material droneScreenMaterial;
-
     private bool _isPrepared;
     private ulong _preparationTime;
     private bool _droneSummoned;
@@ -54,8 +51,6 @@ public partial class PlayerDroneDuo : Node3D
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
         _droneSummoned = droneEnabled;
-
-        Bootstrap.GetGameSubViewportContainer().Material = droneEnabled ? droneScreenMaterial : null;
 
         if (!droneEnabled)
         {

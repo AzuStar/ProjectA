@@ -48,6 +48,10 @@ bg_color = Color(0.3774, 0.51, 0.40392002, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5wt0"]
 bg_color = Color(0.53, 0.32224, 0.27029997, 1)
 
+[sub_resource type="Curve" id="Curve_ivr1f"]
+_data = [Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bootstrap" type="Node" unique_id=607440252 node_paths=PackedStringArray("gameSvc", "uiSvc")]
 script = ExtResource("1_7co74")
 gameSvc = NodePath("Main/GAME_SVC")
@@ -280,5 +284,8 @@ gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"),
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634 node_paths=PackedStringArray("playerDuo")]
 script = ExtResource("8_awdqo")
 playerDuo = NodePath("PlayerCharacterDuo")
+droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
+droneScreenMaterialFarDimensions = Vector2(240, 135)
+droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
 
 [node name="PlayerCharacterDuo" parent="Singletons/PlayerSingleton" unique_id=828576658 instance=ExtResource("5_pkoba")]

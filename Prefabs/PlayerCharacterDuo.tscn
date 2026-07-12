@@ -9,8 +9,8 @@
 script = ExtResource("1_elk0m")
 player = NodePath("MageAgent")
 drone = NodePath("DroneAgent")
-droneScreenMaterial = ExtResource("2_iwrkr")
 
 [node name="MageAgent" parent="." unique_id=1412306627 instance=ExtResource("2_88wfj")]
 
 [node name="DroneAgent" parent="." unique_id=388726472 instance=ExtResource("3_iwrkr")]
+droneScreenMaterial = ExtResource("2_iwrkr")

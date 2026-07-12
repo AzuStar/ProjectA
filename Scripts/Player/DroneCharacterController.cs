@@ -30,6 +30,9 @@ public partial class DroneCharacterController : CharacterBody3D
     [Export]
     public FpsCamera fpsCamera;
 
+    [Export]
+    public ShaderMaterial droneScreenMaterial;
+
     public bool acceptInput;
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
@@ -40,6 +43,24 @@ public partial class DroneCharacterController : CharacterBody3D
     {
         _enabledCollisionLayer = CollisionLayer;
         _enabledCollisionMask = CollisionMask;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (!acceptInput)
+        {
+            // Not deployed.
+            return;
+        }
+
+        Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
+        float currentLeashLength = leashVector.Length();
+        float leashNorm = Mathf.InverseLerp(0.0f,  PlayerSingleton.Instance.maxDroneLeashRange, currentLeashLength);
+        float sample = PlayerSingleton.Instance.droneScreenMaterialDimensionsCurve.Sample(leashNorm);
+        Vector2 desiredDimensions = PlayerSingleton.Instance.droneScreenMaterialCloseDimensions.Lerp(PlayerSingleton.Instance.droneScreenMaterialFarDimensions, sample);
+
+        droneScreenMaterial.SetShaderParameter("target_x_pixel_count", desiredDimensions.X);
+        droneScreenMaterial.SetShaderParameter("target_y_pixel_count", desiredDimensions.Y);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -146,6 +167,8 @@ public partial class DroneCharacterController : CharacterBody3D
         CollisionMask = _enabledCollisionMask;
         fpsCamera.ResetOrientation();
         fpsCamera.SetActive(true);
+
+        Bootstrap.GetGameSubViewportContainer().Material = droneScreenMaterial;
     }
 
     public void DisableDrone()
@@ -156,5 +179,7 @@ public partial class DroneCharacterController : CharacterBody3D
         CollisionLayer = 0;
         CollisionMask = 0;
         fpsCamera.SetActive(false);
+
+        Bootstrap.GetGameSubViewportContainer().Material = null;
     }
 }
