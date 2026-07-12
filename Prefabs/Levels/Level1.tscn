@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlckr8nbmk2jo" path="res://Prefabs/Pickupables/PickupableKey.tscn" id="9_c2cqn"]
 [ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="10_hhpqe"]
 [ext_resource type="PackedScene" uid="uid://bydhgekbbv2w2" path="res://Prefabs/Triggers/FloorButton.tscn" id="11_gafx7"]
-[ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="13_3nkid"]
+[ext_resource type="PackedScene" uid="uid://cmvciixi2tlfk" path="res://Prefabs/DeathZone.tscn" id="13_3nkid"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
@@ -25,9 +25,6 @@ filter_baking_aabb = AABB(-150, -1, -150, 300, 2, 300)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qlpj"]
 size = Vector3(4.88916, 3.1235962, 4.3796387)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_visvh"]
-size = Vector3(4, 1, 4)
 
 [node name="Level1" type="Node3D" unique_id=2066864038 node_paths=PackedStringArray("spawnPoint", "completionArea", "_gameOverLabel")]
 script = ExtResource("1_t7mvc")
@@ -935,15 +932,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7430725, 1.9497247, 0.12791824)
 shape = SubResource("BoxShape3D_7qlpj")
 
-[node name="DeathZone" type="Area3D" parent="." unique_id=1583304297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 31)
-monitorable = false
-script = ExtResource("13_3nkid")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=2041936022]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_visvh")
-debug_color = Color(0.81086147, 0, 0.2450045, 0.41960785)
+[node name="DeathZone" parent="." unique_id=1938282717 instance=ExtResource("13_3nkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=495575130]
 
