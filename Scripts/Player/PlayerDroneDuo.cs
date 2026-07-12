@@ -81,6 +81,8 @@ public partial class PlayerDroneDuo : Node3D
 
         DisableDrone();
 
+        GetActiveCamera().ResetOrientation();
+
         _isPrepared = true;
         _preparationFrame = Engine.GetProcessFrames();
     }
