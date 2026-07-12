@@ -1,5 +1,7 @@
 using Godot;
 using ProjectA.Game.Player;
+using ProjectA.Game.Tables;
+using ProjectA.Game.UI;
 using ProjectA.Game.Utils;
 
 namespace ProjectA.Game.Singletons;
@@ -13,29 +15,15 @@ public partial class PlayerSingleton : Node
     public static PlayerSingleton Instance { get; private set; }
 
     [Export]
+    public PackedScene duoToUse;
+
+    [Export]
     public PlayerDroneDuo playerDuo;
 
     private bool _isPlayerDuoPrepared;
 
     [Export]
     public float MouseSensitivity = 0.0025f;
-
-    private int _coinsCollected;
-
-    public int CoinsCollected
-    {
-        get => _coinsCollected;
-        set
-        {
-            if (_coinsCollected == value)
-                return;
-
-            _coinsCollected = value;
-            UpdateText();
-        }
-    }
-
-    public int BaxPattedTimes;
 
     public override void _EnterTree()
     {
@@ -62,12 +50,14 @@ public partial class PlayerSingleton : Node
     // pass input from root node through svc
     public override void _Input(InputEvent @event)
     {
-        playerDuo.HandleInput(@event, MouseSensitivity);
-    }
+        if (playerDuo == null)
+            return;
 
+playerDuo.InputProcess(@event, MouseSensitivity);
+    }
     public void UpdateText()
     {
-        UiRootSingleton.Instance?.firstLabel.Text = CompileText();
+        UiRootSingleton.Instance.levelMenu.persistentState.Text = CompileText();
     }
 
     public string CompileText() =>
@@ -76,16 +66,16 @@ public partial class PlayerSingleton : Node
             PATTED BAX: {BaxPattedTimes} times
             """;
 
-    /// <summary>
-    /// Releases the duo into singleton custody
-    /// </summary>
-    public static void ReleaseTheDuo()
-    {
-        Instance.playerDuo.MoveToParent(Instance);
-    }
-
     public static PlayerDroneDuo AcquireDuo()
     {
+        if (Instance.playerDuo != null)
+        {
+            Instance.playerDuo = null;
+        }
+
+        Instance.playerDuo = Instance.duoToUse.Instantiate<PlayerDroneDuo>();
+        Instance.AddChild(Instance.playerDuo);
+
         return Instance.playerDuo;
     }
 }

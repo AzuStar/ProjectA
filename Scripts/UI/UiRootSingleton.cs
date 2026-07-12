@@ -1,13 +1,22 @@
 using Godot;
 
-namespace ProjectA.Game;
+namespace ProjectA.Game.UI;
 
 public partial class UiRootSingleton : Control
 {
-    public static UiRootSingleton? Instance { get; private set; }
+    public static UiRootSingleton Instance { get; private set; }
 
     [Export]
-    public RichTextLabel firstLabel;
+    public UiLevelMenu levelMenu;
+
+    [Export]
+    public UiEscMenu escMenu;
+
+    [Export]
+    public UiMainMenu mainMenu;
+
+    [Export]
+    public UiDeathMenu deathMenu;
 
     public override void _EnterTree()
     {

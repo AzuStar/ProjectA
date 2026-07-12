@@ -2,6 +2,7 @@ using Godot;
 using ProjectA.Game.Player;
 using ProjectA.Game.Levels;
 using ProjectA.Game.Inventory;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game;
 
@@ -20,7 +21,7 @@ public partial class KeyPickupArea3D : Area3D
             return;
 
         _pickedUp = true;
-        LevelInstance.Current.AddItem(new KeyItem());
+        GameManagerSingleton.currentLevelInstance.AddItem(new KeyItem());
         QueueFree();
     }
 }

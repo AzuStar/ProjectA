@@ -6,6 +6,7 @@ namespace ProjectA.Game.Player;
 public partial class PlayerCharacterController : CharacterBody3D
 {
     private const string IdleAnimation = "KayKitAnim/Idle_A";
+    private const string DeathAnimation = "KayKitAnim/Death_A";
     private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
 
     [Export]
@@ -27,9 +28,6 @@ public partial class PlayerCharacterController : CharacterBody3D
     public bool DriveAnimationPlayer = true;
 
     [Export]
-    public bool DriveCameraSmoothingTarget = true;
-
-    [Export]
     public Node3D visualRoot;
 
     [Export]
@@ -41,6 +39,7 @@ public partial class PlayerCharacterController : CharacterBody3D
     public bool acceptInput = true;
     private string _currentAnimation = string.Empty;
     private bool _jumpWasPressed;
+    private bool _deathLocked;
 
     public override void _Ready()
     {
@@ -51,7 +50,9 @@ public partial class PlayerCharacterController : CharacterBody3D
     {
         if (!acceptInput)
         {
-            PlayAnimation(IdleAnimation);
+            if (!_deathLocked)
+                PlayAnimation(IdleAnimation);
+
             return;
         }
 
@@ -139,19 +140,29 @@ public partial class PlayerCharacterController : CharacterBody3D
         _currentAnimation = animationName;
     }
 
-    public void EnablePlayer()
+    public void EnterThisController()
     {
+        _deathLocked = false;
         acceptInput = true;
-        ProcessMode = ProcessModeEnum.Inherit;
         visualRoot.Visible = false;
         fpsCamera.SetActive(true);
     }
 
-    public void DisablePlayerForDrone()
+    public void LeaveThisController()
     {
+        _deathLocked = false;
         acceptInput = false;
         visualRoot.Visible = true;
         fpsCamera.SetActive(false);
-        PlayAnimation(IdleAnimation);
+    }
+
+    public void Die()
+    {
+        _deathLocked = true;
+        acceptInput = false;
+        visualRoot.Visible = true;
+        fpsCamera.SetActive(false);
+        // fpsCamera.PanOutForDeath();
+        PlayAnimation(DeathAnimation);
     }
 }

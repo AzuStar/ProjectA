@@ -1,17 +1,21 @@
 using Godot;
 using ProjectA.Game;
+using ProjectA.Game.Singletons;
 
-namespace ProjectA.Game.Singletons;
+namespace ProjectA.Game.UI;
 
-public partial class UiEscMenuSingleton : Control
+public partial class UiEscMenu : Control
 {
-    public static UiEscMenuSingleton Instance { get; private set; }
+    public static UiEscMenu Instance { get; private set; }
 
     [Export]
     public Button exitButton;
 
     [Export]
     public Button resumeButton;
+
+    [Export]
+    public Button restartLevelButton;
 
     public override void _EnterTree()
     {
@@ -33,11 +37,10 @@ public partial class UiEscMenuSingleton : Control
 
     public override void _Ready()
     {
-        resumeButton.ProcessMode = ProcessModeEnum.Always;
-        exitButton.ProcessMode = ProcessModeEnum.Always;
         Visible = false;
         resumeButton.Pressed += ResumeGame;
         exitButton.Pressed += ExitGame;
+        restartLevelButton.Pressed += GameManagerSingleton.ReloadCurrentLevel;
     }
 
     public override void _Input(InputEvent @event)
@@ -45,21 +48,22 @@ public partial class UiEscMenuSingleton : Control
         if (@event is not InputEventKey { Pressed: true, Keycode: Key.Escape } keyEvent || keyEvent.IsEcho())
             return;
 
+        if (GameManagerSingleton.currentLevelInstance == null)
+            return;
+
         OpenMenu();
     }
 
     public void OpenMenu()
     {
-        Visible = true;
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Disabled;
+        Bootstrap.LockGameLock(this);
+        Show();
     }
 
     public void ResumeGame()
     {
-        Visible = false;
-        Bootstrap.GetGameSvc().ProcessMode = ProcessModeEnum.Inherit;
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        Bootstrap.ReleaseGameLock(this);
+        Hide();
     }
 
     public void ExitGame()

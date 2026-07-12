@@ -1,8 +1,8 @@
 shader_type canvas_item;
 
 // Pixelation
-uniform int target_x_pixel_count : hint_range(8, 800) = 256;
-uniform int target_y_pixel_count : hint_range(8, 800) = 256;
+uniform int target_x_pixel_count : hint_range(8, 1920) = 256;
+uniform int target_y_pixel_count : hint_range(8, 1080) = 256;
 
 // Color reduction
 uniform int color_steps : hint_range(2, 32) = 8;
