@@ -15,8 +15,8 @@ size = Vector3(1, 4, 1)
 [node name="BarrierDoor" type="Node3D" unique_id=17734918 node_paths=PackedStringArray("unlockArea", "collisionObject", "visualRoot")]
 script = ExtResource("2_7r6nv")
 unlockArea = NodePath("UnlockArea")
-collisionObject = NodePath("FrameBody")
-visualRoot = NodePath("wall_doorway2")
+collisionObject = NodePath("DoorBody")
+visualRoot = NodePath("wall_doorway2/wall_doorway/wall_doorway_door")
 
 [node name="wall_doorway2" parent="." unique_id=109700311 instance=ExtResource("1_7r6nv")]
 
@@ -27,7 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 shape = SubResource("BoxShape3D_unlock")
 
 [node name="DoorBody" type="StaticBody3D" parent="." unique_id=35694317]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBody" unique_id=674914254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -42,3 +41,12 @@ shape = SubResource("BoxShape3D_gerni")
 [node name="Frame2" type="CollisionShape3D" parent="FrameBody" unique_id=1422531269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 0)
 shape = SubResource("BoxShape3D_gerni")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1933486005]
+height = 4.0
+vertices = PackedVector3Array(1, 0, 0.5, 1, 0, -0.5, -1, 0, -0.5, -1, 0, 0.5)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false
+
+[editable path="wall_doorway2"]

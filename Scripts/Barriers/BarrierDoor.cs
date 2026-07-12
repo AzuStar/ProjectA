@@ -10,6 +10,9 @@ public partial class BarrierDoor : Barrier
     [Export]
     public Area3D unlockArea;
 
+    [Export]
+    public NavigationObstacle3D navigationObstacle;
+
     public override void _Ready()
     {
         unlockArea.BodyEntered += OnBodyEntered;
@@ -24,5 +27,7 @@ public partial class BarrierDoor : Barrier
             return;
 
         Open();
+
+        navigationObstacle.AffectNavigationMesh = false;
     }
 }
