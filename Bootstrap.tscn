@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgr3gte8b0glk"]
 
 [ext_resource type="Script" uid="uid://bma2334p4ctfc" path="res://Scripts/Bootstrap.cs" id="1_7co74"]
+[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_q6itx"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="3_kdtu6"]
 [ext_resource type="Script" uid="uid://dy5wagubw4myd" path="res://Scripts/UiRootSingleton.cs" id="3_pkoba"]
 [ext_resource type="Script" uid="uid://dsaone2cvejvc" path="res://Scripts/EnterLevel1Button.cs" id="4_7co74"]
@@ -56,6 +57,7 @@ uiSvc = NodePath("Main/UI_SVC")
 
 [node name="GAME_SVC" type="SubViewportContainer" parent="Main" unique_id=1018053811]
 texture_filter = 1
+material = ExtResource("2_q6itx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
