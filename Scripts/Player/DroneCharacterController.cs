@@ -55,7 +55,7 @@ public partial class DroneCharacterController : CharacterBody3D
             return;
         }
 
-        MoveOnNavmesh(direction, (float)delta);
+        Move(direction);
         UpdateCameraSmoothingTarget();
 
         if (RotateTowardInput)
@@ -66,10 +66,10 @@ public partial class DroneCharacterController : CharacterBody3D
         PlayAnimation(WalkingAnimation);
     }
 
-    private void MoveOnNavmesh(Vector3 direction, float delta)
+    private void Move(Vector3 direction)
     {
-        Vector3 desiredPosition = GlobalPosition + (direction * Speed * delta);
-        GlobalPosition = NavigationServer3D.MapGetClosestPoint(GetWorld3D().NavigationMap, desiredPosition);
+        Velocity = direction * Speed;
+        MoveAndSlide();
     }
 
     private void UpdateCameraSmoothingTarget()
