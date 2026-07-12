@@ -122,7 +122,7 @@ public partial class DroneCharacterController : CharacterBody3D
         _currentAnimation = animationName;
     }
 
-    public void EnableDrone(Vector3 position)
+    public void EnterThisController(Vector3 position)
     {
         GlobalPosition = position;
         Visible = true;
@@ -134,7 +134,7 @@ public partial class DroneCharacterController : CharacterBody3D
         fpsCamera.SetActive(true);
     }
 
-    public void DisableDrone()
+    public void LeaveThisController()
     {
         acceptInput = false;
         Visible = false;

@@ -3,6 +3,7 @@ using ProjectA.Game.Interaction;
 using ProjectA.Game.Inventory;
 using ProjectA.Game.Levels;
 using ProjectA.Game.Player;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Barriers;
 
@@ -29,13 +30,13 @@ public partial class BarrierDoor : Barrier
         // This region is when you're approaching a door with a key to unlock it.
         // Doesn't apply when pressing a trigger somewhere else.
         // Subtracting the key after opening as it might still fail for other reasons.
-        if (!IsOpen && !LevelInstance.Current.HasItem(ItemType.Key))
+        if (!IsOpen && !GameManagerSingleton.currentLevelInstance.HasItem(ItemType.Key))
             return;
 
         bool opened = TryOpen();
         if (opened)
         {
-            LevelInstance.Current.RemoveOneItem(ItemType.Key);
+            GameManagerSingleton.currentLevelInstance.RemoveOneItem(ItemType.Key);
         }
     }
 

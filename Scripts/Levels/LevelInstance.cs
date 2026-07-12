@@ -3,6 +3,7 @@ using ProjectA.Game;
 using ProjectA.Game.Inventory;
 using ProjectA.Game.Player;
 using ProjectA.Game.Singletons;
+using ProjectA.Game.UI;
 using ProjectA.Game.Utils;
 
 namespace ProjectA.Game.Levels;
@@ -21,15 +22,9 @@ public partial class LevelInstance : Node3D
     [Export]
     public Area3D completionArea;
 
-    [Export]
-    public RichTextLabel _gameOverLabel;
-
-    public static LevelInstance Current { get; private set; }
-
     public LevelInventory inventory = new();
 
     private PlayerDroneDuo _duo;
-    public bool IsPlayerDuoPrepared => _duo.IsPrepared;
 
     public enum GameState
     {
@@ -37,6 +32,7 @@ public partial class LevelInstance : Node3D
         Playing,
         Dead,
     }
+
     private GameState _currentGameState;
 
     public GameState CurrentGameState
@@ -47,8 +43,9 @@ public partial class LevelInstance : Node3D
 
     public override void _Ready()
     {
-        // PlayerSingleton.
+        UiRootSingleton.Instance.deathMenu.Hide();
         completionArea.BodyEntered += OnLevelComplete;
+        UiRootSingleton.Instance.levelMenu.Show();
         _duo = PlayerSingleton.AcquireDuo();
 
         PrepareDuo(_duo);
@@ -57,23 +54,24 @@ public partial class LevelInstance : Node3D
 
     public override void _EnterTree()
     {
-        Current = this;
         GameManagerSingleton.UpdateCurrentLevel(levelId);
-        InventoryUiSingleton.Instance.UpdateInventory(inventory);
+        UiRootSingleton.Instance.levelMenu.ClearInventory();
     }
 
     public override void _ExitTree()
     {
-        InventoryUiSingleton.Instance.ClearInventory();
-        if (Current == this)
-            Current = null;
+        UiRootSingleton.Instance.levelMenu.ClearInventory();
     }
 
     public override void _Input(InputEvent ev)
     {
-        if (_currentGameState == GameState.Dead && ev is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.R)
+        if (
+            _currentGameState == GameState.Dead
+            && ev is InputEventKey eventKey
+            && eventKey.Pressed
+            && eventKey.Keycode == Key.R
+        )
         {
-            TeardownDuo(_duo); // Move singleton player out of the level before unloading it
             GameManagerSingleton.ReloadCurrentLevel();
         }
     }
@@ -90,16 +88,17 @@ public partial class LevelInstance : Node3D
             case GameState.Undefined:
                 break;
             case GameState.Playing:
+                UiRootSingleton.Instance.deathMenu.Hide();
                 break;
             case GameState.Dead:
                 _duo.Kill();
+                UiRootSingleton.Instance.deathMenu.Show();
                 break;
         }
-        
+
         _currentGameState = newState;
 
-        // Temporary, send switch events to a UI handler?
-        _gameOverLabel.Visible = newState == GameState.Dead;
+        // UiDeathScreenSingleton.Instance.Visible = true;
 
         GD.Print("New game state: " + _currentGameState);
     }
@@ -107,13 +106,13 @@ public partial class LevelInstance : Node3D
     public void AddItem(Item item)
     {
         inventory.Add(item);
-        InventoryUiSingleton.Instance.UpdateInventory(inventory);
+        UiRootSingleton.Instance.levelMenu.UpdateInventory(inventory);
     }
 
     public bool RemoveOneItem(ItemType itemType)
     {
         bool removed = inventory.RemoveOne(itemType);
-        InventoryUiSingleton.Instance.UpdateInventory(inventory);
+        UiRootSingleton.Instance.levelMenu.UpdateInventory(inventory);
         return removed;
     }
 
@@ -137,21 +136,12 @@ public partial class LevelInstance : Node3D
         duo.Prepare(spawnPoint.GlobalPosition);
     }
 
-    protected void TeardownDuo(PlayerDroneDuo duo)
-    {
-        duo.Unprepare();
-        PlayerSingleton.ReleaseTheDuo();
-    }
-
     private void OnLevelComplete(Node3D body)
     {
-        if (body is not PlayerCharacterController player || Current == null)
+        if (body is not PlayerCharacterController player)
             return;
 
-        Current = null;
-
-        PlayerSingleton.ReleaseTheDuo();
-        QueueFree();
+        GD.Print("Moving To Next Level " + GameManagerSingleton.Instance.currentLevel);
         GameManagerSingleton.MoveToNextLevel();
     }
 }

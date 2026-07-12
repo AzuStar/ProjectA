@@ -1,105 +1,91 @@
 using Godot;
+using ProjectA.Game.Singletons;
+using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerDroneDuo : Node3D
 {
     [Export]
-    public Key SummonDroneKey = Key.Q;
-
-    [Export]
     public PlayerCharacterController player;
 
     [Export]
     public DroneCharacterController drone;
 
-    private bool _isPrepared;
-    private ulong _preparationTime;
-    private bool _droneSummoned;
+    public DuoTarget currentlyActivePart = DuoTarget.PLAYER;
 
-    // Have to delay this because the player is not respawned when the level restarts so the physics system still sees trigger overlaps
-    // This waits for half a second, a cleaner fix probably exists, if you have time go ahead
-    public bool IsPrepared => _isPrepared && Time.GetTicksMsec() > _preparationTime + 500UL;
-
-    public override void _Ready()
+    public override void _ExitTree()
     {
-        _isPrepared = false;
-        _preparationTime = 0UL;
-        _droneSummoned = false;
+        base._ExitTree();
     }
 
-    public void HandleInput(InputEvent @event, float mouseSensitivity)
+    public void InputProcess(InputEvent input, float mouseSensitivity)
     {
-        if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+        if (!ActivePartAcceptsInput())
+            return;
+
+        if (@input is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
             GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
             return;
         }
 
-        if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
-            return;
-
-        if (keyEvent.Keycode == SummonDroneKey)
+        if (@input.IsActionPressed(InputsTable.ACTION_TOGGLE_DRONE))
         {
             ToggleDrone();
             return;
         }
     }
 
-    public void DisableDrone()
+    private FpsCamera GetActiveCamera()
     {
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-        _droneSummoned = false;
-        drone.DisableDrone();
-        player.EnablePlayer();
+        return currentlyActivePart == DuoTarget.DRONE ? drone.fpsCamera : player.fpsCamera;
     }
 
-    private void ToggleDrone()
+    private bool ActivePartAcceptsInput()
     {
-        if (_droneSummoned)
+        return currentlyActivePart == DuoTarget.DRONE ? drone.acceptInput : player.acceptInput;
+    }
+
+    private void DisableDrone()
+    {
+        currentlyActivePart = DuoTarget.PLAYER;
+        drone.LeaveThisController();
+        player.EnterThisController();
+    }
+
+    private void EnableDrone()
+    {
+        currentlyActivePart = DuoTarget.DRONE;
+        player.LeaveThisController();
+        drone.EnterThisController(player.GlobalPosition);
+    }
+
+    public void ToggleDrone()
+    {
+        if (currentlyActivePart == DuoTarget.DRONE)
         {
             DisableDrone();
             return;
         }
 
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-        _droneSummoned = true;
-        player.DisablePlayerForDrone();
-        drone.EnableDrone(player.GlobalPosition);
-    }
-
-    private FpsCamera GetActiveCamera()
-    {
-        return _droneSummoned ? drone.fpsCamera : player.fpsCamera;
+        EnableDrone();
     }
 
     public void Prepare(Vector3 spawnPosition)
     {
         player.GlobalPosition = spawnPosition;
-        player.ProcessMode = ProcessModeEnum.Inherit;
         player.acceptInput = true;
-        player.DriveCameraSmoothingTarget = true;
 
         DisableDrone();
 
         GetActiveCamera().ResetOrientation();
-
-        _isPrepared = true;
-        _preparationTime = Time.GetTicksMsec();
-    }
-
-    public void Unprepare()
-    {
-        DisableDrone();
-
-        _isPrepared = false;
     }
 
     public void Kill()
     {
-        // Both parts become unusable.
-        player.acceptInput = false;
-        drone.acceptInput = false;
-        _isPrepared = false;
+        currentlyActivePart = DuoTarget.PLAYER;
+        drone.LeaveThisController();
+        player.Die();
     }
 }

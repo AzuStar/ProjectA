@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dyhyixr5adces" path="res://Prefabs/Environment/floor_tile_large_rocks_2.tscn" id="2_t7mvc"]
 [ext_resource type="PackedScene" uid="uid://mqrd1wrymrrh" path="res://Prefabs/Environment/wall_arched_2.tscn" id="3_6frvr"]
 [ext_resource type="PackedScene" uid="uid://3etpceq6dxpv" path="res://Prefabs/Environment/wall_2.tscn" id="4_3e557"]
-[ext_resource type="Script" uid="uid://cucjq743p7163" path="res://Scripts/Singletons/CameraSpringArmSingleton.cs" id="6_6twq1"]
 [ext_resource type="PackedScene" uid="uid://bksbyalnakwsr" path="res://Prefabs/Environment/stairs_2.tscn" id="8_6frvr"]
 [ext_resource type="PackedScene" uid="uid://cfgklodgpfuho" path="res://Prefabs/Environment/SimpleTorch.tscn" id="8_t7mvc"]
 [ext_resource type="PackedScene" uid="uid://dlckr8nbmk2jo" path="res://Prefabs/Pickupables/PickupableKey.tscn" id="9_c2cqn"]
@@ -26,11 +25,10 @@ filter_baking_aabb = AABB(-150, -1, -150, 300, 2, 300)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qlpj"]
 size = Vector3(4.88916, 3.1235962, 4.3796387)
 
-[node name="Level1" type="Node3D" unique_id=2066864038 node_paths=PackedStringArray("spawnPoint", "completionArea", "_gameOverLabel")]
+[node name="Level1" type="Node3D" unique_id=2066864038 node_paths=PackedStringArray("spawnPoint", "completionArea")]
 script = ExtResource("1_t7mvc")
 spawnPoint = NodePath("Spawn")
 completionArea = NodePath("Exit")
-_gameOverLabel = NodePath("CanvasLayer/ProtoGameOverLabel")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=405574919]
 transform = Transform3D(-4.371139e-08, -0.104528464, 0.9945219, 0, 0.9945219, 0.104528464, -1, 4.5690842e-09, -4.3471935e-08, 0, 0, 0)
@@ -905,22 +903,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -11)
 _triggerable = NodePath("../Doors/BarrierDoor2")
 _oneShot = true
 
-[node name="CameraSpringArm" type="Node3D" parent="." unique_id=1565006594 node_paths=PackedStringArray("camera")]
-transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, -3.9974632, 1.4305115e-06, 29.93362)
-script = ExtResource("6_6twq1")
-camera = NodePath("Camera3D")
-cameraRotationDegrees = Vector3(-30.27, -45, 0)
-cameraDistance = 27.84
-cameraOffset = Vector2(0, 0.355)
-smoothingTargetPosition = Vector3(5.5031867, 9.536743e-07, 2.9153738)
-
-[node name="Camera3D" type="Camera3D" parent="CameraSpringArm" unique_id=1252554470]
-physics_interpolation_mode = 1
-transform = Transform3D(0.7142493, 0.3600356, -0.6168682, 0, 0.8723835, 0.5091672, 0.7142493, -0.3600356, 0.6168682, -16.87534, 14.340061, 16.87534)
-projection = 1
-current = true
-size = 15.054
-
 [node name="Spawn" type="Marker3D" parent="." unique_id=363278610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.4375, 30)
 gizmo_extents = 2.33
@@ -934,22 +916,3 @@ shape = SubResource("BoxShape3D_7qlpj")
 
 [node name="DeathZone" parent="." unique_id=1938282717 instance=ExtResource("13_3nkid")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -4)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=495575130]
-
-[node name="ProtoGameOverLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=864939675]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -239.0
-offset_top = -46.0
-offset_right = 239.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center][font_size=36]You died![/font_size]
-[font_size=24]Press R to restart[/font_size][/center]"
-scroll_active = false
