@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bso1s6m7sd8yo"]
 
 [ext_resource type="Script" uid="uid://0hs8jfgn30km" path="res://Scripts/Player/PlayerDroneDuo.cs" id="1_elk0m"]
-[ext_resource type="PackedScene" uid="uid://cwniokwtugyi2" path="res://Prefabs/Agents/MageAgent.tscn" id="2_88wfj"]
-[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_iwrkr"]
-[ext_resource type="PackedScene" uid="uid://cmxbat8j31876" path="res://Prefabs/Agents/DroneAgent.tscn" id="3_iwrkr"]
+[ext_resource type="PackedScene" uid="uid://cwniokwtugyi2" path="res://Prefabs/Player/MageAgent.tscn" id="2_88wfj"]
+[ext_resource type="PackedScene" uid="uid://cmxbat8j31876" path="res://Prefabs/Player/DroneAgent.tscn" id="3_iwrkr"]
 
 [node name="PlayerCharacterDuo" type="Node3D" unique_id=828576658 node_paths=PackedStringArray("player", "drone")]
 script = ExtResource("1_elk0m")
@@ -13,4 +12,3 @@ drone = NodePath("DroneAgent")
 [node name="MageAgent" parent="." unique_id=1412306627 instance=ExtResource("2_88wfj")]
 
 [node name="DroneAgent" parent="." unique_id=388726472 instance=ExtResource("3_iwrkr")]
-droneScreenMaterial = ExtResource("2_iwrkr")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwniokwtugyi2"]
 
 [ext_resource type="Script" uid="uid://d0uknj1drr2gr" path="res://Scripts/Player/PlayerCharacterController.cs" id="1_a44bu"]
-[ext_resource type="PackedScene" uid="uid://bflahou4nlmvh" path="res://Prefabs/Agents/RogueBody.tscn" id="2_a44bu"]
+[ext_resource type="PackedScene" uid="uid://bflahou4nlmvh" path="res://Prefabs/Player/RogueBody.tscn" id="2_a44bu"]
 [ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_ym27m"]
 [ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_t12g8"]
 [ext_resource type="ArrayMesh" uid="uid://sx76dr2jwmnc" path="res://Resources/ArmMesh.tres" id="5_ckvs4"]
