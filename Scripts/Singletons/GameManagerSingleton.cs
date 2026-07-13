@@ -66,7 +66,7 @@ public partial class GameManagerSingleton : Node
     public static void OpenLevel(LevelInstance level)
     {
         currentLevelInstance = level;
-        Bootstrap.GetGameSvc().AddChild(currentLevelInstance);
+        Bootstrap.GetGameSubViewport().AddChild(currentLevelInstance);
     }
 
     public static bool UnloadCurrentLevel()
