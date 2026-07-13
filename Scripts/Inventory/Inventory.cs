@@ -1,51 +1,58 @@
+using System;
 using System.Collections.Generic;
+using System.Text;
 using Godot;
+using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Inventory;
 
 public class LevelInventory
 {
-    public List<Item> items = new();
+    public Item[] items = new Item[(int)ItemType.COUNT];
 
-    public void Add(Item item)
+    public LevelInventory()
     {
-        foreach (Item existing in items)
-        {
-            if (existing.ItemType != item.ItemType)
-                continue;
+        for (int i = 0; i < items.Length; i++)
+            items[i] = new Item() { itemType = (ItemType)i };
+    }
 
-            existing.quantity += item.quantity;
-            return;
-        }
-
-        items.Add(item);
+    public void Add(ItemType type, int quantity)
+    {
+        items[(int)type].quantity += quantity;
     }
 
     public bool Has(ItemType itemType)
     {
-        foreach (Item item in items)
-        {
-            if (item.ItemType == itemType && item.quantity > 0)
-                return true;
-        }
+        if (items[(int)itemType].quantity > 0)
+            return true;
 
         return false;
     }
 
     public bool RemoveOne(ItemType itemType)
     {
-        foreach (Item item in items)
+        items[(int)itemType].quantity--;
+        return Has(itemType);
+    }
+
+    public void Clear()
+    {
+        Array.Clear(items, 0, items.Length);
+    }
+
+    public string CompileInventoryText()
+    {
+        StringBuilder sb = new();
+        for (int i = 0; i < items.Length; i++)
         {
-            if (item.ItemType != itemType || item.quantity <= 0)
-                continue;
-
-            item.quantity--;
+            var item = items[i];
             if (item.quantity == 0)
-                items.Remove(item);
-
-            return true;
+                continue;
+            var itemString = ItemStringsTable.STRINGS[item.itemType];
+            sb.AppendFormat(itemString.format, itemString.inventoryListing, item.quantity);
+            sb.AppendLine();
         }
 
-        return false;
+        return sb.ToString();
     }
 }

@@ -167,8 +167,6 @@ offset_right = 589.0
 offset_bottom = 332.0
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "COINS PICKED UP: X
-PATTED BAX: 0 times"
 scroll_active = false
 script = ExtResource("3_kdtu6")
 _max_size = 32

@@ -10,5 +10,7 @@ player = NodePath("MageAgent")
 drone = NodePath("DroneAgent")
 
 [node name="MageAgent" parent="." unique_id=1412306627 groups=["Player"] instance=ExtResource("2_88wfj")]
+Speed = 10.0
+JumpVelocity = 10.0
 
 [node name="DroneAgent" parent="." unique_id=388726472 instance=ExtResource("3_iwrkr")]
