@@ -26,10 +26,17 @@ public partial class PlayerSingleton : Node
     public float MouseSensitivity = 0.0025f;
 
     [ExportGroup("Drone Leash")]
-    [Export] public float maxDroneLeashRange = 10.0f;
-    [Export] public Vector2 droneScreenMaterialCloseDimensions;
-    [Export] public Vector2 droneScreenMaterialFarDimensions;
-    [Export] public Curve droneScreenMaterialDimensionsCurve;
+    [Export]
+    public float maxDroneLeashRange = 10.0f;
+
+    [Export]
+    public Vector2 droneScreenMaterialCloseDimensions;
+
+    [Export]
+    public Vector2 droneScreenMaterialFarDimensions;
+
+    [Export]
+    public Curve droneScreenMaterialDimensionsCurve;
 
     public override void _EnterTree()
     {
@@ -61,6 +68,7 @@ public partial class PlayerSingleton : Node
 
         playerDuo.HandleInput(@event, MouseSensitivity);
     }
+
     public void UpdateText()
     {
         UiRootSingleton.Instance.levelMenu.persistentState.Text = CompileText();

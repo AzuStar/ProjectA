@@ -1,12 +1,10 @@
 using Godot;
+using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerDroneDuo : Node3D
 {
-    [Export]
-    public Key SummonDroneKey = Key.Q;
-
     [Export]
     public PlayerCharacterController player;
 
@@ -28,16 +26,14 @@ public partial class PlayerDroneDuo : Node3D
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
             GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
-            return;
         }
 
         if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
             return;
 
-        if (keyEvent.Keycode == SummonDroneKey)
+        if (@event.IsActionPressed(InputsTable.ACTION_TOGGLE_DRONE))
         {
             ToggleDrone();
-            return;
         }
     }
 
