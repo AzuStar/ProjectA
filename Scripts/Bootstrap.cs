@@ -30,11 +30,11 @@ public partial class Bootstrap : Node
         if (locked)
         {
             Input.MouseMode = Input.MouseModeEnum.Visible;
-            GetGameSvc().ProcessMode = ProcessModeEnum.Disabled;
+            GetGameSubViewport().ProcessMode = ProcessModeEnum.Disabled;
         }
         else
         {
-            GetGameSvc().ProcessMode = ProcessModeEnum.Inherit;
+            GetGameSubViewport().ProcessMode = ProcessModeEnum.Inherit;
             Input.MouseMode = Input.MouseModeEnum.Captured;
         }
     }
@@ -53,9 +53,11 @@ public partial class Bootstrap : Node
             SetGamePausedState(false);
     }
 
-    public static SubViewport GetGameSvc() => Instance.gameSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetGameSubViewportContainer() => Instance.gameSvc;
+    public static SubViewport GetGameSubViewport() => GetGameSubViewportContainer().GetChild<SubViewport>(0);
 
-    public static SubViewport GetUiSvc() => Instance.uiSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetUiSubViewportContainer() => Instance.uiSvc;
+    public static SubViewport GetUiSubViewport() => GetUiSubViewportContainer().GetChild<SubViewport>(0);
 
     public override void _Process(double delta)
     {

@@ -29,9 +29,18 @@ project/assembly_name="ProjectA.Client"
 
 enabled=PackedStringArray("res://addons/font_auto_size_labels/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Personal/ScalesStuff/": "green"
+}
+
 [global_group]
 
 navmesh=""
+Player=""
+Enemy=""
+Wall=""
 
 [input]
 
