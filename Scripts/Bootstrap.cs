@@ -25,18 +25,24 @@ public partial class Bootstrap : Node
     /// </summary>
     public HashSet<Node> gameLocks = new HashSet<Node>();
 
+    public static bool IsGameLocked => Instance.gameLocks.Count > 0;
+
     public static void SetGamePausedState(bool locked)
     {
+        ProcessModeEnum processMode;
+
         if (locked)
         {
             Input.MouseMode = Input.MouseModeEnum.Visible;
-            GetGameSubViewport().ProcessMode = ProcessModeEnum.Disabled;
+            processMode = ProcessModeEnum.Disabled;
         }
         else
         {
-            GetGameSubViewport().ProcessMode = ProcessModeEnum.Inherit;
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            processMode = ProcessModeEnum.Inherit;
         }
+
+        GetGameSubViewport().SetDeferred(Node.PropertyName.ProcessMode, (int)processMode);
     }
 
     public static void LockGameLock(Node whoIsLocking)

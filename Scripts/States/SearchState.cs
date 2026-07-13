@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using ProjectA.Game.Enemies;
 
 public partial class SearchState : Node, IState
 {
@@ -8,40 +9,48 @@ public partial class SearchState : Node, IState
     [Export]
     Timer searchTimer;
 
-    CharacterBody3D Character;
-    float SearchTime;
+    [Export]
+    Node3D nodeToManipulate;
+
+    [Export]
     float TurnDurations;
+    IEnemyAnimationController animationController;
     Tween tween;
 
-    public void SetCharacter(CharacterBody3D value) => Character = value;
+    public void SetAnimationController(IEnemyAnimationController value) => animationController = value;
 
-    public void SetSearchTime(float value) => SearchTime = value;
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        searchTimer.Timeout += OnTimerTimeOut;
+    }
 
-    public void SetTurnDurations(float value) => TurnDurations = value;
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        searchTimer.Timeout -= OnTimerTimeOut;
+    }
 
     public void Enter()
     {
-        GD.Print("Searching Enter");
-        searchTimer.Timeout += OnTimerTimeOut;
-        searchTimer.WaitTime = SearchTime;
+        animationController.PlayIdleAnimation();
         searchTimer.Start();
 
         tween = GetTree().CreateTween();
         tween.SetLoops();
 
         Vector3 left = Vector3.Zero;
-        left.Y = Mathf.DegToRad(Character.RotationDegrees.Y - 90f);
+        left.Y = Mathf.DegToRad(nodeToManipulate.RotationDegrees.Y - 90f);
         Vector3 right = Vector3.Zero;
-        right.Y = Mathf.DegToRad(Character.RotationDegrees.Y + 90f);
+        right.Y = Mathf.DegToRad(nodeToManipulate.RotationDegrees.Y + 90f);
 
-        tween.TweenProperty(Character, "rotation", left, TurnDurations);
-        tween.TweenProperty(Character, "rotation", right, TurnDurations);
+        tween.TweenProperty(nodeToManipulate, "rotation", left, TurnDurations);
+        tween.TweenProperty(nodeToManipulate, "rotation", right, TurnDurations);
         return;
     }
 
     public void Exit()
     {
-        searchTimer.Timeout -= OnTimerTimeOut;
         searchTimer.Stop();
 
         tween?.Kill();
@@ -61,11 +70,11 @@ public partial class SearchState : Node, IState
 
     void OnTimerTimeOut()
     {
-        TransitionEvent?.Invoke(this, "PatrollingState");
+        TransitionEvent?.Invoke(this, nameof(PatrollingState));
     }
 
     public void TargetFound()
     {
-        TransitionEvent?.Invoke(this, "ChasingState");
+        TransitionEvent?.Invoke(this, nameof(ChasingState));
     }
 }

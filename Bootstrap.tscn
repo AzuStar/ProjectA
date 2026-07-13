@@ -438,9 +438,6 @@ gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"),
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
 duoToUse = ExtResource("5_pkoba")
-playerDuo = NodePath("PlayerCharacterDuo")
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
 droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
-
-[node name="PlayerCharacterDuo" parent="Singletons/PlayerSingleton" unique_id=828576658 instance=ExtResource("5_pkoba")]

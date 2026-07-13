@@ -1,22 +1,23 @@
-using System.Collections.Generic;
 using Godot;
+using ProjectA.Game;
+using ProjectA.Game.Tables;
 
-public partial class EnemyController : CharacterBody3D
+namespace ProjectA.Game.Enemies;
+public partial class EnemyController : CharacterBody3D, IEnemyAnimationController
 {
-    private const string IdleAnimation = "KayKitAnim/Idle_A";
-
-    [ExportGroup("Patrol")]
-    [Export]
-    Node3D[] route;
+    public const string IdleAnimation = "KayKitAnim/Idle_A";
+    public const string DeathAnimation = "KayKitAnim/Death_A";
+    public const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
 
     [Export]
     AnimationPlayer animationPlayer;
 
+    [ExportGroup("Patrol")]
     [Export]
-    float speed = 3.0f;
+    Path3D patrolPath;
 
     [Export]
-    float searchTime = 2.0f;
+    float speed = 3.0f;
 
     [Export]
     float searchTurnDuration = 1.0f;
@@ -36,24 +37,12 @@ public partial class EnemyController : CharacterBody3D
 
     [ExportGroup("View")]
     [Export]
-    RayCast3D viewRaycastTemplate;
-
-    [Export]
-    int viewRaycastCount = 6;
-
-    [Export]
-    float viewAngle = 45.0f;
-
-    [Export]
-    float viewSize = 10.0f;
-
-    readonly List<RayCast3D> viewRaycasts = new List<RayCast3D>();
+    RaycastArc3D viewRaycastArc;
 
     public override void _Ready()
     {
         PlayAnimation(IdleAnimation);
         SetupStates();
-        SetupViewRaycasts();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -63,66 +52,35 @@ public partial class EnemyController : CharacterBody3D
 
     void SetupStates()
     {
-        patrollingState.SetRoute(route);
+        patrollingState.SetPatrolPath(patrolPath);
         patrollingState.SetCharacterSpeed(speed);
         patrollingState.SetCharacter(this);
-
-        searchState.SetCharacter(this);
-        searchState.SetSearchTime(searchTime);
-        searchState.SetTurnDurations(searchTurnDuration);
+        patrollingState.SetAnimationController(this);
 
         chasingState.SetCharacterSpeed(speed);
         chasingState.SetCharacter(this);
+        chasingState.SetAnimationController(this);
+
+        searchState.SetAnimationController(this);
 
         stateMachine.StateMachineSetUp();
     }
 
-    void SetupViewRaycasts()
-    {
-        viewRaycastTemplate.TargetPosition = new Vector3(0.0f, 0.0f, -viewSize);
-        viewRaycastTemplate.Enabled = true;
-        viewRaycasts.Add(viewRaycastTemplate);
-
-        for (int i = 1; i < viewRaycastCount; i++)
-        {
-            RayCast3D raycast = (RayCast3D)viewRaycastTemplate.Duplicate();
-            viewRaycastTemplate.AddSibling(raycast);
-            raycast.Transform = viewRaycastTemplate.Transform;
-            raycast.Enabled = true;
-            viewRaycasts.Add(raycast);
-        }
-
-        FanOutViewRaycasts();
-    }
-
-    void FanOutViewRaycasts()
-    {
-        float halfAngle = viewAngle * 0.5f;
-        float step = viewRaycastCount <= 1 ? 0.0f : viewAngle / (viewRaycastCount - 1);
-
-        for (int i = 0; i < viewRaycasts.Count; i++)
-        {
-            float offset = -halfAngle + step * i;
-            RayCast3D raycast = viewRaycasts[i];
-            raycast.Rotation = new Vector3(0.0f, viewRaycastTemplate.Rotation.Y + Mathf.DegToRad(offset), 0.0f);
-        }
-    }
-
     void ScanForPlayer()
     {
-        for (int i = 0; i < viewRaycasts.Count; i++)
+        for (int i = 0; i < viewRaycastArc.RaycastCount; i++)
         {
-            RayCast3D raycast = viewRaycasts[i];
+            RayCast3D raycast = viewRaycastArc.GetRaycast(i);
 
             if (!raycast.IsColliding())
                 continue;
 
             Node collider = (Node)raycast.GetCollider();
 
-            if (collider.IsInGroup("Wall"))
+            if (collider.IsInGroup(GroupsTable.WALLS))
                 continue;
 
-            if (collider.IsInGroup("Player"))
+            if (collider.IsInGroup(GroupsTable.PLAYER_MAGE))
             {
                 chasingState.SetGoal((Node3D)collider);
                 patrollingState.ChaseTime();
@@ -139,4 +97,8 @@ public partial class EnemyController : CharacterBody3D
 
         animationPlayer.Play(animationName);
     }
+
+    public void PlayIdleAnimation() => PlayAnimation(IdleAnimation);
+
+    public void PlayMovementAnimation() => PlayAnimation(WalkingAnimation);
 }

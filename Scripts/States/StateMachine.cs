@@ -17,7 +17,7 @@ public partial class StateMachine : Node
         {
             if (child is IState state && child is Node node)
             {
-                states[(node.Name).ToString().ToLower()] = state;
+                states[node.Name.ToString().ToLower()] = state;
                 state.TransitionEvent += OnStateTransition;
             }
         }

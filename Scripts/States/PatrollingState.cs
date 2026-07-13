@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using ProjectA.Game.Enemies;
 
 public partial class PatrollingState : Node, IState
 {
@@ -8,26 +9,27 @@ public partial class PatrollingState : Node, IState
     [Export]
     NavigationAgent3D navigationAgent;
 
-    Node3D[] Route;
-    float CharacterSpeed;
+    Path3D patrolPath;
+
+    [Export]
+    public float CharacterSpeed;
     int currentIndex = 0;
     CharacterBody3D Character;
+    IEnemyAnimationController animationController;
     Vector3 currentGoal;
 
-    public void SetRoute(Node3D[] _route) => Route = _route;
+    public void SetPatrolPath(Path3D value) => patrolPath = value;
 
     public void SetCharacterSpeed(float _speed) => CharacterSpeed = _speed;
 
     public void SetCharacter(CharacterBody3D _character) => Character = _character;
 
+    public void SetAnimationController(IEnemyAnimationController value) => animationController = value;
+
     public void Enter()
     {
         //TransitionEvent?.Invoke(this,"ChasingState");
-        GD.Print("Patroll");
-        GD.Print(Route.Length);
-        currentGoal = Vector3.Zero;
-        currentGoal.X = Route[currentIndex].GlobalPosition.X;
-        currentGoal.Z = Route[currentIndex].GlobalPosition.Z;
+        SetCurrentGoal();
 
         navigationAgent.TargetPosition = currentGoal;
     }
@@ -52,14 +54,12 @@ public partial class PatrollingState : Node, IState
         {
             currentIndex++;
 
-            if (currentIndex >= Route.Length)
+            if (currentIndex >= patrolPath.Curve.PointCount)
             {
                 currentIndex = 0;
             }
 
-            currentGoal = Vector3.Zero;
-            currentGoal.X = Route[currentIndex].GlobalPosition.X;
-            currentGoal.Z = Route[currentIndex].GlobalPosition.Z;
+            SetCurrentGoal();
 
             navigationAgent.TargetPosition = currentGoal;
 
@@ -71,11 +71,21 @@ public partial class PatrollingState : Node, IState
         Vector3 direction = localDestination.Normalized();
 
         Character.Velocity = direction * CharacterSpeed;
-        Character.LookAt(destination);
+        animationController.PlayMovementAnimation();
+
+        if (localDestination.LengthSquared() > 0.0001f)
+            Character.LookAt(destination);
+
         Character.MoveAndSlide();
 
         return;
     }
 
-    public void ChaseTime() => TransitionEvent?.Invoke(this, "ChasingState");
+    void SetCurrentGoal()
+    {
+        currentGoal = patrolPath.GlobalTransform * patrolPath.Curve.GetPointPosition(currentIndex);
+        currentGoal.Y = 0.0f;
+    }
+
+    public void ChaseTime() => TransitionEvent?.Invoke(this, nameof(ChasingState));
 }

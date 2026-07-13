@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cwniokwtugyi2" path="res://Prefabs/Player/MageAgent.tscn" id="2_88wfj"]
 [ext_resource type="PackedScene" uid="uid://cmxbat8j31876" path="res://Prefabs/Player/DroneAgent.tscn" id="3_iwrkr"]
 
-[node name="PlayerCharacterDuo" type="Node3D" unique_id=828576658 node_paths=PackedStringArray("player", "drone")]
+[node name="PlayerCharacterDuo" type="Node3D" unique_id=828576658 node_paths=PackedStringArray("player", "drone") groups=["Player"]]
 script = ExtResource("1_elk0m")
 player = NodePath("MageAgent")
 drone = NodePath("DroneAgent")
 
-[node name="MageAgent" parent="." unique_id=1412306627 instance=ExtResource("2_88wfj")]
+[node name="MageAgent" parent="." unique_id=1412306627 groups=["Player"] instance=ExtResource("2_88wfj")]
 
 [node name="DroneAgent" parent="." unique_id=388726472 instance=ExtResource("3_iwrkr")]
