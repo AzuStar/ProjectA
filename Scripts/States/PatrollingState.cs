@@ -13,6 +13,10 @@ public partial class PatrollingState : Node, IState
 
     [Export]
     public float CharacterSpeed;
+
+    [Export]
+    public float turnSpeedDegreesPerSecond = 360.0f;
+
     int currentIndex = 0;
     CharacterBody3D Character;
     IEnemyAnimationController animationController;
@@ -72,9 +76,7 @@ public partial class PatrollingState : Node, IState
 
         Character.Velocity = direction * CharacterSpeed;
         animationController.PlayMovementAnimation();
-
-        if (localDestination.LengthSquared() > 0.0001f)
-            Character.LookAt(destination);
+        StateRotation.TurnTowards(Character, destination, turnSpeedDegreesPerSecond, (float)_delta);
 
         Character.MoveAndSlide();
 

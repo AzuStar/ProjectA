@@ -5,9 +5,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_visvh"]
 size = Vector3(4, 2, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3nkid"]
-size = Vector3(4, 0.25, 4)
-
 [node name="DeathZone" type="Area3D" unique_id=1938282717]
 monitorable = false
 script = ExtResource("1_dn8r0")
@@ -15,7 +12,4 @@ script = ExtResource("1_dn8r0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1961683105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_visvh")
-debug_color = Color(0.81086147, 0, 0.2450045, 0.41960785)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1453430907]
-mesh = SubResource("BoxMesh_3nkid")
+debug_color = Color(0.87, 0, 0.26100016, 1)

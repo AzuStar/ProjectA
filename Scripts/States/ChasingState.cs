@@ -13,10 +13,12 @@ public partial class ChasingState : Node, IState
     CharacterBody3D Character;
     IEnemyAnimationController animationController;
     Vector3 currentGoal;
-    Node3D goal;
 
     [Export]
     public float chaseGoalStopThreshold = 0.1f;
+
+    [Export]
+    public float turnSpeedDegreesPerSecond = 360.0f;
 
     [Export]
     public float stuckDisengageTime = 1.5f;
@@ -33,35 +35,22 @@ public partial class ChasingState : Node, IState
 
     public void SetAnimationController(IEnemyAnimationController value) => animationController = value;
 
-    public void SetGoal(Node3D _goal)
+    public void SetGoal(Vector3 goalPosition)
     {
-        if (goal == null)
-            goal = _goal;
-
-        currentGoal = Vector3.Zero;
-        currentGoal.X = goal.GlobalPosition.X;
-        currentGoal.Z = goal.GlobalPosition.Z;
+        currentGoal = goalPosition;
+        currentGoal.Y = 0.0f;
 
         navigationAgent.TargetPosition = currentGoal;
     }
 
     public void Enter()
     {
-        if (goal == null)
-            return;
-
         ResetStuckTimer();
-
-        currentGoal = Vector3.Zero;
-        currentGoal.X = goal.GlobalPosition.X;
-        currentGoal.Z = goal.GlobalPosition.Z;
-
         navigationAgent.TargetPosition = currentGoal;
     }
 
     public void Exit()
     {
-        goal = null;
         stuckTimer = 0.0f;
         return;
     }
@@ -95,9 +84,7 @@ public partial class ChasingState : Node, IState
 
         Character.Velocity = direction * CharacterSpeed;
         animationController.PlayMovementAnimation();
-
-        if (localDestination.LengthSquared() > 0.0001f)
-            Character.LookAt(destination);
+        StateRotation.TurnTowards(Character, destination, turnSpeedDegreesPerSecond, (float)_delta);
 
         Character.MoveAndSlide();
     }

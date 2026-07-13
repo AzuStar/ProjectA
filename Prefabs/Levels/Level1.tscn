@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="10_hhpqe"]
 [ext_resource type="PackedScene" uid="uid://bydhgekbbv2w2" path="res://Prefabs/Triggers/FloorButton.tscn" id="11_gafx7"]
 [ext_resource type="PackedScene" uid="uid://c3cpwoc5xeiyw" path="res://Prefabs/Enemies/EnemyGuard.tscn" id="12_gafx7"]
+[ext_resource type="PackedScene" uid="uid://deqyvc2s3pfdv" path="res://Prefabs/Triggers/PlotHole.tscn" id="13_3nkid"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
@@ -45,6 +46,7 @@ light_bake_mode = 1
 sky_mode = 1
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1200563941]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_7qlpj")
 
 [node name="EnvFloorOffset" type="Node3D" parent="." unique_id=734556345 groups=["navmesh"]]
@@ -231,17 +233,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -4)
 [node name="floor_tile_large100" parent="EnvFloorOffset" unique_id=946640959 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0, -8)
 
-[node name="floor_tile_large101" parent="EnvFloorOffset" unique_id=1083700483 instance=ExtResource("1_8764e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 4)
-
 [node name="floor_tile_large102" parent="EnvFloorOffset" unique_id=784849968 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0)
 
 [node name="floor_tile_large104" parent="EnvFloorOffset" unique_id=489478691 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -8)
-
-[node name="floor_tile_large105" parent="EnvFloorOffset" unique_id=1128582280 instance=ExtResource("1_8764e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, 4)
 
 [node name="floor_tile_large106" parent="EnvFloorOffset" unique_id=914913104 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, 0, 0)
@@ -287,12 +283,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 4)
 
 [node name="floor_tile_large110" parent="EnvFloorOffset" unique_id=754265618 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, 0)
-
-[node name="floor_tile_large111" parent="EnvFloorOffset" unique_id=1007495044 instance=ExtResource("1_8764e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -4)
-
-[node name="floor_tile_large112" parent="EnvFloorOffset" unique_id=311836858 instance=ExtResource("1_8764e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -8)
 
 [node name="floor_tile_large129" parent="EnvFloorOffset" unique_id=693660489 instance=ExtResource("1_8764e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 4)
@@ -933,3 +923,15 @@ curve = SubResource("Curve3D_gafx7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.793087, 0, -16.534302)
 patrolPath = NodePath("../Path3D")
 speed = 2.5
+
+[node name="PlotHole" parent="." unique_id=1938282717 instance=ExtResource("13_3nkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -4, -4)
+
+[node name="PlotHole2" parent="." unique_id=162916735 instance=ExtResource("13_3nkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -4, -8)
+
+[node name="PlotHole3" parent="." unique_id=727245197 instance=ExtResource("13_3nkid")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48, -4, 4)
+
+[node name="PlotHole4" parent="." unique_id=2101147994 instance=ExtResource("13_3nkid")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, -4, 4)

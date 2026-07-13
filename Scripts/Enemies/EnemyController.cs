@@ -82,12 +82,20 @@ public partial class EnemyController : CharacterBody3D, IEnemyAnimationControlle
 
             if (collider.IsInGroup(GroupsTable.PLAYER_MAGE))
             {
-                chasingState.SetGoal((Node3D)collider);
-                patrollingState.ChaseTime();
-                searchState.TargetFound();
+                SetLastSeenPlayerPosition((Node3D)collider);
                 return;
             }
         }
+    }
+
+    void SetLastSeenPlayerPosition(Node3D player)
+    {
+        if (stateMachine.currentState is not PatrollingState && stateMachine.currentState is not SearchState)
+            return;
+
+        chasingState.SetGoal(player.GlobalPosition);
+        patrollingState.ChaseTime();
+        searchState.TargetFound();
     }
 
     void PlayAnimation(string animationName)

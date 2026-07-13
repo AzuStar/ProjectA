@@ -13,7 +13,8 @@ public partial class SearchState : Node, IState
     Node3D nodeToManipulate;
 
     [Export]
-    float TurnDurations;
+    float turnSpeedDegreesPerSecond = 180.0f;
+
     IEnemyAnimationController animationController;
     Tween tween;
 
@@ -39,13 +40,14 @@ public partial class SearchState : Node, IState
         tween = GetTree().CreateTween();
         tween.SetLoops();
 
-        Vector3 left = Vector3.Zero;
-        left.Y = Mathf.DegToRad(nodeToManipulate.RotationDegrees.Y - 90f);
-        Vector3 right = Vector3.Zero;
-        right.Y = Mathf.DegToRad(nodeToManipulate.RotationDegrees.Y + 90f);
+        Vector3 left = nodeToManipulate.Rotation;
+        left.Y -= Mathf.DegToRad(90.0f);
+        Vector3 right = nodeToManipulate.Rotation;
+        right.Y += Mathf.DegToRad(90.0f);
 
-        tween.TweenProperty(nodeToManipulate, "rotation", left, TurnDurations);
-        tween.TweenProperty(nodeToManipulate, "rotation", right, TurnDurations);
+        tween.TweenProperty(nodeToManipulate, "rotation", left, GetTurnDuration(90.0f));
+        tween.TweenProperty(nodeToManipulate, "rotation", right, GetTurnDuration(180.0f));
+        tween.TweenProperty(nodeToManipulate, "rotation", left, GetTurnDuration(180.0f));
         return;
     }
 
@@ -77,4 +79,6 @@ public partial class SearchState : Node, IState
     {
         TransitionEvent?.Invoke(this, nameof(ChasingState));
     }
+
+    float GetTurnDuration(float angleDegrees) => angleDegrees / turnSpeedDegreesPerSecond;
 }

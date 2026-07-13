@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://deqyvc2s3pfdv"]
+
+[ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="1_a57j4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_visvh"]
+size = Vector3(4, 2, 4)
+
+[node name="PlotHole" type="Area3D" unique_id=1938282717]
+transform = Transform3D(1, 0, 0, 0, 1.08, 0, 0, 0, 1, 0, 0, 0)
+monitorable = false
+script = ExtResource("1_a57j4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1961683105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_visvh")
+debug_color = Color(0.87, 0, 0.26100016, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=691137850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+flip_faces = true
+size = Vector3(4, 4, 4)
