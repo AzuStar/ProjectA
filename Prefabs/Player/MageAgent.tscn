@@ -11,10 +11,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
 height = 2.3637695
 
-[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "cameraRig")]
+[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "cameraRig")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_a44bu")
+visualRoot = NodePath("RogueBody")
 animationPlayer = NodePath("AnimationPlayer")
 cameraRig = NodePath("ThirdPersonCameraRig")
 

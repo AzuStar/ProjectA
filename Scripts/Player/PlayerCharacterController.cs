@@ -28,6 +28,9 @@ public partial class PlayerCharacterController : CharacterBody3D
     public bool DriveAnimationPlayer = true;
 
     [Export]
+    public Node3D visualRoot;
+
+    [Export]
     private AnimationPlayer animationPlayer;
 
     [Export]
@@ -81,6 +84,12 @@ public partial class PlayerCharacterController : CharacterBody3D
         _jumpWasPressed = jumpPressed;
         Velocity = velocity;
         MoveAndSlide();
+
+        if (direction.X != 0 || direction.Z != 0)
+        {
+            float bearing = Mathf.Atan2(direction.X, direction.Z);
+            visualRoot.GlobalRotation = Vector3.Up * bearing;
+        }
     }
 
     private Vector3 GetMovementDirection()
