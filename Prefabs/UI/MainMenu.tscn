@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b2cd56krvmw44"]
+
+[ext_resource type="Script" uid="uid://deiy5auule1q2" path="res://Scripts/UI/UiMainMenu.cs" id="1_2anv5"]
+[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_f2g53"]
+
+[node name="MainMenu" type="Control" unique_id=951017335 node_paths=PackedStringArray("playLevel0")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2anv5")
+playLevel0 = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=1588197775]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 24.000002
+anchor_right = 24.000002
+offset_left = -93.00006
+offset_top = 544.0
+offset_right = 92.99994
+offset_bottom = 624.0
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Button" unique_id=1568568868]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[b]ENTER LEVEL 1[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_f2g53")
+_max_size = 16
+_current_font_size = 16
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
