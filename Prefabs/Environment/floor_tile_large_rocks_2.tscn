@@ -4,8 +4,11 @@
 [ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_m4d12"]
 [ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_oi8p3"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_visvh"]
-points = PackedVector3Array(1.201, -1, 0.358, 1.001, -1, -0.557, 0.162, -1, -1.308, -0.618, -1, -1.331, -1.363, -1, -0.218, -1.389, -1, 0.533, -1.309, -1, 0.906, -0.398, -1, 1.192, -0.073, -1, 1.283, 0.546, -1, 1.098, 1.201, 5, 0.358, 1.001, 5, -0.557, 0.162, 5, -1.308, -0.618, 5, -1.331, -1.363, 5, -0.218, -1.389, 5, 0.533, -1.309, 5, 0.906, -0.398, 5, 1.192, -0.073, 5, 1.283, 0.546, 5, 1.098)
+[sub_resource type="BoxShape3D" id="BoxShape3D_oi8p3"]
+size = Vector3(1.658452, 0.37719727, 1.7958069)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjhag"]
+size = Vector3(0.6528332, 0.45617676, 1.0525894)
 
 [node name="floor_tile_large_rocks2" unique_id=890485070 instance=ExtResource("1_eyklw")]
 
@@ -19,5 +22,10 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=849445998]
 shape = ExtResource("2_m4d12")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1772346845]
-shape = SubResource("ConvexPolygonShape3D_visvh")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1641519793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40450066, 0.21606064, 0.14277339)
+shape = SubResource("BoxShape3D_oi8p3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=1895290991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6598298, 0.25555038, 0.33117747)
+shape = SubResource("BoxShape3D_pjhag")
