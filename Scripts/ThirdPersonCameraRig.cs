@@ -53,6 +53,7 @@ public partial class ThirdPersonCameraRig : Node3D
 
     public Basis GetCameraBasis()
     {
-	    return _camera.GlobalBasis;
+	    // Yaw basis so movement is still in XZ while looking up or down.
+	    return _yawPivot.GlobalBasis;
     }
 }
