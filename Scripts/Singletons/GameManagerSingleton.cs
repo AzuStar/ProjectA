@@ -42,9 +42,19 @@ public partial class GameManagerSingleton : Node
 
     public static void MoveToNextLevel()
     {
+        MoveToLevel(++Instance.currentLevel);
+    }
+
+    public static void MoveToLevel(int levelId)
+    {
+        if (!HasLevelInstance(levelId))
+        {
+            return;
+        }
+
         UiRootSingleton.Instance.mainMenu.Hide();
         UnloadCurrentLevel();
-        OpenLevel(LoadLevelInstance(++Instance.currentLevel));
+        OpenLevel(LoadLevelInstance(levelId));
     }
 
     public static void UpdateCurrentLevel(int levelId)
@@ -52,10 +62,18 @@ public partial class GameManagerSingleton : Node
         Instance.currentLevel = levelId;
     }
 
+    private static bool HasLevelInstance(int levelId)
+    {
+        return levelId >= 0 && levelId < Instance.gameLevels.Count;
+    }
+
     private static LevelInstance LoadLevelInstance(int levelId)
     {
-        if (levelId > Instance.gameLevels.Count || levelId < 0)
+        if (!HasLevelInstance(levelId))
+        {
+            GD.PrintErr($"Level with ID {levelId} doesn't exist.");
             return null;
+        }
 
         var instance = Instance.gameLevels[levelId].Instantiate<LevelInstance>();
 
@@ -63,13 +81,18 @@ public partial class GameManagerSingleton : Node
         return instance;
     }
 
-    public static void OpenLevel(LevelInstance level)
+    private static void OpenLevel(LevelInstance level)
     {
+        if (level == null)
+        {
+            return;
+        }
+
         currentLevelInstance = level;
         Bootstrap.GetGameSubViewport().AddChild(currentLevelInstance);
     }
 
-    public static bool UnloadCurrentLevel()
+    private static bool UnloadCurrentLevel()
     {
         if (currentLevelInstance == null)
             return false;
