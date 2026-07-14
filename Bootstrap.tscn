@@ -101,7 +101,7 @@ deathMenu = NodePath("DeathMenu")
 
 [node name="MainMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=951017335 instance=ExtResource("4_q6itx")]
 visible = false
-layout_mode = 0
+layout_mode = 1
 
 [node name="LevelMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=1518218131 instance=ExtResource("5_im3w0")]
 visible = false
