@@ -59,7 +59,7 @@ public partial class GameManagerSingleton : Node
 
     private static LevelInstance LoadLevelInstance(int levelId)
     {
-        if (levelId > Instance.gameLevels.Count || levelId < 0)
+        if (levelId >= Instance.gameLevels.Count || levelId < 0)
         {
             GD.PrintErr($"Level {levelId} doesn't exist.");
             return null;
