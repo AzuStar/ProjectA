@@ -24,7 +24,7 @@ public partial class FpsCamera : Node3D
 
     public override void _Ready()
     {
-        _startingRotation = Rotation;
+        _startingRotation = applyYRotationTo.Rotation; // applyYRotationTo is our parent, not our child.
         _startingPosition = Position;
     }
 
@@ -49,14 +49,14 @@ public partial class FpsCamera : Node3D
 
     public void ResetPose()
     {
-        Rotation = _startingRotation;
+        applyYRotationTo.Rotation = _startingRotation;
         Position = _startingPosition;
-        applyYRotationTo.Rotation = Vector3.Zero;
+        Rotation = Vector3.Zero;
     }
 
     public void SetBearing(float bearing)
     {
-        Rotation = Vector3.Up * bearing;
+        applyYRotationTo.Rotation = Vector3.Up * bearing;
     }
 
     public void PanOutForDeath()
