@@ -47,6 +47,11 @@ public partial class GameManagerSingleton : Node
 
     public static void MoveToLevel(int levelId)
     {
+        if (!HasLevelInstance(levelId))
+        {
+            return;
+        }
+
         UiRootSingleton.Instance.mainMenu.Hide();
         UnloadCurrentLevel();
         OpenLevel(LoadLevelInstance(levelId));
@@ -57,11 +62,16 @@ public partial class GameManagerSingleton : Node
         Instance.currentLevel = levelId;
     }
 
+    private static bool HasLevelInstance(int levelId)
+    {
+        return levelId >= 0 && levelId < Instance.gameLevels.Count;
+    }
+
     private static LevelInstance LoadLevelInstance(int levelId)
     {
-        if (levelId >= Instance.gameLevels.Count || levelId < 0)
+        if (!HasLevelInstance(levelId))
         {
-            GD.PrintErr($"Level {levelId} doesn't exist.");
+            GD.PrintErr($"Level with ID {levelId} doesn't exist.");
             return null;
         }
 
