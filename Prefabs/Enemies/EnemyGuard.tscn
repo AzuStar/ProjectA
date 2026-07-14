@@ -42,51 +42,59 @@ script = ExtResource("11_q6d2g")
 raycastCount = 8
 arcAngle = 90.0
 
-[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D" unique_id=528938719]
+[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D" unique_id=2098087882]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D" unique_id=1006509181]
+[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D" unique_id=2098734414]
 transform = Transform3D(0.8467242, 0, -0.5320321, 0, 1, 0, 0.5320321, 0, 0.8467242, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D" unique_id=1737974499]
+[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D" unique_id=706727960]
 transform = Transform3D(0.9438833, 0, -0.33027908, 0, 1, 0, 0.33027908, 0, 0.9438833, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D" unique_id=584557438]
+[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D" unique_id=1966260438]
 transform = Transform3D(0.9937122, 0, -0.11196452, 0, 1, 0, 0.11196452, 0, 0.9937122, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D" unique_id=1376291348]
+[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D" unique_id=211650066]
 transform = Transform3D(0.9937122, 0, 0.11196445, 0, 1, 0, -0.11196445, 0, 0.9937122, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D" unique_id=1987610887]
+[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D" unique_id=1869979532]
 transform = Transform3D(0.94388336, 0, 0.33027905, 0, 1, 0, -0.33027905, 0, 0.94388336, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D" unique_id=1721047739]
+[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D" unique_id=1624640310]
 transform = Transform3D(0.8467242, 0, 0.532032, 0, 1, 0, -0.532032, 0, 0.8467242, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D" unique_id=1550653027]
+[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D" unique_id=1326754625]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -10)
+collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
@@ -96,6 +104,7 @@ libraries/KayKitAnim = ExtResource("3_svn3h")
 libraries/KayKitAnimMovement = ExtResource("4_xraof")
 
 [node name="DeathTrigger" type="Area3D" parent="." unique_id=1938282717]
+collision_mask = 2
 monitorable = false
 script = ExtResource("5_qvgyf")
 

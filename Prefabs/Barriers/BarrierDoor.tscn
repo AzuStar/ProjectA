@@ -22,13 +22,14 @@ visualRoot = NodePath("wall_doorway2/wall_doorway/wall_doorway_door")
 
 [node name="wall_doorway2" parent="." unique_id=109700311 instance=ExtResource("1_7r6nv")]
 
-[node name="wall_doorway" parent="wall_doorway2" index="0" unique_id=2017456638]
+[node name="wall_doorway" parent="wall_doorway2" index="0" unique_id=211639498]
 surface_material_override/0 = ExtResource("3_gerni")
 
-[node name="wall_doorway_door" parent="wall_doorway2/wall_doorway" index="0" unique_id=2115001252]
+[node name="wall_doorway_door" parent="wall_doorway2/wall_doorway" index="0" unique_id=1463862397]
 surface_material_override/0 = ExtResource("3_gerni")
 
 [node name="UnlockArea" type="Area3D" parent="." unique_id=2013166422]
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UnlockArea" unique_id=1168843487]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
