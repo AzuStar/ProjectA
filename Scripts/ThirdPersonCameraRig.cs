@@ -21,7 +21,7 @@ public partial class ThirdPersonCameraRig : Node3D
 		_pitchPivot.RotationDegrees = pitchPivotDegrees;
 	}
 
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
 		RaycastCamera();
 	}
