@@ -28,7 +28,7 @@ public partial class DroneCharacterController : CharacterBody3D
     public bool DriveCameraSmoothingTarget = true;
 
     [Export]
-    public FpsCamera fpsCamera;
+    public ThirdPersonCameraRig cameraRig;
 
     [Export]
     public ShaderMaterial droneScreenMaterial;
@@ -114,7 +114,7 @@ public partial class DroneCharacterController : CharacterBody3D
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
         
-        Basis cameraBasis = fpsCamera.fpsCamera.GlobalBasis;
+        Basis cameraBasis = cameraRig.GetCameraBasis();
         return cameraBasis * inputDirection;
     }
 
@@ -164,9 +164,9 @@ public partial class DroneCharacterController : CharacterBody3D
         ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = _enabledCollisionLayer;
         CollisionMask = _enabledCollisionMask;
-        fpsCamera.ResetPose();
-        fpsCamera.SetBearing(baseBearing);
-        fpsCamera.SetActive(true);
+        // cameraRig.ResetPose();
+        // cameraRig.SetBearing(baseBearing);
+        cameraRig.SetActive(true);
 
         Velocity = Vector3.Zero;
 
@@ -180,7 +180,7 @@ public partial class DroneCharacterController : CharacterBody3D
         ProcessMode = ProcessModeEnum.Disabled;
         CollisionLayer = 0;
         CollisionMask = 0;
-        fpsCamera.SetActive(false);
+        cameraRig.SetActive(false);
 
         Bootstrap.GetGameSubViewportContainer().Material = null;
     }
