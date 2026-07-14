@@ -1,11 +1,12 @@
 using Godot;
-using ProjectA.Game.Singletons;
-using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerDroneDuo : Node3D
 {
+    [Export]
+    public Key SummonDroneKey = Key.Q;
+
     [Export]
     public PlayerCharacterController player;
 
@@ -14,27 +15,57 @@ public partial class PlayerDroneDuo : Node3D
 
     public DuoTarget currentlyActivePart = DuoTarget.PLAYER;
 
-    public override void _ExitTree()
+    public override void _Ready()
     {
-        base._ExitTree();
+        currentlyActivePart = DuoTarget.PLAYER;
     }
 
-    public void InputProcess(InputEvent input, float mouseSensitivity)
+    public void HandleInput(InputEvent @event, float mouseSensitivity)
     {
         if (!ActivePartAcceptsInput())
             return;
 
-        if (@input is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
+        if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
             GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
             return;
         }
 
-        if (@input.IsActionPressed(InputsTable.ACTION_TOGGLE_DRONE))
+        if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
+            return;
+
+        if (keyEvent.Keycode == SummonDroneKey)
         {
             ToggleDrone();
             return;
         }
+    }
+
+    private void DisableDrone()
+    {
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        currentlyActivePart = DuoTarget.PLAYER;
+        drone.LeaveThisController();
+        player.EnterThisController();
+    }
+
+    private void EnableDrone()
+    {
+        //Input.MouseMode = Input.MouseModeEnum.Captured;
+        currentlyActivePart = DuoTarget.DRONE;
+        player.LeaveThisController();
+        drone.EnterThisController(player.GlobalPosition, player.GlobalRotation.Y, player);
+    }
+
+    private void ToggleDrone()
+    {
+        if (currentlyActivePart == DuoTarget.DRONE)
+        {
+            DisableDrone();
+            return;
+        }
+
+        EnableDrone();
     }
 
     private FpsCamera GetActiveCamera()
@@ -47,45 +78,26 @@ public partial class PlayerDroneDuo : Node3D
         return currentlyActivePart == DuoTarget.DRONE ? drone.acceptInput : player.acceptInput;
     }
 
-    private void DisableDrone()
-    {
-        currentlyActivePart = DuoTarget.PLAYER;
-        drone.LeaveThisController();
-        player.EnterThisController();
-    }
-
-    private void EnableDrone()
-    {
-        currentlyActivePart = DuoTarget.DRONE;
-        player.LeaveThisController();
-        drone.EnterThisController(player.GlobalPosition);
-    }
-
-    public void ToggleDrone()
-    {
-        if (currentlyActivePart == DuoTarget.DRONE)
-        {
-            DisableDrone();
-            return;
-        }
-
-        EnableDrone();
-    }
-
     public void Prepare(Vector3 spawnPosition)
     {
         player.GlobalPosition = spawnPosition;
+        player.ProcessMode = ProcessModeEnum.Inherit;
         player.acceptInput = true;
 
         DisableDrone();
 
-        GetActiveCamera().ResetOrientation();
+        GetActiveCamera().ResetPose();
+    }
+
+    public void Unprepare()
+    {
+        DisableDrone();
     }
 
     public void Kill()
     {
-        currentlyActivePart = DuoTarget.PLAYER;
-        drone.LeaveThisController();
-        player.Die();
+        // Both parts become unusable.
+        player.acceptInput = false;
+        drone.acceptInput = false;
     }
 }
