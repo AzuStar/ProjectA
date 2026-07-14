@@ -25,7 +25,7 @@ public partial class PlayerDroneDuo : Node3D
 
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
-            GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
+            GetActiveCameraRig().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
         }
 
         if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
@@ -64,9 +64,9 @@ public partial class PlayerDroneDuo : Node3D
         EnableDrone();
     }
 
-    private FpsCamera GetActiveCamera()
+    private ThirdPersonCameraRig GetActiveCameraRig()
     {
-        return currentlyActivePart == DuoTarget.DRONE ? drone.fpsCamera : player.fpsCamera;
+        return currentlyActivePart == DuoTarget.DRONE ? drone.cameraRig : player.cameraRig;
     }
 
     private bool ActivePartAcceptsInput()
@@ -82,7 +82,7 @@ public partial class PlayerDroneDuo : Node3D
 
         DisableDrone();
 
-        GetActiveCamera().ResetPose();
+        //GetActiveCamera().ResetPose();
     }
 
     public void Unprepare()

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://jkw3ks5b3n2l"]
+
+[ext_resource type="Script" uid="uid://dyqf3d6jbxcuh" path="res://Scripts/ThirdPersonCameraRig.cs" id="1_aadjk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fupvj"]
+radius = 0.2
+
+[node name="ThirdPersonCameraRig" type="Node3D" unique_id=1251641046 node_paths=PackedStringArray("_yawPivot", "_pitchPivot", "_camera", "_raycaster")]
+script = ExtResource("1_aadjk")
+_yawPivot = NodePath("YawPivot")
+_pitchPivot = NodePath("YawPivot/PitchPivot")
+_camera = NodePath("Camera3D")
+_raycaster = NodePath("YawPivot/PitchPivot/ShapeCast3D")
+
+[node name="YawPivot" type="Node3D" parent="." unique_id=556093285]
+
+[node name="PitchPivot" type="Node3D" parent="YawPivot" unique_id=64873733]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="YawPivot/PitchPivot" unique_id=972838428]
+shape = SubResource("SphereShape3D_fupvj")
+target_position = Vector3(0, 0, 1.5)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1644674583]
+physics_interpolation_mode = 1
+size = 15.054

@@ -28,13 +28,10 @@ public partial class PlayerCharacterController : CharacterBody3D
     public bool DriveAnimationPlayer = true;
 
     [Export]
-    public Node3D visualRoot;
-
-    [Export]
     private AnimationPlayer animationPlayer;
 
     [Export]
-    public FpsCamera fpsCamera;
+    public ThirdPersonCameraRig cameraRig;
 
     public bool acceptInput = true;
     private string _currentAnimation = string.Empty;
@@ -92,7 +89,7 @@ public partial class PlayerCharacterController : CharacterBody3D
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
 
-        Basis cameraBasis = fpsCamera.fpsCamera.GlobalTransform.Basis;
+        Basis cameraBasis = cameraRig.GetCameraBasis();
         Vector3 forward = -cameraBasis.Z;
         Vector3 right = cameraBasis.X;
 
@@ -144,25 +141,22 @@ public partial class PlayerCharacterController : CharacterBody3D
     {
         _deathLocked = false;
         acceptInput = true;
-        visualRoot.Visible = false;
-        fpsCamera.SetActive(true);
+        cameraRig.SetActive(true);
     }
 
     public void LeaveThisController()
     {
         _deathLocked = false;
         acceptInput = false;
-        visualRoot.Visible = true;
-        fpsCamera.SetActive(false);
+        cameraRig.SetActive(false);
     }
 
     public void Die()
     {
         _deathLocked = true;
         acceptInput = false;
-        visualRoot.Visible = true;
-        fpsCamera.SetActive(false);
-        // fpsCamera.PanOutForDeath();
+        cameraRig.SetActive(false);
+        // cameraRig.PanOutForDeath();
         PlayAnimation(DeathAnimation);
     }
 }
