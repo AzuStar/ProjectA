@@ -73,6 +73,12 @@ moveRight={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="PlayerCharacter"
+3d_physics/layer_3="DroneCharacter"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

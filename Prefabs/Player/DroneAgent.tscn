@@ -8,7 +8,13 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
 radius = 0.2
 
+[sub_resource type="SphereMesh" id="SphereMesh_fupvj"]
+radius = 0.2
+height = 0.4
+
 [node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("cameraRig")]
+collision_layer = 4
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_cwkdp")
 MaximumSpeed = 12.0
@@ -24,3 +30,6 @@ visible = false
 [node name="ThirdPersonCameraRig" parent="." unique_id=1251641046 instance=ExtResource("4_th1gd")]
 _minPitchDegrees = -85.0
 _maxPitchDegrees = 85.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1394559568]
+mesh = SubResource("SphereMesh_fupvj")

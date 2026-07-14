@@ -12,6 +12,8 @@
 height = 2.3637695
 
 [node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "cameraRig")]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_a44bu")
 animationPlayer = NodePath("AnimationPlayer")
 cameraRig = NodePath("ThirdPersonCameraRig")
@@ -48,6 +50,6 @@ transform = Transform3D(0.090085216, 0.009945501, -0.9958844, -0.10973431, 0.993
 mesh = ExtResource("5_ckvs4")
 
 [node name="ThirdPersonCameraRig" parent="." unique_id=1251641046 instance=ExtResource("7_xmhbo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 _minPitchDegrees = -85.0
 _maxPitchDegrees = 85.0
