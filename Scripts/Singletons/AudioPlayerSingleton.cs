@@ -69,12 +69,14 @@ public partial class AudioPlayerSingleton : Node
 	{
 		try
 		{
+			// Stop the existing track then start the new one.
+			// Not a blended fade because that involves BPM matching.
+			
 			if (_musicPlayer.Playing)
 			{
 				if (crossFade > 0.0f)
 				{
-					PropertyTweener? fadeOutTween =
-						CreateTween().TweenProperty(_musicPlayer, "VolumeLinear", 0.0f, crossFade);
+					PropertyTweener? fadeOutTween = CreateTween().TweenProperty(_musicPlayer, "volume_linear", 0.0f, crossFade);
 					await ToSignal(fadeOutTween, "finished");
 				}
 
@@ -86,8 +88,7 @@ public partial class AudioPlayerSingleton : Node
 			if (crossFade > 0.0f)
 			{
 				_musicPlayer.VolumeLinear = 0.0f;
-				PropertyTweener? fadeInTween =
-					CreateTween().TweenProperty(_musicPlayer, "VolumeLinear", 1.0f, crossFade);
+				PropertyTweener? fadeInTween = CreateTween().TweenProperty(_musicPlayer, "volume_linear", 1.0f, crossFade);
 				await ToSignal(fadeInTween, "finished");
 			}
 			else
