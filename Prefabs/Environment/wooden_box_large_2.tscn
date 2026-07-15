@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://2cvi3eua6j2j"]
+
+[ext_resource type="PackedScene" uid="uid://b20ydpmjje60w" path="res://Assets/CustomModels/WoodenBoxLarge.glb" id="1_f2dcs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eve77"]
+size = Vector3(4.1922417, 2.2150984, 2.2150984)
+
+[node name="WoodenBoxLarge2" unique_id=2039255501 instance=ExtResource("1_f2dcs")]
+
+[node name="WoodenBoxLarge" parent="." index="0" unique_id=125608681]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WoodenBoxLarge" index="0" unique_id=146357595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00038194656, -1.1920929e-07, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WoodenBoxLarge/StaticBody3D" index="0" unique_id=1212853348]
+shape = SubResource("BoxShape3D_eve77")

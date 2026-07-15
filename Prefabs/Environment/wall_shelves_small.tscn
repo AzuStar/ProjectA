@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clirq2y3bwasu"]
+
+[ext_resource type="PackedScene" uid="uid://bf3b3gvkp4qgm" path="res://Assets/CustomModels/WallShelvesSmall.glb" id="1_c0epp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oh7sr"]
+size = Vector3(6, 0.41302884, 2.6574652)
+
+[node name="WallShelvesSmall" unique_id=1865873298 instance=ExtResource("1_c0epp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallSHelvesSmall" parent_id_path=PackedInt32Array(1286886698) index="0" unique_id=656416371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02639532, -0.29697442, 0.5166198)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallSHelvesSmall/StaticBody3D" index="0" unique_id=263416567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90133864, 0)
+shape = SubResource("BoxShape3D_oh7sr")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://fx17xhij4mng"]
+
+[ext_resource type="PackedScene" uid="uid://dg4k6rjxsqig5" path="res://Assets/CustomModels/WoodenCrate.glb" id="1_15s8k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_duq05"]
+size = Vector3(1.3082268, 0.8858937, 2.0060754)
+
+[node name="WoodenCrate2" unique_id=188597553 instance=ExtResource("1_15s8k")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WoodenCrate" parent_id_path=PackedInt32Array(1812552045) index="0" unique_id=1821936084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00886941, -0.0067448616, 0.0056113005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WoodenCrate/StaticBody3D" index="0" unique_id=1523305417]
+shape = SubResource("BoxShape3D_duq05")

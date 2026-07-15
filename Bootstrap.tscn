@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://omsfce73as7e" path="res://Prefabs/UI/EscMenu.tscn" id="6_kp64o"]
 [ext_resource type="Script" uid="uid://ccx2buybnyh6u" path="res://Scripts/Singletons/GameManagerSingleton.cs" id="6_og2uw"]
 [ext_resource type="PackedScene" uid="uid://bw3er4y3u8cu7" path="res://Prefabs/UI/DeathMenu.tscn" id="7_8vjsl"]
-[ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/Levels/Level1.tscn" id="8_0sf5x"]
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
 [ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
+[ext_resource type="PackedScene" uid="uid://b3f0ehu1b8pe5" path="res://Prefabs/Levels/Level1.tscn" id="12_kp64o"]
 [ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
 [ext_resource type="AudioStream" uid="uid://cvtvae5l3mo47" path="res://Assets/Audio/The_Bards_Tale.mp3" id="16_kp64o"]
 [ext_resource type="PackedScene" uid="uid://db2kood0ybpvp" path="res://Prefabs/UI/CreditsMenu.tscn" id="17_4rxdy"]
@@ -129,7 +129,7 @@ layout_mode = 1
 [node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
 script = ExtResource("6_og2uw")
 gameLevels = Dictionary[int, PackedScene]({
-0: ExtResource("8_0sf5x"),
+0: ExtResource("12_kp64o"),
 1: ExtResource("9_ubwuh"),
 2: ExtResource("10_4rxdy")
 })

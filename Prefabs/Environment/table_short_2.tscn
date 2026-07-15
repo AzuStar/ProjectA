@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crla8bhr1sx57"]
+
+[ext_resource type="PackedScene" uid="uid://bioradowbkpve" path="res://Assets/CustomModels/TableShort.glb" id="1_ko7n2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybeft"]
+size = Vector3(3.3325536, 3.5023255, 5.240899)
+
+[node name="TableShort2" unique_id=172403930 instance=ExtResource("1_ko7n2")]
+
+[node name="TableShort" parent="." index="0" unique_id=1119048584]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TableShort" index="0" unique_id=44004701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009593368, -0.6421902, -0.022204876)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TableShort/StaticBody3D" index="0" unique_id=2036658596]
+shape = SubResource("BoxShape3D_ybeft")

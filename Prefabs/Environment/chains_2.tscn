@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://gcuvvyyd17y"]
+
+[ext_resource type="PackedScene" uid="uid://dpy6uoyf181el" path="res://Assets/CustomModels/Chains.glb" id="1_1kt5v"]
+
+[node name="Chains2" unique_id=446371207 instance=ExtResource("1_1kt5v")]
