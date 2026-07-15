@@ -14,6 +14,9 @@ public partial class PickupableArea3D : Area3D
     public ItemType itemType;
     private bool _pickedUp;
 
+    [Export]
+    public AudioStream _collectionEffect;
+
     public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
@@ -25,6 +28,12 @@ public partial class PickupableArea3D : Area3D
             return;
 
         _pickedUp = true;
+
+        if (_collectionEffect != null && AudioPlayerSingleton.Instance != null)
+        {
+            AudioPlayerSingleton.Instance.PlaySfx(_collectionEffect);
+        }
+        
         PropogateEvent_IPickupReaction(body);
         GameManagerSingleton.currentLevelInstance.AddItem(itemType);
         rootNode.QueueFree();

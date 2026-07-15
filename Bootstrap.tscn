@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
 [ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
+[ext_resource type="AudioStream" uid="uid://cvtvae5l3mo47" path="res://Assets/Audio/The_Bards_Tale.mp3" id="16_kp64o"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -136,6 +137,7 @@ droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
 script = ExtResource("15_im3w0")
 _musicPlayer = NodePath("Music")
 _sfxPlayerContainer = NodePath("SfxContainer")
+_initialMusic = ExtResource("16_kp64o")
 
 [node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
 

@@ -11,11 +11,15 @@ public partial class AudioPlayerSingleton : Node
 {
 	public static AudioPlayerSingleton Instance { get; private set; }
 
+	[ExportGroup("References")]
 	[Export] private AudioStreamPlayer _musicPlayer;
 	[Export] private Node _sfxPlayerContainer;
-	
+
 	private Queue<AudioStreamPlayer> _streamQueueNonSpatial;
 	private Queue<AudioStreamPlayer3D> _streamQueueSpatial;
+
+	[ExportGroup("Assets")]
+	[Export] public AudioStream _initialMusic;
 
 	public override void _EnterTree()
 	{
@@ -39,7 +43,7 @@ public partial class AudioPlayerSingleton : Node
 		_streamQueueNonSpatial =  new Queue<AudioStreamPlayer>();
 		_streamQueueSpatial = new Queue<AudioStreamPlayer3D>();
 		
-		Array<Node>? children = GetChildren();
+		Array<Node>? children = _sfxPlayerContainer.GetChildren();
 		if (children != null)
 		{
 			foreach (Node child in children)
@@ -53,6 +57,11 @@ public partial class AudioPlayerSingleton : Node
 					_streamQueueSpatial.Enqueue(spatial);
 				}
 			}
+		}
+
+		if (_initialMusic != null)
+		{
+			PlayMusic(_initialMusic);
 		}
 	}
 
