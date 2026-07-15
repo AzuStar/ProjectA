@@ -3,14 +3,11 @@
 [ext_resource type="Script" uid="uid://dxqc6i1kvfcb4" path="res://Scripts/Player/DroneCharacterController.cs" id="1_cwkdp"]
 [ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_hxbwk"]
 [ext_resource type="PackedScene" uid="uid://g4fe3to0kd8e" path="res://Prefabs/Cameras/FpsCameraAttachment.tscn" id="3_pmlno"]
+[ext_resource type="PackedScene" uid="uid://d3vwebaf27abb" path="res://Assets/CustomModels/ProtoDrone.glb" id="3_th1gd"]
 [ext_resource type="PackedScene" uid="uid://jkw3ks5b3n2l" path="res://Prefabs/Cameras/ThirdPersonCameraRig.tscn" id="4_th1gd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
 radius = 0.2
-
-[sub_resource type="SphereMesh" id="SphereMesh_fupvj"]
-radius = 0.2
-height = 0.4
 
 [node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("cameraRig")]
 collision_layer = 4
@@ -21,6 +18,9 @@ MaximumSpeed = 12.0
 cameraRig = NodePath("ThirdPersonCameraRig")
 droneScreenMaterial = ExtResource("2_hxbwk")
 
+[node name="ProtoDrone" parent="." unique_id=1440330270 instance=ExtResource("3_th1gd")]
+transform = Transform3D(2.9812202e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.9812202e-09, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
 shape = SubResource("SphereShape3D_yec2f")
 
@@ -30,6 +30,3 @@ visible = false
 [node name="ThirdPersonCameraRig" parent="." unique_id=1251641046 instance=ExtResource("4_th1gd")]
 _minPitchDegrees = -85.0
 _maxPitchDegrees = 85.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1394559568]
-mesh = SubResource("SphereMesh_fupvj")
