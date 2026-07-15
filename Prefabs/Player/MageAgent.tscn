@@ -6,19 +6,21 @@
 [ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_t12g8"]
 [ext_resource type="ArrayMesh" uid="uid://sx76dr2jwmnc" path="res://Resources/ArmMesh.tres" id="5_ckvs4"]
 [ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="5_ym27m"]
+[ext_resource type="PackedScene" uid="uid://jkw3ks5b3n2l" path="res://Prefabs/Cameras/ThirdPersonCameraRig.tscn" id="7_xmhbo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
 height = 2.3637695
 
-[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "fpsCamera")]
+[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "cameraRig")]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_a44bu")
 visualRoot = NodePath("RogueBody")
 animationPlayer = NodePath("AnimationPlayer")
-fpsCamera = NodePath("CameraAttachment")
+cameraRig = NodePath("ThirdPersonCameraRig")
 
 [node name="RogueBody" parent="." unique_id=966960816 instance=ExtResource("2_a44bu")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
@@ -33,6 +35,7 @@ libraries/KayKitAnimMovement = ExtResource("4_t12g8")
 
 [node name="CameraAttachment" type="Node3D" parent="." unique_id=1730818126 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera", "handMesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5837654, 0)
+visible = false
 script = ExtResource("5_ym27m")
 applyYRotationTo = NodePath("..")
 fpsCamera = NodePath("Camera3D")
@@ -46,3 +49,8 @@ size = 15.054
 [node name="RogueHooded_ArmRight" type="MeshInstance3D" parent="CameraAttachment" unique_id=1275167442]
 transform = Transform3D(0.090085216, 0.009945501, -0.9958844, -0.10973431, 0.993961, 0, 0.98987025, 0.109282695, 0.09063255, 0.55, -1.567, -0.081)
 mesh = ExtResource("5_ckvs4")
+
+[node name="ThirdPersonCameraRig" parent="." unique_id=1251641046 instance=ExtResource("7_xmhbo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+_minPitchDegrees = -85.0
+_maxPitchDegrees = 85.0

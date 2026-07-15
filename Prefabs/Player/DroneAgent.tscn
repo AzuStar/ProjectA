@@ -2,26 +2,34 @@
 
 [ext_resource type="Script" uid="uid://dxqc6i1kvfcb4" path="res://Scripts/Player/DroneCharacterController.cs" id="1_cwkdp"]
 [ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_hxbwk"]
-[ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="5_on3mu"]
+[ext_resource type="PackedScene" uid="uid://g4fe3to0kd8e" path="res://Prefabs/Cameras/FpsCameraAttachment.tscn" id="3_pmlno"]
+[ext_resource type="PackedScene" uid="uid://jkw3ks5b3n2l" path="res://Prefabs/Cameras/ThirdPersonCameraRig.tscn" id="4_th1gd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
 radius = 0.2
 
-[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("fpsCamera")]
+[sub_resource type="SphereMesh" id="SphereMesh_fupvj"]
+radius = 0.2
+height = 0.4
+
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("cameraRig")]
+collision_layer = 4
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_cwkdp")
 MaximumSpeed = 12.0
-fpsCamera = NodePath("CameraAttachment")
+cameraRig = NodePath("ThirdPersonCameraRig")
 droneScreenMaterial = ExtResource("2_hxbwk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
 shape = SubResource("SphereShape3D_yec2f")
 
-[node name="CameraAttachment" type="Node3D" parent="." unique_id=1210495131 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera")]
-script = ExtResource("5_on3mu")
-applyYRotationTo = NodePath("..")
-fpsCamera = NodePath("Camera3D")
+[node name="CameraAttachment" parent="." unique_id=1146233735 instance=ExtResource("3_pmlno")]
+visible = false
 
-[node name="Camera3D" type="Camera3D" parent="CameraAttachment" unique_id=2145778052]
-physics_interpolation_mode = 1
-size = 15.054
+[node name="ThirdPersonCameraRig" parent="." unique_id=1251641046 instance=ExtResource("4_th1gd")]
+_minPitchDegrees = -85.0
+_maxPitchDegrees = 85.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1394559568]
+mesh = SubResource("SphereMesh_fupvj")

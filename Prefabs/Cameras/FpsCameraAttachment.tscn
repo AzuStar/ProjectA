@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://g4fe3to0kd8e"]
+
+[ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="1_jitn1"]
+
+[node name="CameraAttachment" type="Node3D" unique_id=1146233735 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera")]
+script = ExtResource("1_jitn1")
+applyYRotationTo = NodePath("")
+fpsCamera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1004631300]
+physics_interpolation_mode = 1
+size = 15.054
