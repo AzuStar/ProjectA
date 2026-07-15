@@ -1,6 +1,7 @@
 using Godot;
 using ProjectA.Game;
 using ProjectA.Game.Singletons;
+using ProjectA.Game.UI;
 
 namespace ProjectA.Game.Player;
 
@@ -37,6 +38,9 @@ public partial class DroneCharacterController : CharacterBody3D
     public ShaderMaterial droneScreenMaterial;
 
     public bool acceptInput;
+    public float summonCooldownRemaining;
+    public float summonCooldownDuration;
+
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
 
@@ -50,6 +54,8 @@ public partial class DroneCharacterController : CharacterBody3D
 
     public override void _Process(double delta)
     {
+        TickSummonCooldown(delta);
+
         if (!acceptInput)
         {
             // Not deployed.
@@ -188,11 +194,41 @@ public partial class DroneCharacterController : CharacterBody3D
     {
         acceptInput = false;
         Visible = false;
-        ProcessMode = ProcessModeEnum.Disabled;
+        ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = 0;
         CollisionMask = 0;
         cameraRig.SetActive(false);
 
         Bootstrap.GetGameSubViewportContainer().Material = null;
+    }
+
+    public bool CanSummon()
+    {
+        return summonCooldownRemaining <= 0.0f;
+    }
+
+    public void StartManualUnsummonCooldown()
+    {
+        StartSummonCooldown(PlayerSingleton.Instance.droneManualUnsummonCooldown);
+    }
+
+    public void StartDeathTriggerCooldown()
+    {
+        StartSummonCooldown(PlayerSingleton.Instance.droneDeathTriggerCooldown);
+    }
+
+    private void StartSummonCooldown(float duration)
+    {
+        summonCooldownDuration = duration;
+        summonCooldownRemaining = duration;
+        UiRootSingleton.Instance.levelMenu.UpdateDroneCooldown(summonCooldownRemaining, summonCooldownDuration);
+    }
+
+    private void TickSummonCooldown(double delta)
+    {
+        if (summonCooldownRemaining > 0.0f)
+            summonCooldownRemaining = Mathf.Max(0.0f, summonCooldownRemaining - (float)delta);
+
+        UiRootSingleton.Instance.levelMenu.UpdateDroneCooldown(summonCooldownRemaining, summonCooldownDuration);
     }
 }

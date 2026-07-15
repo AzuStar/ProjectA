@@ -1,4 +1,5 @@
 using Godot;
+using ProjectA.Game.Singletons;
 using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Player;
@@ -37,7 +38,7 @@ public partial class PlayerDroneDuo : Node3D
         }
     }
 
-    private void DisableDrone()
+    public void DisableDrone()
     {
         //Input.MouseMode = Input.MouseModeEnum.Captured;
         currentlyActivePart = DuoTarget.PLAYER;
@@ -45,8 +46,11 @@ public partial class PlayerDroneDuo : Node3D
         player.EnterThisController();
     }
 
-    private void EnableDrone()
+    public void EnableDrone()
     {
+        if (!drone.CanSummon())
+            return;
+
         //Input.MouseMode = Input.MouseModeEnum.Captured;
         currentlyActivePart = DuoTarget.DRONE;
         player.LeaveThisController();
@@ -58,6 +62,7 @@ public partial class PlayerDroneDuo : Node3D
         if (currentlyActivePart == DuoTarget.DRONE)
         {
             DisableDrone();
+            drone.StartManualUnsummonCooldown();
             return;
         }
 

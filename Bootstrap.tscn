@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bso1s6m7sd8yo" path="res://Prefabs/PlayerCharacterDuo.tscn" id="5_pkoba"]
 [ext_resource type="PackedScene" uid="uid://omsfce73as7e" path="res://Prefabs/UI/EscMenu.tscn" id="6_kp64o"]
 [ext_resource type="Script" uid="uid://ccx2buybnyh6u" path="res://Scripts/Singletons/GameManagerSingleton.cs" id="6_og2uw"]
-[ext_resource type="Script" uid="uid://caypo3y062ki" path="res://Scripts/Singletons/MusicPlayerSingleton.cs" id="6_u7nj1"]
 [ext_resource type="PackedScene" uid="uid://bw3er4y3u8cu7" path="res://Prefabs/UI/DeathMenu.tscn" id="7_8vjsl"]
 [ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/Levels/Level1.tscn" id="8_0sf5x"]
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
 [ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
 [ext_resource type="AudioStream" uid="uid://cvtvae5l3mo47" path="res://Assets/Audio/The_Bards_Tale.mp3" id="16_kp64o"]
+[ext_resource type="PackedScene" uid="uid://db2kood0ybpvp" path="res://Prefabs/UI/CreditsMenu.tscn" id="17_4rxdy"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -45,7 +45,7 @@ environment = SubResource("Environment_c4w2e")
 camera_attributes = SubResource("CameraAttributesPractical_7fejw")
 
 [sub_resource type="Curve" id="Curve_ivr1f"]
-_data = [Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.008241758, 0), 0.0, 3.8518515, 0, 0, Vector2(0.53571427, 1), 0.18055591, 0.0, 0, 0]
 point_count = 2
 
 [node name="Bootstrap" type="Node" unique_id=607440252 node_paths=PackedStringArray("gameSvc", "uiSvc")]
@@ -89,7 +89,7 @@ audio_listener_enable_2d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("levelMenu", "escMenu", "mainMenu", "deathMenu")]
+[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("levelMenu", "escMenu", "mainMenu", "deathMenu", "creditsMenu")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -102,6 +102,7 @@ levelMenu = NodePath("LevelMenu")
 escMenu = NodePath("EscMenu")
 mainMenu = NodePath("MainMenu")
 deathMenu = NodePath("DeathMenu")
+creditsMenu = NodePath("CreditsMenu")
 
 [node name="MainMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=951017335 instance=ExtResource("4_q6itx")]
 visible = false
@@ -119,20 +120,26 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Singletons" type="Node" parent="." unique_id=312137959]
+[node name="CreditsMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=776300613 instance=ExtResource("17_4rxdy")]
+visible = false
+layout_mode = 1
 
-[node name="MusicPlayerSingleton" type="Node" parent="Singletons" unique_id=411959746]
-script = ExtResource("6_u7nj1")
+[node name="Singletons" type="Node" parent="." unique_id=312137959]
 
 [node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
 script = ExtResource("6_og2uw")
-gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"), ExtResource("10_4rxdy")])
+gameLevels = Dictionary[int, PackedScene]({
+0: ExtResource("8_0sf5x"),
+1: ExtResource("9_ubwuh"),
+2: ExtResource("10_4rxdy")
+})
 
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
 duoToUse = ExtResource("5_pkoba")
+maxDroneLeashRange = 50.0
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
-droneScreenMaterialFarDimensions = Vector2(240, 135)
+droneScreenMaterialFarDimensions = Vector2(48, 27)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
 
 [node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]

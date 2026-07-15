@@ -38,6 +38,13 @@ public partial class PlayerSingleton : Node
     [Export]
     public Curve droneScreenMaterialDimensionsCurve;
 
+    [ExportGroup("Drone Cooldown")]
+    [Export]
+    public float droneManualUnsummonCooldown = 1.0f;
+
+    [Export]
+    public float droneDeathTriggerCooldown = 10.0f;
+
     public override void _EnterTree()
     {
         if (Instance != null && Instance != this)
@@ -71,14 +78,7 @@ public partial class PlayerSingleton : Node
 
     public void UpdateText()
     {
-        UiRootSingleton.Instance.levelMenu.persistentState.Text = CompileText();
     }
-
-    public string CompileText() =>
-        $"""
-            COINS PICKED UP: {CoinsCollected}
-            PATTED BAX: {BaxPattedTimes} times
-            """;
 
     public static PlayerDroneDuo AcquireDuo()
     {

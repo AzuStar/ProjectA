@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jkw3ks5b3n2l" path="res://Prefabs/Cameras/ThirdPersonCameraRig.tscn" id="4_th1gd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
-radius = 0.2
+radius = 0.521366
 
 [node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "cameraRig")]
 collision_layer = 4

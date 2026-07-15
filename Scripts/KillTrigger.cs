@@ -12,11 +12,16 @@ public partial class KillTrigger : Area3D
 
     private void HandleBodyEntered(Node3D body)
     {
-        if (body is not PlayerCharacterController)
+        if (body is PlayerCharacterController characterController)
         {
+            GameManagerSingleton.currentLevelInstance.CurrentGameState = LevelInstance.GameState.Dead;
             return;
         }
-
-        GameManagerSingleton.currentLevelInstance.CurrentGameState = LevelInstance.GameState.Dead;
+        if (body is DroneCharacterController droneController)
+        {
+            PlayerSingleton.Instance.playerDuo.DisableDrone();
+            droneController.StartDeathTriggerCooldown();
+            return;
+        }
     }
 }
