@@ -14,8 +14,7 @@ namespace ProjectA.Game.Levels;
 /// </summary>
 public partial class LevelInstance : Node3D
 {
-    // read, but dont set. bish
-    public int levelId;
+    public LevelEnum levelId;
 
     [Export]
     public Marker3D spawnPoint;
@@ -35,7 +34,7 @@ public partial class LevelInstance : Node3D
     public LevelInventory inventory = new();
 
     private PlayerDroneDuo _duo;
-    private ulong _startedAt;
+    private double _elapsedTime;
 
     public enum GameState
     {
@@ -54,14 +53,21 @@ public partial class LevelInstance : Node3D
 
     public override void _Ready()
     {
-        _startedAt = Time.GetTicksMsec();
+        _elapsedTime = 0;
         UiRootSingleton.Instance.deathMenu.Hide();
         completionArea.BodyEntered += OnLevelComplete;
         UiRootSingleton.Instance.levelMenu.Show();
+        UiRootSingleton.Instance.levelMenu.UpdateTime(_elapsedTime);
         _duo = PlayerSingleton.AcquireDuo();
 
         PrepareDuo(_duo);
         SetGameState(GameState.Playing);
+    }
+
+    public override void _Process(double delta)
+    {
+        _elapsedTime += delta;
+        UiRootSingleton.Instance.levelMenu.UpdateTime(_elapsedTime);
     }
 
     public override void _EnterTree()
@@ -149,10 +155,9 @@ public partial class LevelInstance : Node3D
 
     private void SaveLevelStars()
     {
-        float timeSpent = (Time.GetTicksMsec() - _startedAt) / 1000.0f;
         LevelSave levelSave = new()
         {
-            timeStar = timeSpent < starTimeTreshold,
+            timeStar = _elapsedTime < starTimeTreshold,
             coinsStar = inventory.items[(int)ItemType.Coin].quantity >= starCoinCollectedTreshold,
             chestsStar = inventory.items[(int)ItemType.Chest].quantity >= starChestsCollectedTreshold,
         };

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b2cd56krvmw44"]
 
 [ext_resource type="Script" uid="uid://deiy5auule1q2" path="res://Scripts/UI/UiMainMenu.cs" id="1_2anv5"]
-[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_f2g53"]
+[ext_resource type="PackedScene" uid="uid://csdrbjss3njjg" path="res://Prefabs/UI/LevelEnterButton.tscn" id="2_2anv5"]
 
-[node name="MainMenu" type="Control" unique_id=951017335 node_paths=PackedStringArray("playButtons")]
+[node name="MainMenu" type="Control" unique_id=951017335]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2anv5")
-playButtons = [NodePath("GridContainer/PlayButton1"), NodePath("GridContainer/PlayButton2"), NodePath("GridContainer/PlayButton3"), NodePath("GridContainer/PlayButton4")]
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1123156276]
 layout_mode = 1
@@ -20,122 +19,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -150.0
-offset_right = 350.0
-offset_bottom = 150.0
+offset_left = -578.0
+offset_top = -284.0
+offset_right = 578.0
+offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="PlayButton1" type="Button" parent="GridContainer" unique_id=1883290174]
-custom_minimum_size = Vector2(200, 100)
+[node name="LevelEnterButton1" parent="GridContainer" unique_id=976185796 instance=ExtResource("2_2anv5")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+levelId = 0
 
-[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="GridContainer/PlayButton1" unique_id=1922871630]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[b]ENTER LEVEL 1[/b]"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_f2g53")
-_max_size = 16
-_current_font_size = 16
-_editor_defaults_set = true
-metadata/_custom_type_script = "uid://co0lo02vnu10n"
-
-[node name="PlayButton2" type="Button" parent="GridContainer" unique_id=830098824]
-custom_minimum_size = Vector2(200, 100)
+[node name="LevelEnterButton2" parent="GridContainer" unique_id=1666678792 instance=ExtResource("2_2anv5")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+levelId = 1
 
-[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="GridContainer/PlayButton2" unique_id=1108712261]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[b]ENTER LEVEL 2[/b]"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_f2g53")
-_max_size = 16
-_current_font_size = 16
-_editor_defaults_set = true
-metadata/_custom_type_script = "uid://co0lo02vnu10n"
-
-[node name="PlayButton3" type="Button" parent="GridContainer" unique_id=1039371476]
-custom_minimum_size = Vector2(200, 100)
+[node name="LevelEnterButton3" parent="GridContainer" unique_id=1346454851 instance=ExtResource("2_2anv5")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+levelId = 2
 
-[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="GridContainer/PlayButton3" unique_id=2012151266]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[b]ENTER LEVEL 3[/b]"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_f2g53")
-_max_size = 16
-_current_font_size = 16
-_editor_defaults_set = true
-metadata/_custom_type_script = "uid://co0lo02vnu10n"
-
-[node name="PlayButton4" type="Button" parent="GridContainer" unique_id=2096926592]
-custom_minimum_size = Vector2(200, 100)
+[node name="LevelEnterButton4" parent="GridContainer" unique_id=1937326396 instance=ExtResource("2_2anv5")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
-[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="GridContainer/PlayButton4" unique_id=1902554120]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[b]ENTER LEVEL 4[/b]"
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_f2g53")
-_max_size = 16
-_current_font_size = 16
-_editor_defaults_set = true
-metadata/_custom_type_script = "uid://co0lo02vnu10n"
+levelId = 3

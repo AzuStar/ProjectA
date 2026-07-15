@@ -71,14 +71,7 @@ public partial class PlayerSingleton : Node
 
     public void UpdateText()
     {
-        UiRootSingleton.Instance.levelMenu.persistentState.Text = CompileText();
     }
-
-    public string CompileText() =>
-        $"""
-            COINS PICKED UP: {CoinsCollected}
-            PATTED BAX: {BaxPattedTimes} times
-            """;
 
     public static PlayerDroneDuo AcquireDuo()
     {

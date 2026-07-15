@@ -7,15 +7,10 @@ namespace ProjectA.Game.UI;
 public partial class UiLevelMenu : Control
 {
     [Export]
-    public RichTextLabel persistentState;
+    public RichTextLabel stateLabel;
 
     [Export]
     public RichTextLabel inventoryLabel;
-
-    public override void _Ready()
-    {
-        base._Ready();
-    }
 
     public void UpdateInventory(LevelInventory inventory)
     {
@@ -25,5 +20,13 @@ public partial class UiLevelMenu : Control
     public void ClearInventory()
     {
         inventoryLabel.Text = string.Empty;
+    }
+
+    public void UpdateTime(double elapsedTime)
+    {
+        int minutes = (int)(elapsedTime / 60);
+        int seconds = (int)elapsedTime % 60;
+        int milliseconds = (int)((elapsedTime - (int)elapsedTime) * 1000);
+        stateLabel.Text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
     }
 }

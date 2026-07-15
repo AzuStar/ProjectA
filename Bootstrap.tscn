@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
 [ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
 [ext_resource type="AudioStream" uid="uid://cvtvae5l3mo47" path="res://Assets/Audio/The_Bards_Tale.mp3" id="16_kp64o"]
+[ext_resource type="PackedScene" uid="uid://db2kood0ybpvp" path="res://Prefabs/UI/CreditsMenu.tscn" id="17_4rxdy"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -89,7 +90,7 @@ audio_listener_enable_2d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("levelMenu", "escMenu", "mainMenu", "deathMenu")]
+[node name="Root" type="Control" parent="Main/UI_SVC/SubViewport" unique_id=496860784 node_paths=PackedStringArray("levelMenu", "escMenu", "mainMenu", "deathMenu", "creditsMenu")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -102,6 +103,7 @@ levelMenu = NodePath("LevelMenu")
 escMenu = NodePath("EscMenu")
 mainMenu = NodePath("MainMenu")
 deathMenu = NodePath("DeathMenu")
+creditsMenu = NodePath("CreditsMenu")
 
 [node name="MainMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=951017335 instance=ExtResource("4_q6itx")]
 visible = false
@@ -119,6 +121,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="CreditsMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=776300613 instance=ExtResource("17_4rxdy")]
+visible = false
+layout_mode = 1
+
 [node name="Singletons" type="Node" parent="." unique_id=312137959]
 
 [node name="MusicPlayerSingleton" type="Node" parent="Singletons" unique_id=411959746]
@@ -126,7 +132,11 @@ script = ExtResource("6_u7nj1")
 
 [node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
 script = ExtResource("6_og2uw")
-gameLevels = Array[PackedScene]([ExtResource("8_0sf5x"), ExtResource("9_ubwuh"), ExtResource("10_4rxdy")])
+gameLevels = Dictionary[int, PackedScene]({
+0: ExtResource("8_0sf5x"),
+1: ExtResource("9_ubwuh"),
+2: ExtResource("10_4rxdy")
+})
 
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
