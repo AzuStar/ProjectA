@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bso1s6m7sd8yo" path="res://Prefabs/PlayerCharacterDuo.tscn" id="5_pkoba"]
 [ext_resource type="PackedScene" uid="uid://omsfce73as7e" path="res://Prefabs/UI/EscMenu.tscn" id="6_kp64o"]
 [ext_resource type="Script" uid="uid://ccx2buybnyh6u" path="res://Scripts/Singletons/GameManagerSingleton.cs" id="6_og2uw"]
-[ext_resource type="Script" uid="uid://caypo3y062ki" path="res://Scripts/Singletons/MusicPlayerSingleton.cs" id="6_u7nj1"]
 [ext_resource type="PackedScene" uid="uid://bw3er4y3u8cu7" path="res://Prefabs/UI/DeathMenu.tscn" id="7_8vjsl"]
 [ext_resource type="PackedScene" uid="uid://6hnjishsb88h" path="res://Prefabs/Levels/Level1.tscn" id="8_0sf5x"]
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
@@ -127,9 +126,6 @@ layout_mode = 1
 
 [node name="Singletons" type="Node" parent="." unique_id=312137959]
 
-[node name="MusicPlayerSingleton" type="Node" parent="Singletons" unique_id=411959746]
-script = ExtResource("6_u7nj1")
-
 [node name="GameManagerSingleton" type="Node" parent="Singletons" unique_id=1063839982]
 script = ExtResource("6_og2uw")
 gameLevels = Dictionary[int, PackedScene]({
@@ -141,6 +137,7 @@ gameLevels = Dictionary[int, PackedScene]({
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
 duoToUse = ExtResource("5_pkoba")
+maxDroneLeashRange = 100.0
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
 droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")

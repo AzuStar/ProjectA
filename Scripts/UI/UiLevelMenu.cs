@@ -12,6 +12,9 @@ public partial class UiLevelMenu : Control
     [Export]
     public RichTextLabel inventoryLabel;
 
+    [Export]
+    public TextureProgressBar droneSkill;
+
     public void UpdateInventory(LevelInventory inventory)
     {
         inventoryLabel.Text = inventory.CompileInventoryText();
@@ -28,5 +31,11 @@ public partial class UiLevelMenu : Control
         int seconds = (int)elapsedTime % 60;
         int milliseconds = (int)((elapsedTime - (int)elapsedTime) * 1000);
         stateLabel.Text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
+    }
+
+    public void UpdateDroneCooldown(float remaining, float duration)
+    {
+        droneSkill.MaxValue = Mathf.Max(1.0f, duration);
+        droneSkill.Value = remaining;
     }
 }

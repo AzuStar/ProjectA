@@ -16,23 +16,11 @@ public partial class RaycastArc3D : Node3D
     public float arcAngle = 45.0f;
 
     [Export]
-    public float raycastLength = 10.0f;
-
-    [Export]
-    public bool raycastsEnabled = true;
-
-    [Export]
-    public Color debugShapeCustomColor = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-
-    [Export(PropertyHint.Range, "1,16,1,or_greater")]
-    public int debugShapeThickness = 1;
+    public PackedScene raycastPrefab;
 
     int lastRaycastCount = -1;
     float lastArcAngle;
-    float lastRaycastLength;
-    bool lastRaycastsEnabled;
-    Color lastDebugShapeCustomColor;
-    int lastDebugShapeThickness;
+    PackedScene lastRaycastPrefab;
     RayCast3D[] raycasts = Array.Empty<RayCast3D>();
 
     public override void _Ready()
@@ -54,16 +42,19 @@ public partial class RaycastArc3D : Node3D
 
     void RebuildRaycasts()
     {
+        if (raycastPrefab == null)
+        {
+            SaveSettings();
+            return;
+        }
+
         RemoveGeneratedRaycasts();
 
         for (int i = 0; i < raycastCount; i++)
         {
-            RayCast3D raycast = new RayCast3D();
+            RayCast3D raycast = raycastPrefab.Instantiate<RayCast3D>();
+            raycast.Position = Vector3.Zero;
             raycast.Name = $"{RaycastNamePrefix}{i:D2}";
-            raycast.Enabled = raycastsEnabled;
-            raycast.TargetPosition = new Vector3(0.0f, 0.0f, -raycastLength);
-            raycast.DebugShapeCustomColor = debugShapeCustomColor;
-            raycast.DebugShapeThickness = debugShapeThickness;
             raycast.Rotation = new Vector3(0.0f, Mathf.DegToRad(GetRaycastAngle(i)), 0.0f);
 
             AddChild(raycast);
@@ -104,20 +95,14 @@ public partial class RaycastArc3D : Node3D
     {
         return raycastCount != lastRaycastCount
             || arcAngle != lastArcAngle
-            || raycastLength != lastRaycastLength
-            || raycastsEnabled != lastRaycastsEnabled
-            || debugShapeCustomColor != lastDebugShapeCustomColor
-            || debugShapeThickness != lastDebugShapeThickness;
+            || raycastPrefab != lastRaycastPrefab;
     }
 
     void SaveSettings()
     {
         lastRaycastCount = raycastCount;
         lastArcAngle = arcAngle;
-        lastRaycastLength = raycastLength;
-        lastRaycastsEnabled = raycastsEnabled;
-        lastDebugShapeCustomColor = debugShapeCustomColor;
-        lastDebugShapeThickness = debugShapeThickness;
+        lastRaycastPrefab = raycastPrefab;
     }
 
     void CacheRaycasts()

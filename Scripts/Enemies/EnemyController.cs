@@ -37,7 +37,7 @@ public partial class EnemyController : CharacterBody3D, IEnemyAnimationControlle
 
     [ExportGroup("View")]
     [Export]
-    RaycastArc3D viewRaycastArc;
+    RaycastArc3D[] viewRaycastArcs;
 
     public override void _Ready()
     {
@@ -68,22 +68,24 @@ public partial class EnemyController : CharacterBody3D, IEnemyAnimationControlle
 
     void ScanForPlayer()
     {
-        for (int i = 0; i < viewRaycastArc.RaycastCount; i++)
+        for (int i = 0; i < viewRaycastArcs.Length; i++)
         {
-            RayCast3D raycast = viewRaycastArc.GetRaycast(i);
+            RaycastArc3D viewRaycastArc = viewRaycastArcs[i];
 
-            if (!raycast.IsColliding())
-                continue;
-
-            Node collider = (Node)raycast.GetCollider();
-
-            if (collider.IsInGroup(GroupsTable.WALLS))
-                continue;
-
-            if (collider.IsInGroup(GroupsTable.PLAYER_MAGE))
+            for (int j = 0; j < viewRaycastArc.RaycastCount; j++)
             {
-                SetLastSeenPlayerPosition((Node3D)collider);
-                return;
+                RayCast3D raycast = viewRaycastArc.GetRaycast(j);
+
+                if (!raycast.IsColliding())
+                    continue;
+
+                Node3D collider = (Node3D)raycast.GetCollider();
+
+                if (collider.IsInGroup(GroupsTable.PLAYER))
+                {
+                    SetLastSeenPlayerPosition(collider);
+                    return;
+                }
             }
         }
     }
