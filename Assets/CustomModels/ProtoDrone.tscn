@@ -7,22 +7,22 @@
 [node name="ProtoDrone" unique_id=1440330270 instance=ExtResource("1_hy6q0")]
 
 [node name="Drone_001" parent="." index="0" unique_id=354211625]
-material_override = ExtResource("2_eiil4")
+material_override = ExtResource("3_qkn41")
 
 [node name="Propeller1" parent="Drone_001" index="0" unique_id=1100853585]
-material_override = ExtResource("2_eiil4")
+material_override = ExtResource("3_qkn41")
 
 [node name="Propeller2" parent="Drone_001" index="1" unique_id=623628063]
-material_override = ExtResource("2_eiil4")
+material_override = ExtResource("3_qkn41")
 
 [node name="Propeller3" parent="Drone_001" index="2" unique_id=1435406721]
-material_override = ExtResource("2_eiil4")
+material_override = ExtResource("3_qkn41")
 
 [node name="Propeller4" parent="Drone_001" index="3" unique_id=464326330]
-material_override = ExtResource("2_eiil4")
+material_override = ExtResource("3_qkn41")
 
 [node name="ProtogenHead" parent="." index="1" unique_id=1256583288]
-material_override = ExtResource("3_qkn41")
+material_override = ExtResource("2_eiil4")
 
 [node name="Tail" parent="." index="2" unique_id=1916261763]
-material_override = ExtResource("3_qkn41")
+material_override = ExtResource("2_eiil4")
