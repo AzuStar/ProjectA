@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://0vttypt5lm24"]
+
+[ext_resource type="Script" uid="uid://84jcahrspmdg" path="res://Scripts/UI/UiLevelMenu.cs" id="1_knby7"]
+[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_tksc0"]
+
+[node name="LevelMenu" type="Control" unique_id=1518218131 node_paths=PackedStringArray("persistentState", "inventoryLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_knby7")
+persistentState = NodePath("PersistentLabel")
+inventoryLabel = NodePath("InventoryLabel")
+
+[node name="PersistentLabel" type="RichTextLabel" parent="." unique_id=518097035]
+layout_mode = 0
+offset_right = 589.0
+offset_bottom = 332.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("2_tksc0")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="InventoryLabel" type="RichTextLabel" parent="." unique_id=771013004]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -749.0
+offset_bottom = 431.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "INVENTORY"
+scroll_active = false
+script = ExtResource("2_tksc0")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"

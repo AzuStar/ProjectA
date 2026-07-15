@@ -98,14 +98,12 @@ public partial class LevelInstance : Node3D
 
         _currentGameState = newState;
 
-        // UiDeathScreenSingleton.Instance.Visible = true;
-
         GD.Print("New game state: " + _currentGameState);
     }
 
-    public void AddItem(Item item)
+    public void AddItem(ItemType type)
     {
-        inventory.Add(item);
+        inventory.Add(type, 1);
         UiRootSingleton.Instance.levelMenu.UpdateInventory(inventory);
     }
 
@@ -119,15 +117,6 @@ public partial class LevelInstance : Node3D
     public bool HasItem(ItemType itemType)
     {
         return inventory.Has(itemType);
-    }
-
-    public string CompileInventoryText()
-    {
-        string[] lines = new string[inventory.items.Count];
-        for (int i = 0; i < inventory.items.Count; i++)
-            lines[i] = inventory.items[i].DisplayText();
-
-        return string.Join("\n", lines);
     }
 
     protected void PrepareDuo(PlayerDroneDuo duo)

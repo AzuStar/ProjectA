@@ -56,6 +56,9 @@ public partial class UiEscMenu : Control
 
     public void OpenMenu()
     {
+        if (Bootstrap.IsGameLocked)
+            return;
+
         Bootstrap.LockGameLock(this);
         Show();
     }
