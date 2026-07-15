@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://botf4iwaysgo1"]
 
 [ext_resource type="PackedScene" uid="uid://btc8gf03ru0c3" path="res://Personal/ScalesStuff/Prefab/Guard.tscn" id="1_6wlyd"]
+[ext_resource type="PackedScene" uid="uid://bq73t3bx6c117" path="res://Personal/ScalesStuff/Prefab/CHAR (1).fbx" id="2_saot4"]
 [ext_resource type="Script" uid="uid://c70es3gaqvc66" path="res://Personal/ScalesStuff/Scripts/Testing Scripts/PlayerMovement.cs" id="6_cul0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_he7nk"]
@@ -193,7 +194,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -19)
 script = ExtResource("6_cul0n")
 speed = 10.0
 
+[node name="CHAR (1)" parent="NavigationRegion3D/Player" unique_id=12739208 instance=ExtResource("2_saot4")]
+transform = Transform3D(0.004818284, 0, -0.414972, 0, 0.415, 0, 0.414972, 0, 0.004818284, 0, -0.8836429, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Player" unique_id=1089098834]
+visible = false
 mesh = SubResource("CapsuleMesh_td3ka")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Player" unique_id=861199409]
