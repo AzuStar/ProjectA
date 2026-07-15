@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cmxbat8j31876"]
+
+[ext_resource type="Script" uid="uid://dxqc6i1kvfcb4" path="res://Scripts/Player/DroneCharacterController.cs" id="1_cwkdp"]
+[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_hxbwk"]
+[ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="5_on3mu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
+radius = 0.2
+
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("fpsCamera")]
+motion_mode = 1
+script = ExtResource("1_cwkdp")
+MaximumSpeed = 12.0
+fpsCamera = NodePath("CameraAttachment")
+droneScreenMaterial = ExtResource("2_hxbwk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
+shape = SubResource("SphereShape3D_yec2f")
+
+[node name="CameraAttachment" type="Node3D" parent="." unique_id=1210495131 node_paths=PackedStringArray("applyYRotationTo", "fpsCamera")]
+script = ExtResource("5_on3mu")
+applyYRotationTo = NodePath("..")
+fpsCamera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="CameraAttachment" unique_id=2145778052]
+physics_interpolation_mode = 1
+size = 15.054

@@ -6,14 +6,18 @@ namespace ProjectA.Game.UI;
 public partial class UiMainMenu : Control
 {
     [Export]
-    public Button playLevel0;
+    public Button[] playButtons;
 
     public override void _Ready()
     {
         base._Ready();
         Show(); // we want main menu to always show up even if someone messed up settings in editor
 
-        playLevel0.Pressed += GameManagerSingleton.MoveToNextLevel;
+        for (int i = 0; i < playButtons.Length; i++)
+        {
+            int levelId = i;
+            playButtons[i].Pressed += () => GameManagerSingleton.MoveToLevel(levelId);
+        }
     }
 
     public new void Hide()

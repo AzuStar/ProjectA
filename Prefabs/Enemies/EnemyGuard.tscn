@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://c3cpwoc5xeiyw"]
+
+[ext_resource type="PackedScene" uid="uid://da53og8kwkrf1" path="res://Prefabs/Enemies/Bodies/KnightBody.tscn" id="1_npaa6"]
+[ext_resource type="Script" uid="uid://ci7qiia4w6vk0" path="res://Scripts/Enemies/EnemyController.cs" id="1_qd8lb"]
+[ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_svn3h"]
+[ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_xraof"]
+[ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="5_qvgyf"]
+[ext_resource type="Script" uid="uid://csu63dg6qesht" path="res://Scripts/States/StateMachine.cs" id="6_1i0r3"]
+[ext_resource type="Script" uid="uid://b112ef8ch41rj" path="res://Scripts/States/PatrollingState.cs" id="7_fxegp"]
+[ext_resource type="Script" uid="uid://c4jqghd77arba" path="res://Scripts/States/ChasingState.cs" id="8_3bpci"]
+[ext_resource type="Script" uid="uid://cqrpxb2v7jmpq" path="res://Scripts/States/SearchState.cs" id="9_mfmdr"]
+[ext_resource type="Script" uid="uid://bhu7sx80myk2d" path="res://Scripts/RaycastArc3D.cs" id="11_q6d2g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvgyf"]
+height = 2.3637695
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3nkid"]
+radius = 0.69677734
+height = 2.41333
+
+[node name="EnemyGuard" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "stateMachine", "patrollingState", "chasingState", "searchState", "viewRaycastArc")]
+script = ExtResource("1_qd8lb")
+animationPlayer = NodePath("AnimationPlayer")
+stateMachine = NodePath("EnemyStateMachine")
+patrollingState = NodePath("EnemyStateMachine/PatrollingState")
+chasingState = NodePath("EnemyStateMachine/ChasingState")
+searchState = NodePath("EnemyStateMachine/SearchState")
+viewRaycastArc = NodePath("RaycastArc3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=658918096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
+shape = SubResource("CapsuleShape3D_qvgyf")
+
+[node name="KnightBody" parent="." unique_id=420466825 instance=ExtResource("1_npaa6")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
+
+[node name="RaycastArc3D" type="Node3D" parent="." unique_id=344361034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("11_q6d2g")
+raycastCount = 8
+arcAngle = 90.0
+
+[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D" unique_id=528938719]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D" unique_id=1006509181]
+transform = Transform3D(0.8467242, 0, -0.5320321, 0, 1, 0, 0.5320321, 0, 0.8467242, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D" unique_id=1737974499]
+transform = Transform3D(0.9438833, 0, -0.33027908, 0, 1, 0, 0.33027908, 0, 0.9438833, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D" unique_id=584557438]
+transform = Transform3D(0.9937122, 0, -0.11196452, 0, 1, 0, 0.11196452, 0, 0.9937122, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D" unique_id=1376291348]
+transform = Transform3D(0.9937122, 0, 0.11196445, 0, 1, 0, -0.11196445, 0, 0.9937122, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D" unique_id=1987610887]
+transform = Transform3D(0.94388336, 0, 0.33027905, 0, 1, 0, -0.33027905, 0, 0.94388336, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D" unique_id=1721047739]
+transform = Transform3D(0.8467242, 0, 0.532032, 0, 1, 0, -0.532032, 0, 0.8467242, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D" unique_id=1550653027]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
+root_node = NodePath("../KnightBody")
+libraries/KayKitAnim = ExtResource("3_svn3h")
+libraries/KayKitAnimMovement = ExtResource("4_xraof")
+
+[node name="DeathTrigger" type="Area3D" parent="." unique_id=1938282717]
+monitorable = false
+script = ExtResource("5_qvgyf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathTrigger" unique_id=1961683105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.206665, 0)
+shape = SubResource("CapsuleShape3D_3nkid")
+debug_color = Color(0.81086147, 0, 0.2450045, 0.41960785)
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=493376242 node_paths=PackedStringArray("startingState")]
+script = ExtResource("6_1i0r3")
+startingState = NodePath("PatrollingState")
+
+[node name="PatrollingState" type="Node" parent="EnemyStateMachine" unique_id=1625720511 node_paths=PackedStringArray("navigationAgent")]
+script = ExtResource("7_fxegp")
+navigationAgent = NodePath("../../NavigationAgent3D")
+
+[node name="ChasingState" type="Node" parent="EnemyStateMachine" unique_id=1391638797 node_paths=PackedStringArray("navigationAgent")]
+script = ExtResource("8_3bpci")
+navigationAgent = NodePath("../../NavigationAgent3D")
+
+[node name="SearchState" type="Node" parent="EnemyStateMachine" unique_id=1152133027 node_paths=PackedStringArray("searchTimer", "nodeToManipulate")]
+script = ExtResource("9_mfmdr")
+searchTimer = NodePath("Timer")
+nodeToManipulate = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="EnemyStateMachine/SearchState" unique_id=20088063]
+wait_time = 2.5
+one_shot = true

@@ -2,5 +2,10 @@ namespace ProjectA.Game.Inventory;
 
 public enum ItemType
 {
-    Key,
+    Key = 0,
+    Coin,
+    Chest,
+
+    //
+    COUNT,
 }

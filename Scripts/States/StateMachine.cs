@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using Godot;
+
+public partial class StateMachine : Node
+{
+    readonly Dictionary<string, IState> states = new Dictionary<string, IState>();
+    public IState currentState;
+
+    [Export]
+    public Node startingState;
+
+    public void StateMachineSetUp()
+    {
+        //populate the dictionary with the children
+        foreach (GodotObject child in GetChildren())
+        {
+            if (child is IState state && child is Node node)
+            {
+                states[node.Name.ToString().ToLower()] = state;
+                state.TransitionEvent += OnStateTransition;
+            }
+        }
+
+        //setup and check the starting current state
+        if (states[startingState.Name.ToString().ToLower()] != null)
+        {
+            currentState = states[startingState.Name.ToString().ToLower()];
+            currentState.Enter();
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (currentState != null)
+            currentState.StateUpdate(delta);
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        if (currentState != null)
+            currentState.StatePhysicsUpdate(delta);
+    }
+
+    void OnStateTransition(IState state, String newStateName)
+    {
+        if (state != currentState)
+            return;
+
+        IState newState = states[newStateName.ToString().ToLower()];
+        if (newState == null)
+            return;
+        if (currentState != null)
+            currentState.Exit();
+        newState.Enter();
+        currentState = newState;
+    }
+}

@@ -25,18 +25,24 @@ public partial class Bootstrap : Node
     /// </summary>
     public HashSet<Node> gameLocks = new HashSet<Node>();
 
+    public static bool IsGameLocked => Instance.gameLocks.Count > 0;
+
     public static void SetGamePausedState(bool locked)
     {
+        ProcessModeEnum processMode;
+
         if (locked)
         {
             Input.MouseMode = Input.MouseModeEnum.Visible;
-            GetGameSvc().ProcessMode = ProcessModeEnum.Disabled;
+            processMode = ProcessModeEnum.Disabled;
         }
         else
         {
-            GetGameSvc().ProcessMode = ProcessModeEnum.Inherit;
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            processMode = ProcessModeEnum.Inherit;
         }
+
+        GetGameSubViewport().SetDeferred(Node.PropertyName.ProcessMode, (int)processMode);
     }
 
     public static void LockGameLock(Node whoIsLocking)
@@ -53,9 +59,11 @@ public partial class Bootstrap : Node
             SetGamePausedState(false);
     }
 
-    public static SubViewport GetGameSvc() => Instance.gameSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetGameSubViewportContainer() => Instance.gameSvc;
+    public static SubViewport GetGameSubViewport() => GetGameSubViewportContainer().GetChild<SubViewport>(0);
 
-    public static SubViewport GetUiSvc() => Instance.uiSvc.GetChild<SubViewport>(0);
+    public static SubViewportContainer GetUiSubViewportContainer() => Instance.uiSvc;
+    public static SubViewport GetUiSubViewport() => GetUiSubViewportContainer().GetChild<SubViewport>(0);
 
     public override void _Process(double delta)
     {

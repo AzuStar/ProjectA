@@ -19,11 +19,7 @@ public partial class UiLevelMenu : Control
 
     public void UpdateInventory(LevelInventory inventory)
     {
-        string[] lines = new string[inventory.items.Count];
-        for (int i = 0; i < inventory.items.Count; i++)
-            lines[i] = inventory.items[i].DisplayText();
-
-        inventoryLabel.Text = string.Join("\n", lines);
+        inventoryLabel.Text = inventory.CompileInventoryText();
     }
 
     public void ClearInventory()
