@@ -28,6 +28,9 @@ public partial class DroneCharacterController : CharacterBody3D
     public bool DriveCameraSmoothingTarget = true;
 
     [Export]
+    public Node3D visualRoot;
+
+    [Export]
     public ThirdPersonCameraRig cameraRig;
 
     [Export]
@@ -51,6 +54,14 @@ public partial class DroneCharacterController : CharacterBody3D
         {
             // Not deployed.
             return;
+        }
+
+        if (Velocity.X != 0.0f || Velocity.Z != 0.0f)
+        {
+            float desiredBearing = Mathf.Atan2(-Velocity.X, -Velocity.Z);
+            Vector3 globalRot = visualRoot.GlobalRotation;
+            globalRot.Y = (float)Mathf.LerpAngle(globalRot.Y, desiredBearing, Acceleration * delta);
+            visualRoot.GlobalRotation = globalRot;
         }
 
         Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;

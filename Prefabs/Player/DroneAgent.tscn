@@ -9,16 +9,19 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
 radius = 0.2
 
-[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("cameraRig")]
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "cameraRig")]
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_cwkdp")
 MaximumSpeed = 12.0
+visualRoot = NodePath("VisualRoot")
 cameraRig = NodePath("ThirdPersonCameraRig")
 droneScreenMaterial = ExtResource("2_hxbwk")
 
-[node name="ProtoDrone" parent="." unique_id=1440330270 instance=ExtResource("3_th1gd")]
+[node name="VisualRoot" type="Node3D" parent="." unique_id=1473117620]
+
+[node name="ProtoDrone" parent="VisualRoot" unique_id=1440330270 instance=ExtResource("3_th1gd")]
 transform = Transform3D(2.9812202e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.9812202e-09, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
