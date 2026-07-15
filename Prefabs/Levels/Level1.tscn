@@ -37,6 +37,8 @@ point_count = 2
 script = ExtResource("1_t7mvc")
 spawnPoint = NodePath("Spawn")
 completionArea = NodePath("Exit")
+starTimeTreshold = 60.0
+starCoinCollectedTreshold = 15
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=405574919]
 transform = Transform3D(-4.371139e-08, -0.104528464, 0.9945219, 0, 0.9945219, 0.104528464, -1, 4.5690842e-09, -4.3471935e-08, 0, 0, 0)
@@ -1322,6 +1324,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -20)
 
 [node name="CoinPickup19" parent="Coins" unique_id=803129721 instance=ExtResource("10_hhpqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -18)
+
+[node name="CoinPickup20" parent="Coins" unique_id=1007006379 instance=ExtResource("10_hhpqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 8)
 
 [node name="Doors" type="Node3D" parent="." unique_id=2097759320 groups=["navmesh"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36, 0, -6)

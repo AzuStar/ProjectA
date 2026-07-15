@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://84jcahrspmdg" path="res://Scripts/UI/UiLevelMenu.cs" id="1_knby7"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_tksc0"]
 
-[node name="LevelMenu" type="Control" unique_id=1518218131 node_paths=PackedStringArray("persistentState", "inventoryLabel")]
+[node name="LevelMenu" type="Control" unique_id=1518218131 node_paths=PackedStringArray("stateLabel", "inventoryLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,10 +12,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_knby7")
-persistentState = NodePath("PersistentLabel")
+stateLabel = NodePath("TimeLabel")
 inventoryLabel = NodePath("InventoryLabel")
 
-[node name="PersistentLabel" type="RichTextLabel" parent="." unique_id=518097035]
+[node name="TimeLabel" type="RichTextLabel" parent="." unique_id=518097035]
 layout_mode = 0
 offset_right = 589.0
 offset_bottom = 332.0

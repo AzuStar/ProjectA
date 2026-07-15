@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://db2kood0ybpvp"]
+
+[ext_resource type="Script" uid="uid://dveai3g1c5lsv" path="res://Scripts/UI/UiCreditsMenu.cs" id="1_y21tt"]
+[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_v1b7t"]
+
+[node name="CreditsMenu" type="Control" unique_id=776300613]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_y21tt")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="." unique_id=1273036403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Credits"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_v1b7t")
+_max_size = 28
+_current_font_size = 28
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"

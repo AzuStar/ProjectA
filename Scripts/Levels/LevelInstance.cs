@@ -2,6 +2,7 @@ using Godot;
 using ProjectA.Game;
 using ProjectA.Game.Inventory;
 using ProjectA.Game.Player;
+using ProjectA.Game.Registry;
 using ProjectA.Game.Singletons;
 using ProjectA.Game.UI;
 using ProjectA.Game.Utils;
@@ -13,8 +14,7 @@ namespace ProjectA.Game.Levels;
 /// </summary>
 public partial class LevelInstance : Node3D
 {
-    // read, but dont set. bish
-    public int levelId;
+    public LevelEnum levelId;
 
     [Export]
     public Marker3D spawnPoint;
@@ -22,9 +22,19 @@ public partial class LevelInstance : Node3D
     [Export]
     public Area3D completionArea;
 
+    [Export]
+    public float starTimeTreshold;
+
+    [Export]
+    public int starCoinCollectedTreshold;
+
+    [Export]
+    public int starChestsCollectedTreshold;
+
     public LevelInventory inventory = new();
 
     private PlayerDroneDuo _duo;
+    private double _elapsedTime;
 
     public enum GameState
     {
@@ -43,13 +53,21 @@ public partial class LevelInstance : Node3D
 
     public override void _Ready()
     {
+        _elapsedTime = 0;
         UiRootSingleton.Instance.deathMenu.Hide();
         completionArea.BodyEntered += OnLevelComplete;
         UiRootSingleton.Instance.levelMenu.Show();
+        UiRootSingleton.Instance.levelMenu.UpdateTime(_elapsedTime);
         _duo = PlayerSingleton.AcquireDuo();
 
         PrepareDuo(_duo);
         SetGameState(GameState.Playing);
+    }
+
+    public override void _Process(double delta)
+    {
+        _elapsedTime += delta;
+        UiRootSingleton.Instance.levelMenu.UpdateTime(_elapsedTime);
     }
 
     public override void _EnterTree()
@@ -130,7 +148,20 @@ public partial class LevelInstance : Node3D
         if (body is not PlayerCharacterController player)
             return;
 
+        SaveLevelStars();
         GD.Print("Moving To Next Level " + GameManagerSingleton.Instance.currentLevel);
         GameManagerSingleton.MoveToNextLevel();
+    }
+
+    private void SaveLevelStars()
+    {
+        LevelSave levelSave = new()
+        {
+            timeStar = _elapsedTime < starTimeTreshold,
+            coinsStar = inventory.items[(int)ItemType.Coin].quantity >= starCoinCollectedTreshold,
+            chestsStar = inventory.items[(int)ItemType.Chest].quantity >= starChestsCollectedTreshold,
+        };
+
+        Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().SaveLevelStars(levelId, levelSave);
     }
 }
