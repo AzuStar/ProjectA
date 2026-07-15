@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
+using ProjectA.Game;
+using ProjectA.Game.Singletons;
 
 /// <summary>
 /// Plays spatial and non-spatial audio in a queue. Singleton pattern instead of a Godot autoload to match the
@@ -55,6 +57,10 @@ public partial class AudioPlayerSingleton : Node
 				else if (child is AudioStreamPlayer3D spatial)
 				{
 					_streamQueueSpatial.Enqueue(spatial);
+
+					// Subviewports can only process audio from their children. So we're forced to send all spatial
+					// players to the game subviewport.
+					spatial.Reparent(Bootstrap.GetGameSubViewport());
 				}
 			}
 		}

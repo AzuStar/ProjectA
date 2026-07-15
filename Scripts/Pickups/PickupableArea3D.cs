@@ -31,7 +31,7 @@ public partial class PickupableArea3D : Area3D
 
         if (_collectionEffect != null && AudioPlayerSingleton.Instance != null)
         {
-            AudioPlayerSingleton.Instance.PlaySfx(_collectionEffect);
+            AudioPlayerSingleton.Instance.PlaySfx(_collectionEffect, GlobalPosition);
         }
         
         PropogateEvent_IPickupReaction(body);
