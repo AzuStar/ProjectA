@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3xwxadjehuhe"]
+
+[ext_resource type="Texture2D" uid="uid://bbcd4iu4lhm6h" path="res://Assets/CustomModels/Textures/Characters/Drone/BlueSpiritoption/ledrone_ProtogenParts_BaseMap.png" id="1_t0rue"]
+[ext_resource type="Texture2D" uid="uid://da4xpxc6ckeam" path="res://Assets/CustomModels/Textures/Characters/Drone/BlueSpiritoption/ledrone_ProtogenParts_MaskMap.png" id="2_mu3r7"]
+[ext_resource type="Texture2D" uid="uid://djih6bc8mukks" path="res://Assets/CustomModels/Textures/Characters/Drone/BlueSpiritoption/ledrone_ProtogenParts_Normal.png" id="3_ttxje"]
+
+[resource]
+albedo_texture = ExtResource("1_t0rue")
+normal_enabled = true
+normal_texture = ExtResource("3_ttxje")
+detail_enabled = true
+detail_mask = ExtResource("2_mu3r7")

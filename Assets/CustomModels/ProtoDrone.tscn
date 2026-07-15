@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://odqskrrft6rj"]
+
+[ext_resource type="PackedScene" uid="uid://d3vwebaf27abb" path="res://Assets/CustomModels/ProtoDrone.glb" id="1_hy6q0"]
+[ext_resource type="Material" uid="uid://i8suwilsdq7r" path="res://Assets/CustomModels/Materials/Drone/BlueSpiritoption/ledrone_ProtogenParts.tres" id="2_eiil4"]
+[ext_resource type="Material" uid="uid://d3xwxadjehuhe" path="res://Assets/CustomModels/Materials/Drone/BlueSpiritoption/ledrone_Drone.tres" id="3_qkn41"]
+
+[node name="ProtoDrone" unique_id=1440330270 instance=ExtResource("1_hy6q0")]
+
+[node name="Drone_001" parent="." index="0" unique_id=354211625]
+material_override = ExtResource("2_eiil4")
+
+[node name="Propeller1" parent="Drone_001" index="0" unique_id=1100853585]
+material_override = ExtResource("2_eiil4")
+
+[node name="Propeller2" parent="Drone_001" index="1" unique_id=623628063]
+material_override = ExtResource("2_eiil4")
+
+[node name="Propeller3" parent="Drone_001" index="2" unique_id=1435406721]
+material_override = ExtResource("2_eiil4")
+
+[node name="Propeller4" parent="Drone_001" index="3" unique_id=464326330]
+material_override = ExtResource("2_eiil4")
+
+[node name="ProtogenHead" parent="." index="1" unique_id=1256583288]
+material_override = ExtResource("3_qkn41")
+
+[node name="Tail" parent="." index="2" unique_id=1916261763]
+material_override = ExtResource("3_qkn41")
