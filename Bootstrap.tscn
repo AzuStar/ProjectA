@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
 [ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
+[ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -130,3 +131,28 @@ duoToUse = ExtResource("5_pkoba")
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
 droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
+
+[node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]
+script = ExtResource("15_im3w0")
+_musicPlayer = NodePath("Music")
+_sfxPlayerContainer = NodePath("SfxContainer")
+
+[node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
+
+[node name="SfxContainer" type="Node" parent="Singletons/AudioPlayerSingleton" unique_id=222861105]
+
+[node name="Sfx1" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=426279871]
+
+[node name="Sfx2" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=440159655]
+
+[node name="Sfx3" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1610119096]
+
+[node name="Sfx4" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1336636052]
+
+[node name="SfxSpatial1" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1144708535]
+
+[node name="SfxSpatial2" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1961548131]
+
+[node name="SfxSpatial3" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=795639260]
+
+[node name="SfxSpatial4" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1565028449]
