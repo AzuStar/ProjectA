@@ -108,7 +108,7 @@ public partial class AudioPlayerSingleton : Node
 		}
 	}
 
-	public void PlaySfx(AudioStream stream)
+	public void PlaySfx(AudioStream stream, float pitchVariance = 0.08f)
 	{
 		if (_streamQueueNonSpatial.TryDequeue(out AudioStreamPlayer nonSpatial))
 		{
@@ -118,12 +118,13 @@ public partial class AudioPlayerSingleton : Node
 			}
 
 			nonSpatial.Stream = stream;
+			nonSpatial.PitchScale = 1.0f + (float)GD.RandRange(-pitchVariance, pitchVariance);
 			nonSpatial.Play();
 			_streamQueueNonSpatial.Enqueue(nonSpatial);
 		}
 	}
 
-	public void PlaySfx(AudioStream stream, Vector3 position)
+	public void PlaySfx(AudioStream stream, Vector3 position, float pitchVariance = 0.08f)
 	{
 		if (_streamQueueSpatial.TryDequeue(out AudioStreamPlayer3D spatial))
 		{
@@ -133,6 +134,7 @@ public partial class AudioPlayerSingleton : Node
 			}
 
 			spatial.Stream = stream;
+			spatial.PitchScale = 1.0f + (float)GD.RandRange(-pitchVariance, pitchVariance);
 			spatial.Position = position;
 			spatial.Play();
 			_streamQueueSpatial.Enqueue(spatial);
