@@ -142,21 +142,30 @@ _sfxPlayerContainer = NodePath("SfxContainer")
 _initialMusic = ExtResource("16_kp64o")
 
 [node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
+bus = &"Music"
 
 [node name="SfxContainer" type="Node" parent="Singletons/AudioPlayerSingleton" unique_id=222861105]
 
 [node name="Sfx1" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=426279871]
+bus = &"SFX"
 
 [node name="Sfx2" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=440159655]
+bus = &"SFX"
 
 [node name="Sfx3" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1610119096]
+bus = &"SFX"
 
 [node name="Sfx4" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1336636052]
+bus = &"SFX"
 
 [node name="SfxSpatial1" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1144708535]
+bus = &"SFX"
 
 [node name="SfxSpatial2" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1961548131]
+bus = &"SFX"
 
 [node name="SfxSpatial3" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=795639260]
+bus = &"SFX"
 
 [node name="SfxSpatial4" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1565028449]
+bus = &"SFX"
