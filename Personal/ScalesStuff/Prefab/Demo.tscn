@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://botf4iwaysgo1"]
 
 [ext_resource type="PackedScene" uid="uid://btc8gf03ru0c3" path="res://Personal/ScalesStuff/Prefab/Guard.tscn" id="1_6wlyd"]
-[ext_resource type="PackedScene" uid="uid://crp7uallexggd" path="res://Personal/ScalesStuff/Prefab/CHAR (1).glb" id="2_saot4"]
 [ext_resource type="Script" uid="uid://c70es3gaqvc66" path="res://Personal/ScalesStuff/Scripts/Testing Scripts/PlayerMovement.cs" id="6_cul0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_he7nk"]
@@ -194,9 +193,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -19)
 script = ExtResource("6_cul0n")
 speed = 10.0
 
-[node name="CHAR (1)2" parent="NavigationRegion3D/Player" unique_id=978895290 instance=ExtResource("2_saot4")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.94789386, 0)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Player" unique_id=1089098834]
 visible = false
 mesh = SubResource("CapsuleMesh_td3ka")
@@ -204,9 +200,8 @@ mesh = SubResource("CapsuleMesh_td3ka")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Player" unique_id=861199409]
 shape = SubResource("ConvexPolygonShape3D_cul0n")
 
-[node name="Enemy" parent="NavigationRegion3D" unique_id=523453618 node_paths=PackedStringArray("Route") instance=ExtResource("1_6wlyd")]
+[node name="Enemy" parent="NavigationRegion3D" unique_id=523453618 instance=ExtResource("1_6wlyd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93927, 1.5240588, -2.905587)
-Route = [NodePath("../PositionA"), NodePath("../PositionA2"), NodePath("../PositionA3"), NodePath("../PositionA4"), NodePath("../PositionA"), NodePath("../PositionA9")]
 NumberOfRaycasts = 20
 ViewAngle = 90.0
 ViewSize = 7.0
