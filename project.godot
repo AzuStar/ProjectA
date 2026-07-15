@@ -14,6 +14,10 @@ config/name="ProjectA.Client"
 run/main_scene="uid://bgr3gte8b0glk"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 
+[audio]
+
+buses/default_bus_layout="uid://dcd2h5gjnsr1o"
+
 [display]
 
 window/size/viewport_width=1920

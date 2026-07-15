@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://eaga04k34yro" path="res://Scripts/Singletons/PlayerSingleton.cs" id="8_awdqo"]
 [ext_resource type="PackedScene" uid="uid://crbpgovng27ev" path="res://Prefabs/Levels/Level2.tscn" id="9_ubwuh"]
 [ext_resource type="PackedScene" uid="uid://bhvnor07qm2xm" path="res://Prefabs/Levels/Level3.tscn" id="10_4rxdy"]
+[ext_resource type="Script" uid="uid://bt341fy2deid0" path="res://Scripts/Singletons/AudioPlayerSingleton.cs" id="15_im3w0"]
+[ext_resource type="AudioStream" uid="uid://cvtvae5l3mo47" path="res://Assets/Audio/The_Bards_Tale.mp3" id="16_kp64o"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_7fejw"]
 exposure_multiplier = 1.115
@@ -69,6 +71,7 @@ handle_input_locally = false
 scaling_3d_mode = 5
 anisotropic_filtering_level = 3
 canvas_item_default_texture_filter = 0
+audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
@@ -82,6 +85,7 @@ own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 use_hdr_2d = true
+audio_listener_enable_2d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
@@ -130,3 +134,38 @@ duoToUse = ExtResource("5_pkoba")
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
 droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
+
+[node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]
+script = ExtResource("15_im3w0")
+_musicPlayer = NodePath("Music")
+_sfxPlayerContainer = NodePath("SfxContainer")
+_initialMusic = ExtResource("16_kp64o")
+
+[node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
+bus = &"Music"
+
+[node name="SfxContainer" type="Node" parent="Singletons/AudioPlayerSingleton" unique_id=222861105]
+
+[node name="Sfx1" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=426279871]
+bus = &"SFX"
+
+[node name="Sfx2" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=440159655]
+bus = &"SFX"
+
+[node name="Sfx3" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1610119096]
+bus = &"SFX"
+
+[node name="Sfx4" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1336636052]
+bus = &"SFX"
+
+[node name="SfxSpatial1" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1144708535]
+bus = &"SFX"
+
+[node name="SfxSpatial2" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1961548131]
+bus = &"SFX"
+
+[node name="SfxSpatial3" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=795639260]
+bus = &"SFX"
+
+[node name="SfxSpatial4" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1565028449]
+bus = &"SFX"
