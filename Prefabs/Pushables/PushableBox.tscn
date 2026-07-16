@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://hdc8elkun8rs"]
 
 [ext_resource type="Script" uid="uid://bh13x1cokmnm6" path="res://Scripts/Pushables/PushableBody.cs" id="1_rc6du"]
-[ext_resource type="Material" uid="uid://b84h0wd4pj6fr" path="res://Resources/InverseHullOutlineMaterial.tres" id="2_stj2h"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="2_stj2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
 size = Vector3(2, 2, 2)
@@ -23,11 +23,11 @@ script = ExtResource("1_rc6du")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_fupvj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626051477]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=329374611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_fupvj")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=329374611]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1101720199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_fupvj")
 surface_material_override/0 = ExtResource("2_stj2h")
