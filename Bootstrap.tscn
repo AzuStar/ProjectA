@@ -45,7 +45,7 @@ environment = SubResource("Environment_c4w2e")
 camera_attributes = SubResource("CameraAttributesPractical_7fejw")
 
 [sub_resource type="Curve" id="Curve_ivr1f"]
-_data = [Vector2(0.008241758, 0), 0.0, 3.8518515, 0, 0, Vector2(0.53571427, 1), 0.18055591, 0.0, 0, 0]
+_data = [Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Bootstrap" type="Node" unique_id=607440252 node_paths=PackedStringArray("gameSvc", "uiSvc")]
@@ -137,9 +137,9 @@ gameLevels = Dictionary[int, PackedScene]({
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
 duoToUse = ExtResource("5_pkoba")
-maxDroneLeashRange = 50.0
+maxDroneLeashRange = 35.0
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
-droneScreenMaterialFarDimensions = Vector2(48, 27)
+droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
 
 [node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]
@@ -149,30 +149,21 @@ _sfxPlayerContainer = NodePath("SfxContainer")
 _initialMusic = ExtResource("16_kp64o")
 
 [node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
-bus = &"Music"
 
 [node name="SfxContainer" type="Node" parent="Singletons/AudioPlayerSingleton" unique_id=222861105]
 
 [node name="Sfx1" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=426279871]
-bus = &"SFX"
 
 [node name="Sfx2" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=440159655]
-bus = &"SFX"
 
 [node name="Sfx3" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1610119096]
-bus = &"SFX"
 
 [node name="Sfx4" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1336636052]
-bus = &"SFX"
 
 [node name="SfxSpatial1" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1144708535]
-bus = &"SFX"
 
 [node name="SfxSpatial2" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1961548131]
-bus = &"SFX"
 
 [node name="SfxSpatial3" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=795639260]
-bus = &"SFX"
 
 [node name="SfxSpatial4" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1565028449]
-bus = &"SFX"
