@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using ProjectA.Game;
 using ProjectA.Game.Singletons;
@@ -7,11 +8,9 @@ namespace ProjectA.Game.Player;
 
 public partial class DroneCharacterController : CharacterBody3D
 {
-    [Export]
-    public float MaximumSpeed = 4.0f;
+    public float maxVelocity = 4.0f;
 
-    [Export]
-    public float Acceleration = 8.0f;
+    public float acceleration = 8.0f;
 
     [Export]
     public float WallBounceRestitution = 0.5f;
@@ -48,6 +47,8 @@ public partial class DroneCharacterController : CharacterBody3D
 
     public override void _Ready()
     {
+        acceleration = PlayerSingleton.Instance.droneAcceleration;
+        maxVelocity = PlayerSingleton.Instance.droneMovementMaxVelocity;
         _enabledCollisionLayer = CollisionLayer;
         _enabledCollisionMask = CollisionMask;
     }
@@ -66,15 +67,18 @@ public partial class DroneCharacterController : CharacterBody3D
         {
             float desiredBearing = Mathf.Atan2(-Velocity.X, -Velocity.Z);
             Vector3 globalRot = visualRoot.GlobalRotation;
-            globalRot.Y = (float)Mathf.LerpAngle(globalRot.Y, desiredBearing, Acceleration * delta);
+            globalRot.Y = (float)Mathf.LerpAngle(globalRot.Y, desiredBearing, acceleration * delta);
             visualRoot.GlobalRotation = globalRot;
         }
 
         Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
         float currentLeashLength = leashVector.Length();
-        float leashNorm = Mathf.InverseLerp(0.0f,  PlayerSingleton.Instance.maxDroneLeashRange, currentLeashLength);
+        float leashNorm = Mathf.InverseLerp(0.0f, PlayerSingleton.Instance.maxDroneLeashRange, currentLeashLength);
         float sample = PlayerSingleton.Instance.droneScreenMaterialDimensionsCurve.Sample(leashNorm);
-        Vector2 desiredDimensions = PlayerSingleton.Instance.droneScreenMaterialCloseDimensions.Lerp(PlayerSingleton.Instance.droneScreenMaterialFarDimensions, sample);
+        Vector2 desiredDimensions = PlayerSingleton.Instance.droneScreenMaterialCloseDimensions.Lerp(
+            PlayerSingleton.Instance.droneScreenMaterialFarDimensions,
+            sample
+        );
 
         droneScreenMaterial.SetShaderParameter("target_x_pixel_count", desiredDimensions.X);
         droneScreenMaterial.SetShaderParameter("target_y_pixel_count", desiredDimensions.Y);
@@ -88,21 +92,23 @@ public partial class DroneCharacterController : CharacterBody3D
         }
 
         Vector3 direction = GetMovementDirection();
-        Vector3 desiredVelocity = direction * MaximumSpeed;
+        Vector3 desiredVelocity = direction * maxVelocity;
 
-        Velocity = Velocity.MoveToward(desiredVelocity, Acceleration * (float)delta);
+        Velocity = Velocity.MoveToward(desiredVelocity, acceleration * (float)delta);
         MoveAndSlide();
 
         Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
         float currentLeashLengthSqr = leashVector.LengthSquared();
-        float maxLeashLengthSqr = PlayerSingleton.Instance.maxDroneLeashRange * PlayerSingleton.Instance.maxDroneLeashRange;
+        float maxLeashLengthSqr =
+            PlayerSingleton.Instance.maxDroneLeashRange * PlayerSingleton.Instance.maxDroneLeashRange;
 
         if (currentLeashLengthSqr > maxLeashLengthSqr)
         {
             Vector3 leashVectorNormalized = leashVector.Normalized();
-            
+
             // Pull back.
-            GlobalPosition = _leashRoot.GlobalPosition + (leashVectorNormalized * PlayerSingleton.Instance.maxDroneLeashRange);
+            GlobalPosition =
+                _leashRoot.GlobalPosition + (leashVectorNormalized * PlayerSingleton.Instance.maxDroneLeashRange);
 
             // Bounce off the sphere with restitution
             Velocity = Velocity.Bounce(-leashVectorNormalized) * LeashSphereBounceRestitution;
@@ -130,7 +136,7 @@ public partial class DroneCharacterController : CharacterBody3D
         Vector3 inputDirection = GetInputDirection();
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
-        
+
         Basis cameraBasis = cameraRig.GetCameraBasis();
         return cameraBasis * inputDirection;
     }
@@ -159,7 +165,7 @@ public partial class DroneCharacterController : CharacterBody3D
             direction.X += 1.0f;
         }
 
-        if (Input.IsKeyPressed(Key.Ctrl))
+        if (Input.IsKeyPressed(Key.Shift))
         {
             direction.Y -= 1.0f;
         }
@@ -207,9 +213,9 @@ public partial class DroneCharacterController : CharacterBody3D
         return summonCooldownRemaining <= 0.0f;
     }
 
-    public void StartManualUnsummonCooldown()
+    public void StartUnsummonCooldown(float cooldown)
     {
-        StartSummonCooldown(PlayerSingleton.Instance.droneManualUnsummonCooldown);
+        StartSummonCooldown(cooldown);
     }
 
     public void StartDeathTriggerCooldown()

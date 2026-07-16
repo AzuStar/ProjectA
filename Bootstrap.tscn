@@ -104,6 +104,15 @@ mainMenu = NodePath("MainMenu")
 deathMenu = NodePath("DeathMenu")
 creditsMenu = NodePath("CreditsMenu")
 
+[node name="FloatingPopupsMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=1722422474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="MainMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=951017335 instance=ExtResource("4_q6itx")]
 visible = false
 layout_mode = 1
@@ -141,6 +150,7 @@ maxDroneLeashRange = 50.0
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
 droneScreenMaterialFarDimensions = Vector2(48, 27)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
+mageMovementSpeed = 5.0
 
 [node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]
 script = ExtResource("15_im3w0")

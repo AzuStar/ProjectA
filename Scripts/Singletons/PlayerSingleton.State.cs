@@ -1,21 +1,42 @@
+using Godot;
+
 namespace ProjectA.Game.Singletons;
 
 public partial class PlayerSingleton
 {
-    private int _coinsCollected;
+    [Export]
+    public float cameraMouseSensitivity = 0.0025f;
 
-    public int CoinsCollected
-    {
-        get => _coinsCollected;
-        set
-        {
-            if (_coinsCollected == value)
-                return;
+    // =====================================================
+    [ExportGroup("Drone Leash")]
+    [Export]
+    public float maxDroneLeashRange = 10.0f;
 
-            _coinsCollected = value;
-            UpdateText();
-        }
-    }
+    [Export]
+    public Vector2 droneScreenMaterialCloseDimensions;
 
-    public int BaxPattedTimes;
+    [Export]
+    public Vector2 droneScreenMaterialFarDimensions;
+
+    [Export]
+    public Curve droneScreenMaterialDimensionsCurve;
+
+    // =====================================================
+    [ExportGroup("Mage Config")]
+    [Export]
+    public float mageMovementSpeed;
+
+    // =====================================================
+    [ExportGroup("Drone Config")]
+    [Export]
+    public float droneManualUnsummonCooldown = 1.0f;
+
+    [Export]
+    public float droneDeathTriggerCooldown = 10.0f;
+
+    [Export]
+    public float droneMovementMaxVelocity = 4;
+
+    [Export]
+    public float droneAcceleration = 4;
 }
