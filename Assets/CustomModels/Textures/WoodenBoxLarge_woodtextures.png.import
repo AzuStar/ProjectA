@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://n4hv643blcff"
-path.s3tc="res://.godot/imported/WoodenBoxLarge_woodtextures.png-66f2cc3daca0573187232f8a0760dc47.s3tc.ctex"
+path.s3tc="res://.godot/imported/WoodenBoxLarge_woodtextures.png-c3b5e4aac4b53b05f431dc04ab7e7522.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/CustomModels/WoodenBoxLarge_woodtextures.png"
-dest_files=["res://.godot/imported/WoodenBoxLarge_woodtextures.png-66f2cc3daca0573187232f8a0760dc47.s3tc.ctex"]
+source_file="res://Assets/CustomModels/Textures/WoodenBoxLarge_woodtextures.png"
+dest_files=["res://.godot/imported/WoodenBoxLarge_woodtextures.png-c3b5e4aac4b53b05f431dc04ab7e7522.s3tc.ctex"]
 
 [params]
 

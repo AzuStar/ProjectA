@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8go436d4hjvd"
-path.s3tc="res://.godot/imported/TableShort_woodtextures.png-674384d51b5b4438c74a071481489dec.s3tc.ctex"
+uid="uid://bg8nu1qk67c18"
+path.s3tc="res://.godot/imported/barrelfurrygamejam2_0.png-904289bc5120d86d469e6b50392cb8ed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a24aca01e5e70232a0db884d4d3800c1"
+"md5": "f72559e42572c61409b296171fd64b92"
 }
 
 [deps]
 
-source_file="res://Assets/CustomModels/Textures/TableShort_woodtextures.png"
-dest_files=["res://.godot/imported/TableShort_woodtextures.png-674384d51b5b4438c74a071481489dec.s3tc.ctex"]
+source_file="res://Assets/CustomModels/Textures/Decorations/Barrel1/barrelfurrygamejam2_0.png"
+dest_files=["res://.godot/imported/barrelfurrygamejam2_0.png-904289bc5120d86d469e6b50392cb8ed.s3tc.ctex"]
 
 [params]
 

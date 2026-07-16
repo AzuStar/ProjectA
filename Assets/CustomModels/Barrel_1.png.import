@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8go436d4hjvd"
-path.s3tc="res://.godot/imported/TableShort_woodtextures.png-674384d51b5b4438c74a071481489dec.s3tc.ctex"
+uid="uid://by2qodboumcrk"
+path.s3tc="res://.godot/imported/Barrel_1.png-1217214b14fbe3baf7d0e1f6a0b5b3fa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a24aca01e5e70232a0db884d4d3800c1"
+"md5": "990aeae0c3c3e5acf60172145b1ba599"
 }
 
 [deps]
 
-source_file="res://Assets/CustomModels/Textures/TableShort_woodtextures.png"
-dest_files=["res://.godot/imported/TableShort_woodtextures.png-674384d51b5b4438c74a071481489dec.s3tc.ctex"]
+source_file="res://Assets/CustomModels/Barrel_1.png"
+dest_files=["res://.godot/imported/Barrel_1.png-1217214b14fbe3baf7d0e1f6a0b5b3fa.s3tc.ctex"]
 
 [params]
 
@@ -29,8 +29,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://Assets/CustomModels/Barrel_2.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

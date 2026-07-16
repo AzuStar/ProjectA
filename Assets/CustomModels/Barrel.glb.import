@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1cqwby5014i5"
-path="res://.godot/imported/DroneNoHairWithBone.glb-7163b824d589b6ddc0aa8cdb89e0e42a.scn"
+uid="uid://c3y2dg5202uca"
+path="res://.godot/imported/Barrel.glb-0ea0b0bc9288d9d5cb9d238e75f337af.scn"
 
 [deps]
 
-source_file="res://Assets/CustomModels/CharacterModels/DroneNoHairWithBone.glb"
-dest_files=["res://.godot/imported/DroneNoHairWithBone.glb-7163b824d589b6ddc0aa8cdb89e0e42a.scn"]
+source_file="res://Assets/CustomModels/Barrel.glb"
+dest_files=["res://.godot/imported/Barrel.glb-0ea0b0bc9288d9d5cb9d238e75f337af.scn"]
 
 [params]
 
