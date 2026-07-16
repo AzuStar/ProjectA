@@ -39,6 +39,27 @@ public partial class ChasingState : Node, IState
 
     public void SetAnimationController(IEnemyAnimationController value) => animationController = value;
 
+    public uint NavigationMapIteration()
+    {
+        return NavigationServer3D.MapGetIterationId(navigationAgent.GetNavigationMap());
+    }
+
+    public bool NavigationMapReady()
+    {
+        return NavigationMapIteration() != 0;
+    }
+
+    public bool NavigationMapReadyAfter(uint iteration)
+    {
+        uint currentIteration = NavigationMapIteration();
+        return currentIteration != 0 && currentIteration != iteration;
+    }
+
+    public void SetIdleTarget(Vector3 position)
+    {
+        navigationAgent.TargetPosition = Flatten(position);
+    }
+
     public void SetGoal(Vector3 goalPosition)
     {
         currentGoal = GetClosestNavigationPoint(goalPosition);
@@ -119,6 +140,9 @@ public partial class ChasingState : Node, IState
 
     Vector3 GetClosestNavigationPoint(Vector3 position)
     {
+        if (!NavigationMapReady())
+            return Flatten(position);
+
         return NavigationServer3D.MapGetClosestPoint(navigationAgent.GetNavigationMap(), position);
     }
 

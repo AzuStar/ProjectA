@@ -3,6 +3,7 @@ using ProjectA.Game;
 using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Enemies;
+
 public partial class EnemyController : CharacterBody3D, IEnemyAnimationController
 {
     public const string IdleAnimation = "KayKitAnim/Idle_A";
@@ -42,6 +43,7 @@ public partial class EnemyController : CharacterBody3D, IEnemyAnimationControlle
     public override void _Ready()
     {
         PlayAnimation(IdleAnimation);
+        chasingState.SetIdleTarget(GlobalPosition);
         SetupStates();
     }
 

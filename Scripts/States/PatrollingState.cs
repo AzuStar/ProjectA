@@ -37,8 +37,6 @@ public partial class PatrollingState : Node, IState
     {
         //TransitionEvent?.Invoke(this,"ChasingState");
         SetCurrentGoal();
-
-        navigationAgent.TargetPosition = currentGoal;
     }
 
     public void Exit()
@@ -56,7 +54,10 @@ public partial class PatrollingState : Node, IState
         Vector3 currentPosition = Flatten(Character.GlobalPosition);
         Vector3 reachableGoal = Flatten(navigationAgent.GetFinalPosition());
 
-        if (navigationAgent.IsNavigationFinished() || currentPosition.DistanceTo(reachableGoal) <= patrolGoalStopThreshold)
+        if (
+            navigationAgent.IsNavigationFinished()
+            || currentPosition.DistanceTo(reachableGoal) <= patrolGoalStopThreshold
+        )
         {
             currentIndex++;
 
