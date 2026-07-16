@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using ProjectA.Game;
+using ProjectA.Game.Pickups;
 using ProjectA.Game.Singletons;
 using ProjectA.Game.UI;
 
@@ -37,9 +38,13 @@ public partial class DroneCharacterController : CharacterBody3D
     [Export]
     public ShaderMaterial droneScreenMaterial;
 
+    [Export]
+    public Node3D keyCarryRoot;
+
     public bool acceptInput;
     public float summonCooldownRemaining;
     public float summonCooldownDuration;
+    public PickupableByDroneArea3D carriedPickup;
 
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
@@ -218,6 +223,42 @@ public partial class DroneCharacterController : CharacterBody3D
         cameraRig.SetActive(false);
 
         Bootstrap.GetGameSubViewportContainer().Material = null;
+    }
+
+    public bool TryCarryPickup(PickupableByDroneArea3D pickupable)
+    {
+        if (carriedPickup != null)
+            return false;
+
+        carriedPickup = pickupable;
+        carriedPickup.AttachToDrone(this, keyCarryRoot);
+        return true;
+    }
+
+    public void DropCarriedPickup()
+    {
+        if (carriedPickup == null)
+            return;
+
+        PickupableByDroneArea3D pickupable = carriedPickup;
+        carriedPickup = null;
+        pickupable.Drop(GlobalPosition);
+    }
+
+    public void RespawnCarriedPickup()
+    {
+        if (carriedPickup == null)
+            return;
+
+        PickupableByDroneArea3D pickupable = carriedPickup;
+        carriedPickup = null;
+        pickupable.Respawn();
+    }
+
+    public void ReleaseCarriedPickup(PickupableByDroneArea3D pickupable)
+    {
+        if (carriedPickup == pickupable)
+            carriedPickup = null;
     }
 
     public bool CanSummon()

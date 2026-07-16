@@ -9,7 +9,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_yec2f"]
 radius = 0.521366
 
-[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "cameraRig")]
+[node name="DroneAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "cameraRig", "keyCarryRoot")]
 collision_layer = 4
 collision_mask = 23
 motion_mode = 1
@@ -19,6 +19,7 @@ PushSpeed = 5.0
 visualRoot = NodePath("VisualRoot")
 cameraRig = NodePath("ThirdPersonCameraRig")
 droneScreenMaterial = ExtResource("2_hxbwk")
+keyCarryRoot = NodePath("KeyCarryRoot")
 
 [node name="VisualRoot" type="Node3D" parent="." unique_id=1473117620]
 
@@ -27,6 +28,9 @@ transform = Transform3D(2.9812202e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.9812202e
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2062158468]
 shape = SubResource("SphereShape3D_yec2f")
+
+[node name="KeyCarryRoot" type="Marker3D" parent="." unique_id=1786903195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.65, 0)
 
 [node name="CameraAttachment" parent="." unique_id=1146233735 instance=ExtResource("3_pmlno")]
 visible = false
