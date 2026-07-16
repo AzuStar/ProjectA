@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpapogrh4423a"
-path.s3tc="res://.godot/imported/HexagonTiles_AndesitePlaceholderReverse.png-1d3da204f37e74582e1760de6d98e97c.s3tc.ctex"
+path.s3tc="res://.godot/imported/HexagonTiles_AndesitePlaceholderReverse.png-8f7499d36fbc3a847fdc9ab60b7840e4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/CustomModels/HexagonTiles_AndesitePlaceholderReverse.png"
-dest_files=["res://.godot/imported/HexagonTiles_AndesitePlaceholderReverse.png-1d3da204f37e74582e1760de6d98e97c.s3tc.ctex"]
+source_file="res://Assets/CustomModels/Textures/HexagonTiles_AndesitePlaceholderReverse.png"
+dest_files=["res://.godot/imported/HexagonTiles_AndesitePlaceholderReverse.png-8f7499d36fbc3a847fdc9ab60b7840e4.s3tc.ctex"]
 
 [params]
 

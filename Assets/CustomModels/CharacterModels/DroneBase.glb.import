@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://tgw2j836mawv"
-path="res://.godot/imported/DroneBase.glb-e240e118e04bfed0cb694b0cf3f8f18e.scn"
+path="res://.godot/imported/DroneBase.glb-c025a892ec32ea38be3fccaa38807353.scn"
 
 [deps]
 
-source_file="res://Assets/CustomModels/DroneBase.glb"
-dest_files=["res://.godot/imported/DroneBase.glb-e240e118e04bfed0cb694b0cf3f8f18e.scn"]
+source_file="res://Assets/CustomModels/CharacterModels/DroneBase.glb"
+dest_files=["res://.godot/imported/DroneBase.glb-c025a892ec32ea38be3fccaa38807353.scn"]
 
 [params]
 
