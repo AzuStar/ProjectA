@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3cpwoc5xeiyw" path="res://Prefabs/Enemies/EnemyGuard.tscn" id="12_gafx7"]
 [ext_resource type="PackedScene" uid="uid://deqyvc2s3pfdv" path="res://Prefabs/Triggers/PlotHole.tscn" id="13_3nkid"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
+[ext_resource type="PackedScene" uid="uid://hdc8elkun8rs" path="res://Prefabs/Pushables/PushableBox.tscn" id="14_3ou73"]
 [ext_resource type="PackedScene" uid="uid://wi1aycc46auc" path="res://Prefabs/Triggers/WallSwitch.tscn" id="14_3ou73"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
@@ -1395,6 +1396,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, 
 
 [node name="KeyPickup2" parent="." unique_id=1523782485 instance=ExtResource("9_c2cqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -18)
+
+[node name="PushableBox" parent="." unique_id=97837123 instance=ExtResource("14_3ou73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4, 17)
 
 [node name="Switch" parent="." unique_id=315961888 node_paths=PackedStringArray("triggerable") instance=ExtResource("14_3ou73")]
 transform = Transform3D(-1.7703112e-08, 0, -0.405, 0, 0.405, 0, 0.405, 0, -1.7703112e-08, 65.54711, 1.5207183, 8.297731)

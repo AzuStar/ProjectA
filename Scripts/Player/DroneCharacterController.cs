@@ -11,7 +11,8 @@ public partial class DroneCharacterController : CharacterBody3D
     public float maxVelocity = 4.0f;
 
     public float acceleration = 8.0f;
-
+    [Export]
+    public float PushSpeed = 2.0f;
     [Export]
     public float WallBounceRestitution = 0.5f;
 
@@ -120,11 +121,22 @@ public partial class DroneCharacterController : CharacterBody3D
             KinematicCollision3D slideCollision = GetSlideCollision(i);
             if (slideCollision != null)
             {
-                bounced = true;
+                bool didPush = false;
                 Vector3 normal = slideCollision.GetNormal();
-                Velocity = Velocity.Bounce(normal);
+                if (slideCollision.GetCollider() is PushableBody pushable)
+                {
+                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                    didPush = pushable.TryPush(push);
+                }
+
+                if (!didPush)
+                {
+                    bounced = true;
+                    Velocity = Velocity.Bounce(normal);    
+                }
             }
         }
+
         if (bounced)
         {
             Velocity *= WallBounceRestitution;

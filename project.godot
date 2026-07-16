@@ -88,10 +88,12 @@ interact={
 3d_physics/layer_2="PlayerCharacter"
 3d_physics/layer_3="DroneCharacter"
 3d_physics/layer_4="Enemy"
+3d_physics/layer_5="Pushable"
 
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/default_gravity=24.0
 common/physics_interpolation=true
 
 [rendering]
