@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hdc8elkun8rs"]
 
 [ext_resource type="Script" uid="uid://bh13x1cokmnm6" path="res://Scripts/Pushables/PushableBody.cs" id="1_rc6du"]
+[ext_resource type="PackedScene" uid="uid://b20ydpmjje60w" path="res://Assets/CustomModels/WoodenBoxLarge.glb" id="2_llnfr"]
 [ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="2_stj2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
@@ -25,7 +26,11 @@ shape = SubResource("BoxShape3D_fupvj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=329374611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("BoxMesh_fupvj")
+
+[node name="WoodenBoxLarge2" parent="." unique_id=606934656 instance=ExtResource("2_llnfr")]
+transform = Transform3D(0.49042276, 0, 0, 0, 0.92729646, 0, 0, 0, 0.8966606, 0, 0.9860194, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1101720199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
