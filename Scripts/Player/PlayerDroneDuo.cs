@@ -62,7 +62,7 @@ public partial class PlayerDroneDuo : Node3D
         if (currentlyActivePart == DuoTarget.DRONE)
         {
             DisableDrone();
-            drone.StartManualUnsummonCooldown();
+            drone.StartUnsummonCooldown(PlayerSingleton.Instance.droneManualUnsummonCooldown);
             return;
         }
 

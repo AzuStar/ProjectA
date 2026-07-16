@@ -21,6 +21,14 @@ exitButton = NodePath("Exit")
 resumeButton = NodePath("Resume")
 restartLevelButton = NodePath("RestartLevel")
 
+[node name="Panel" type="Panel" parent="." unique_id=429967151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="RestartLevel" type="Button" parent="." unique_id=1018281083]
 layout_mode = 1
 anchors_preset = 2

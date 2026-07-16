@@ -9,12 +9,14 @@ public partial class TriggerVolume : Area3D
     /// <summary>
     /// The triggerable this trigger volume will activate and deactivate.
     /// </summary>
-    [Export] private Triggerable _triggerable;
-    
+    [Export]
+    private Triggerable _triggerable;
+
     /// <summary>
     /// If set, activate once on entry and then never again, and never deactivate on exit.
     /// </summary>
-    [Export] private bool _oneShot;
+    [Export]
+    private bool _oneShot;
 
     public override void _Ready()
     {
