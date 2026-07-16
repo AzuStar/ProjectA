@@ -1,5 +1,6 @@
 using Godot;
 using ProjectA.Game.Player;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Pickups;
 
@@ -20,7 +21,12 @@ public partial class PickupableByDroneArea3D : PickupableArea3D
     protected override void OnBodyEntered(Node3D body)
     {
         if (pickedUp)
+        {
+            if (_carryingDrone != null && body is PlayerCharacterController)
+                DeliverToPlayer(body);
+
             return;
+        }
 
         if (body is DroneCharacterController droneController)
         {
@@ -32,6 +38,15 @@ public partial class PickupableByDroneArea3D : PickupableArea3D
         }
 
         base.OnBodyEntered(body);
+    }
+
+    private void DeliverToPlayer(Node3D body)
+    {
+        _carryingDrone.ReleaseCarriedPickup(this);
+        _carryingDrone = null;
+        PickUp(body);
+        GameManagerSingleton.currentLevelInstance.AddItem(itemType, 1);
+        rootNode.QueueFree();
     }
 
     public void AttachToDrone(DroneCharacterController droneController, Node3D droneCarryRoot)

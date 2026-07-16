@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bflahou4nlmvh"]
-
-[ext_resource type="PackedScene" uid="uid://bfypqtveatpmp" path="res://Assets/Adventurers/Chars/Rogue.glb" id="1_elv4e"]
-
-[node name="RogueBody" unique_id=966960816 instance=ExtResource("1_elv4e")]

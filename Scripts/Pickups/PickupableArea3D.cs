@@ -14,9 +14,6 @@ public partial class PickupableArea3D : Area3D
     public ItemType itemType;
     protected bool pickedUp;
 
-    [Export]
-    public AudioStream _collectionEffect;
-
     public override void _Ready()
     {
         BodyEntered += OnBodyEntered;
@@ -35,11 +32,6 @@ public partial class PickupableArea3D : Area3D
     protected void PickUp(Node3D body)
     {
         pickedUp = true;
-
-        if (_collectionEffect != null && AudioPlayerSingleton.Instance != null)
-        {
-            AudioPlayerSingleton.Instance.PlaySfx(_collectionEffect, GlobalPosition);
-        }
 
         PropogateEvent_IPickupReaction(body);
     }
