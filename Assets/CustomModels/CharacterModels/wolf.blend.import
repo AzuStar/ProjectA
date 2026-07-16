@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dtrf1l27g4ci5"
-path="res://.godot/imported/wolf.blend-6f36c5d9c1b352b53298759cca7456cb.scn"
+path="res://.godot/imported/wolf.blend-fcfa36e07b4740c2986b7141b5e27a29.scn"
 
 [deps]
 
-source_file="res://Assets/CustomModels/PlaceholderTexs/CharacterModels/wolf.blend"
-dest_files=["res://.godot/imported/wolf.blend-6f36c5d9c1b352b53298759cca7456cb.scn"]
+source_file="res://Assets/CustomModels/CharacterModels/wolf.blend"
+dest_files=["res://.godot/imported/wolf.blend-fcfa36e07b4740c2986b7141b5e27a29.scn"]
 
 [params]
 

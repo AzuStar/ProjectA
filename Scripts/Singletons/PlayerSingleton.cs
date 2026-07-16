@@ -17,33 +17,11 @@ public partial class PlayerSingleton : Node
     [Export]
     public PackedScene duoToUse;
 
+    /// <summary>
+    /// Dont modify this
+    /// </summary>
     [Export]
     public PlayerDroneDuo playerDuo;
-
-    private bool _isPlayerDuoPrepared;
-
-    [Export]
-    public float MouseSensitivity = 0.0025f;
-
-    [ExportGroup("Drone Leash")]
-    [Export]
-    public float maxDroneLeashRange = 10.0f;
-
-    [Export]
-    public Vector2 droneScreenMaterialCloseDimensions;
-
-    [Export]
-    public Vector2 droneScreenMaterialFarDimensions;
-
-    [Export]
-    public Curve droneScreenMaterialDimensionsCurve;
-
-    [ExportGroup("Drone Cooldown")]
-    [Export]
-    public float droneManualUnsummonCooldown = 1.0f;
-
-    [Export]
-    public float droneDeathTriggerCooldown = 10.0f;
 
     public override void _EnterTree()
     {
@@ -73,12 +51,10 @@ public partial class PlayerSingleton : Node
         if (playerDuo == null)
             return;
 
-        playerDuo.HandleInput(@event, MouseSensitivity);
+        playerDuo.HandleInput(@event, cameraMouseSensitivity);
     }
 
-    public void UpdateText()
-    {
-    }
+    public void UpdateText() { }
 
     public static PlayerDroneDuo AcquireDuo()
     {

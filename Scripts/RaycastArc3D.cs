@@ -7,8 +7,6 @@ namespace ProjectA.Game;
 [GlobalClass]
 public partial class RaycastArc3D : Node3D
 {
-    const string RaycastNamePrefix = "Raycast";
-
     [Export(PropertyHint.Range, "0,128,1,or_greater")]
     public int raycastCount = 6;
 
@@ -54,7 +52,6 @@ public partial class RaycastArc3D : Node3D
         {
             RayCast3D raycast = raycastPrefab.Instantiate<RayCast3D>();
             raycast.Position = Vector3.Zero;
-            raycast.Name = $"{RaycastNamePrefix}{i:D2}";
             raycast.Rotation = new Vector3(0.0f, Mathf.DegToRad(GetRaycastAngle(i)), 0.0f);
 
             AddChild(raycast);
@@ -73,7 +70,7 @@ public partial class RaycastArc3D : Node3D
         {
             Node child = GetChild(i);
 
-            if (!child.Name.ToString().StartsWith(RaycastNamePrefix, StringComparison.Ordinal))
+            if (child is not RayCast3D)
                 continue;
 
             RemoveChild(child);
@@ -93,9 +90,7 @@ public partial class RaycastArc3D : Node3D
 
     bool SettingsChanged()
     {
-        return raycastCount != lastRaycastCount
-            || arcAngle != lastArcAngle
-            || raycastPrefab != lastRaycastPrefab;
+        return raycastCount != lastRaycastCount || arcAngle != lastArcAngle || raycastPrefab != lastRaycastPrefab;
     }
 
     void SaveSettings()
@@ -110,7 +105,7 @@ public partial class RaycastArc3D : Node3D
         raycasts = new RayCast3D[raycastCount];
 
         for (int i = 0; i < raycastCount; i++)
-            raycasts[i] = GetNode<RayCast3D>($"{RaycastNamePrefix}{i:D2}");
+            raycasts[i] = GetChild<RayCast3D>(i);
     }
 
     public int RaycastCount => raycasts.Length;
