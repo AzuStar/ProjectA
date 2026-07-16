@@ -11,8 +11,10 @@ public partial class DroneCharacterController : CharacterBody3D
     public float maxVelocity = 4.0f;
 
     public float acceleration = 8.0f;
+
     [Export]
     public float PushSpeed = 2.0f;
+
     [Export]
     public float WallBounceRestitution = 0.5f;
 
@@ -132,7 +134,7 @@ public partial class DroneCharacterController : CharacterBody3D
                 if (!didPush)
                 {
                     bounced = true;
-                    Velocity = Velocity.Bounce(normal);    
+                    Velocity = Velocity.Bounce(normal);
                 }
             }
         }
