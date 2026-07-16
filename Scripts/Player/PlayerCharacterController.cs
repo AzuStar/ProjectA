@@ -1,16 +1,21 @@
 using Godot;
 using ProjectA.Game;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "KayKitAnim/Idle_A";
-    private const string DeathAnimation = "KayKitAnim/Death_A";
-    private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    //private const string IdleAnimation = "KayKitAnim/Idle_A";
+    //private const string DeathAnimation = "KayKitAnim/Death_A";
+    //private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    private const string IdleAnimation = "idle";
+    private const string DeathAnimation = "interact";
+    private const string WalkingAnimation = "walk";
+
 
     [Export]
-    public float Speed = 4.0f;
+    public float movementSpeed;
 
     [Export]
     public float JumpVelocity = 6.0f;
@@ -43,6 +48,7 @@ public partial class PlayerCharacterController : CharacterBody3D
 
     public override void _Ready()
     {
+        movementSpeed = PlayerSingleton.Instance.mageMovementSpeed;
         PlayAnimation(IdleAnimation);
     }
 
@@ -79,8 +85,8 @@ public partial class PlayerCharacterController : CharacterBody3D
     {
         Vector3 velocity = Velocity;
 
-        velocity.X = direction.X * Speed;
-        velocity.Z = direction.Z * Speed;
+        velocity.X = direction.X * movementSpeed;
+        velocity.Z = direction.Z * movementSpeed;
 
         bool jumpPressed = Input.IsKeyPressed(Key.Space);
 

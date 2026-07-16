@@ -17,6 +17,9 @@ public partial class PatrollingState : Node, IState
     [Export]
     public float turnSpeedDegreesPerSecond = 360.0f;
 
+    [Export]
+    public float patrolGoalStopThreshold = 0.5f;
+
     int currentIndex = 0;
     CharacterBody3D Character;
     IEnemyAnimationController animationController;
@@ -34,8 +37,6 @@ public partial class PatrollingState : Node, IState
     {
         //TransitionEvent?.Invoke(this,"ChasingState");
         SetCurrentGoal();
-
-        navigationAgent.TargetPosition = currentGoal;
     }
 
     public void Exit()
@@ -50,11 +51,13 @@ public partial class PatrollingState : Node, IState
 
     public void StatePhysicsUpdate(double _delta)
     {
-        Vector3 currentPosition = Vector3.Zero;
-        currentPosition.X = Character.GlobalPosition.X;
-        currentPosition.Z = Character.GlobalPosition.Z;
+        Vector3 currentPosition = Flatten(Character.GlobalPosition);
+        Vector3 reachableGoal = Flatten(navigationAgent.GetFinalPosition());
 
-        if (currentPosition.DistanceTo(currentGoal) <= 0.5)
+        if (
+            navigationAgent.IsNavigationFinished()
+            || currentPosition.DistanceTo(reachableGoal) <= patrolGoalStopThreshold
+        )
         {
             currentIndex++;
 
@@ -71,7 +74,9 @@ public partial class PatrollingState : Node, IState
         }
 
         Vector3 destination = navigationAgent.GetNextPathPosition();
+        destination.Y = Character.GlobalPosition.Y;
         Vector3 localDestination = destination - Character.GlobalPosition;
+        localDestination.Y = 0.0f;
         Vector3 direction = localDestination.Normalized();
 
         Character.Velocity = direction * CharacterSpeed;
@@ -86,7 +91,13 @@ public partial class PatrollingState : Node, IState
     void SetCurrentGoal()
     {
         currentGoal = patrolPath.GlobalTransform * patrolPath.Curve.GetPointPosition(currentIndex);
-        currentGoal.Y = 0.0f;
+        currentGoal = NavigationServer3D.MapGetClosestPoint(navigationAgent.GetNavigationMap(), currentGoal);
+    }
+
+    static Vector3 Flatten(Vector3 position)
+    {
+        position.Y = 0.0f;
+        return position;
     }
 
     public void ChaseTime() => TransitionEvent?.Invoke(this, nameof(ChasingState));

@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bksbyalnakwsr" path="res://Prefabs/Environment/stairs_2.tscn" id="8_6frvr"]
 [ext_resource type="PackedScene" uid="uid://cfgklodgpfuho" path="res://Prefabs/Environment/SimpleTorch.tscn" id="8_t7mvc"]
 [ext_resource type="PackedScene" uid="uid://dlckr8nbmk2jo" path="res://Prefabs/Pickupables/PickupableKey.tscn" id="9_c2cqn"]
+[ext_resource type="PackedScene" uid="uid://7jdkoe4is4f0" path="res://Prefabs/Barriers/FilteredBarrier.tscn" id="9_lfuj2"]
 [ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="10_hhpqe"]
 [ext_resource type="PackedScene" uid="uid://bydhgekbbv2w2" path="res://Prefabs/Triggers/FloorButton.tscn" id="11_gafx7"]
 [ext_resource type="PackedScene" uid="uid://c3cpwoc5xeiyw" path="res://Prefabs/Enemies/EnemyGuard.tscn" id="12_gafx7"]
 [ext_resource type="PackedScene" uid="uid://deqyvc2s3pfdv" path="res://Prefabs/Triggers/PlotHole.tscn" id="13_3nkid"]
 [ext_resource type="PackedScene" uid="uid://b6c7bnu5wa8hp" path="res://Prefabs/Barriers/BarrierDoor.tscn" id="13_c2cqn"]
-[ext_resource type="PackedScene" uid="uid://hdc8elkun8rs" path="res://Prefabs/Pushables/PushableBox.tscn" id="14_3ou73"]
+[ext_resource type="PackedScene" uid="uid://wi1aycc46auc" path="res://Prefabs/Triggers/WallSwitch.tscn" id="14_3ou73"]
+[ext_resource type="PackedScene" uid="uid://hdc8elkun8rs" path="res://Prefabs/Pushables/PushableBox.tscn" id="15_5rnp8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]
 vertices = PackedVector3Array(19.75, 0.06999993, -28.25, 19.75, 0.06999993, -23.5, 20.5, 0.06999993, -23.5, 20.5, 0.06999993, -28.25, -18.75, 0.06999993, -10, -17, 0.06999993, -9.75, -17, 0.06999993, -10.75, -18.75, 0.06999993, -10.75, -14.25, 0.06999993, -15.5, -7.75, 0.06999993, -15.5, -7.75, 0.06999993, -20.25, -20.5, 0.06999993, -20.25, -19.5, 0.06999993, -11.5, -15.75, 0.06999993, -11.5, -15.75, 0.06999993, -14.25, -20.5, 0.06999993, -11.5, 15.75, 0.06999993, -11.5, 24.5, 0.06999993, -11.25, 24.5, 0.06999993, -20.25, 15.75, 0.06999993, -20.25, 49.5, 0.06999993, -15.5, 51, 0.06999993, -15.5, 50.75, 0.06999993, -20.25, 48.75, 0.06999993, -14.75, 43.75, 0.06999993, -20.25, 43.75, 0.06999993, -11.5, 48.5, 0.06999993, -11.5, 56.25, 0.06999993, -15.5, 56.25, 0.06999993, -20.25, 27, 0.06999993, -3.5, 27.25, 0.06999993, -8.25, 25.75, 0.06999993, -8.25, 14, 0.06999993, -8.25, 17, 0.06999993, -3, 17.5, 0.06999993, -3.5, 15.75, 0.06999993, -9.75, 24.5, 0.06999993, -9.5, -18.75, 0.06999993, -9.25, -17, 0.06999993, -9, -9.75, 0.06999993, 4.5, -6.25, 0.089999914, 2.75, -5.5, 0.089999914, 2, -4.5, 0.06999993, -8.25, -16.25, 0.06999993, -8.25, -7.4166718, 0.06999993, 3.3333282, -5.357147, 0.06999993, 0.5357208, -19.75, 0.06999993, -8.25, -24.5, 0.06999993, 4.5, -4.5, 0.089999914, 2, -4.5, 0.06999993, 0.5357208, -8.75, 0.06999993, 5.5, -6.25, 0.089999914, 5.25, -24.5, 0.06999993, -8.25, -2, 0.089999914, 3.5, -2, 0.089999914, 5, 0.5, 0.06999993, 5.5, -1.1666718, 0.06999993, 4.1666718, 1.5, 0.06999993, 4.5, -2.5, 0.089999914, 2.75, -1.1666718, 0.06999993, 3.3333282, -3.25, 0.089999914, 2, 7.5, 0.06999993, 4.5, 6.5, 0.089999914, -5.75, 5.75, 0.089999914, -6.5, -3.4285736, 0.06999993, 0.5357208, 4.285721, 0.06999993, -6.75, 3.0151672, 0.06999993, -3.0211792, 7.5, 0.089999914, -5.75, 5.75, 0.089999914, -8.25, 4.285721, 0.06999993, -8.25, 10, 0.089999914, -8.25, 10, 0.089999914, -6.75, 11.333328, 0.06999993, -7.25, 11.333328, 0.06999993, -8.25, 9.25, 0.089999914, -6, 16.5, 0.06999993, -2.25, 10.458328, 0.06999993, -5.375, 16.5, 0.06999993, 4.5, 8.975006, 0.06999993, -4.524994, 34.5, 0.06999993, -3.5, 34.5, 0.06999993, -8.25, 46.5, 0.089999914, -6, 47.5, 0.089999914, -6, 47.5, 0.06999993, -8.25, 45.75, 0.089999914, -5.25, 37.75, 0.06999993, -8.25, 37.75, 0.06999993, -3.5, 44.41667, 0.06999993, -4.9583282, 45.75, 0.089999914, -3.5, 44.41667, 0.06999993, -3.5, 48.75, 0.089999914, -6, 48.75, 0.089999914, -1.75, 47.75, 0.089999914, -1.75, 47.75, 0.06999993, 1, 53.75, 0.06999993, 1, 54.25, 0.06999993, -1.25, 53.25, 0.06999993, -2, 50, 0.089999914, -2.75, 51.08333, 0.06999993, -2.5, 50.975006, 0.06999993, -1.5249939, 50, 0.089999914, -4.5, 51.08333, 0.06999993, -3.6666718, 53.25, 0.06999993, -8.25, 58.75, 0.06999993, -8.25, 58.75, 0.089999914, -2, 60.5, 0.089999914, -2, 60.5, 0.06999993, -8.25, 58.75, 0.06999993, -3.25, 60.5, 0.06999993, -3.25, 64.5, 0.06999993, -0.25, 62, 0.089999914, -0.25, 62, 0.089999914, 1.25, 54.75, 0.06999993, 1.75, 57.75, 0.089999914, 1.5, 57.75, 0.089999914, -1.25, 56.58333, 0.06999993, -1.25, 56.75, 0.06999993, 1.5833282, 61.25, 0.089999914, 2, 64.5, 0.06999993, 4.5, 62.33333, 0.06999993, 2.8333282, 54.75, 0.06999993, 4.5, 58.5, 0.089999914, 2.25, -2, 0.089999914, 11.5, -2, 0.089999914, 12.5, 0.25, 0.06999993, 12.5, -8.5, 0.06999993, 12.25, -6.25, 0.089999914, 12.25, -6.25, 0.089999914, 10.75, -5.5, 0.089999914, 6.25, -5.5, 0.089999914, 10, -5.5, 0.06999993, 8.75, -3.25, 0.089999914, 6.25, -3.25, 0.089999914, 10, -3.25, 0.06999993, 8.75, -1.5249939, 0.06999993, 5.975006, -1.5199585, 0.06999993, 10.507965, 54.75, 0.06999993, 13, 57.25, 0.06999993, 13, 57.5, 0.06999993, 12.5, 54.75, 0.06999993, 10.75, 58.75, 0.06999993, 11.25, 64.5, 0.06999993, 12.5, 59.75, 0.06999993, 10.25, 64.5, 0.06999993, 7.75, 59.75, 0.06999993, 7.75, -2, 0.089999914, 13.25, -6.25, 0.089999914, 13.5, -5.5, 0.089999914, 14.25, -8.5, 0.06999993, 32.5, -3.25, 0.089999914, 14.25, 0.25, 0.06999993, 32.5, -1.5249939, 0.06999993, 14.975006, -4.524994, 0.06999993, 16.475006)
@@ -588,9 +590,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
 
 [node name="wall9" parent="EnvWallsOffset" unique_id=2071871371 instance=ExtResource("4_3e557")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -22)
-
-[node name="wall160" parent="EnvWallsOffset" unique_id=1001758843 instance=ExtResource("4_3e557")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -22)
 
 [node name="wall10" parent="EnvWallsOffset" unique_id=316257886 instance=ExtResource("4_3e557")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -10)
@@ -1329,22 +1328,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 0, -18)
 [node name="CoinPickup20" parent="Coins" unique_id=1007006379 instance=ExtResource("10_hhpqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 8)
 
-[node name="Doors" type="Node3D" parent="." unique_id=2097759320 groups=["navmesh"]]
+[node name="Barriers" type="Node3D" parent="." unique_id=2097759320 groups=["navmesh"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 36, 0, -6)
 
-[node name="BarrierDoor" parent="Doors" unique_id=17734918 instance=ExtResource("13_c2cqn")]
+[node name="FilteredBarrier" parent="Barriers" unique_id=696414691 instance=ExtResource("9_lfuj2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -15.9416485, 0.05444336, 16.082333)
+
+[node name="BarrierDoor" parent="Barriers" unique_id=17734918 instance=ExtResource("13_c2cqn")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.999998, 0, -26)
 
-[node name="BarrierDoor2" parent="Doors" unique_id=1742378062 instance=ExtResource("13_c2cqn")]
+[node name="BarrierDoor2" parent="Barriers" unique_id=1742378062 instance=ExtResource("13_c2cqn")]
 
-[node name="BarrierDoor3" parent="Doors" unique_id=1504349078 instance=ExtResource("13_c2cqn")]
+[node name="BarrierDoor3" parent="Barriers" unique_id=1504349078 instance=ExtResource("13_c2cqn")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.0000005, 0, -10)
 
 [node name="--- Separator ---" type="Node" parent="." unique_id=1982045897]
 
 [node name="FloorButton" parent="." unique_id=644225715 node_paths=PackedStringArray("_triggerable") instance=ExtResource("11_gafx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -6)
-_triggerable = NodePath("../Doors/BarrierDoor2")
+_triggerable = NodePath("../Barriers/BarrierDoor2")
 _oneShot = true
 
 [node name="Spawn" type="Marker3D" parent="." unique_id=363278610]
@@ -1393,11 +1395,16 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 48, 
 [node name="PlotHole4" parent="." unique_id=2101147994 instance=ExtResource("13_3nkid")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 52, -4, 4)
 
-[node name="KeyPickup" parent="." unique_id=583336093 instance=ExtResource("9_c2cqn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 0, -18)
+[node name="KeyPickup" parent="." unique_id=497665940 instance=ExtResource("9_c2cqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.992813, 0.05444336, -28.198431)
 
 [node name="KeyPickup2" parent="." unique_id=1523782485 instance=ExtResource("9_c2cqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -18)
 
-[node name="PushableBox" parent="." unique_id=97837123 instance=ExtResource("14_3ou73")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 4, 17)
+[node name="Switch" parent="." unique_id=315961888 node_paths=PackedStringArray("triggerable") instance=ExtResource("14_3ou73")]
+transform = Transform3D(-1.7703112e-08, 0, -0.405, 0, 0.405, 0, 0.405, 0, -1.7703112e-08, 65.54711, 1.5207183, 8.297731)
+triggerable = NodePath("../Barriers/BarrierDoor")
+duoFilter = 2
+
+[node name="PushableBox" parent="." unique_id=97837123 instance=ExtResource("15_5rnp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.56017, 4.1370354, 15.813716)

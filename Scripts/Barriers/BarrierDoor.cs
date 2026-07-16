@@ -36,7 +36,7 @@ public partial class BarrierDoor : Barrier
         bool opened = TryOpen();
         if (opened)
         {
-            GameManagerSingleton.currentLevelInstance.RemoveOneItem(ItemType.Key);
+            GameManagerSingleton.currentLevelInstance.AddItem(ItemType.Key, -1);
         }
     }
 
