@@ -16,9 +16,6 @@ public partial class PlayerCharacterController : CharacterBody3D
     public float JumpVelocity = 6.0f;
 
     [Export]
-    public float Gravity = 24.0f;
-
-    [Export]
     public float PushSpeed = 2.0f;
 
     [Export]
@@ -94,7 +91,7 @@ public partial class PlayerCharacterController : CharacterBody3D
         }
         else
         {
-            velocity.Y -= Gravity * (float)delta;
+            velocity.Y += GetGravity().Y * (float)delta;
         }
 
         _jumpWasPressed = jumpPressed;
