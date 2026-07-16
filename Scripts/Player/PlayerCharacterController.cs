@@ -71,7 +71,7 @@ public partial class PlayerCharacterController : CharacterBody3D
             {
                 Vector3 normal = collision.GetNormal();
                 Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
-                pushable.NotifyPush(push);
+                pushable.TryPush(push);
             }
         }
 

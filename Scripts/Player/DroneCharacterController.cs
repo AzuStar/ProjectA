@@ -115,31 +115,27 @@ public partial class DroneCharacterController : CharacterBody3D
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             KinematicCollision3D slideCollision = GetSlideCollision(i);
-            if (slideCollision != null && slideCollision.GetCollider() is not PushableBody)
+            if (slideCollision != null)
             {
-                bounced = true;
+                bool didPush = false;
                 Vector3 normal = slideCollision.GetNormal();
-                Velocity = Velocity.Bounce(normal);
+                if (slideCollision.GetCollider() is PushableBody pushable)
+                {
+                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                    didPush = pushable.TryPush(push);
+                }
+
+                if (!didPush)
+                {
+                    bounced = true;
+                    Velocity = Velocity.Bounce(normal);    
+                }
             }
         }
 
         if (bounced)
         {
             Velocity *= WallBounceRestitution;
-        }
-        else
-        {
-            // Pushing.
-            for (int i = 0; i < GetSlideCollisionCount(); i++)
-            {
-                KinematicCollision3D? collision = GetSlideCollision(i);
-                if (collision != null && collision.GetCollider() is PushableBody pushable)
-                {
-                    Vector3 normal = collision.GetNormal();
-                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
-                    pushable.NotifyPush(push);
-                }
-            }
         }
     }
 

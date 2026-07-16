@@ -1,28 +1,30 @@
 using Godot;
-using System;
 
 public partial class PushableBody : CharacterBody3D
 {
-    private Vector2 _pendingPush;
-
-    public void NotifyPush(Vector2 pushXz)
+    public bool TryPush(Vector2 pushXz)
     {
-        _pendingPush += pushXz;
+        Vector3 velocity = Velocity;
+        velocity.X = pushXz.X;
+        velocity.Z = pushXz.Y;
+        Velocity = velocity;
+
+        MoveAndSlide();
+
+        return Velocity.LengthSquared() > 0.0f;
     }
 
     public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
-
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
 
-        velocity.X = _pendingPush.X;
-        velocity.Z = _pendingPush.Y;
+        velocity.X = 0.0f;
+        velocity.Z = 0.0f;
 		Velocity = velocity;
-        _pendingPush = Vector2.Zero;
 
 		MoveAndSlide();
 	}
