@@ -42,10 +42,6 @@ folder_colors={
 "res://Scripts/": "gray"
 }
 
-[filesystem]
-
-import/blender/enabled=false
-
 [global_group]
 
 navmesh=""
