@@ -116,20 +116,12 @@ public partial class LevelInstance : Node3D
 
         _currentGameState = newState;
 
-        GD.Print("New game state: " + _currentGameState);
     }
 
-    public void AddItem(ItemType type)
+    public void AddItem(ItemType type, int qty)
     {
-        inventory.Add(type, 1);
+        inventory.Add(type, qty);
         UiRootSingleton.Instance.levelMenu.UpdateInventory(inventory);
-    }
-
-    public bool RemoveOneItem(ItemType itemType)
-    {
-        bool removed = inventory.RemoveOne(itemType);
-        UiRootSingleton.Instance.levelMenu.UpdateInventory(inventory);
-        return removed;
     }
 
     public bool HasItem(ItemType itemType)
@@ -149,7 +141,6 @@ public partial class LevelInstance : Node3D
             return;
 
         SaveLevelStars();
-        GD.Print("Moving To Next Level " + GameManagerSingleton.Instance.currentLevel);
         GameManagerSingleton.MoveToNextLevel();
     }
 

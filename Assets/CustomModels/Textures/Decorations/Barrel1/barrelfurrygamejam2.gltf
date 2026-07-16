@@ -1,0 +1,527 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 8304,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3846,
+      "max": [
+        1.52149999141693,
+        1.99974870681763,
+        1.45669400691986
+      ],
+      "min": [
+        -1.52151441574097,
+        -1.99986791610718,
+        -1.45669627189636
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3846,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 3846,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 3846,
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "Adobe Substance 3D Painter 8.3.1",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 33216,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 46152,
+      "byteOffset": 33216,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 46152,
+      "byteOffset": 79368,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 61536,
+      "byteOffset": 125520,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 30768,
+      "byteOffset": 187056,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 217824,
+      "uri": "barrelfurrygamejam2.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "Barrel_baseColor.png"
+    },
+    {
+      "uri": "Barrel_occlusionRoughnessMetallic.png"
+    },
+    {
+      "uri": "Barrel_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "name": "Barrel",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.001",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TANGENT": 3,
+            "TEXCOORD_0": 4
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83
+      ],
+      "name": "ROOT"
+    },
+    {
+      "name": "Drone"
+    },
+    {
+      "name": "Cube"
+    },
+    {
+      "name": "Cube.001"
+    },
+    {
+      "name": "Cube.002"
+    },
+    {
+      "name": "Cube.003"
+    },
+    {
+      "name": "Cube.004"
+    },
+    {
+      "name": "Cube.005"
+    },
+    {
+      "name": "Cube.006"
+    },
+    {
+      "name": "Cube.007"
+    },
+    {
+      "name": "Cube.008"
+    },
+    {
+      "name": "Cube.009"
+    },
+    {
+      "name": "Cube.010"
+    },
+    {
+      "name": "Cube.011"
+    },
+    {
+      "name": "Cube.012"
+    },
+    {
+      "name": "Cube.013"
+    },
+    {
+      "name": "Cube.014"
+    },
+    {
+      "name": "Cube.015"
+    },
+    {
+      "name": "Cube.016"
+    },
+    {
+      "name": "Cube.017"
+    },
+    {
+      "name": "Cube.018"
+    },
+    {
+      "name": "Cube.019"
+    },
+    {
+      "name": "Cube.020"
+    },
+    {
+      "name": "Cube.021"
+    },
+    {
+      "name": "Cube.022"
+    },
+    {
+      "name": "Cube.023"
+    },
+    {
+      "name": "Cube.024"
+    },
+    {
+      "name": "Cube.025"
+    },
+    {
+      "name": "Cube.026"
+    },
+    {
+      "name": "Cube.027"
+    },
+    {
+      "name": "Cube.028"
+    },
+    {
+      "name": "Cube.029"
+    },
+    {
+      "name": "Cube.030"
+    },
+    {
+      "name": "Cube.031"
+    },
+    {
+      "name": "Cube.032"
+    },
+    {
+      "name": "Cube.033"
+    },
+    {
+      "name": "Cube.034"
+    },
+    {
+      "name": "Cube.035"
+    },
+    {
+      "name": "Cube.036"
+    },
+    {
+      "name": "Cube.037"
+    },
+    {
+      "name": "Cube.038"
+    },
+    {
+      "name": "Cube.039"
+    },
+    {
+      "name": "Cube.040"
+    },
+    {
+      "name": "Cube.041"
+    },
+    {
+      "name": "Cube.042"
+    },
+    {
+      "name": "Cube.043"
+    },
+    {
+      "name": "Cube.044"
+    },
+    {
+      "name": "Cube.045"
+    },
+    {
+      "name": "Cube.046"
+    },
+    {
+      "name": "Cube.047"
+    },
+    {
+      "name": "Cube.048"
+    },
+    {
+      "name": "Cube.049"
+    },
+    {
+      "name": "Cube.050"
+    },
+    {
+      "name": "Cube.055"
+    },
+    {
+      "name": "Cube.059"
+    },
+    {
+      "name": "Cube.060"
+    },
+    {
+      "name": "Cube.061"
+    },
+    {
+      "name": "Cube.062"
+    },
+    {
+      "name": "Cube.063"
+    },
+    {
+      "name": "Cube.064"
+    },
+    {
+      "name": "Torus.001"
+    },
+    {
+      "name": "Torus.002"
+    },
+    {
+      "name": "Torus.003"
+    },
+    {
+      "name": "Torus.004"
+    },
+    {
+      "name": "Cube.051"
+    },
+    {
+      "name": "Cube.054",
+      "scale": [
+        0.199999988079071,
+        1.0,
+        0.199999988079071
+      ]
+    },
+    {
+      "name": "Cube.056"
+    },
+    {
+      "name": "Cube.057"
+    },
+    {
+      "name": "Torus.005"
+    },
+    {
+      "name": "Torus.008",
+      "translation": [
+        5.72849607467651,
+        -0.76570600271225,
+        0.0
+      ]
+    },
+    {
+      "children": [
+        71
+      ],
+      "name": "Barrel"
+    },
+    {
+      "mesh": 0,
+      "name": "Cube.001"
+    },
+    {
+      "name": "TableLong"
+    },
+    {
+      "name": "TableShort",
+      "translation": [
+        4.63859033584595,
+        0.0,
+        -1.52662229537964
+      ]
+    },
+    {
+      "name": "Chair"
+    },
+    {
+      "name": "WoodenCrate"
+    },
+    {
+      "name": "WoodenBox"
+    },
+    {
+      "name": "WoodenBoxLarge"
+    },
+    {
+      "name": "Lantern"
+    },
+    {
+      "name": "Chains"
+    },
+    {
+      "name": "Chandelier"
+    },
+    {
+      "name": "WallShelvesLarge",
+      "translation": [
+        0.0,
+        0.0,
+        -6.48608016967773
+      ]
+    },
+    {
+      "name": "WallShelvesNormal"
+    },
+    {
+      "name": "WallSHelvesSmall"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9985,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

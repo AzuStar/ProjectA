@@ -1,37 +1,32 @@
 using Godot;
 using ProjectA.Game.Player;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Barriers;
 
 public partial class BarrierFilterDuo : Barrier
 {
     [Export]
-    public Area3D filterArea;
-
-    [Export]
     public DuoTarget letsThrough;
 
-    public override void _Ready()
+    private PhysicsBody3D _currentPassBody;
+
+    public override void _Process(double delta)
     {
-        base._Ready();
-        filterArea.BodyEntered += OnBodyEntered;
-        filterArea.BodyExited += OnBodyExited;
+        PhysicsBody3D passBody = GetPassBody();
+
+        if (_currentPassBody == passBody)
+            return;
+
+        if (_currentPassBody != null)
+            collisionObject.RemoveCollisionExceptionWith(_currentPassBody);
+
+        _currentPassBody = passBody;
+        collisionObject.AddCollisionExceptionWith(_currentPassBody);
     }
 
-    private void OnBodyEntered(Node3D body)
-    {
-        if (CanPass(body))
-            collisionObject.AddCollisionExceptionWith(body);
-    }
-
-    private void OnBodyExited(Node3D body)
-    {
-        if (CanPass(body))
-            collisionObject.RemoveCollisionExceptionWith(body);
-    }
-
-    private bool CanPass(Node3D body)
-    {
-        return letsThrough == DuoTarget.PLAYER ? body is PlayerCharacterController : body is DroneCharacterController;
-    }
+    private PhysicsBody3D GetPassBody() =>
+        letsThrough == DuoTarget.PLAYER
+            ? PlayerSingleton.Instance.playerDuo.player
+            : PlayerSingleton.Instance.playerDuo.drone;
 }
