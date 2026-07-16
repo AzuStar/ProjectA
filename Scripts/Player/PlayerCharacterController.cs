@@ -19,6 +19,9 @@ public partial class PlayerCharacterController : CharacterBody3D
     public float Gravity = 24.0f;
 
     [Export]
+    public float PushSpeed = 2.0f;
+
+    [Export]
     public double AnimationBlendSeconds = 0.15;
 
     [Export]
@@ -59,6 +62,19 @@ public partial class PlayerCharacterController : CharacterBody3D
         Vector3 direction = GetMovementDirection();
 
         Move(direction, delta);
+
+        // Pushing.
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision3D? collision = GetSlideCollision(i);
+            if (collision != null && collision.GetCollider() is PushableBody pushable)
+            {
+                Vector3 normal = collision.GetNormal();
+                Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                pushable.NotifyPush(push);
+            }
+        }
+
         PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
     }
 

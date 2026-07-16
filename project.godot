@@ -83,6 +83,7 @@ moveRight={
 3d_physics/layer_2="PlayerCharacter"
 3d_physics/layer_3="DroneCharacter"
 3d_physics/layer_4="Enemy"
+3d_physics/layer_5="Pushable"
 
 [physics]
 
