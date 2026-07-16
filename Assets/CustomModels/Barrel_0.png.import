@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gn2bbvse2j51"
-path="res://.godot/imported/tower_hat.png-84edf9c86ab29136fd68c0ce4a0a65d8.ctex"
+uid="uid://ckn378q4j4cmu"
+path.s3tc="res://.godot/imported/Barrel_0.png-5e93f6451f570df970c1a29c2e8fb7f0.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "f72559e42572c61409b296171fd64b92"
 }
 
 [deps]
 
-source_file="res://Assets/CustomModels/CharacterModels/textures/tower_hat.png"
-dest_files=["res://.godot/imported/tower_hat.png-84edf9c86ab29136fd68c0ce4a0a65d8.ctex"]
+source_file="res://Assets/CustomModels/Barrel_0.png"
+dest_files=["res://.godot/imported/Barrel_0.png-5e93f6451f570df970c1a29c2e8fb7f0.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
