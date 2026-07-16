@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bokgybe0ufwbf"
-path="res://.godot/imported/CHAR1(rigged_uvmapped).glb-f50529663805b1d582d3536bbc2af813.scn"
+uid="uid://bwgkqqumue5tm"
+path="res://.godot/imported/CHAR2.gltf-bb6cf1db7fa56a825e66ec095428dfe0.scn"
 
 [deps]
 
-source_file="res://Personal/ScalesStuff/Prefab/CHAR1(rigged_uvmapped).glb"
-dest_files=["res://.godot/imported/CHAR1(rigged_uvmapped).glb-f50529663805b1d582d3536bbc2af813.scn"]
+source_file="res://Personal/ScalesStuff/Prefab/CHAR2.gltf"
+dest_files=["res://.godot/imported/CHAR2.gltf-bb6cf1db7fa56a825e66ec095428dfe0.scn"]
 
 [params]
 
