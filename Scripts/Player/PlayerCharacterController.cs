@@ -6,9 +6,13 @@ namespace ProjectA.Game.Player;
 
 public partial class PlayerCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "KayKitAnim/Idle_A";
-    private const string DeathAnimation = "KayKitAnim/Death_A";
-    private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    //private const string IdleAnimation = "KayKitAnim/Idle_A";
+    //private const string DeathAnimation = "KayKitAnim/Death_A";
+    //private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    private const string IdleAnimation = "idle";
+    private const string DeathAnimation = "interact";
+    private const string WalkingAnimation = "walk";
+
 
     [Export]
     public float movementSpeed;
