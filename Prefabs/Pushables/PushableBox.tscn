@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://hdc8elkun8rs"]
+
+[ext_resource type="Script" uid="uid://bh13x1cokmnm6" path="res://Scripts/Pushables/PushableBody.cs" id="1_rc6du"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fupvj"]
+size = Vector3(2, 2, 2)
+
+[node name="PushableBox" type="CharacterBody3D" unique_id=97837123]
+process_priority = 10
+process_physics_priority = 10
+collision_layer = 16
+collision_mask = 15
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_rc6du")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484006071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_fupvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1626051477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_fupvj")
