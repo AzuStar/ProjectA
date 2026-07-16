@@ -8,10 +8,12 @@ size = Vector3(4, 4, 1)
 
 [node name="wall_arched2" unique_id=1716974948 instance=ExtResource("1_uuf1j")]
 
-[node name="wall_arched" parent="." index="0" unique_id=1367725831]
+[node name="wall_arched" parent="." index="0" unique_id=250760533]
 surface_material_override/0 = ExtResource("2_vn8o3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1511658360]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1158353147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

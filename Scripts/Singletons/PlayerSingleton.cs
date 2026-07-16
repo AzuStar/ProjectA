@@ -26,10 +26,24 @@ public partial class PlayerSingleton : Node
     public float MouseSensitivity = 0.0025f;
 
     [ExportGroup("Drone Leash")]
-    [Export] public float maxDroneLeashRange = 10.0f;
-    [Export] public Vector2 droneScreenMaterialCloseDimensions;
-    [Export] public Vector2 droneScreenMaterialFarDimensions;
-    [Export] public Curve droneScreenMaterialDimensionsCurve;
+    [Export]
+    public float maxDroneLeashRange = 10.0f;
+
+    [Export]
+    public Vector2 droneScreenMaterialCloseDimensions;
+
+    [Export]
+    public Vector2 droneScreenMaterialFarDimensions;
+
+    [Export]
+    public Curve droneScreenMaterialDimensionsCurve;
+
+    [ExportGroup("Drone Cooldown")]
+    [Export]
+    public float droneManualUnsummonCooldown = 1.0f;
+
+    [Export]
+    public float droneDeathTriggerCooldown = 10.0f;
 
     public override void _EnterTree()
     {
@@ -61,16 +75,10 @@ public partial class PlayerSingleton : Node
 
         playerDuo.HandleInput(@event, MouseSensitivity);
     }
+
     public void UpdateText()
     {
-        UiRootSingleton.Instance.levelMenu.persistentState.Text = CompileText();
     }
-
-    public string CompileText() =>
-        $"""
-            COINS PICKED UP: {CoinsCollected}
-            PATTED BAX: {BaxPattedTimes} times
-            """;
 
     public static PlayerDroneDuo AcquireDuo()
     {

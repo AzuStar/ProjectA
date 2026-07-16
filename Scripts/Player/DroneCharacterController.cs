@@ -1,6 +1,7 @@
 using Godot;
 using ProjectA.Game;
 using ProjectA.Game.Singletons;
+using ProjectA.Game.UI;
 
 namespace ProjectA.Game.Player;
 
@@ -8,6 +9,9 @@ public partial class DroneCharacterController : CharacterBody3D
 {
     [Export]
     public float MaximumSpeed = 4.0f;
+
+    [Export]
+    public float PushSpeed = 2.0f;
 
     [Export]
     public float Acceleration = 8.0f;
@@ -28,12 +32,18 @@ public partial class DroneCharacterController : CharacterBody3D
     public bool DriveCameraSmoothingTarget = true;
 
     [Export]
-    public FpsCamera fpsCamera;
+    public Node3D visualRoot;
+
+    [Export]
+    public ThirdPersonCameraRig cameraRig;
 
     [Export]
     public ShaderMaterial droneScreenMaterial;
 
     public bool acceptInput;
+    public float summonCooldownRemaining;
+    public float summonCooldownDuration;
+
     private uint _enabledCollisionLayer;
     private uint _enabledCollisionMask;
 
@@ -47,10 +57,20 @@ public partial class DroneCharacterController : CharacterBody3D
 
     public override void _Process(double delta)
     {
+        TickSummonCooldown(delta);
+
         if (!acceptInput)
         {
             // Not deployed.
             return;
+        }
+
+        if (Velocity.X != 0.0f || Velocity.Z != 0.0f)
+        {
+            float desiredBearing = Mathf.Atan2(-Velocity.X, -Velocity.Z);
+            Vector3 globalRot = visualRoot.GlobalRotation;
+            globalRot.Y = (float)Mathf.LerpAngle(globalRot.Y, desiredBearing, Acceleration * delta);
+            visualRoot.GlobalRotation = globalRot;
         }
 
         Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
@@ -97,11 +117,22 @@ public partial class DroneCharacterController : CharacterBody3D
             KinematicCollision3D slideCollision = GetSlideCollision(i);
             if (slideCollision != null)
             {
-                bounced = true;
+                bool didPush = false;
                 Vector3 normal = slideCollision.GetNormal();
-                Velocity = Velocity.Bounce(normal);
+                if (slideCollision.GetCollider() is PushableBody pushable)
+                {
+                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                    didPush = pushable.TryPush(push);
+                }
+
+                if (!didPush)
+                {
+                    bounced = true;
+                    Velocity = Velocity.Bounce(normal);    
+                }
             }
         }
+
         if (bounced)
         {
             Velocity *= WallBounceRestitution;
@@ -114,7 +145,7 @@ public partial class DroneCharacterController : CharacterBody3D
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
         
-        Basis cameraBasis = fpsCamera.fpsCamera.GlobalBasis;
+        Basis cameraBasis = cameraRig.GetCameraBasis();
         return cameraBasis * inputDirection;
     }
 
@@ -164,9 +195,9 @@ public partial class DroneCharacterController : CharacterBody3D
         ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = _enabledCollisionLayer;
         CollisionMask = _enabledCollisionMask;
-        fpsCamera.ResetPose();
-        fpsCamera.SetBearing(baseBearing);
-        fpsCamera.SetActive(true);
+        // cameraRig.ResetPose();
+        // cameraRig.SetBearing(baseBearing);
+        cameraRig.SetActive(true);
 
         Velocity = Vector3.Zero;
 
@@ -177,11 +208,41 @@ public partial class DroneCharacterController : CharacterBody3D
     {
         acceptInput = false;
         Visible = false;
-        ProcessMode = ProcessModeEnum.Disabled;
+        ProcessMode = ProcessModeEnum.Inherit;
         CollisionLayer = 0;
         CollisionMask = 0;
-        fpsCamera.SetActive(false);
+        cameraRig.SetActive(false);
 
         Bootstrap.GetGameSubViewportContainer().Material = null;
+    }
+
+    public bool CanSummon()
+    {
+        return summonCooldownRemaining <= 0.0f;
+    }
+
+    public void StartManualUnsummonCooldown()
+    {
+        StartSummonCooldown(PlayerSingleton.Instance.droneManualUnsummonCooldown);
+    }
+
+    public void StartDeathTriggerCooldown()
+    {
+        StartSummonCooldown(PlayerSingleton.Instance.droneDeathTriggerCooldown);
+    }
+
+    private void StartSummonCooldown(float duration)
+    {
+        summonCooldownDuration = duration;
+        summonCooldownRemaining = duration;
+        UiRootSingleton.Instance.levelMenu.UpdateDroneCooldown(summonCooldownRemaining, summonCooldownDuration);
+    }
+
+    private void TickSummonCooldown(double delta)
+    {
+        if (summonCooldownRemaining > 0.0f)
+            summonCooldownRemaining = Mathf.Max(0.0f, summonCooldownRemaining - (float)delta);
+
+        UiRootSingleton.Instance.levelMenu.UpdateDroneCooldown(summonCooldownRemaining, summonCooldownDuration);
     }
 }

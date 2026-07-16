@@ -47,6 +47,11 @@ public partial class FpsCamera : Node3D
         fpsCamera.Current = active;
     }
 
+    public Basis GetCameraBasis()
+    {
+        return fpsCamera.GlobalBasis;
+    }
+
     public void ResetPose()
     {
         Rotation = _startingRotation;

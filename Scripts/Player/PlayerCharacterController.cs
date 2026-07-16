@@ -16,7 +16,7 @@ public partial class PlayerCharacterController : CharacterBody3D
     public float JumpVelocity = 6.0f;
 
     [Export]
-    public float Gravity = 24.0f;
+    public float PushSpeed = 2.0f;
 
     [Export]
     public double AnimationBlendSeconds = 0.15;
@@ -34,7 +34,7 @@ public partial class PlayerCharacterController : CharacterBody3D
     private AnimationPlayer animationPlayer;
 
     [Export]
-    public FpsCamera fpsCamera;
+    public ThirdPersonCameraRig cameraRig;
 
     public bool acceptInput = true;
     private string _currentAnimation = string.Empty;
@@ -59,6 +59,19 @@ public partial class PlayerCharacterController : CharacterBody3D
         Vector3 direction = GetMovementDirection();
 
         Move(direction, delta);
+
+        // Pushing.
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision3D? collision = GetSlideCollision(i);
+            if (collision != null && collision.GetCollider() is PushableBody pushable)
+            {
+                Vector3 normal = collision.GetNormal();
+                Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                pushable.TryPush(push);
+            }
+        }
+
         PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
     }
 
@@ -78,12 +91,18 @@ public partial class PlayerCharacterController : CharacterBody3D
         }
         else
         {
-            velocity.Y -= Gravity * (float)delta;
+            velocity.Y += GetGravity().Y * (float)delta;
         }
 
         _jumpWasPressed = jumpPressed;
         Velocity = velocity;
         MoveAndSlide();
+
+        if (direction.X != 0 || direction.Z != 0)
+        {
+            float bearing = Mathf.Atan2(direction.X, direction.Z);
+            visualRoot.GlobalRotation = Vector3.Up * bearing;
+        }
     }
 
     private Vector3 GetMovementDirection()
@@ -92,7 +111,7 @@ public partial class PlayerCharacterController : CharacterBody3D
         if (inputDirection == Vector3.Zero)
             return Vector3.Zero;
 
-        Basis cameraBasis = fpsCamera.fpsCamera.GlobalTransform.Basis;
+        Basis cameraBasis = cameraRig.GetCameraBasis();
         Vector3 forward = -cameraBasis.Z;
         Vector3 right = cameraBasis.X;
 
@@ -144,25 +163,22 @@ public partial class PlayerCharacterController : CharacterBody3D
     {
         _deathLocked = false;
         acceptInput = true;
-        visualRoot.Visible = false;
-        fpsCamera.SetActive(true);
+        cameraRig.SetActive(true);
     }
 
     public void LeaveThisController()
     {
         _deathLocked = false;
         acceptInput = false;
-        visualRoot.Visible = true;
-        fpsCamera.SetActive(false);
+        cameraRig.SetActive(false);
     }
 
     public void Die()
     {
         _deathLocked = true;
         acceptInput = false;
-        visualRoot.Visible = true;
-        fpsCamera.SetActive(false);
-        // fpsCamera.PanOutForDeath();
+        cameraRig.SetActive(false);
+        // cameraRig.PanOutForDeath();
         PlayAnimation(DeathAnimation);
     }
 }

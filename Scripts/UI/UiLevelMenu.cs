@@ -7,27 +7,35 @@ namespace ProjectA.Game.UI;
 public partial class UiLevelMenu : Control
 {
     [Export]
-    public RichTextLabel persistentState;
+    public RichTextLabel stateLabel;
 
     [Export]
     public RichTextLabel inventoryLabel;
 
-    public override void _Ready()
-    {
-        base._Ready();
-    }
+    [Export]
+    public TextureProgressBar droneSkill;
 
     public void UpdateInventory(LevelInventory inventory)
     {
-        string[] lines = new string[inventory.items.Count];
-        for (int i = 0; i < inventory.items.Count; i++)
-            lines[i] = inventory.items[i].DisplayText();
-
-        inventoryLabel.Text = string.Join("\n", lines);
+        inventoryLabel.Text = inventory.CompileInventoryText();
     }
 
     public void ClearInventory()
     {
         inventoryLabel.Text = string.Empty;
+    }
+
+    public void UpdateTime(double elapsedTime)
+    {
+        int minutes = (int)(elapsedTime / 60);
+        int seconds = (int)elapsedTime % 60;
+        int milliseconds = (int)((elapsedTime - (int)elapsedTime) * 1000);
+        stateLabel.Text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
+    }
+
+    public void UpdateDroneCooldown(float remaining, float duration)
+    {
+        droneSkill.MaxValue = Mathf.Max(1.0f, duration);
+        droneSkill.Value = remaining;
     }
 }
