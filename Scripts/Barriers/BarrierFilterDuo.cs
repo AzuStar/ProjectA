@@ -3,19 +3,13 @@ using ProjectA.Game.Player;
 
 namespace ProjectA.Game.Barriers;
 
-public enum BarrierDuoFilter
-{
-    Player,
-    Drone,
-}
-
 public partial class BarrierFilterDuo : Barrier
 {
     [Export]
     public Area3D filterArea;
 
     [Export]
-    public BarrierDuoFilter letsThrough;
+    public DuoTarget letsThrough;
 
     public override void _Ready()
     {
@@ -38,8 +32,6 @@ public partial class BarrierFilterDuo : Barrier
 
     private bool CanPass(Node3D body)
     {
-        return letsThrough == BarrierDuoFilter.Player
-            ? body is PlayerCharacterController
-            : body is DroneCharacterController;
+        return letsThrough == DuoTarget.PLAYER ? body is PlayerCharacterController : body is DroneCharacterController;
     }
 }

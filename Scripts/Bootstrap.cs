@@ -18,6 +18,7 @@ public partial class Bootstrap : Node
     public SubViewportContainer uiSvc;
 
     public static TypeKeyedRegistry registry = new TypeKeyedRegistry();
+    private static GodotSaveService saveService = new();
     private double _registrySaveTimeout = 0;
 
     /// <summary>
@@ -25,18 +26,24 @@ public partial class Bootstrap : Node
     /// </summary>
     public HashSet<Node> gameLocks = new HashSet<Node>();
 
+    public static bool IsGameLocked => Instance.gameLocks.Count > 0;
+
     public static void SetGamePausedState(bool locked)
     {
+        ProcessModeEnum processMode;
+
         if (locked)
         {
             Input.MouseMode = Input.MouseModeEnum.Visible;
-            GetGameSubViewport().ProcessMode = ProcessModeEnum.Disabled;
+            processMode = ProcessModeEnum.Disabled;
         }
         else
         {
-            GetGameSubViewport().ProcessMode = ProcessModeEnum.Inherit;
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            processMode = ProcessModeEnum.Inherit;
         }
+
+        GetGameSubViewport().SetDeferred(Node.PropertyName.ProcessMode, (int)processMode);
     }
 
     public static void LockGameLock(Node whoIsLocking)
@@ -54,9 +61,11 @@ public partial class Bootstrap : Node
     }
 
     public static SubViewportContainer GetGameSubViewportContainer() => Instance.gameSvc;
+
     public static SubViewport GetGameSubViewport() => GetGameSubViewportContainer().GetChild<SubViewport>(0);
 
     public static SubViewportContainer GetUiSubViewportContainer() => Instance.uiSvc;
+
     public static SubViewport GetUiSubViewport() => GetUiSubViewportContainer().GetChild<SubViewport>(0);
 
     public override void _Process(double delta)
@@ -66,20 +75,20 @@ public partial class Bootstrap : Node
         _registrySaveTimeout -= delta;
         if (_registrySaveTimeout <= 0)
         {
-            _registrySaveTimeout = 1;
+            _registrySaveTimeout = 5;
             SaveRegistry();
         }
     }
 
     private static void SaveRegistry()
     {
-        // todo implement godot save service when we will have persistent data, like highscores etc
-        // registry.SaveDirtyKVsOnly(saveService);
+        registry.SaveDirtyKVsOnly(saveService);
     }
 
     public override void _EnterTree()
     {
         Instance = this;
+        registry.InitializeRegistry(saveService);
     }
 
     public override void _ExitTree()

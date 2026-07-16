@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://0vttypt5lm24"]
+
+[ext_resource type="Script" uid="uid://84jcahrspmdg" path="res://Scripts/UI/UiLevelMenu.cs" id="1_knby7"]
+[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_tksc0"]
+
+[sub_resource type="Gradient" id="Gradient_knby7"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yjx35"]
+gradient = SubResource("Gradient_knby7")
+
+[node name="LevelMenu" type="Control" unique_id=1518218131 node_paths=PackedStringArray("stateLabel", "inventoryLabel", "droneSkill")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_knby7")
+stateLabel = NodePath("TimeLabel")
+inventoryLabel = NodePath("InventoryLabel")
+droneSkill = NodePath("TextureProgressBar")
+
+[node name="TimeLabel" type="RichTextLabel" parent="." unique_id=518097035]
+layout_mode = 0
+offset_right = 589.0
+offset_bottom = 332.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("2_tksc0")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="InventoryLabel" type="RichTextLabel" parent="." unique_id=771013004]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -749.0
+offset_bottom = 431.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "INVENTORY"
+scroll_active = false
+script = ExtResource("2_tksc0")
+_max_size = 32
+_current_font_size = 32
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=471923615]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 871.0
+offset_right = 238.0
+offset_bottom = 969.0
+step = 0.01
+value = 89.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_yjx35")
+texture_progress = SubResource("GradientTexture2D_yjx35")
+tint_under = Color(0.51, 0.51, 0.51, 1)

@@ -18,6 +18,9 @@ public partial class UiRootSingleton : Control
     [Export]
     public UiDeathMenu deathMenu;
 
+    [Export]
+    public UiCreditsMenu creditsMenu;
+
     public override void _EnterTree()
     {
         Instance = this;

@@ -1,12 +1,11 @@
 using Godot;
+using ProjectA.Game.Singletons;
+using ProjectA.Game.Tables;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerDroneDuo : Node3D
 {
-    [Export]
-    public Key SummonDroneKey = Key.Q;
-
     [Export]
     public PlayerCharacterController player;
 
@@ -27,21 +26,19 @@ public partial class PlayerDroneDuo : Node3D
 
         if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
         {
-            GetActiveCamera().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
-            return;
+            GetActiveCameraRig().ApplyMouseLook(mouseMotion.Relative, mouseSensitivity);
         }
 
         if (@event is not InputEventKey { Pressed: true } keyEvent || keyEvent.IsEcho())
             return;
 
-        if (keyEvent.Keycode == SummonDroneKey)
+        if (@event.IsActionPressed(InputsTable.ACTION_TOGGLE_DRONE))
         {
             ToggleDrone();
-            return;
         }
     }
 
-    private void DisableDrone()
+    public void DisableDrone()
     {
         //Input.MouseMode = Input.MouseModeEnum.Captured;
         currentlyActivePart = DuoTarget.PLAYER;
@@ -49,8 +46,11 @@ public partial class PlayerDroneDuo : Node3D
         player.EnterThisController();
     }
 
-    private void EnableDrone()
+    public void EnableDrone()
     {
+        if (!drone.CanSummon())
+            return;
+
         //Input.MouseMode = Input.MouseModeEnum.Captured;
         currentlyActivePart = DuoTarget.DRONE;
         player.LeaveThisController();
@@ -62,15 +62,16 @@ public partial class PlayerDroneDuo : Node3D
         if (currentlyActivePart == DuoTarget.DRONE)
         {
             DisableDrone();
+            drone.StartManualUnsummonCooldown();
             return;
         }
 
         EnableDrone();
     }
 
-    private FpsCamera GetActiveCamera()
+    private ThirdPersonCameraRig GetActiveCameraRig()
     {
-        return currentlyActivePart == DuoTarget.DRONE ? drone.fpsCamera : player.fpsCamera;
+        return currentlyActivePart == DuoTarget.DRONE ? drone.cameraRig : player.cameraRig;
     }
 
     private bool ActivePartAcceptsInput()
@@ -86,7 +87,7 @@ public partial class PlayerDroneDuo : Node3D
 
         DisableDrone();
 
-        GetActiveCamera().ResetPose();
+        //GetActiveCamera().ResetPose();
     }
 
     public void Unprepare()

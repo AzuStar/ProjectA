@@ -87,6 +87,7 @@ process_material = SubResource("ParticleProcessMaterial_yjx35")
 draw_pass_1 = SubResource("QuadMesh_lgqpe")
 
 [node name="TorchLighterArea3d" type="Area3D" parent="." index="3" unique_id=1790883564]
+collision_mask = 2
 script = ExtResource("4_mox3h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TorchLighterArea3d" index="0" unique_id=1622342949]

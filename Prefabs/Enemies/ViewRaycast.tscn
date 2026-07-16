@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b17xdsj2c1u48"]
+
+[node name="ViewRaycast" type="RayCast3D" unique_id=774764638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73601204, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1

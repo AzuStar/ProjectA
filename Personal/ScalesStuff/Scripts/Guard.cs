@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class Guard : CharacterBody3D
 {
 	[ExportGroup("State Variables")]
-	[Export] Node3D[] Route;
+	[Export] Path3D patrolPath;
 	[Export] float CharacterSpeed;
 	[Export] float SearchTime;
 	[Export] float SearchTurnDuration;
@@ -56,16 +56,13 @@ public partial class Guard : CharacterBody3D
 
 		if (patrollingState != null ){
 
-			(patrollingState as PatrollingState).SetRoute(Route);
+			(patrollingState as PatrollingState).SetPatrolPath(patrolPath);
 			(patrollingState as PatrollingState).SetCharacterSpeed(CharacterSpeed);
 			(patrollingState as PatrollingState).SetCharacter(this);
 		}
 
 		if(searchingState != null)
 		{
-			(searchingState as SearchState).SetCharacter(this);
-			(searchingState as SearchState).SetSearchTime(SearchTime);
-			(searchingState as SearchState).SetTurnDurations(SearchTurnDuration);
 		}
 
 		if(chasingState != null)

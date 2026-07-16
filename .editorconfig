@@ -4,6 +4,10 @@ root = true
 charset = utf-8
 
 [*.cs]
+indent_style = space
+indent_size = 4
+tab_width = 4
+max_line_length = 120
 
 dotnet_diagnostic.IDE0047.severity = none
 dotnet_diagnostic.IDE0048.severity = none
@@ -13,7 +17,6 @@ dotnet_diagnostic.IDE0051.severity = none
 # IDE1006: Naming Styles
 dotnet_diagnostic.IDE1006.severity = none
 
-max_line_length = 120
 
 # IDE0090: Use 'new(...)'
 csharp_style_implicit_object_creation_when_type_is_apparent = false
@@ -56,3 +59,6 @@ dotnet_diagnostic.Noxrat0000.severity = warning
 dotnet_diagnostic.CS8601.severity = none
 dotnet_diagnostic.CS8603.severity = none
 dotnet_diagnostic.CS8600.severity = none
+
+# dictionary reduant key declaration (good for tables)
+dotnet_diagnostic.CA2244.severity = error

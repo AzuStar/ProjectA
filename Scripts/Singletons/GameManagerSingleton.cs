@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using ProjectA.Game.Levels;
 using ProjectA.Game.UI;
 
@@ -13,10 +12,10 @@ public partial class GameManagerSingleton : Node
     public static GameManagerSingleton Instance { get; private set; }
 
     [Export]
-    public int currentLevel = -1;
+    public LevelEnum currentLevel;
 
     [Export]
-    public Array<PackedScene> gameLevels = new();
+    public Godot.Collections.Dictionary<LevelEnum, PackedScene> gameLevels = new();
 
     [Export]
     public float delayBeforeLevelIsShown = 0.2f;
@@ -42,34 +41,48 @@ public partial class GameManagerSingleton : Node
 
     public static void MoveToNextLevel()
     {
-        UiRootSingleton.Instance.mainMenu.Hide();
-        UnloadCurrentLevel();
-        OpenLevel(LoadLevelInstance(++Instance.currentLevel));
+        LevelEnum nextLevel = (LevelEnum)((int)Instance.currentLevel + 1);
+        if (HasLevelInstance(nextLevel))
+        {
+            MoveToLevel(nextLevel);
+            return;
+        }
+
+        ShowCreditsMenu();
     }
 
-    public static void UpdateCurrentLevel(int levelId)
+    public static void MoveToLevel(LevelEnum levelId)
+    {
+        UiRootSingleton.Instance.mainMenu.Hide();
+        UiRootSingleton.Instance.creditsMenu.Hide();
+        UnloadCurrentLevel();
+        OpenLevel(LoadLevelInstance(levelId));
+    }
+
+    public static void UpdateCurrentLevel(LevelEnum levelId)
     {
         Instance.currentLevel = levelId;
     }
 
-    private static LevelInstance LoadLevelInstance(int levelId)
+    private static bool HasLevelInstance(LevelEnum levelId)
     {
-        if (levelId > Instance.gameLevels.Count || levelId < 0)
-            return null;
+        return Instance.gameLevels.ContainsKey(levelId);
+    }
 
+    private static LevelInstance LoadLevelInstance(LevelEnum levelId)
+    {
         var instance = Instance.gameLevels[levelId].Instantiate<LevelInstance>();
-
         instance.levelId = levelId;
         return instance;
     }
 
-    public static void OpenLevel(LevelInstance level)
+    private static void OpenLevel(LevelInstance level)
     {
         currentLevelInstance = level;
         Bootstrap.GetGameSubViewport().AddChild(currentLevelInstance);
     }
 
-    public static bool UnloadCurrentLevel()
+    private static bool UnloadCurrentLevel()
     {
         if (currentLevelInstance == null)
             return false;
@@ -88,10 +101,20 @@ public partial class GameManagerSingleton : Node
     public static void BackToMainMenu()
     {
         UnloadCurrentLevel();
-        Instance.currentLevel = -1;
         UiRootSingleton.Instance.escMenu.Hide();
         UiRootSingleton.Instance.levelMenu.Hide();
         UiRootSingleton.Instance.mainMenu.Show();
         UiRootSingleton.Instance.deathMenu.Hide();
+        UiRootSingleton.Instance.creditsMenu.Hide();
+    }
+
+    private static void ShowCreditsMenu()
+    {
+        UnloadCurrentLevel();
+        UiRootSingleton.Instance.escMenu.Hide();
+        UiRootSingleton.Instance.levelMenu.Hide();
+        UiRootSingleton.Instance.mainMenu.Hide();
+        UiRootSingleton.Instance.deathMenu.Hide();
+        UiRootSingleton.Instance.creditsMenu.Show();
     }
 }
