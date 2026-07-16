@@ -38,6 +38,9 @@ shape = SubResource("CapsuleShape3D_qvgyf")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
+path_desired_distance = 0.4
+target_desired_distance = 0.75
+path_max_distance = 1.5
 
 [node name="RaycastArc3D" type="Node3D" parent="." unique_id=344361034]
 transform = Transform3D(1, 0, 0, 0, 0.9631524, -0.26895624, 0, 0.26895624, 0.9631524, 0, 1.4758797, 0)

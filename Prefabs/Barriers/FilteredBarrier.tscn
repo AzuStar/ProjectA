@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://7jdkoe4is4f0"]
+
+[ext_resource type="Script" uid="uid://bc6kcmqp5r1n7" path="res://Scripts/Barriers/BarrierFilterDuo.cs" id="1_haf33"]
+[ext_resource type="PackedScene" uid="uid://b4dc44nt3damh" path="res://Prefabs/Environment/wall_doorway_2.tscn" id="2_4fshs"]
+[ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="3_8u2jw"]
+[ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="4_pwl1k"]
+
+[sub_resource type="Gradient" id="Gradient_ylal7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.106451616, 0.43225807, 0.7387097, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.58, 0.58, 0.58, 1, 0.23225807, 0.23225807, 0.23225807, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4iwma"]
+gradient = SubResource("Gradient_ylal7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rlpw"]
+render_priority = 0
+shader = ExtResource("3_8u2jw")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("4_pwl1k")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 5
+shader_parameter/wrap = 9.49999998667295e-08
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.0050000002375
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(0.15, 0.15, 0.15, 0.015686275)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = SubResource("GradientTexture1D_4iwma")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.025
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx5h7"]
+render_priority = 0
+shader = ExtResource("3_8u2jw")
+shader_parameter/albedo = Color(0, 1, 0.083333254, 1)
+shader_parameter/albedo_texture = ExtResource("4_pwl1k")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 5
+shader_parameter/wrap = 9.49999998667295e-08
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.0050000002375
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(0.15, 0.15, 0.15, 0.015686275)
+shader_parameter/use_ramp = false
+shader_parameter/ramp = SubResource("GradientTexture1D_4iwma")
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.025
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtuky"]
+size = Vector3(2, 2.8153076, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gerni"]
+size = Vector3(1, 4, 1)
+
+[node name="FilteredBarrier" type="Node3D" unique_id=696414691 node_paths=PackedStringArray("collisionObject", "visualRoot")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_haf33")
+letsThrough = 1
+collisionObject = NodePath("DoorBody")
+visualRoot = NodePath("wall_doorway2")
+
+[node name="wall_doorway2" parent="." unique_id=109700311 instance=ExtResource("2_4fshs")]
+
+[node name="wall_doorway" parent="wall_doorway2" index="0" unique_id=2017456638]
+surface_material_override/0 = SubResource("ShaderMaterial_5rlpw")
+
+[node name="wall_doorway_door" parent="wall_doorway2/wall_doorway" index="0" unique_id=2115001252]
+surface_material_override/0 = SubResource("ShaderMaterial_gx5h7")
+
+[node name="DoorBody" type="StaticBody3D" parent="." unique_id=35516273]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorBody" unique_id=644360551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4076538, 0)
+shape = SubResource("BoxShape3D_mtuky")
+
+[node name="FrameBody" type="StaticBody3D" parent="." unique_id=1599011496]
+
+[node name="Frame1" type="CollisionShape3D" parent="FrameBody" unique_id=2104485022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+shape = SubResource("BoxShape3D_gerni")
+
+[node name="Frame2" type="CollisionShape3D" parent="FrameBody" unique_id=118538340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 0)
+shape = SubResource("BoxShape3D_gerni")
+
+[editable path="wall_doorway2"]
