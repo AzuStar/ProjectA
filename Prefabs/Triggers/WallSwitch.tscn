@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://parsumu22wl2" path="res://Scripts/Interaction/WallSwitch.cs" id="1_tnecl"]
 [ext_resource type="PackedScene" uid="uid://dhw4bfcpfkdp7" path="res://Prefabs/FloatingPopups/InteractiveFloatingPopup.tscn" id="2_4w6wk"]
 [ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="2_g5kar"]
-[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_4w6wk"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullPickup.tres" id="3_4w6wk"]
+[ext_resource type="Script" uid="uid://c0bghnlhvyyu1" path="res://Scripts/Interaction/DuoAreaPopupSpawner.cs" id="4_n63e8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_31c78"]
 render_priority = 0
@@ -47,12 +48,20 @@ shader_parameter/border_width = 0.01
 [sub_resource type="SphereShape3D" id="SphereShape3D_yjx35"]
 radius = 4.646566
 
-[node name="Switch" type="Node3D" unique_id=315961888 node_paths=PackedStringArray("switchToSquish", "interactionArea")]
+[node name="Switch" type="Node3D" unique_id=315961888 node_paths=PackedStringArray("switchToSquish", "interactionArea", "popupSpawner")]
 script = ExtResource("1_tnecl")
 switchToSquish = NodePath("SwitchModel")
 squishTo = Vector3(1, 1, 0.5)
 interactionArea = NodePath("Area3D")
 popupPrefab = ExtResource("2_4w6wk")
+popupSpawner = NodePath("DuoAreaPopupSpawner")
+
+[node name="DuoAreaPopupSpawner" type="Node" parent="." unique_id=1081526835]
+script = ExtResource("4_n63e8")
+area = NodePath("../Area3D")
+popupPrefab = ExtResource("2_4w6wk")
+syncFrom = NodePath("..")
+autoShow = false
 
 [node name="Deco" type="CSGBox3D" parent="." unique_id=260333525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.26391602)

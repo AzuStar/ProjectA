@@ -1,10 +1,10 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://fgl4c36hs1t8"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3d6ij1sjw6fs"]
 
-[ext_resource type="Shader" uid="uid://buhctrmv382aj" path="res://Shaders/InverseHullOutline.gdshader" id="1_xsqll"]
+[ext_resource type="Shader" uid="uid://buhctrmv382aj" path="res://Shaders/InverseHullOutline.gdshader" id="1_d5mnk"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_xsqll")
+shader = ExtResource("1_d5mnk")
 shader_parameter/outline_color = Color(0.9896667, 1, 0.38, 1)
 shader_parameter/thickness = 0.05400000256499999
 shader_parameter/outline_energy = 2.07999995350784
@@ -12,4 +12,4 @@ shader_parameter/outline_transparency = 1.0
 shader_parameter/use_vertex_normals = false
 shader_parameter/radial_origin = Vector3(0, 0.05, 0)
 shader_parameter/merge_group = false
-shader_parameter/merge_depth_range = 8.90000013262068
+shader_parameter/merge_depth_range = 4.30000006407516

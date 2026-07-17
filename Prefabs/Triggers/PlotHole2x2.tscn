@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bcoi2k5ok5878"]
+
+[ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="1_nywmj"]
+[ext_resource type="Material" uid="uid://bui0uq30mveo1" path="res://Resources/Material/PlotHoleMaterial.tres" id="2_p3riw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xntn4"]
+size = Vector3(7.9416504, 1, 6.968994)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdgu6"]
+size = Vector3(8, 0.42285156, 8)
+
+[node name="PlotHole2x2" type="Area3D" unique_id=768406796]
+collision_mask = 6
+monitorable = false
+script = ExtResource("1_nywmj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1706961061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_xntn4")
+debug_color = Color(0.87, 0, 0.26100016, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=455840098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+flip_faces = true
+size = Vector3(8, 4, 8)
+material = ExtResource("2_p3riw")
+
+[node name="PushableFloor" type="StaticBody3D" parent="." unique_id=648122200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushableFloor" unique_id=583364284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7885742, 0)
+shape = SubResource("BoxShape3D_tdgu6")

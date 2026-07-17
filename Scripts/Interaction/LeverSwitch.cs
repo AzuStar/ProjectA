@@ -2,7 +2,6 @@ using Godot;
 using ProjectA.Game.Player;
 using ProjectA.Game.Singletons;
 using ProjectA.Game.Tables;
-using ProjectA.Game.UI;
 
 namespace ProjectA.Game.Interaction;
 
@@ -21,9 +20,11 @@ public partial class LeverSwitch : Node3D
     [Export]
     public PackedScene popupPrefab;
 
+    [Export]
+    public DuoAreaPopupSpawner popupSpawner;
+
     private bool _isOn;
     private bool _isInteractable;
-    private UiInteractiveFloatingPopup _popup;
 
     public override void _Process(double delta)
     {
@@ -64,6 +65,12 @@ public partial class LeverSwitch : Node3D
 
     private bool ActiveDuoPartIsInRange()
     {
+        if (popupSpawner != null)
+        {
+            SyncPopupSpawner();
+            return popupSpawner.HasUsableDuoPartInArea(true);
+        }
+
         Godot.Collections.Array<Node3D> bodies = interactionArea.GetOverlappingBodies();
         DuoTarget activePart = PlayerSingleton.Instance.playerDuo.currentlyActivePart;
 
@@ -95,20 +102,54 @@ public partial class LeverSwitch : Node3D
 
     protected virtual void BecomesInteractable()
     {
-        if (_popup != null)
+        if (popupSpawner != null)
+        {
+            SyncPopupSpawner();
+            popupSpawner.SetPopupVisible(true);
             return;
+        }
 
-        _popup = popupPrefab.Instantiate<UiInteractiveFloatingPopup>();
-        _popup.positionSync.syncFrom = this;
-        UiRootSingleton.Instance.AddChild(_popup);
+        LegacyShowPopup();
     }
 
     protected virtual void BecomesNotInteractable()
     {
-        if (_popup == null)
+        if (popupSpawner != null)
+        {
+            SyncPopupSpawner();
+            popupSpawner.SetPopupVisible(false);
+            return;
+        }
+
+        LegacyHidePopup();
+    }
+
+    private void SyncPopupSpawner()
+    {
+        popupSpawner.area = interactionArea;
+        popupSpawner.duoFilter = duoFilter;
+        popupSpawner.popupPrefab = popupPrefab;
+        popupSpawner.syncFrom = this;
+    }
+
+    private ProjectA.Game.UI.UiInteractiveFloatingPopup _legacyPopup;
+
+    private void LegacyShowPopup()
+    {
+        if (_legacyPopup != null)
             return;
 
-        _popup.QueueFree();
-        _popup = null;
+        _legacyPopup = popupPrefab.Instantiate<ProjectA.Game.UI.UiInteractiveFloatingPopup>();
+        _legacyPopup.positionSync.syncFrom = this;
+        ProjectA.Game.UI.UiRootSingleton.Instance.AddChild(_legacyPopup);
+    }
+
+    private void LegacyHidePopup()
+    {
+        if (_legacyPopup == null)
+            return;
+
+        _legacyPopup.QueueFree();
+        _legacyPopup = null;
     }
 }

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dxm30x8tctl2x"]
+
+[ext_resource type="PackedScene" uid="uid://b23y7f3au4p34" path="res://Assets/CustomModels/Bases/Doors/PlanksDoor1.glb" id="1_rp4k7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rp4k7"]
+size = Vector3(4, 4, 1)
+
+[node name="PlanksDoor12" unique_id=241708918 instance=ExtResource("1_rp4k7")]
+
+[node name="PlanksDoor1" parent="." index="0" unique_id=1112215140]
+transform = Transform3D(0.64, 0, 0, 0, 0.585, 0, 0, 0, 0.6, 0, -0.037114233, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=824434772]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=2079637272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_rp4k7")

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cobaoiuxgp184"]
+
+[ext_resource type="PackedScene" uid="uid://dhfa6bg0c37xr" path="res://Assets/CustomModels/TableLong.glb" id="1_mgogv"]
+[ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="2_psnkd"]
+[ext_resource type="Texture2D" uid="uid://byyid1egwnwrv" path="res://Assets/CustomModels/Textures/TableLong_woodtextures.png" id="3_37eum"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4tvcm"]
+render_priority = 0
+shader = ExtResource("2_psnkd")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_37eum")
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 5
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 12.930000614175
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mgogv"]
+size = Vector3(1.859375, 1.9375, 5.8273926)
+
+[node name="TableLong2" unique_id=438474880 instance=ExtResource("1_mgogv")]
+
+[node name="TableLong" parent="." index="0" unique_id=1124056454]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 1.316403, 0.8052369)
+surface_material_override/0 = SubResource("ShaderMaterial_4tvcm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=267267910]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=881971898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96875, -0.009887695)
+shape = SubResource("BoxShape3D_mgogv")
