@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gn2bbvse2j51"
-path="res://.godot/imported/tower_hat.png-c7cceaa579f65ed1a791834f9b165adc.ctex"
+path="res://.godot/imported/tower_hat.png-23c24eea72d2b3ee5acc768a32ab29ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CustomModels/PlaceholderTexs/CharacterModels/textures/tower_hat.png"
-dest_files=["res://.godot/imported/tower_hat.png-c7cceaa579f65ed1a791834f9b165adc.ctex"]
+source_file="res://Assets/CustomModels/Textures/tower_hat.png"
+dest_files=["res://.godot/imported/tower_hat.png-23c24eea72d2b3ee5acc768a32ab29ca.ctex"]
 
 [params]
 
