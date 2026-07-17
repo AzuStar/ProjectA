@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://v1y7mlya5eve"
-path="res://.godot/imported/trunk_large_B.gltf-ecc5c82b2507e7175d2713a845acb019.scn"
+uid="uid://dmuewstk7vtu0"
+path="res://.godot/imported/BrickWallShortWithLargeBrickEndings.glb-cb266652294a02e7820f1285ca821e9e.scn"
 
 [deps]
 
-source_file="res://Assets/Dungeon/trunk_large_B.gltf"
-dest_files=["res://.godot/imported/trunk_large_B.gltf-ecc5c82b2507e7175d2713a845acb019.scn"]
+source_file="res://Assets/CustomModels/Bases/Walls/BrickWallShortWithLargeBrickEndings.glb"
+dest_files=["res://.godot/imported/BrickWallShortWithLargeBrickEndings.glb-cb266652294a02e7820f1285ca821e9e.scn"]
 
 [params]
 
