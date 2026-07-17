@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgr3gte8b0glk"]
 
 [ext_resource type="Script" uid="uid://bma2334p4ctfc" path="res://Scripts/Bootstrap.cs" id="1_7co74"]
-[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_im3w0"]
+[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/Material/PixelArtShader.tres" id="2_im3w0"]
 [ext_resource type="Script" uid="uid://dy5wagubw4myd" path="res://Scripts/UI/UiRootSingleton.cs" id="3_kp64o"]
 [ext_resource type="PackedScene" uid="uid://b2cd56krvmw44" path="res://Prefabs/UI/MainMenu.tscn" id="4_q6itx"]
 [ext_resource type="PackedScene" uid="uid://0vttypt5lm24" path="res://Prefabs/UI/LevelMenu.tscn" id="5_im3w0"]

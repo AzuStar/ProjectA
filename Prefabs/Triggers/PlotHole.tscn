@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://deqyvc2s3pfdv"]
 
 [ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="1_a57j4"]
-[ext_resource type="Material" uid="uid://bui0uq30mveo1" path="res://Resources/PlotHoleMaterial.tres" id="2_fnsgb"]
+[ext_resource type="Material" uid="uid://bui0uq30mveo1" path="res://Resources/Material/PlotHoleMaterial.tres" id="2_fnsgb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_visvh"]
 size = Vector3(4, 2, 4)

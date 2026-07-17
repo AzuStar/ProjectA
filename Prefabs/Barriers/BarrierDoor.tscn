@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4dc44nt3damh" path="res://Prefabs/Environment/wall_doorway_2.tscn" id="1_7r6nv"]
 [ext_resource type="Script" uid="uid://bn5mgl4ex4n0c" path="res://Scripts/Barriers/BarrierDoor.cs" id="2_7r6nv"]
-[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="3_gerni"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/Material/DungeonRockyMaterial.tres" id="3_gerni"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unlock"]
 size = Vector3(5, 3.2, 5)

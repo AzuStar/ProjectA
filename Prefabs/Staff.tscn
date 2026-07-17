@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://588tlb1ynwr3" path="res://Scripts/InteractibleWorldSwitcher.cs" id="1_qox40"]
 [ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="2_osjra"]
 [ext_resource type="PackedScene" uid="uid://khyj5br4hkkl" path="res://Prefabs/InteractPanel.tscn" id="2_qox40"]
-[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="3_n1sdw"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_n1sdw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upxsj"]
 resource_name = "mage"

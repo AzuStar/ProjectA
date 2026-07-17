@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh13x1cokmnm6" path="res://Scripts/Pushables/PushableBody.cs" id="1_rc6du"]
 [ext_resource type="PackedScene" uid="uid://b20ydpmjje60w" path="res://Assets/CustomModels/WoodenBoxLarge.glb" id="2_llnfr"]
-[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="2_stj2h"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="2_stj2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
 size = Vector3(2, 2, 2)

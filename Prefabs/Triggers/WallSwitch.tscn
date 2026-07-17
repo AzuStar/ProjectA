@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://parsumu22wl2" path="res://Scripts/Interaction/WallSwitch.cs" id="1_tnecl"]
 [ext_resource type="PackedScene" uid="uid://dhw4bfcpfkdp7" path="res://Prefabs/FloatingPopups/InteractiveFloatingPopup.tscn" id="2_4w6wk"]
 [ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="2_g5kar"]
-[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="3_4w6wk"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_4w6wk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_31c78"]
 render_priority = 0

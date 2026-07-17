@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://v1jlbdgjfw6d" path="res://Assets/Dungeon/floor_tile_large.gltf" id="1_q5khb"]
 [ext_resource type="Shape3D" uid="uid://qb0m873yd47i" path="res://Resources/TileBoxShape.tres" id="2_anqho"]
-[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_tgcvw"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/Material/DungeonRockyMaterial.tres" id="2_tgcvw"]
 
 [node name="floor_tile_large2" unique_id=1853447348 instance=ExtResource("1_q5khb")]
 

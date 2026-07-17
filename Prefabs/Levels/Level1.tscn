@@ -1367,7 +1367,7 @@ shape = SubResource("BoxShape3D_7qlpj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.034023, 0, 2.8399224)
 curve = SubResource("Curve3D_gafx7")
 
-[node name="EnemyGuard" parent="Guard1" unique_id=1412306627 node_paths=PackedStringArray("patrolPath") instance=ExtResource("12_gafx7")]
+[node name="EnemyGuard" parent="Guard1" unique_id=1987409314 node_paths=PackedStringArray("patrolPath") instance=ExtResource("12_gafx7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.206913, 0, -6.5343018)
 patrolPath = NodePath("../Path3D")
 speed = 2.5
@@ -1407,4 +1407,4 @@ triggerable = NodePath("../Barriers/BarrierDoor")
 duoFilter = 2
 
 [node name="PushableBox" parent="." unique_id=97837123 instance=ExtResource("15_5rnp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.56017, 4.1370354, 15.813716)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.56017, 4.972576, 15.813716)
