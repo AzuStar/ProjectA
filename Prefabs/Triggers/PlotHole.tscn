@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="1_a57j4"]
 [ext_resource type="Material" uid="uid://bui0uq30mveo1" path="res://Resources/Material/PlotHoleMaterial.tres" id="2_fnsgb"]
+[ext_resource type="Script" uid="uid://cwm2i7qonlhs5" path="res://Scripts/RespawnTrigger.cs" id="3_othrs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_visvh"]
 size = Vector3(4, 1, 4)
@@ -9,11 +10,15 @@ size = Vector3(4, 1, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
 size = Vector3(4, 2, 4)
 
-[node name="PlotHole" type="Area3D" unique_id=1938282717]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwfk5"]
+size = Vector3(4, 1, 4)
+
+[node name="PlotHole" type="Area3D" unique_id=1938282717 node_paths=PackedStringArray("_respawnTrigger")]
 transform = Transform3D(1, 0, 0, 0, 1.08, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 6
 monitorable = false
 script = ExtResource("1_a57j4")
+_respawnTrigger = NodePath("RespawnTrigger")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1961683105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -33,3 +38,13 @@ collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PushableFloor" unique_id=1739106833]
 shape = SubResource("BoxShape3D_fupvj")
+
+[node name="RespawnTrigger" type="Area3D" parent="." unique_id=1957083744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8518518, 0)
+collision_layer = 32
+collision_mask = 16
+monitorable = false
+script = ExtResource("3_othrs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RespawnTrigger" unique_id=1296676926]
+shape = SubResource("BoxShape3D_kwfk5")
