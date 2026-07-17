@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://1ghxotdocn02"]
+
+[ext_resource type="Script" uid="uid://cigm3uk4yc43m" path="res://Scripts/UI/UiFloatingPopup.cs" id="1_m6poe"]
+[ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_gcv2w"]
+[ext_resource type="Script" uid="uid://c2i5s2t2gk0mw" path="res://Scripts/UI/UiNode3DPositionSync.cs" id="3_jm75m"]
+
+[node name="InteractFloatingPopup" type="Panel" unique_id=1194374441 node_paths=PackedStringArray("positionSync")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 978.0
+offset_top = 377.0
+offset_right = -644.0
+offset_bottom = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m6poe")
+positionSync = NodePath("UiNode3DPositionSync")
+
+[node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="." unique_id=1845761577]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "Press Q to summon Bluetoof"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_gcv2w")
+_max_size = 40
+_current_font_size = 36
+_editor_defaults_set = true
+metadata/_custom_type_script = "uid://co0lo02vnu10n"
+
+[node name="UiNode3DPositionSync" type="Node" parent="." unique_id=193133491 node_paths=PackedStringArray("syncTo")]
+script = ExtResource("3_jm75m")
+canvasOffset = Vector2(0, 6)
+syncTo = NodePath("..")
+metadata/_custom_type_script = "uid://c2i5s2t2gk0mw"

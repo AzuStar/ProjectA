@@ -1,6 +1,5 @@
 using Godot;
 using ProjectA.Game.Player;
-using ProjectA.Game.Singletons;
 using ProjectA.Game.UI;
 
 namespace ProjectA.Game.Interaction;
@@ -18,34 +17,19 @@ public partial class DuoAreaPopupSpawner : Node
     public PackedScene popupPrefab;
 
     [Export]
-    public string popupText = "Press E";
-
-    [Export]
     public Node3D syncFrom;
 
-    [Export]
-    public bool autoShow = true;
-
-    [Export]
-    public bool requireActiveDuoPart;
-
-    private UiInteractiveFloatingPopup _popup;
+    private UiFloatingPopup _popup;
 
     public override void _Ready()
     {
-        if (area != null)
-        {
-            area.BodyEntered += HandleAreaChanged;
-            area.BodyExited += HandleAreaChanged;
-        }
+        area.BodyEntered += HandleAreaChanged;
+        area.BodyExited += HandleAreaChanged;
     }
 
     public override void _Process(double delta)
     {
-        if (!autoShow)
-            return;
-
-        SetPopupVisible(HasUsableDuoPartInArea(requireActiveDuoPart));
+        SetPopupVisible(HasUsableDuoPartInArea());
     }
 
     public override void _ExitTree()
@@ -53,19 +37,13 @@ public partial class DuoAreaPopupSpawner : Node
         HidePopup();
     }
 
-    public bool HasUsableDuoPartInArea(bool activePartOnly)
+    public bool HasUsableDuoPartInArea()
     {
-        if (area == null)
-            return false;
-
         Godot.Collections.Array<Node3D> bodies = area.GetOverlappingBodies();
-        DuoTarget activePart = activePartOnly
-            ? PlayerSingleton.Instance.playerDuo.currentlyActivePart
-            : default;
 
         for (int i = 0; i < bodies.Count; i++)
         {
-            if (CanUse(bodies[i], activePart, activePartOnly))
+            if (CanUse(bodies[i]))
                 return true;
         }
 
@@ -82,12 +60,13 @@ public partial class DuoAreaPopupSpawner : Node
 
     public void ShowPopup()
     {
-        if (_popup != null || popupPrefab == null)
+        if (_popup != null)
             return;
 
-        _popup = popupPrefab.Instantiate<UiInteractiveFloatingPopup>();
+            GD.Print("Showing Popup");
+
+        _popup = popupPrefab.Instantiate<UiFloatingPopup>();
         _popup.positionSync.syncFrom = syncFrom ?? GetParent<Node3D>();
-        _popup.SetText(popupText);
         UiRootSingleton.Instance.AddChild(_popup);
     }
 
@@ -102,17 +81,16 @@ public partial class DuoAreaPopupSpawner : Node
 
     private void HandleAreaChanged(Node3D body)
     {
-        if (autoShow)
-            SetPopupVisible(HasUsableDuoPartInArea(requireActiveDuoPart));
+        SetPopupVisible(HasUsableDuoPartInArea());
     }
 
-    private bool CanUse(Node3D body, DuoTarget activePart, bool activePartOnly)
+    private bool CanUse(Node3D body)
     {
         if (body is PlayerCharacterController)
-            return (duoFilter & DuoFilter.PLAYER) != 0 && (!activePartOnly || activePart == DuoTarget.PLAYER);
+            return (duoFilter & DuoFilter.PLAYER) != 0;
 
         if (body is DroneCharacterController)
-            return (duoFilter & DuoFilter.DRONE) != 0 && (!activePartOnly || activePart == DuoTarget.DRONE);
+            return (duoFilter & DuoFilter.DRONE) != 0;
 
         return false;
     }

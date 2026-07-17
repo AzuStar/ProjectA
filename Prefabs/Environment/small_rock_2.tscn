@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xk4iu2bs716u"]
+
+[ext_resource type="PackedScene" uid="uid://bshoj2k7iijou" path="res://Assets/CustomModels/Bases/Decorations/Rocks/SmallRock2.glb" id="1_qtvt6"]
+[ext_resource type="Material" uid="uid://c2p31wf2qptc5" path="res://Resources/Material/RockMaterial.tres" id="2_wlrwy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wlrwy"]
+size = Vector3(1.2467041, 1.0204163, 1.6264648)
+
+[node name="SmallRock2" unique_id=189862177 instance=ExtResource("1_qtvt6")]
+
+[node name="Smallrock2" parent="." index="0" unique_id=446167669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0048339, 0)
+surface_material_override/0 = ExtResource("2_wlrwy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1820424864]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=187405519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15142822, 0.51020813, 0.18432617)
+shape = SubResource("BoxShape3D_wlrwy")

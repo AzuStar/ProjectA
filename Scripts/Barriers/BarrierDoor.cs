@@ -15,6 +15,9 @@ public partial class BarrierDoor : Barrier
     [Export]
     public NavigationLink3D navigationLink;
 
+    [Export]
+    public bool unlockableByKey;
+
     public override void _Ready()
     {
         base._Ready();
@@ -24,6 +27,9 @@ public partial class BarrierDoor : Barrier
     private void OnBodyEntered(Node3D body)
     {
         if (body is not PlayerCharacterController)
+            return;
+
+        if (!unlockableByKey)
             return;
 
         // Do we have a key to open the door with?

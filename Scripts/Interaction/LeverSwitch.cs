@@ -68,7 +68,7 @@ public partial class LeverSwitch : Node3D
         if (popupSpawner != null)
         {
             SyncPopupSpawner();
-            return popupSpawner.HasUsableDuoPartInArea(true);
+            return popupSpawner.HasUsableDuoPartInArea();
         }
 
         Godot.Collections.Array<Node3D> bodies = interactionArea.GetOverlappingBodies();
@@ -132,14 +132,14 @@ public partial class LeverSwitch : Node3D
         popupSpawner.syncFrom = this;
     }
 
-    private ProjectA.Game.UI.UiInteractiveFloatingPopup _legacyPopup;
+    private ProjectA.Game.UI.UiFloatingPopup _legacyPopup;
 
     private void LegacyShowPopup()
     {
         if (_legacyPopup != null)
             return;
 
-        _legacyPopup = popupPrefab.Instantiate<ProjectA.Game.UI.UiInteractiveFloatingPopup>();
+        _legacyPopup = popupPrefab.Instantiate<ProjectA.Game.UI.UiFloatingPopup>();
         _legacyPopup.positionSync.syncFrom = this;
         ProjectA.Game.UI.UiRootSingleton.Instance.AddChild(_legacyPopup);
     }

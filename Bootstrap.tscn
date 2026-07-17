@@ -77,8 +77,11 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="UI_SVC" type="SubViewportContainer" parent="Main" unique_id=420112639]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="Main/UI_SVC" unique_id=956472740]
 disable_3d = true

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://coc7crmdh1ui3"]
+
+[ext_resource type="PackedScene" uid="uid://b2lyjgx0q8tcv" path="res://Assets/CustomModels/Bases/Decorations/Rocks/LongRock1.glb" id="1_ff5nv"]
+
+[node name="LongRock1" unique_id=792179197 instance=ExtResource("1_ff5nv")]

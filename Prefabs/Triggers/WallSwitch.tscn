@@ -61,7 +61,6 @@ script = ExtResource("4_n63e8")
 area = NodePath("../Area3D")
 popupPrefab = ExtResource("2_4w6wk")
 syncFrom = NodePath("..")
-autoShow = false
 
 [node name="Deco" type="CSGBox3D" parent="." unique_id=260333525]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.26391602)
@@ -78,3 +77,10 @@ collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1233883007]
 shape = SubResource("SphereShape3D_yjx35")
+
+[node name="Node" type="Node" parent="." unique_id=1529695287 node_paths=PackedStringArray("area", "syncFrom")]
+script = ExtResource("4_n63e8")
+area = NodePath("../Area3D")
+duoFilter = 2
+popupPrefab = ExtResource("2_4w6wk")
+syncFrom = NodePath("..")
