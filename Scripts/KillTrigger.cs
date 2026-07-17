@@ -6,6 +6,7 @@ using ProjectA.Game.Singletons;
 
 public partial class KillTrigger : Area3D
 {
+    [ExportGroup("Respawning")]
     [Export] private bool _respawnsPushables;
     [Export] private RespawnTrigger _respawnTrigger;
 
@@ -13,8 +14,11 @@ public partial class KillTrigger : Area3D
     {
         BodyEntered += HandleBodyEntered;
         AreaEntered += HandleAreaEntered;
-        
-        _respawnTrigger.SetEnabled(_respawnsPushables);
+
+        if (_respawnTrigger != null)
+        {
+            _respawnTrigger.SetEnabled(_respawnsPushables);
+        }
     }
 
     private void HandleBodyEntered(Node3D body)
