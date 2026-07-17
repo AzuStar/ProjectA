@@ -2,8 +2,12 @@ using Godot;
 
 public partial class PushableBody : CharacterBody3D
 {
+    [Export] public bool _respondsToRespawnTriggers = false;
+
     private Vector3 _initialPosition;
     private bool _pendingRespawn;
+
+    public bool RespondsToRespawnTriggers => _respondsToRespawnTriggers;
 
     public override void _Ready()
     {

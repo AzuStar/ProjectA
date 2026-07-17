@@ -2,21 +2,14 @@ using Godot;
 
 public partial class RespawnTrigger : Area3D
 {
-	public void SetEnabled(bool enabled)
+	public override void _Ready()
     {
-        if (enabled)
-        {
-            BodyEntered += HandleBodyEntered;
-        }
-        else
-        {
-            BodyEntered -= HandleBodyEntered;
-        }
+        BodyEntered += HandleBodyEntered;
     }
 
     private void HandleBodyEntered(Node3D body)
     {
-        if (body is PushableBody pushable)
+        if (body is PushableBody pushable && pushable.RespondsToRespawnTriggers)
         {
             pushable.Respawn();
         }

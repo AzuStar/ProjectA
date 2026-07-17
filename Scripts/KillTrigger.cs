@@ -8,17 +8,11 @@ public partial class KillTrigger : Area3D
 {
     [ExportGroup("Respawning")]
     [Export] private bool _respawnsPushables;
-    [Export] private RespawnTrigger _respawnTrigger;
 
     public override void _Ready()
     {
         BodyEntered += HandleBodyEntered;
         AreaEntered += HandleAreaEntered;
-
-        if (_respawnTrigger != null)
-        {
-            _respawnTrigger.SetEnabled(_respawnsPushables);
-        }
     }
 
     private void HandleBodyEntered(Node3D body)
