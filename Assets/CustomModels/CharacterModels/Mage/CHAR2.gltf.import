@@ -3,6 +3,15 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
+<<<<<<<< HEAD:Assets/CustomModels/Guard/Guard_MintuProject1.glb.import
+uid="uid://ludv1ek16eol"
+path="res://.godot/imported/Guard_MintuProject1.glb-4e22f75e25826c6ff8381744c0dd98f6.scn"
+
+[deps]
+
+source_file="res://Assets/CustomModels/Guard/Guard_MintuProject1.glb"
+dest_files=["res://.godot/imported/Guard_MintuProject1.glb-4e22f75e25826c6ff8381744c0dd98f6.scn"]
+========
 uid="uid://bwgkqqumue5tm"
 path="res://.godot/imported/CHAR2.gltf-9c2165b9c1c0e616c24c7e68c72d750e.scn"
 
@@ -10,6 +19,7 @@ path="res://.godot/imported/CHAR2.gltf-9c2165b9c1c0e616c24c7e68c72d750e.scn"
 
 source_file="res://Assets/CustomModels/CharacterModels/Mage/CHAR2.gltf"
 dest_files=["res://.godot/imported/CHAR2.gltf-9c2165b9c1c0e616c24c7e68c72d750e.scn"]
+>>>>>>>> master:Assets/CustomModels/CharacterModels/Mage/CHAR2.gltf.import
 
 [params]
 
