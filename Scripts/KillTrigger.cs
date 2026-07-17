@@ -6,9 +6,6 @@ using ProjectA.Game.Singletons;
 
 public partial class KillTrigger : Area3D
 {
-    [ExportGroup("Respawning")]
-    [Export] private bool _respawnsPushables;
-
     public override void _Ready()
     {
         BodyEntered += HandleBodyEntered;
