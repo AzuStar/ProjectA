@@ -1410,10 +1410,3 @@ duoFilter = 2
 
 [node name="PushableBox" parent="." unique_id=97837123 instance=ExtResource("15_5rnp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.56017, 4.972576, 15.813716)
-
-[node name="PushableBox2" parent="." unique_id=1182183480 instance=ExtResource("15_5rnp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.43983, -0.027423859, -6.186284)
-_respondsToRespawnTriggers = true
-
-[node name="PushableBox3" parent="." unique_id=1199363684 instance=ExtResource("15_5rnp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.43983, -0.027423859, -2.186284)
