@@ -69,8 +69,11 @@ public partial class PlayerCharacterController : CharacterBody3D
             if (collision != null && collision.GetCollider() is PushableBody pushable)
             {
                 Vector3 normal = collision.GetNormal();
-                Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
-                pushable.TryPush(push);
+                if (Mathf.Abs(normal.Y) <= 0.01f)
+                {
+                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                    pushable.TryPush(push);
+                }
             }
         }
 
