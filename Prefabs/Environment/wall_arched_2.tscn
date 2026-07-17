@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mqrd1wrymrrh"]
 
 [ext_resource type="PackedScene" uid="uid://bmnde7uc6s8n3" path="res://Assets/Dungeon/wall_arched.gltf" id="1_uuf1j"]
-[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/DungeonRockyMaterial.tres" id="2_vn8o3"]
+[ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/Material/DungeonRockyMaterial.tres" id="2_vn8o3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vn8o3"]
 size = Vector3(4, 4, 1)

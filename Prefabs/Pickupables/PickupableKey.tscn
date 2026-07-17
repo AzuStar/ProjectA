@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://dlckr8nbmk2jo"]
 
-[ext_resource type="Script" uid="uid://bi427s1u0fobg" path="res://Scripts/Pickups/PickupableArea3D.cs" id="1_2w2ct"]
+[ext_resource type="Script" uid="uid://dto4j732fo3wa" path="res://Scripts/Pickups/PickupableByDroneArea3D.cs" id="1_2w2ct"]
 [ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="2_s1bah"]
-[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/InverseHullInteractible.tres" id="3_0w31r"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_0w31r"]
 [ext_resource type="Script" uid="uid://bqj3xypm2aw7f" path="res://Scripts/ParentAxisOscillator3D.cs" id="3_2w2ct"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gsa5"]
@@ -72,7 +72,7 @@ maxRotationDegrees = Vector3(5, 9999999, 20)
 enabledInEditor = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=180187028 node_paths=PackedStringArray("rootNode")]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_2w2ct")
 rootNode = NodePath("..")
 

@@ -1,0 +1,521 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 24486,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 15592,
+      "max": [
+        1.91702222824097,
+        10.2430248260498,
+        5.43780136108398
+      ],
+      "min": [
+        -4.22791910171509,
+        -0.5,
+        -5.52124691009521
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 15592,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 15592,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 15592,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5125,
+      "count": 1008,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 594,
+      "max": [
+        0.96790599822998,
+        10.8296718597412,
+        1.54523134231567
+      ],
+      "min": [
+        -2.00161051750183,
+        7.77341604232788,
+        -1.54523110389709
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 594,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5126,
+      "count": 594,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 594,
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "Adobe Substance 3D Painter 8.3.1",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 97944,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 187104,
+      "byteOffset": 97944,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 187104,
+      "byteOffset": 285048,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 249472,
+      "byteOffset": 472152,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 124736,
+      "byteOffset": 721624,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4032,
+      "byteOffset": 846360,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7128,
+      "byteOffset": 850392,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 7128,
+      "byteOffset": 857520,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 9504,
+      "byteOffset": 864648,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4752,
+      "byteOffset": 874152,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 878904,
+      "uri": "Unity HD Render Pipeline (Metallic Standard).bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "DefaultMaterial_baseColor.png"
+    },
+    {
+      "uri": "DefaultMaterial_occlusionRoughnessMetallic.png"
+    },
+    {
+      "uri": "DefaultMaterial_normal.png"
+    },
+    {
+      "uri": "Hat_baseColor.png"
+    },
+    {
+      "uri": "Hat_occlusionRoughnessMetallic.png"
+    },
+    {
+      "uri": "Hat_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "name": "DefaultMaterial",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "alphaMode": "OPAQUE",
+      "name": "Hat",
+      "normalTexture": {
+        "index": 5
+      },
+      "occlusionTexture": {
+        "index": 4
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sphere.013-0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TANGENT": 3,
+            "TEXCOORD_0": 4
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Sphere.013-1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 7,
+            "POSITION": 6,
+            "TANGENT": 8,
+            "TEXCOORD_0": 9
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1,
+        4,
+        9,
+        10,
+        11
+      ],
+      "name": "Armature",
+      "translation": [
+        0.0,
+        4.3763279914856,
+        0.0
+      ]
+    },
+    {
+      "children": [
+        2,
+        3
+      ],
+      "name": "Body"
+    },
+    {
+      "mesh": 0,
+      "name": "Sphere.013-0"
+    },
+    {
+      "mesh": 1,
+      "name": "Sphere.013-1"
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "hips"
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "spine",
+      "rotation": [
+        -3.69778549322349e-32,
+        -1.11022302462516e-16,
+        -1.11022302462516e-16,
+        1.0
+      ],
+      "translation": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "children": [
+        7,
+        8
+      ],
+      "name": "chest",
+      "rotation": [
+        4.97046501499436e-32,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "translation": [
+        -5.29395592033938e-23,
+        1.05367231369019,
+        2.35098870164458e-38
+      ]
+    },
+    {
+      "name": "L.Shoulder",
+      "rotation": [
+        0.786198079586029,
+        -2.21005635125948e-07,
+        -2.81167189086773e-07,
+        0.617974638938904
+      ],
+      "translation": [
+        1.58818677610181e-22,
+        1.0368127822876,
+        -1.83670992315982e-39
+      ]
+    },
+    {
+      "name": "R.SHoulder",
+      "rotation": [
+        -0.773973226547241,
+        3.13514843860325e-23,
+        1.71856579311234e-16,
+        0.633218348026276
+      ],
+      "scale": [
+        1.0,
+        1.00000011920929,
+        1.0
+      ],
+      "translation": [
+        1.58818677610181e-22,
+        1.0368127822876,
+        -1.83670992315982e-39
+      ]
+    },
+    {
+      "name": "LeftHip",
+      "rotation": [
+        -6.88853489805297e-08,
+        0.409268528223038,
+        0.912413954734802,
+        -3.08989065445076e-08
+      ],
+      "scale": [
+        0.99999988079071,
+        0.999999821186066,
+        0.999999821186066
+      ]
+    },
+    {
+      "name": "RightHip",
+      "rotation": [
+        0.941257178783417,
+        -6.70093786447736e-17,
+        -6.70093654098838e-17,
+        -0.337690562009811
+      ],
+      "scale": [
+        1.0,
+        0.999999821186066,
+        0.99999988079071
+      ]
+    },
+    {
+      "children": [
+        12
+      ],
+      "name": "TailBase",
+      "rotation": [
+        -0.274068892002106,
+        0.651833057403564,
+        0.27406895160675,
+        0.65183287858963
+      ],
+      "scale": [
+        1.00000011920929,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "children": [
+        13
+      ],
+      "name": "Tail1",
+      "rotation": [
+        -0.55233758687973,
+        -3.10639052258921e-08,
+        -1.53571974692568e-07,
+        0.833620548248291
+      ],
+      "scale": [
+        1.0,
+        0.99999988079071,
+        1.0
+      ],
+      "translation": [
+        -4.2632564145606e-14,
+        1.34475755691528,
+        -2.38418607523272e-07
+      ]
+    },
+    {
+      "children": [
+        14
+      ],
+      "name": "Tail2",
+      "rotation": [
+        -0.47273775935173,
+        -1.408220118293e-08,
+        -9.33229387101164e-08,
+        0.881203174591064
+      ],
+      "translation": [
+        -2.8421709430404e-14,
+        0.997519612312317,
+        6.55651092529297e-07
+      ]
+    },
+    {
+      "children": [
+        15
+      ],
+      "name": "Tail3",
+      "rotation": [
+        -0.0309143234044313,
+        4.97714358616008e-09,
+        -5.76267833451993e-09,
+        0.999522030353546
+      ],
+      "scale": [
+        1.0,
+        0.99999988079071,
+        0.999999821186066
+      ],
+      "translation": [
+        -5.72875080706581e-14,
+        0.855023920536041,
+        5.96046447753906e-08
+      ]
+    },
+    {
+      "name": "Tail4",
+      "rotation": [
+        0.368526428937912,
+        -1.23802749385504e-07,
+        2.14526139075133e-08,
+        0.929617285728455
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        0.99999988079071
+      ],
+      "translation": [
+        7.105427357601e-15,
+        1.18313801288605,
+        8.94069813739407e-08
+      ]
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9985,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://botf4iwaysgo1"]
 
 [ext_resource type="PackedScene" uid="uid://btc8gf03ru0c3" path="res://Personal/ScalesStuff/Prefab/Guard.tscn" id="1_6wlyd"]
+[ext_resource type="PackedScene" uid="uid://bokgybe0ufwbf" path="res://Personal/ScalesStuff/Prefab/CHAR1(rigged_uvmapped).glb" id="2_saot4"]
 [ext_resource type="Script" uid="uid://c70es3gaqvc66" path="res://Personal/ScalesStuff/Scripts/Testing Scripts/PlayerMovement.cs" id="6_cul0n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_he7nk"]
@@ -192,6 +193,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0309734, 1.5240588, -4.462
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.5, -19)
 script = ExtResource("6_cul0n")
 speed = 10.0
+
+[node name="CHAR1(rigged_uvmapped)" parent="NavigationRegion3D/Player" unique_id=1140280365 instance=ExtResource("2_saot4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.8150053)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Player" unique_id=1089098834]
 visible = false

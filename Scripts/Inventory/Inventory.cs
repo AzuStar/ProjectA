@@ -31,8 +31,12 @@ public class LevelInventory
 
     public bool RemoveOne(ItemType itemType)
     {
-        items[(int)itemType].quantity--;
-        return Has(itemType);
+        if (items[(int)itemType].quantity > 0)
+        {
+            items[(int)itemType].quantity--;
+            return true;
+        }
+        return false;
     }
 
     public void Clear()

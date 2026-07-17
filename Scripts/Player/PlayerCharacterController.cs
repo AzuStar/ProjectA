@@ -1,22 +1,23 @@
 using Godot;
 using ProjectA.Game;
+using ProjectA.Game.Singletons;
 
 namespace ProjectA.Game.Player;
 
 public partial class PlayerCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "KayKitAnim/Idle_A";
-    private const string DeathAnimation = "KayKitAnim/Death_A";
-    private const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    private const string IdleAnimation = "idle";
+    private const string DeathAnimation = "interact";
+    private const string WalkingAnimation = "walk";
 
     [Export]
-    public float Speed = 4.0f;
+    public float movementSpeed;
 
     [Export]
     public float JumpVelocity = 6.0f;
 
     [Export]
-    public float Gravity = 24.0f;
+    public float PushSpeed = 2.0f;
 
     [Export]
     public double AnimationBlendSeconds = 0.15;
@@ -43,6 +44,7 @@ public partial class PlayerCharacterController : CharacterBody3D
 
     public override void _Ready()
     {
+        movementSpeed = PlayerSingleton.Instance.mageMovementSpeed;
         PlayAnimation(IdleAnimation);
     }
 
@@ -59,6 +61,19 @@ public partial class PlayerCharacterController : CharacterBody3D
         Vector3 direction = GetMovementDirection();
 
         Move(direction, delta);
+
+        // Pushing.
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision3D? collision = GetSlideCollision(i);
+            if (collision != null && collision.GetCollider() is PushableBody pushable)
+            {
+                Vector3 normal = collision.GetNormal();
+                Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                pushable.TryPush(push);
+            }
+        }
+
         PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
     }
 
@@ -66,8 +81,8 @@ public partial class PlayerCharacterController : CharacterBody3D
     {
         Vector3 velocity = Velocity;
 
-        velocity.X = direction.X * Speed;
-        velocity.Z = direction.Z * Speed;
+        velocity.X = direction.X * movementSpeed;
+        velocity.Z = direction.Z * movementSpeed;
 
         bool jumpPressed = Input.IsKeyPressed(Key.Space);
 
@@ -78,7 +93,7 @@ public partial class PlayerCharacterController : CharacterBody3D
         }
         else
         {
-            velocity.Y -= Gravity * (float)delta;
+            velocity.Y += GetGravity().Y * (float)delta;
         }
 
         _jumpWasPressed = jumpPressed;

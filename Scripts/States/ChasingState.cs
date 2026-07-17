@@ -15,7 +15,7 @@ public partial class ChasingState : Node, IState
     Vector3 currentGoal;
 
     [Export]
-    public float chaseGoalStopThreshold = 0.1f;
+    public float chaseGoalStopThreshold = 0.75f;
 
     [Export]
     public float turnSpeedDegreesPerSecond = 360.0f;
@@ -26,8 +26,12 @@ public partial class ChasingState : Node, IState
     [Export]
     public float stuckDistanceThreshold = 0.02f;
 
+    [Export]
+    public float stuckProgressThreshold = 0.05f;
+
     float stuckTimer;
     Vector3 previousPosition;
+    float bestGoalDistance;
 
     public void SetCharacterSpeed(float value) => CharacterSpeed = value;
 
@@ -35,18 +39,37 @@ public partial class ChasingState : Node, IState
 
     public void SetAnimationController(IEnemyAnimationController value) => animationController = value;
 
+    public uint NavigationMapIteration()
+    {
+        return NavigationServer3D.MapGetIterationId(navigationAgent.GetNavigationMap());
+    }
+
+    public bool NavigationMapReady()
+    {
+        return NavigationMapIteration() != 0;
+    }
+
+    public bool NavigationMapReadyAfter(uint iteration)
+    {
+        uint currentIteration = NavigationMapIteration();
+        return currentIteration != 0 && currentIteration != iteration;
+    }
+
+    public void SetIdleTarget(Vector3 position)
+    {
+        navigationAgent.TargetPosition = Flatten(position);
+    }
+
     public void SetGoal(Vector3 goalPosition)
     {
-        currentGoal = goalPosition;
-        currentGoal.Y = 0.0f;
-
+        currentGoal = GetClosestNavigationPoint(goalPosition);
         navigationAgent.TargetPosition = currentGoal;
     }
 
     public void Enter()
     {
-        ResetStuckTimer();
         navigationAgent.TargetPosition = currentGoal;
+        ResetStuckTimer();
     }
 
     public void Exit()
@@ -62,24 +85,25 @@ public partial class ChasingState : Node, IState
 
     public void StatePhysicsUpdate(double _delta)
     {
-        Vector3 currentPosition = Vector3.Zero;
-        currentPosition.X = Character.GlobalPosition.X;
-        currentPosition.Z = Character.GlobalPosition.Z;
+        Vector3 currentPosition = Flatten(Character.GlobalPosition);
+        Vector3 reachableGoal = Flatten(navigationAgent.GetFinalPosition());
 
-        if (currentPosition.DistanceTo(currentGoal) <= chaseGoalStopThreshold)
+        if (navigationAgent.IsNavigationFinished() || currentPosition.DistanceTo(reachableGoal) <= chaseGoalStopThreshold)
         {
-            TransitionEvent?.Invoke(this, nameof(SearchState));
+            GoToSearch();
             return;
         }
 
-        if (IsStuck(currentPosition, (float)_delta))
+        if (IsStuck(currentPosition, reachableGoal, (float)_delta))
         {
-            TransitionEvent?.Invoke(this, nameof(SearchState));
+            GoToSearch();
             return;
         }
 
         Vector3 destination = navigationAgent.GetNextPathPosition();
+        destination.Y = Character.GlobalPosition.Y;
         Vector3 localDestination = destination - Character.GlobalPosition;
+        localDestination.Y = 0.0f;
         Vector3 direction = localDestination.Normalized();
 
         Character.Velocity = direction * CharacterSpeed;
@@ -92,20 +116,45 @@ public partial class ChasingState : Node, IState
     void ResetStuckTimer()
     {
         stuckTimer = 0.0f;
-        previousPosition = Character.GlobalPosition;
-        previousPosition.Y = 0.0f;
+        previousPosition = Flatten(Character.GlobalPosition);
+        bestGoalDistance = previousPosition.DistanceTo(Flatten(navigationAgent.GetFinalPosition()));
     }
 
-    bool IsStuck(Vector3 currentPosition, float delta)
+    bool IsStuck(Vector3 currentPosition, Vector3 reachableGoal, float delta)
     {
-        if (currentPosition.DistanceSquaredTo(previousPosition) <= stuckDistanceThreshold * stuckDistanceThreshold)
+        float goalDistance = currentPosition.DistanceTo(reachableGoal);
+        bool barelyMoved = currentPosition.DistanceSquaredTo(previousPosition) <= stuckDistanceThreshold * stuckDistanceThreshold;
+        bool noProgress = goalDistance >= bestGoalDistance - stuckProgressThreshold;
+
+        if (barelyMoved || noProgress)
             stuckTimer += delta;
         else
         {
             stuckTimer = 0.0f;
             previousPosition = currentPosition;
+            bestGoalDistance = goalDistance;
         }
 
         return stuckTimer >= stuckDisengageTime;
+    }
+
+    Vector3 GetClosestNavigationPoint(Vector3 position)
+    {
+        if (!NavigationMapReady())
+            return Flatten(position);
+
+        return NavigationServer3D.MapGetClosestPoint(navigationAgent.GetNavigationMap(), position);
+    }
+
+    static Vector3 Flatten(Vector3 position)
+    {
+        position.Y = 0.0f;
+        return position;
+    }
+
+    void GoToSearch()
+    {
+        Character.Velocity = Vector3.Zero;
+        TransitionEvent?.Invoke(this, nameof(SearchState));
     }
 }

@@ -21,7 +21,7 @@ height = 2.41333
 
 [node name="EnemyGuard" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "stateMachine", "patrollingState", "chasingState", "searchState", "viewRaycastArcs")]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 19
 script = ExtResource("1_qd8lb")
 animationPlayer = NodePath("AnimationPlayer")
 stateMachine = NodePath("EnemyStateMachine")
@@ -38,9 +38,12 @@ shape = SubResource("CapsuleShape3D_qvgyf")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
+path_desired_distance = 0.4
+target_desired_distance = 0.75
+path_max_distance = 1.5
 
 [node name="RaycastArc3D" type="Node3D" parent="." unique_id=344361034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.002126, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9631524, -0.26895624, 0, 0.26895624, 0.9631524, 0, 1.4758797, 0)
 script = ExtResource("11_q6d2g")
 raycastCount = 10
 arcAngle = 90.0
@@ -117,7 +120,7 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
 [node name="RaycastArc3D2" type="Node3D" parent="." unique_id=420039528]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1856899, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5073652, 0)
 script = ExtResource("11_q6d2g")
 raycastCount = 10
 arcAngle = 90.0
@@ -194,7 +197,7 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
 [node name="RaycastArc3D3" type="Node3D" parent="." unique_id=1429274236]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5266278, 0)
+transform = Transform3D(1, 0, 0, 0, 0.979643, 0.20074771, 0, -0.20074771, 0.979643, 0, 1.4612591, 0)
 script = ExtResource("11_q6d2g")
 raycastCount = 10
 arcAngle = 90.0
@@ -269,6 +272,43 @@ target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
+
+[node name="RaycastArc3D4" type="Node3D" parent="." unique_id=131306237]
+transform = Transform3D(1, 0, 0, 0, 0.88934296, -0.4572407, 0, 0.4572407, 0.88934296, 0, 1.587434, -0.5232544)
+script = ExtResource("11_q6d2g")
+raycastCount = 10
+arcAngle = 90.0
+raycastPrefab = ExtResource("12_3bpci")
+
+[node name="Raycast10" parent="RaycastArc3D4" unique_id=415874858 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Raycast11" parent="RaycastArc3D4" unique_id=1416915395 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
+
+[node name="Raycast12" parent="RaycastArc3D4" unique_id=1776724664 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
+
+[node name="Raycast13" parent="RaycastArc3D4" unique_id=1653133329 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
+
+[node name="Raycast14" parent="RaycastArc3D4" unique_id=1902531613 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
+
+[node name="Raycast15" parent="RaycastArc3D4" unique_id=1182748611 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
+
+[node name="Raycast16" parent="RaycastArc3D4" unique_id=1270602073 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
+
+[node name="Raycast17" parent="RaycastArc3D4" unique_id=1851469159 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
+
+[node name="Raycast18" parent="RaycastArc3D4" unique_id=2010142847 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
+
+[node name="Raycast19" parent="RaycastArc3D4" unique_id=399692993 instance=ExtResource("12_3bpci")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
 root_node = NodePath("../KnightBody")

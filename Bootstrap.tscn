@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgr3gte8b0glk"]
 
 [ext_resource type="Script" uid="uid://bma2334p4ctfc" path="res://Scripts/Bootstrap.cs" id="1_7co74"]
-[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/PixelArtShader.tres" id="2_im3w0"]
+[ext_resource type="Material" uid="uid://8glqgy4sd4vi" path="res://Resources/Material/PixelArtShader.tres" id="2_im3w0"]
 [ext_resource type="Script" uid="uid://dy5wagubw4myd" path="res://Scripts/UI/UiRootSingleton.cs" id="3_kp64o"]
 [ext_resource type="PackedScene" uid="uid://b2cd56krvmw44" path="res://Prefabs/UI/MainMenu.tscn" id="4_q6itx"]
 [ext_resource type="PackedScene" uid="uid://0vttypt5lm24" path="res://Prefabs/UI/LevelMenu.tscn" id="5_im3w0"]
@@ -45,7 +45,7 @@ environment = SubResource("Environment_c4w2e")
 camera_attributes = SubResource("CameraAttributesPractical_7fejw")
 
 [sub_resource type="Curve" id="Curve_ivr1f"]
-_data = [Vector2(0.008241758, 0), 0.0, 3.8518515, 0, 0, Vector2(0.53571427, 1), 0.18055591, 0.0, 0, 0]
+_data = [Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Bootstrap" type="Node" unique_id=607440252 node_paths=PackedStringArray("gameSvc", "uiSvc")]
@@ -104,6 +104,15 @@ mainMenu = NodePath("MainMenu")
 deathMenu = NodePath("DeathMenu")
 creditsMenu = NodePath("CreditsMenu")
 
+[node name="FloatingPopupsMenu" type="Control" parent="Main/UI_SVC/SubViewport/Root" unique_id=1722422474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="MainMenu" parent="Main/UI_SVC/SubViewport/Root" unique_id=951017335 instance=ExtResource("4_q6itx")]
 visible = false
 layout_mode = 1
@@ -137,10 +146,11 @@ gameLevels = Dictionary[int, PackedScene]({
 [node name="PlayerSingleton" type="Node" parent="Singletons" unique_id=935682634]
 script = ExtResource("8_awdqo")
 duoToUse = ExtResource("5_pkoba")
-maxDroneLeashRange = 50.0
+maxDroneLeashRange = 35.0
 droneScreenMaterialCloseDimensions = Vector2(1920, 1080)
-droneScreenMaterialFarDimensions = Vector2(48, 27)
+droneScreenMaterialFarDimensions = Vector2(240, 135)
 droneScreenMaterialDimensionsCurve = SubResource("Curve_ivr1f")
+mageMovementSpeed = 5.0
 
 [node name="AudioPlayerSingleton" type="Node" parent="Singletons" unique_id=112985654 node_paths=PackedStringArray("_musicPlayer", "_sfxPlayerContainer")]
 script = ExtResource("15_im3w0")
@@ -149,30 +159,21 @@ _sfxPlayerContainer = NodePath("SfxContainer")
 _initialMusic = ExtResource("16_kp64o")
 
 [node name="Music" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton" unique_id=1267837498]
-bus = &"Music"
 
 [node name="SfxContainer" type="Node" parent="Singletons/AudioPlayerSingleton" unique_id=222861105]
 
 [node name="Sfx1" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=426279871]
-bus = &"SFX"
 
 [node name="Sfx2" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=440159655]
-bus = &"SFX"
 
 [node name="Sfx3" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1610119096]
-bus = &"SFX"
 
 [node name="Sfx4" type="AudioStreamPlayer" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1336636052]
-bus = &"SFX"
 
 [node name="SfxSpatial1" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1144708535]
-bus = &"SFX"
 
 [node name="SfxSpatial2" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1961548131]
-bus = &"SFX"
 
 [node name="SfxSpatial3" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=795639260]
-bus = &"SFX"
 
 [node name="SfxSpatial4" type="AudioStreamPlayer3D" parent="Singletons/AudioPlayerSingleton/SfxContainer" unique_id=1565028449]
-bus = &"SFX"

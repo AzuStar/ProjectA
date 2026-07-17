@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://wi1aycc46auc"]
+
+[ext_resource type="Script" uid="uid://parsumu22wl2" path="res://Scripts/Interaction/WallSwitch.cs" id="1_tnecl"]
+[ext_resource type="PackedScene" uid="uid://dhw4bfcpfkdp7" path="res://Prefabs/FloatingPopups/InteractiveFloatingPopup.tscn" id="2_4w6wk"]
+[ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="2_g5kar"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_4w6wk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31c78"]
+render_priority = 0
+shader = ExtResource("2_g5kar")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfkmb"]
+render_priority = 0
+next_pass = ExtResource("3_4w6wk")
+shader = ExtResource("2_g5kar")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yjx35"]
+radius = 4.646566
+
+[node name="Switch" type="Node3D" unique_id=315961888 node_paths=PackedStringArray("switchToSquish", "interactionArea")]
+script = ExtResource("1_tnecl")
+switchToSquish = NodePath("SwitchModel")
+squishTo = Vector3(1, 1, 0.5)
+interactionArea = NodePath("Area3D")
+popupPrefab = ExtResource("2_4w6wk")
+
+[node name="Deco" type="CSGBox3D" parent="." unique_id=260333525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.26391602)
+size = Vector3(1, 1, 0.47216797)
+material = SubResource("ShaderMaterial_31c78")
+
+[node name="SwitchModel" type="CSGBox3D" parent="." unique_id=656001543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10595703)
+size = Vector3(0.62280273, 0.4716797, 0.78808594)
+material = SubResource("ShaderMaterial_wfkmb")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=665871173]
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1233883007]
+shape = SubResource("SphereShape3D_yjx35")
