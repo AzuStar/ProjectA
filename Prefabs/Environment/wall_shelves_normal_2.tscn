@@ -7,9 +7,12 @@ size = Vector3(10, 0.48102355, 3)
 
 [node name="WallShelvesNormal2" unique_id=964352297 instance=ExtResource("1_lksdq")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WallShelvesNormal" parent_id_path=PackedInt32Array(1893344112) index="0" unique_id=1024269612]
+[node name="WallShelvesNormal" parent="." index="0" unique_id=1893344112]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallShelvesNormal" index="0" unique_id=1024269612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8813622, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallShelvesNormal/StaticBody3D" index="0" unique_id=1885473786]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8938321, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.8938321, 0)
 shape = SubResource("BoxShape3D_x7101")

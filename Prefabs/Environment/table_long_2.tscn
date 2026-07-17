@@ -7,7 +7,10 @@ size = Vector3(3.3325536, 3.5023255, 10.481798)
 
 [node name="TableLong2" unique_id=88990538 instance=ExtResource("1_ytiou")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="TableLong" parent_id_path=PackedInt32Array(177798870) index="0" unique_id=1540674320]
+[node name="TableLong" parent="." index="0" unique_id=177798870]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TableLong" index="0" unique_id=1540674320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009593368, -0.6421902, -1.5100493)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TableLong/StaticBody3D" index="0" unique_id=1280495717]

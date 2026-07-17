@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcrwey6cdkufe"]
+
+[ext_resource type="PackedScene" uid="uid://i5q8f3i66xfc" path="res://Assets/Dungeon/floor_wood_large.gltf" id="1_qafpd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qafpd"]
+size = Vector3(4, 0.15, 4)
+
+[node name="ceil_wood_large2" unique_id=888182002 instance=ExtResource("1_qafpd")]
+
+[node name="floor_wood_large" parent="." index="0" unique_id=243720217]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_wood_large" index="0" unique_id=949463843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024999999, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_wood_large/StaticBody3D" index="0" unique_id=1786831420]
+shape = SubResource("BoxShape3D_qafpd")

@@ -6,181 +6,181 @@ namespace ProjectA.Game.Player;
 
 public partial class PlayerCharacterController : CharacterBody3D
 {
-    private const string IdleAnimation = "idle";
-    private const string DeathAnimation = "interact";
-    private const string WalkingAnimation = "walk";
+	private const string IdleAnimation = "idle";
+	private const string DeathAnimation = "interact";
+	private const string WalkingAnimation = "walk";
 
-    [Export]
-    public float movementSpeed;
+	[Export]
+	public float movementSpeed;
 
-    [Export]
-    public float JumpVelocity = 6.0f;
+	[Export]
+	public float JumpVelocity = 6.0f;
 
-    [Export]
-    public float PushSpeed = 2.0f;
+	[Export]
+	public float PushSpeed = 2.0f;
 
-    [Export]
-    public double AnimationBlendSeconds = 0.15;
+	[Export]
+	public double AnimationBlendSeconds = 0.15;
 
-    [Export]
-    public bool RotateTowardInput = true;
+	[Export]
+	public bool RotateTowardInput = true;
 
-    [Export]
-    public bool DriveAnimationPlayer = true;
+	[Export]
+	public bool DriveAnimationPlayer = true;
 
-    [Export]
-    public Node3D visualRoot;
+	[Export]
+	public Node3D visualRoot;
 
-    [Export]
-    private AnimationPlayer animationPlayer;
+	[Export]
+	private AnimationPlayer animationPlayer;
 
-    [Export]
-    public ThirdPersonCameraRig cameraRig;
+	[Export]
+	public ThirdPersonCameraRig cameraRig;
 
-    public bool acceptInput = true;
-    private string _currentAnimation = string.Empty;
-    private bool _jumpWasPressed;
-    private bool _deathLocked;
+	public bool acceptInput = true;
+	private string _currentAnimation = string.Empty;
+	private bool _jumpWasPressed;
+	private bool _deathLocked;
 
-    public override void _Ready()
-    {
-        movementSpeed = PlayerSingleton.Instance.mageMovementSpeed;
-        PlayAnimation(IdleAnimation);
-    }
+	public override void _Ready()
+	{
+		movementSpeed = PlayerSingleton.Instance.mageMovementSpeed;
+		PlayAnimation(IdleAnimation);
+	}
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (!acceptInput)
-        {
-            if (!_deathLocked)
-                PlayAnimation(IdleAnimation);
+	public override void _PhysicsProcess(double delta)
+	{
+		if (!acceptInput)
+		{
+			if (!_deathLocked)
+				PlayAnimation(IdleAnimation);
 
-            return;
-        }
+			return;
+		}
 
-        Vector3 direction = GetMovementDirection();
+		Vector3 direction = GetMovementDirection();
 
-        Move(direction, delta);
+		Move(direction, delta);
 
-        // Pushing.
-        for (int i = 0; i < GetSlideCollisionCount(); i++)
-        {
-            KinematicCollision3D? collision = GetSlideCollision(i);
-            if (collision != null && collision.GetCollider() is PushableBody pushable)
-            {
-                Vector3 normal = collision.GetNormal();
-                Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
-                pushable.TryPush(push);
-            }
-        }
+		// Pushing.
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			KinematicCollision3D? collision = GetSlideCollision(i);
+			if (collision != null && collision.GetCollider() is PushableBody pushable)
+			{
+				Vector3 normal = collision.GetNormal();
+				Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+				pushable.TryPush(push);
+			}
+		}
 
-        PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
-    }
+		PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
+	}
 
-    private void Move(Vector3 direction, double delta)
-    {
-        Vector3 velocity = Velocity;
+	private void Move(Vector3 direction, double delta)
+	{
+		Vector3 velocity = Velocity;
 
-        velocity.X = direction.X * movementSpeed;
-        velocity.Z = direction.Z * movementSpeed;
+		velocity.X = direction.X * movementSpeed;
+		velocity.Z = direction.Z * movementSpeed;
 
-        bool jumpPressed = Input.IsKeyPressed(Key.Space);
+		bool jumpPressed = Input.IsKeyPressed(Key.Space);
 
-        if (IsOnFloor())
-        {
-            if (jumpPressed && !_jumpWasPressed)
-                velocity.Y = JumpVelocity;
-        }
-        else
-        {
-            velocity.Y += GetGravity().Y * (float)delta;
-        }
+		if (IsOnFloor())
+		{
+			if (jumpPressed && !_jumpWasPressed)
+				velocity.Y = JumpVelocity;
+		}
+		else
+		{
+			velocity.Y += GetGravity().Y * (float)delta;
+		}
 
-        _jumpWasPressed = jumpPressed;
-        Velocity = velocity;
-        MoveAndSlide();
+		_jumpWasPressed = jumpPressed;
+		Velocity = velocity;
+		MoveAndSlide();
 
-        if (direction.X != 0 || direction.Z != 0)
-        {
-            float bearing = Mathf.Atan2(direction.X, direction.Z);
-            visualRoot.GlobalRotation = Vector3.Up * bearing;
-        }
-    }
+		if (direction.X != 0 || direction.Z != 0)
+		{
+			float bearing = Mathf.Atan2(direction.X, direction.Z);
+			visualRoot.GlobalRotation = Vector3.Up * bearing;
+		}
+	}
 
-    private Vector3 GetMovementDirection()
-    {
-        Vector3 inputDirection = GetInputDirection();
-        if (inputDirection == Vector3.Zero)
-            return Vector3.Zero;
+	private Vector3 GetMovementDirection()
+	{
+		Vector3 inputDirection = GetInputDirection();
+		if (inputDirection == Vector3.Zero)
+			return Vector3.Zero;
 
-        Basis cameraBasis = cameraRig.GetCameraBasis();
-        Vector3 forward = -cameraBasis.Z;
-        Vector3 right = cameraBasis.X;
+		Basis cameraBasis = cameraRig.GetCameraBasis();
+		Vector3 forward = -cameraBasis.Z;
+		Vector3 right = cameraBasis.X;
 
-        forward.Y = 0.0f;
-        right.Y = 0.0f;
+		forward.Y = 0.0f;
+		right.Y = 0.0f;
 
-        return (right.Normalized() * inputDirection.X - forward.Normalized() * inputDirection.Z).Normalized();
-    }
+		return (right.Normalized() * inputDirection.X - forward.Normalized() * inputDirection.Z).Normalized();
+	}
 
-    private static Vector3 GetInputDirection()
-    {
-        Vector3 direction = Vector3.Zero;
+	private static Vector3 GetInputDirection()
+	{
+		Vector3 direction = Vector3.Zero;
 
-        if (Input.IsKeyPressed(Key.W))
-        {
-            direction.Z -= 1.0f;
-        }
+		if (Input.IsKeyPressed(Key.W))
+		{
+			direction.Z -= 1.0f;
+		}
 
-        if (Input.IsKeyPressed(Key.S))
-        {
-            direction.Z += 1.0f;
-        }
+		if (Input.IsKeyPressed(Key.S))
+		{
+			direction.Z += 1.0f;
+		}
 
-        if (Input.IsKeyPressed(Key.A))
-        {
-            direction.X -= 1.0f;
-        }
+		if (Input.IsKeyPressed(Key.A))
+		{
+			direction.X -= 1.0f;
+		}
 
-        if (Input.IsKeyPressed(Key.D))
-        {
-            direction.X += 1.0f;
-        }
+		if (Input.IsKeyPressed(Key.D))
+		{
+			direction.X += 1.0f;
+		}
 
-        return direction == Vector3.Zero ? Vector3.Zero : direction.Normalized();
-    }
+		return direction == Vector3.Zero ? Vector3.Zero : direction.Normalized();
+	}
 
-    private void PlayAnimation(string animationName)
-    {
-        if (!DriveAnimationPlayer || _currentAnimation == animationName)
-        {
-            return;
-        }
+	private void PlayAnimation(string animationName)
+	{
+		if (!DriveAnimationPlayer || _currentAnimation == animationName)
+		{
+			return;
+		}
 
-        animationPlayer.Play(animationName, AnimationBlendSeconds);
-        _currentAnimation = animationName;
-    }
+		animationPlayer.Play(animationName, AnimationBlendSeconds);
+		_currentAnimation = animationName;
+	}
 
-    public void EnterThisController()
-    {
-        _deathLocked = false;
-        acceptInput = true;
-        cameraRig.SetActive(true);
-    }
+	public void EnterThisController()
+	{
+		_deathLocked = false;
+		acceptInput = true;
+		cameraRig.SetActive(true);
+	}
 
-    public void LeaveThisController()
-    {
-        _deathLocked = false;
-        acceptInput = false;
-        cameraRig.SetActive(false);
-    }
+	public void LeaveThisController()
+	{
+		_deathLocked = false;
+		acceptInput = false;
+		cameraRig.SetActive(false);
+	}
 
-    public void Die()
-    {
-        _deathLocked = true;
-        acceptInput = false;
-        cameraRig.SetActive(false);
-        // cameraRig.PanOutForDeath();
-        PlayAnimation(DeathAnimation);
-    }
+	public void Die()
+	{
+		_deathLocked = true;
+		acceptInput = false;
+		cameraRig.SetActive(false);
+		// cameraRig.PanOutForDeath();
+		PlayAnimation(DeathAnimation);
+	}
 }

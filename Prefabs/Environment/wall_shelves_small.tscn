@@ -7,7 +7,10 @@ size = Vector3(6, 0.41302884, 2.6574652)
 
 [node name="WallShelvesSmall" unique_id=1865873298 instance=ExtResource("1_c0epp")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="WallSHelvesSmall" parent_id_path=PackedInt32Array(1286886698) index="0" unique_id=656416371]
+[node name="WallSHelvesSmall" parent="." index="0" unique_id=1286886698]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallSHelvesSmall" index="0" unique_id=656416371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02639532, -0.29697442, 0.5166198)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallSHelvesSmall/StaticBody3D" index="0" unique_id=263416567]
