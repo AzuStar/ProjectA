@@ -9,9 +9,9 @@ public partial class RespawnTrigger : Area3D
 
     private void HandleBodyEntered(Node3D body)
     {
-        if (body is PushableBody pushable && pushable.RespondsToRespawnTriggers)
+        if (body is PushableBodyRespawnable pushableRespawnable)
         {
-            pushable.Respawn();
+            pushableRespawnable.Respawn();
         }
     }
 }
