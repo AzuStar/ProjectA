@@ -55,7 +55,7 @@ radius = 0.7415121
 [node name="ChestPickup" type="Node3D" unique_id=1007006379]
 
 [node name="trunk_small_B" type="MeshInstance3D" parent="." unique_id=844005961]
-transform = Transform3D(0.9861499, -0.0002755971, 0.16585565, 0.00027946767, 0.99999994, 0, -0.16585562, 4.6351295e-05, 0.98615, 0, 0, 0)
+transform = Transform3D(0.9934337, -0.074628726, -0.08671729, 0.07491092, 0.9971902, 0, 0.08647364, -0.0064960727, 0.9962329, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7djqh")
 surface_material_override/0 = SubResource("StandardMaterial3D_gknin")
 
@@ -76,6 +76,6 @@ itemType = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5212573, 0)
 shape = SubResource("SphereShape3D_lprbf")
 
-[node name="Node2" type="Node" parent="." unique_id=1608257802]
+[node name="SfxPlayer" type="Node" parent="Area3D" unique_id=1608257802]
 script = ExtResource("5_fpvsn")
 _collectionEffect = ExtResource("4_7djqh")

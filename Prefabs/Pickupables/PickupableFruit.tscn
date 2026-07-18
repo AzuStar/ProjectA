@@ -76,7 +76,7 @@ radius = 0.7415121
 [node name="FruitPickup" type="Node3D" unique_id=1007006379]
 
 [node name="Apple" type="MeshInstance3D" parent="." unique_id=846603431]
-transform = Transform3D(0.18053149, -0.06301186, 0.058633536, 0.06590778, 0.1888284, 1.897933e-09, -0.055358388, 0.019322028, 0.19121222, 0, 0.2511835, 0)
+transform = Transform3D(-0.14750044, 0.051482864, 0.12487248, 0.06590778, 0.1888284, 3.1255605e-09, -0.11789735, 0.04115034, -0.15622698, 0, 0.2511835, 0)
 mesh = SubResource("ArrayMesh_oer3w")
 surface_material_override/0 = SubResource("StandardMaterial3D_hsrh0")
 
@@ -99,6 +99,6 @@ itemType = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5212573, 0)
 shape = SubResource("SphereShape3D_lprbf")
 
-[node name="Node2" type="Node" parent="." unique_id=1433092766]
+[node name="SfxPlayer" type="Node" parent="Area3D" unique_id=1433092766]
 script = ExtResource("9_janfa")
 _collectionEffect = ExtResource("10_boof0")
