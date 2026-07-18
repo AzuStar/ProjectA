@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cwgk86iamu2sj"]
+
+[ext_resource type="PackedScene" uid="uid://dlhb60tku8q04" path="res://Prefabs/Environment/hexagon_tiles2.tscn" id="1_7hepm"]
+
+[node name="Node3D" type="Node3D" unique_id=1878095200]
+
+[node name="Floors" type="Node3D" parent="." unique_id=1230677948]
+
+[node name="HexagonTiles" parent="Floors" unique_id=357278011 instance=ExtResource("1_7hepm")]
+
+[node name="HexagonTiles2" parent="Floors" unique_id=1704306339 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, 0)
+
+[node name="HexagonTiles3" parent="Floors" unique_id=839064239 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9358633)
+
+[node name="HexagonTiles4" parent="Floors" unique_id=1720581834 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, -3.9358633)
