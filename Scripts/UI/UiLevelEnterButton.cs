@@ -14,6 +14,9 @@ public partial class UiLevelEnterButton : Button
     public RichTextLabel label;
 
     [Export]
+    public Control lockedLabel;
+
+    [Export]
     public TextureRect timeStar;
 
     [Export]
@@ -55,6 +58,7 @@ public partial class UiLevelEnterButton : Button
             hasCompletedPreviousLevel = true;
         }
         Disabled = !hasCompletedPreviousLevel;
+        lockedLabel.Visible = !hasCompletedPreviousLevel;
 
         bool gotLevelSave = Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().GetLevelSave(levelId, out LevelSave levelSave);
 
