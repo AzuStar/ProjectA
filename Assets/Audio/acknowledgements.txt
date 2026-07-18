@@ -26,3 +26,8 @@ https://opengameart.org/content/item-pickup-key
 Drone Fly
 Custom made using Chiptone
 https://sfbgames.itch.io/chiptone
+
+Fantozzi's Footsteps
+Fantozzi
+CC0
+https://opengameart.org/content/fantozzis-footsteps-grasssand-stone
