@@ -41,16 +41,33 @@ public partial class UiLevelEnterButton : Button
 
     private void UpdateVisuals()
     {
-        LevelSave levelSave = Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().GetLevelSave(levelId);
         label.Text = $"[b]ENTER {levelId}[/b]";
 
-        if (levelSave.timeStar)
-            timeStar.SelfModulate = Colors.White;
+        bool hasCompletedPreviousLevel;
+        if (levelId > LevelEnum.LEVEL1)
+        {
+            bool gotPreviousLevelSave = Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().GetLevelSave(levelId - 1, out LevelSave previousLevelSave);
+            hasCompletedPreviousLevel = gotPreviousLevelSave && previousLevelSave.cleared;
+        }
+        else
+        {
+            // There is no level before this one.
+            hasCompletedPreviousLevel = true;
+        }
+        Disabled = !hasCompletedPreviousLevel;
 
-        if (levelSave.coinsStar)
-            coinStar.SelfModulate = Colors.White;
+        bool gotLevelSave = Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().GetLevelSave(levelId, out LevelSave levelSave);
 
-        if (levelSave.chestsStar)
-            chestStar.SelfModulate = Colors.White;
+        if (gotLevelSave)
+        {
+            if (levelSave.timeStar)
+                timeStar.SelfModulate = Colors.White;
+
+            if (levelSave.coinsStar)
+                coinStar.SelfModulate = Colors.White;
+
+            if (levelSave.chestsStar)
+                chestStar.SelfModulate = Colors.White;
+        }
     }
 }
