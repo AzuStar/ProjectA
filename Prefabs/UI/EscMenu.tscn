@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://omsfce73as7e"]
 
 [ext_resource type="Script" uid="uid://doxtcc2k7aoc6" path="res://Scripts/UI/UiEscMenu.cs" id="1_3iuiu"]
+[ext_resource type="Texture2D" uid="uid://bxo8j2rxac4pt" path="res://Assets/CustomModels/Textures/LowResTextures/button1img.png" id="2_f0l0o"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_k72eu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rxdy"]
@@ -34,12 +35,15 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = -143.0
-offset_right = 208.0
-offset_bottom = -27.0
+offset_left = 26.000002
+offset_top = -183.0
+offset_right = 538.0
+offset_bottom = 73.0
 grow_vertical = 0
+scale = Vector2(0.72000027, 0.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
+icon = ExtResource("2_f0l0o")
+flat = true
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="RestartLevel" unique_id=1753207585]
 layout_mode = 1
@@ -69,13 +73,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 352.0
-offset_top = 540.0
-offset_right = -1108.0
-offset_bottom = -353.0
+offset_left = 326.0
+offset_top = 443.0
+offset_right = -1082.0
+offset_bottom = -381.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
+icon = ExtResource("2_f0l0o")
+flat = true
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Resume" unique_id=1471295240]
 layout_mode = 1
@@ -105,13 +111,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1102.0
-offset_top = 540.0
-offset_right = -358.0
-offset_bottom = -353.0
+offset_left = 1076.0
+offset_top = 443.0
+offset_right = -332.0
+offset_bottom = -381.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_k5wt0")
+icon = ExtResource("2_f0l0o")
+flat = true
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Exit" unique_id=782582317]
 layout_mode = 1
