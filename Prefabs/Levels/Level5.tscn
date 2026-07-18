@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cwgk86iamu2sj"]
+
+[ext_resource type="PackedScene" uid="uid://dlhb60tku8q04" path="res://Prefabs/Environment/hexagon_tiles2.tscn" id="1_7hepm"]
+[ext_resource type="PackedScene" uid="uid://ctx24jcat75gi" path="res://Prefabs/Environment/pillar_3.tscn" id="1_nohmm"]
+[ext_resource type="PackedScene" uid="uid://hdc8elkun8rs" path="res://Prefabs/Pushables/PushableBox.tscn" id="1_sg6jg"]
+[ext_resource type="PackedScene" uid="uid://demnn11qhdp42" path="res://Prefabs/Environment/brick_wall_small_with_large_bricks.tscn" id="2_1lr0v"]
+[ext_resource type="PackedScene" uid="uid://dkxyn8x1det47" path="res://Prefabs/Environment/brick_wall_short_with_large_opening.tscn" id="3_ik86o"]
+[ext_resource type="PackedScene" uid="uid://djxdc1ak2w5f8" path="res://Prefabs/Environment/brick_wall_with_large_bricks_partial.tscn" id="4_nohmm"]
+[ext_resource type="PackedScene" uid="uid://dw00cgp2uk2a7" path="res://Prefabs/Environment/brick_wall_with_large_bricks_solid.tscn" id="5_sg6jg"]
+[ext_resource type="PackedScene" uid="uid://d1k8sfh1gktjh" path="res://Prefabs/Environment/pillar_1.tscn" id="6_ik86o"]
+
+[node name="Node3D" type="Node3D" unique_id=1878095200]
+
+[node name="ToBeImplemented" type="Node3D" parent="." unique_id=252285340]
+
+[node name="TriggableDoor" type="Node3D" parent="ToBeImplemented" unique_id=85888827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1087456, 0, 8.108813)
+
+[node name="Maybe changes textures on the walls?" type="Node3D" parent="ToBeImplemented" unique_id=1368207273]
+
+[node name="original idea_add a floor is lava insp level but the lava is beans lol" type="Node3D" parent="ToBeImplemented" unique_id=471037329]
+
+[node name="PushableBox" parent="ToBeImplemented" unique_id=97837123 instance=ExtResource("1_sg6jg")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -2.1037276, 1.9752282, 8.232852)
+
+[node name="Have a short puzzle in main room" type="Node3D" parent="ToBeImplemented" unique_id=995808163]
+
+[node name="Longer puzzle around the outside" type="Node3D" parent="ToBeImplemented" unique_id=78752120]
+
+[node name="Floors" type="Node3D" parent="." unique_id=1230677948]
+
+[node name="HexagonTiles" parent="Floors" unique_id=357278011 instance=ExtResource("1_7hepm")]
+
+[node name="HexagonTiles2" parent="Floors" unique_id=1704306339 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, 0)
+
+[node name="HexagonTiles3" parent="Floors" unique_id=839064239 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9358633)
+
+[node name="HexagonTiles4" parent="Floors" unique_id=1720581834 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, -3.9358633)
+
+[node name="HexagonTiles5" parent="Floors" unique_id=337009938 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.860325)
+
+[node name="HexagonTiles6" parent="Floors" unique_id=1307441806 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, 7.860325)
+
+[node name="HexagonTiles7" parent="Floors" unique_id=1972128078 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.9244616)
+
+[node name="HexagonTiles8" parent="Floors" unique_id=1118581743 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671006, 0, 3.9244616)
+
+[node name="HexagonTiles9" parent="Floors" unique_id=1348301880 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.927301, 0, 0)
+
+[node name="HexagonTiles10" parent="Floors" unique_id=1137562230 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894402, 0, 0)
+
+[node name="HexagonTiles11" parent="Floors" unique_id=2013257317 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.927301, 0, -3.9358633)
+
+[node name="HexagonTiles12" parent="Floors" unique_id=1591613203 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894402, 0, -3.9358633)
+
+[node name="HexagonTiles13" parent="Floors" unique_id=1516105596 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.927301, 0, 7.860325)
+
+[node name="HexagonTiles14" parent="Floors" unique_id=1739986588 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894402, 0, 7.860325)
+
+[node name="HexagonTiles15" parent="Floors" unique_id=1742679822 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.927301, 0, 3.9244616)
+
+[node name="HexagonTiles16" parent="Floors" unique_id=1634536015 instance=ExtResource("1_7hepm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894402, 0, 3.9244616)
+
+[node name="Walls" type="Node3D" parent="." unique_id=44276336]
+
+[node name="BrickWallSmallWithLargeBricks" parent="Walls" unique_id=1469052494 instance=ExtResource("2_1lr0v")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -8, 0, 14.639587)
+
+[node name="BrickWallShortWithLargeOpening" parent="Walls" unique_id=90343072 instance=ExtResource("3_ik86o")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.0864406, 0, 4.8199987)
+
+[node name="BrickWallWithLargeBricksPartial" parent="Walls" unique_id=1492979126 instance=ExtResource("4_nohmm")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2, 0, 0)
+
+[node name="BrickWallWithLargeBricksSolid" parent="Walls" unique_id=1544305897 instance=ExtResource("5_sg6jg")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, -5.3811846, 0, 3.2114475)
+
+[node name="BrickWallWithLargeBricksSolid2" parent="Walls" unique_id=1475585235 instance=ExtResource("5_sg6jg")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, -5.3811846, 0, 6.8981695)
+
+[node name="Pillar1" parent="Walls" unique_id=938467768 instance=ExtResource("6_ik86o")]
+transform = Transform3D(0.3, 0, 0, 0, 0.45, 0, 0, 0, 0.3, -2.0561028, -0.005935669, 6.9970927)
+
+[node name="BrickWallWithLargeBricksSolid3" parent="Walls" unique_id=524765852 instance=ExtResource("5_sg6jg")]
+transform = Transform3D(-2.6226832e-08, 0, 0.59999996, 0, 0.59999996, 0, -0.59999996, 0, -2.6226832e-08, -5.3811846, 0, 9.309348)
+
+[node name="Pillar2" parent="Walls" unique_id=2139020622 instance=ExtResource("6_ik86o")]
+transform = Transform3D(0.3, 0, 0, 0, 0.45, 0, 0, 0, 0.3, -2.0561028, -0.005935669, 9.408272)
+
+[node name="pillar3" parent="Walls" unique_id=669989 instance=ExtResource("1_nohmm")]
+transform = Transform3D(0.3, 0, 0, 0, -1.7484556e-08, -0.3, 0, 0.4, -1.3113417e-08, -2.0604823, 1.6928093, 7.2287636)
