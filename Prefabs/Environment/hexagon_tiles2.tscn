@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dlhb60tku8q04"]
 
 [ext_resource type="Texture2D" uid="uid://ce16gr04xxh0e" path="res://Assets/CustomModels/Bases/Floors/HexagonalBaseLargeSingle_GranitePlaceholderReverse.png" id="1_gv4wu"]
+[ext_resource type="Texture2D" uid="uid://bto3va5b8geye" path="res://Assets/CustomModels/Textures/LowResTextures/lowresstone.png" id="4_fnvsm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihpfr"]
 resource_name = "Stone1"
@@ -40,6 +41,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5h37l")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqmv7"]
+cull_mode = 2
+albedo_texture = ExtResource("4_fnvsm")
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gxfxq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxfxq"]
@@ -51,6 +56,7 @@ shadow_mesh = SubResource("ArrayMesh_5h37l")
 [node name="HexagonalBaseLargeSingle" type="MeshInstance3D" parent="HexagonalBaseLargeSingle2" unique_id=1375824743]
 transform = Transform3D(1.4242959, 0, 0, 0, 1, 0, 0, 0, 1.6696231, 0.019953497, 0, -0.012704313)
 mesh = SubResource("ArrayMesh_turvo")
+surface_material_override/0 = SubResource("StandardMaterial3D_kqmv7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=450957319]
 transform = Transform3D(1.4298571, 0, 0, 0, 1.0460101, 0, 0, 0, 1.6658902, 0.034149885, 0.07184005, 0.004700005)
