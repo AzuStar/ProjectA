@@ -602,10 +602,11 @@ _data = {
 &"walk": SubResource("Animation_tvdrf")
 }
 
-[node name="EnemyGuard" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("stateMachine", "patrollingState", "chasingState", "searchState", "viewRaycastArcs")]
+[node name="EnemyGuard" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "stateMachine", "patrollingState", "chasingState", "searchState", "viewRaycastArcs")]
 collision_layer = 8
 collision_mask = 19
 script = ExtResource("1_qd8lb")
+animationPlayer = NodePath("AnimationPlayer2")
 stateMachine = NodePath("EnemyStateMachine")
 patrollingState = NodePath("EnemyStateMachine/PatrollingState")
 chasingState = NodePath("EnemyStateMachine/ChasingState")
@@ -638,63 +639,63 @@ collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373825" type="RayCast3D" parent="RaycastArc3D" unique_id=806996245 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50112" type="RayCast3D" parent="RaycastArc3D" unique_id=91718987 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373826" type="RayCast3D" parent="RaycastArc3D" unique_id=2086371321 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50113" type="RayCast3D" parent="RaycastArc3D" unique_id=1149210490 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373827" type="RayCast3D" parent="RaycastArc3D" unique_id=969079263 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50114" type="RayCast3D" parent="RaycastArc3D" unique_id=1095308218 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373828" type="RayCast3D" parent="RaycastArc3D" unique_id=1030324096 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50115" type="RayCast3D" parent="RaycastArc3D" unique_id=167830553 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373829" type="RayCast3D" parent="RaycastArc3D" unique_id=1352073822 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50116" type="RayCast3D" parent="RaycastArc3D" unique_id=1918527377 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373830" type="RayCast3D" parent="RaycastArc3D" unique_id=360364044 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50117" type="RayCast3D" parent="RaycastArc3D" unique_id=961666810 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373831" type="RayCast3D" parent="RaycastArc3D" unique_id=1142207653 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50118" type="RayCast3D" parent="RaycastArc3D" unique_id=1883766832 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373832" type="RayCast3D" parent="RaycastArc3D" unique_id=864724160 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50119" type="RayCast3D" parent="RaycastArc3D" unique_id=1928705915 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373833" type="RayCast3D" parent="RaycastArc3D" unique_id=303982001 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50120" type="RayCast3D" parent="RaycastArc3D" unique_id=1006281348 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -708,70 +709,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D2" unique_id=1710989306 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D2" unique_id=1986192757 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373834" type="RayCast3D" parent="RaycastArc3D2" unique_id=1905219150 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50121" type="RayCast3D" parent="RaycastArc3D2" unique_id=1281989141 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373835" type="RayCast3D" parent="RaycastArc3D2" unique_id=541192069 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50122" type="RayCast3D" parent="RaycastArc3D2" unique_id=722632077 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373836" type="RayCast3D" parent="RaycastArc3D2" unique_id=276678366 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50123" type="RayCast3D" parent="RaycastArc3D2" unique_id=1413473317 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373837" type="RayCast3D" parent="RaycastArc3D2" unique_id=1104734130 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50124" type="RayCast3D" parent="RaycastArc3D2" unique_id=1297924297 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373838" type="RayCast3D" parent="RaycastArc3D2" unique_id=1973860640 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50125" type="RayCast3D" parent="RaycastArc3D2" unique_id=1869924070 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373839" type="RayCast3D" parent="RaycastArc3D2" unique_id=1284232256 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50126" type="RayCast3D" parent="RaycastArc3D2" unique_id=271135910 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373840" type="RayCast3D" parent="RaycastArc3D2" unique_id=1435412182 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50127" type="RayCast3D" parent="RaycastArc3D2" unique_id=1370925112 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373841" type="RayCast3D" parent="RaycastArc3D2" unique_id=807658232 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50128" type="RayCast3D" parent="RaycastArc3D2" unique_id=367441255 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373842" type="RayCast3D" parent="RaycastArc3D2" unique_id=1100241965 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50129" type="RayCast3D" parent="RaycastArc3D2" unique_id=216770155 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -785,70 +786,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D3" unique_id=1127971462 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D3" unique_id=1230845198 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373843" type="RayCast3D" parent="RaycastArc3D3" unique_id=295499337 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50130" type="RayCast3D" parent="RaycastArc3D3" unique_id=1075997945 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373844" type="RayCast3D" parent="RaycastArc3D3" unique_id=964027130 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50131" type="RayCast3D" parent="RaycastArc3D3" unique_id=2073363233 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373845" type="RayCast3D" parent="RaycastArc3D3" unique_id=554889949 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50132" type="RayCast3D" parent="RaycastArc3D3" unique_id=112437187 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373846" type="RayCast3D" parent="RaycastArc3D3" unique_id=634974274 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50133" type="RayCast3D" parent="RaycastArc3D3" unique_id=1344785643 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373847" type="RayCast3D" parent="RaycastArc3D3" unique_id=1221056793 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50134" type="RayCast3D" parent="RaycastArc3D3" unique_id=2101471722 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373848" type="RayCast3D" parent="RaycastArc3D3" unique_id=1493909027 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50135" type="RayCast3D" parent="RaycastArc3D3" unique_id=7118344 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373849" type="RayCast3D" parent="RaycastArc3D3" unique_id=1302856092 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50136" type="RayCast3D" parent="RaycastArc3D3" unique_id=880811958 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373850" type="RayCast3D" parent="RaycastArc3D3" unique_id=606710038 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50137" type="RayCast3D" parent="RaycastArc3D3" unique_id=885828016 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373851" type="RayCast3D" parent="RaycastArc3D3" unique_id=1330253634 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50138" type="RayCast3D" parent="RaycastArc3D3" unique_id=442668792 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -862,70 +863,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D4" unique_id=1305958696 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D4" unique_id=938378372 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373852" type="RayCast3D" parent="RaycastArc3D4" unique_id=602599459 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50139" type="RayCast3D" parent="RaycastArc3D4" unique_id=380087869 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373853" type="RayCast3D" parent="RaycastArc3D4" unique_id=1348195337 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50140" type="RayCast3D" parent="RaycastArc3D4" unique_id=1549771849 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373854" type="RayCast3D" parent="RaycastArc3D4" unique_id=1653046291 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50141" type="RayCast3D" parent="RaycastArc3D4" unique_id=728077646 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373855" type="RayCast3D" parent="RaycastArc3D4" unique_id=1442030464 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50142" type="RayCast3D" parent="RaycastArc3D4" unique_id=1675903151 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373856" type="RayCast3D" parent="RaycastArc3D4" unique_id=2146957624 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50143" type="RayCast3D" parent="RaycastArc3D4" unique_id=1881838144 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373857" type="RayCast3D" parent="RaycastArc3D4" unique_id=1017051745 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50144" type="RayCast3D" parent="RaycastArc3D4" unique_id=1260610481 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373858" type="RayCast3D" parent="RaycastArc3D4" unique_id=2099566667 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50145" type="RayCast3D" parent="RaycastArc3D4" unique_id=1421526463 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373859" type="RayCast3D" parent="RaycastArc3D4" unique_id=200639703 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50146" type="RayCast3D" parent="RaycastArc3D4" unique_id=2044903272 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="@RayCast3D@373860" type="RayCast3D" parent="RaycastArc3D4" unique_id=130776122 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50147" type="RayCast3D" parent="RaycastArc3D4" unique_id=81334617 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
