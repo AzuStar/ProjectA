@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cptras61t3kod"]
+
+[ext_resource type="PackedScene" uid="uid://cwys0gfuag0te" path="res://Assets/Dungeon/wall_half_endcap.gltf" id="1_t4ltk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4ltk"]
+size = Vector3(2.8933105, 4, 1)
+
+[node name="wall_half_endcap2" unique_id=1184877137 instance=ExtResource("1_t4ltk")]
+
+[node name="wall_half_endcap" parent="." index="0" unique_id=7995335]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0.4021631, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1665768775]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=241828292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5533447, 2, 0)
+shape = SubResource("BoxShape3D_t4ltk")

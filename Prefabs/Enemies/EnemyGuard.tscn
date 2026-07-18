@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://da53og8kwkrf1" path="res://Prefabs/Enemies/Bodies/KnightBody.tscn" id="1_npaa6"]
 [ext_resource type="Script" uid="uid://ci7qiia4w6vk0" path="res://Scripts/Enemies/EnemyController.cs" id="1_qd8lb"]
-[ext_resource type="AnimationLibrary" uid="uid://dwx3fryyubsgr" path="res://Resources/KayKitAnim.tres" id="3_svn3h"]
-[ext_resource type="AnimationLibrary" uid="uid://cdfvde782rgwq" path="res://Resources/KayKitAnimMovement.tres" id="4_xraof"]
 [ext_resource type="Script" uid="uid://bcexascalekk2" path="res://Scripts/KillTrigger.cs" id="5_qvgyf"]
 [ext_resource type="Script" uid="uid://csu63dg6qesht" path="res://Scripts/States/StateMachine.cs" id="6_1i0r3"]
 [ext_resource type="Script" uid="uid://b112ef8ch41rj" path="res://Scripts/States/PatrollingState.cs" id="7_fxegp"]
@@ -19,11 +17,596 @@ height = 2.3637695
 radius = 0.69677734
 height = 2.41333
 
+[sub_resource type="Animation" id="Animation_oiu1f"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:spine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:chest")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 4.970465e-32, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:L.Shoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.7861981, -2.2100568e-07, -2.8116716e-07, 0.61797464)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:L.Arm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.115455054, 1.1065205e-12, 8.258001e-08, 0.9933127)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:R.SHoulder")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.7739733, 1.0450495e-23, 1.7185658e-16, 0.63321835)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:R.Arm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.11356214, -9.366374e-25, -2.5215875e-17, 0.99353087)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:head")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.006409861, 5.9955673e-24, -1.4232689e-18, 0.99997944)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LeftHip")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -6.888534e-08, 0.40926853, 0.91241395, -3.0898903e-08)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:LeftLeg")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -0.39540762, -1.06368e-14, -5.9704874e-08, 0.9185058)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D:RightHip")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.9412572, -6.700938e-17, -6.700937e-17, -0.33769056)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Armature/Skeleton3D:RightLeg")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.30272236, -1.13615826e-07, 3.6087314e-08, 0.9530788)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armature/Skeleton3D:TailBase")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.27406892, 0.65183306, 0.27406895, 0.6518329)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature/Skeleton3D:Tail1")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.5523376, -3.10639e-08, -1.5357197e-07, 0.83362055)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature/Skeleton3D:Tail2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -0.4727378, -1.40821985e-08, -9.332294e-08, 0.8812032)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armature/Skeleton3D:Tail3")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.030914322, 4.9771423e-09, -5.7626783e-09, 0.99952203)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Armature/Skeleton3D:Tail4")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.36852643, -1.2380275e-07, 2.1452623e-08, 0.9296173)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Armature/Skeleton3D:Tail5")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.45894065, 4.8304263e-09, -3.190894e-08, 0.88846695)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D:neutral_bone")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, -0.70710677, 0, 0, 0.70710677)
+
+[sub_resource type="Animation" id="Animation_3tq6t"]
+resource_name = "dabbing"
+length = 5.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:spine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:chest")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 4.970465e-32, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:L.Shoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.7861981, -2.2100568e-07, -2.8116716e-07, 0.61797464)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:L.Arm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.574799, 8.2490525e-13, -4.1112892e-07, 0.81829464, 1, 1, 0.68493944, 0.37325972, -0.61788887, 0.098734386)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:R.SHoulder")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.7739733, 1.0450495e-23, 1.7185658e-16, 0.63321835)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:R.Arm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.5911424, 1.28853365e-17, -1.8937485e-17, 0.8065672, 1, 1, 0.31073126, 0.012890956, -0.07960928, 0.94707036)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:head")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.0064098616, 5.9955677e-24, -1.423269e-18, 0.9999795, 1, 1, -0.00029033623, 0.15103626, -0.32566756, 0.9333427)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LeftHip")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -6.888534e-08, 0.40926856, 0.912414, -3.0898903e-08)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:LeftLeg")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -0.39540762, -1.06368e-14, -5.9704874e-08, 0.9185058, 1, 1, -0.3952173, 0.013122083, 0.028106518, 0.9180638)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D:RightHip")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.94125724, -6.700938e-17, -6.700937e-17, -0.33769056)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Armature/Skeleton3D:RightLeg")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.30272236, -1.13615826e-07, 3.6087314e-08, 0.9530788, 1, 1, -0.30256516, 0.011995437, 0.02991338, 0.9525837)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armature/Skeleton3D:TailBase")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.27406892, 0.65183306, 0.27406895, 0.6518329)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature/Skeleton3D:Tail1")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.5523376, -3.10639e-08, -1.5357197e-07, 0.83362055)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature/Skeleton3D:Tail2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -0.4727378, -1.40821985e-08, -9.332294e-08, 0.8812032)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armature/Skeleton3D:Tail3")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.030914322, 4.9771423e-09, -5.7626783e-09, 0.99952203)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Armature/Skeleton3D:Tail4")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.36852643, -1.2380275e-07, 2.1452623e-08, 0.9296173)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Armature/Skeleton3D:Tail5")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.45894065, 4.8304263e-09, -3.190894e-08, 0.88846695)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D:neutral_bone")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, -0.70710677, 0, 0, 0.70710677)
+tracks/19/type = "position_3d"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Armature/Skeleton3D:LeftLeg")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(1, 1, -0.15475608, 0.98871094, -3.9083005e-07)
+tracks/20/type = "position_3d"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Armature/Skeleton3D:RightLeg")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(1, 1, -0.21298051, 0.8910612, 2.9802322e-08)
+
+[sub_resource type="Animation" id="Animation_co1rd"]
+resource_name = "idle"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:spine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1, 1, 1, -1.721568e-17, 0.15506506, -1.0967941e-16, 0.98790425, 2, 1, -1.721568e-17, 0.15506506, -1.0967941e-16, 0.98790425, 4, 1, 2.7735889e-17, -0.24982256, -1.0750198e-16, 0.96829164, 5, 1, 2.7735889e-17, -0.24982256, -1.0750198e-16, 0.96829164, 6, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:chest")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1, 1, 1, -2.3797892e-17, 0.10717618, 6.655782e-24, 0.99424005, 2, 1, -2.3797892e-17, 0.10717618, 6.655782e-24, 0.99424005, 4, 1, 1.739139e-17, -0.07832377, 2.1158103e-23, 0.996928, 5, 1, 1.739139e-17, -0.07832377, 2.1158103e-23, 0.996928, 6, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:L.Shoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 4.970465e-32, 0, 0, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:L.Arm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.99948525, -8.2291514e-08, -6.896703e-09, 0.032081436, 1, 1, 0.9863554, 0.1265449, 0.004061798, 0.10522781, 2, 1, -0.9906978, -0.10136728, -0.003253654, -0.09073002, 4, 1, 0.9856134, 0.041328184, 0.0011651301, 0.1638806, 5, 1, -0.99494916, -0.020714013, -0.0005839702, -0.09821792)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:R.SHoulder")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.5928286, 8.293634e-13, -4.2402468e-07, 0.8053287)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:R.Arm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.8494372, 4.872257e-07, -4.524187e-07, 0.52768993, 1, 1, 0.8568466, 0.11394585, -0.08460531, 0.4956533, 2, 1, 0.85682, 0.09127327, -0.067770824, 0.50292724, 4, 1, 0.8582322, 0.21703573, 0.029425377, 0.46418437, 5, 1, 0.85944813, 0.10923154, 0.0148091875, 0.4991976)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:head")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.006409861, 5.9955673e-24, -1.4232689e-18, 0.99997944, 1, 1, 0.0062410994, 0.22795117, -0.0014611654, 0.97365147, 2, 1, 0.0062410994, 0.22795117, -0.0014611656, 0.9736515, 4, 1, 0.006031313, -0.33855906, 0.0021701609, 0.94092333, 5, 1, 0.006031314, -0.33855903, 0.0021701609, 0.9409234, 6, 1, 0.006409861, 5.9955673e-24, -1.4232689e-18, 0.99997944)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LeftHip")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -6.888534e-08, 0.40926853, 0.91241395, -3.0898903e-08)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:LeftLeg")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -0.39540762, -1.06368e-14, -5.9704874e-08, 0.9185058)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D:RightHip")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.9412572, -6.700938e-17, -6.700937e-17, -0.33769056)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Armature/Skeleton3D:RightLeg")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.30272236, -1.13615826e-07, 3.6087314e-08, 0.9530788)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armature/Skeleton3D:TailBase")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.27406892, 0.65183306, 0.27406895, 0.6518329)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature/Skeleton3D:Tail1")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.5523376, -3.10639e-08, -1.5357197e-07, 0.83362055)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature/Skeleton3D:Tail2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -0.4727378, -1.40821985e-08, -9.332294e-08, 0.8812032)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armature/Skeleton3D:Tail3")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.030914322, 4.9771423e-09, -5.7626783e-09, 0.99952203)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Armature/Skeleton3D:Tail4")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.36852643, -1.2380275e-07, 2.1452623e-08, 0.9296173)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Armature/Skeleton3D:Tail5")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.45894065, 4.8304263e-09, -3.190894e-08, 0.88846695)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D:neutral_bone")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, -0.70710677, 0, 0, 0.70710677)
+tracks/19/type = "position_3d"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Armature/Skeleton3D:R.Arm")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(0, 1, 2.0137152e-06, -1.5412873, -0.048255906)
+tracks/20/type = "position_3d"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Armature/Skeleton3D:L.Arm")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(0, 1, 0.3264239, -0.34195042, 1.4734039)
+
+[sub_resource type="Animation" id="Animation_tvdrf"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:hips")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 2, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:spine")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1, 1, 1, -1.2653382e-17, -1.1029888e-16, -0.113971554, 0.993484, 2, 1, -3.6977855e-32, -1.110223e-16, -1.110223e-16, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:chest")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 4.970465e-32, 0, 0, 1, 1, 1, -2.6372862e-17, -1.666155e-24, -0.11877281, 0.9929215, 2, 1, 4.970465e-32, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:L.Shoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.7861981, -2.2100568e-07, -2.8116716e-07, 0.61797464, 2, 1, 0.7861981, -2.2100568e-07, -2.8116716e-07, 0.61797464)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:L.Arm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.5807367, 0.15645312, -0.18959121, 0.7760943, 1, 1, 0.51579535, -0.14378166, 0.20592895, 0.81906974, 2, 1, 0.5807367, 0.15645312, -0.18959121, 0.7760943)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D:R.SHoulder")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.7739733, 1.0450495e-23, 1.7185658e-16, 0.63321835, 2, 1, -0.7739733, 1.0450495e-23, 1.7185658e-16, 0.63321835)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D:R.Arm")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -0.54419464, 0.25883466, 0.19659695, 0.77343816, 1, 1, -0.52734053, -0.15945941, -0.2312644, 0.8018737, 2, 1, -0.54419464, 0.2588347, 0.19659698, 0.7734382)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D:head")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0.006409862, 5.995568e-24, -1.4232691e-18, 0.99997956, 2, 1, 0.006409862, 5.995568e-24, -1.4232691e-18, 0.99997956)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D:LeftHip")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -6.888534e-08, 0.4092686, 0.9124141, -3.0898903e-08, 2, 1, -6.888534e-08, 0.4092686, 0.9124141, -3.0898903e-08)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Armature/Skeleton3D:LeftLeg")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -0.38337716, -0.10355729, -0.22181252, 0.89056, 1, 1, -0.3870688, 0.08642116, 0.18510802, 0.89913523, 2, 1, -0.38337716, -0.10355729, -0.22181252, 0.89056)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Armature/Skeleton3D:RightHip")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0.9412573, -6.700938e-17, -6.700937e-17, -0.33769056, 2, 1, 0.9412573, -6.700938e-17, -6.700937e-17, -0.33769056)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Armature/Skeleton3D:RightLeg")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -0.29322046, -0.092521176, -0.23072018, 0.92316294, 1, 1, -0.2964373, 0.07545053, 0.18815172, 0.9332905, 2, 1, -0.29322046, -0.092521176, -0.23072018, 0.92316294)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armature/Skeleton3D:TailBase")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.27406892, 0.65183306, 0.27406895, 0.6518329, 2, 1, -0.27406892, 0.65183306, 0.27406895, 0.6518329)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature/Skeleton3D:Tail1")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, -0.54903805, -0.10718712, 0.020568984, 0.8286405, 1, 1, -0.5470748, 0.13524927, -0.02595441, 0.8256774, 2, 1, -0.54903805, -0.10718713, 0.02056899, 0.8286405)
+tracks/14/type = "rotation_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature/Skeleton3D:Tail2")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -0.47056076, -0.06048579, -0.07436613, 0.87714523, 1, 1, -0.45454338, 0.17337148, 0.21315652, 0.847288, 2, 1, -0.4705608, -0.0604858, -0.07436613, 0.8771453)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Armature/Skeleton3D:Tail3")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, -0.030602528, -0.022501377, -0.13986227, 0.9894421, 1, 1, -0.030454962, 0.02728024, 0.16956618, 0.98467034, 2, 1, -0.03060253, -0.02250138, -0.1398623, 0.9894422)
+tracks/16/type = "rotation_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Armature/Skeleton3D:Tail4")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.35917747, -0.1084838, -0.19576775, 0.9060341, 1, 1, 0.34906408, 0.15543166, 0.28048953, 0.8805231, 2, 1, 0.3591775, -0.1084838, -0.19576776, 0.9060341)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Armature/Skeleton3D:Tail5")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 0.45894065, 4.8304263e-09, -3.190894e-08, 0.88846695)
+tracks/18/type = "rotation_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Armature/Skeleton3D:neutral_bone")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, -0.70710677, 0, 0, 0.70710677, 2, 1, -0.70710677, 0, 0, 0.70710677)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xraof"]
+_data = {
+&"RESET": SubResource("Animation_oiu1f"),
+&"dabbing": SubResource("Animation_3tq6t"),
+&"idle": SubResource("Animation_co1rd"),
+&"walk": SubResource("Animation_tvdrf")
+}
+
 [node name="EnemyGuard" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("animationPlayer", "stateMachine", "patrollingState", "chasingState", "searchState", "viewRaycastArcs")]
 collision_layer = 8
 collision_mask = 19
 script = ExtResource("1_qd8lb")
-animationPlayer = NodePath("AnimationPlayer")
+animationPlayer = NodePath("AnimationPlayer2")
 stateMachine = NodePath("EnemyStateMachine")
 patrollingState = NodePath("EnemyStateMachine/PatrollingState")
 chasingState = NodePath("EnemyStateMachine/ChasingState")
@@ -34,8 +617,8 @@ viewRaycastArcs = [NodePath("RaycastArc3D"), NodePath("RaycastArc3D2"), NodePath
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2595215, 0)
 shape = SubResource("CapsuleShape3D_qvgyf")
 
-[node name="KnightBody" parent="." unique_id=420466825 instance=ExtResource("1_npaa6")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="GuardBody" parent="." unique_id=420466825 instance=ExtResource("1_npaa6")]
+transform = Transform3D(-6.5567085e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.5567085e-09, 0, 0.10140756, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1250570341]
 path_desired_distance = 0.4
@@ -49,70 +632,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D" unique_id=774764638 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D" unique_id=774764638 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D" unique_id=1656712426 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50112" type="RayCast3D" parent="RaycastArc3D" unique_id=91718987 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D" unique_id=1206678370 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50113" type="RayCast3D" parent="RaycastArc3D" unique_id=1149210490 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D" unique_id=1615430057 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50114" type="RayCast3D" parent="RaycastArc3D" unique_id=1095308218 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D" unique_id=907620566 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50115" type="RayCast3D" parent="RaycastArc3D" unique_id=167830553 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D" unique_id=357114765 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50116" type="RayCast3D" parent="RaycastArc3D" unique_id=1918527377 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D" unique_id=1845933198 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50117" type="RayCast3D" parent="RaycastArc3D" unique_id=961666810 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D" unique_id=216298086 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50118" type="RayCast3D" parent="RaycastArc3D" unique_id=1883766832 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast08" type="RayCast3D" parent="RaycastArc3D" unique_id=134340570 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50119" type="RayCast3D" parent="RaycastArc3D" unique_id=1928705915 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast09" type="RayCast3D" parent="RaycastArc3D" unique_id=2096955859 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50120" type="RayCast3D" parent="RaycastArc3D" unique_id=1006281348 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -126,70 +709,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D2" unique_id=1402131437 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D2" unique_id=1986192757 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D2" unique_id=2123060259 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50121" type="RayCast3D" parent="RaycastArc3D2" unique_id=1281989141 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D2" unique_id=1912348564 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50122" type="RayCast3D" parent="RaycastArc3D2" unique_id=722632077 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D2" unique_id=1987474855 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50123" type="RayCast3D" parent="RaycastArc3D2" unique_id=1413473317 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D2" unique_id=2098467341 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50124" type="RayCast3D" parent="RaycastArc3D2" unique_id=1297924297 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D2" unique_id=127093852 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50125" type="RayCast3D" parent="RaycastArc3D2" unique_id=1869924070 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D2" unique_id=663802107 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50126" type="RayCast3D" parent="RaycastArc3D2" unique_id=271135910 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D2" unique_id=121311752 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50127" type="RayCast3D" parent="RaycastArc3D2" unique_id=1370925112 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast08" type="RayCast3D" parent="RaycastArc3D2" unique_id=1464534896 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50128" type="RayCast3D" parent="RaycastArc3D2" unique_id=367441255 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast09" type="RayCast3D" parent="RaycastArc3D2" unique_id=203166040 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50129" type="RayCast3D" parent="RaycastArc3D2" unique_id=216770155 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -203,70 +786,70 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="Raycast00" type="RayCast3D" parent="RaycastArc3D3" unique_id=1364625634 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D3" unique_id=1230845198 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast01" type="RayCast3D" parent="RaycastArc3D3" unique_id=61190468 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50130" type="RayCast3D" parent="RaycastArc3D3" unique_id=1075997945 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast02" type="RayCast3D" parent="RaycastArc3D3" unique_id=1673446173 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50131" type="RayCast3D" parent="RaycastArc3D3" unique_id=2073363233 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast03" type="RayCast3D" parent="RaycastArc3D3" unique_id=1694644379 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50132" type="RayCast3D" parent="RaycastArc3D3" unique_id=112437187 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast04" type="RayCast3D" parent="RaycastArc3D3" unique_id=1080574615 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50133" type="RayCast3D" parent="RaycastArc3D3" unique_id=1344785643 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast05" type="RayCast3D" parent="RaycastArc3D3" unique_id=2101598914 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50134" type="RayCast3D" parent="RaycastArc3D3" unique_id=2101471722 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast06" type="RayCast3D" parent="RaycastArc3D3" unique_id=491263185 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50135" type="RayCast3D" parent="RaycastArc3D3" unique_id=7118344 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast07" type="RayCast3D" parent="RaycastArc3D3" unique_id=1317486631 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50136" type="RayCast3D" parent="RaycastArc3D3" unique_id=880811958 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast08" type="RayCast3D" parent="RaycastArc3D3" unique_id=672290391 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50137" type="RayCast3D" parent="RaycastArc3D3" unique_id=885828016 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 1
 
-[node name="Raycast09" type="RayCast3D" parent="RaycastArc3D3" unique_id=565913909 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50138" type="RayCast3D" parent="RaycastArc3D3" unique_id=442668792 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 target_position = Vector3(0, 0, -15)
 collision_mask = 6
@@ -280,40 +863,75 @@ raycastCount = 10
 arcAngle = 90.0
 raycastPrefab = ExtResource("12_3bpci")
 
-[node name="Raycast10" parent="RaycastArc3D4" unique_id=415874858 instance=ExtResource("12_3bpci")]
+[node name="ViewRaycast" type="RayCast3D" parent="RaycastArc3D4" unique_id=938378372 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast11" parent="RaycastArc3D4" unique_id=1416915395 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50139" type="RayCast3D" parent="RaycastArc3D4" unique_id=380087869 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast12" parent="RaycastArc3D4" unique_id=1776724664 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50140" type="RayCast3D" parent="RaycastArc3D4" unique_id=1549771849 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, -0.42261827, 0, 1, 0, 0.42261827, 0, 0.90630776, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast13" parent="RaycastArc3D4" unique_id=1653133329 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50141" type="RayCast3D" parent="RaycastArc3D4" unique_id=728077646 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast14" parent="RaycastArc3D4" unique_id=1902531613 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50142" type="RayCast3D" parent="RaycastArc3D4" unique_id=1675903151 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast15" parent="RaycastArc3D4" unique_id=1182748611 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50143" type="RayCast3D" parent="RaycastArc3D4" unique_id=1881838144 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast16" parent="RaycastArc3D4" unique_id=1270602073 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50144" type="RayCast3D" parent="RaycastArc3D4" unique_id=1260610481 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast17" parent="RaycastArc3D4" unique_id=1851469159 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50145" type="RayCast3D" parent="RaycastArc3D4" unique_id=1421526463 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast18" parent="RaycastArc3D4" unique_id=2010142847 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50146" type="RayCast3D" parent="RaycastArc3D4" unique_id=2044903272 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
-[node name="Raycast19" parent="RaycastArc3D4" unique_id=399692993 instance=ExtResource("12_3bpci")]
+[node name="@RayCast3D@50147" type="RayCast3D" parent="RaycastArc3D4" unique_id=81334617 instance=ExtResource("12_3bpci")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=863258413]
-root_node = NodePath("../KnightBody")
-libraries/KayKitAnim = ExtResource("3_svn3h")
-libraries/KayKitAnimMovement = ExtResource("4_xraof")
+target_position = Vector3(0, 0, -15)
+collision_mask = 6
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
 [node name="DeathTrigger" type="Area3D" parent="." unique_id=1938282717]
 collision_mask = 6
@@ -345,3 +963,7 @@ nodeToManipulate = NodePath("../..")
 [node name="Timer" type="Timer" parent="EnemyStateMachine/SearchState" unique_id=20088063]
 wait_time = 2.5
 one_shot = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=959376648]
+root_node = NodePath("../GuardBody")
+libraries/ = SubResource("AnimationLibrary_xraof")

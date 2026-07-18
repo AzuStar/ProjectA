@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_bhl5j"]
 [ext_resource type="Script" uid="uid://c2i5s2t2gk0mw" path="res://Scripts/UI/UiNode3DPositionSync.cs" id="3_5fdhj"]
 
-[node name="InteractFloatingPopup" type="Panel" unique_id=1194374441 node_paths=PackedStringArray("positionSync")]
+[node name="InteractFloatingPopup" type="Panel" unique_id=1194374441 node_paths=PackedStringArray("positionSync", "textLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_idkqn")
 positionSync = NodePath("UiNode3DPositionSync")
+textLabel = NodePath("AutoSizeRichTextLabel")
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="." unique_id=1845761577]
 layout_mode = 1

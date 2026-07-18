@@ -11,28 +11,28 @@ public class PlayerSaveRegistryV1 : IRegistryObject
     public static readonly Guid GUID = Guid.Parse("c4d10804-e5d5-4108-b962-2bc5efb60447");
 
     [Key(0)]
-    public Dictionary<LevelEnum, LevelSave> levels = new();
+    public Dictionary<LevelEnum, LevelSave>  levels = new();
 
-    public void SaveLevelStars(LevelEnum levelId, LevelSave levelSave)
+    public void SaveLevelResults(LevelEnum levelId, LevelSave levelSave)
     {
-        levels.TryGetValue(levelId, out LevelSave savedLevel);
-        savedLevel.timeStar |= levelSave.timeStar;
-        savedLevel.coinsStar |= levelSave.coinsStar;
-        savedLevel.chestsStar |= levelSave.chestsStar;
+        if (!levels.TryGetValue(levelId, out LevelSave savedLevel))
+        {
+            savedLevel = levelSave;
+        }
+        else
+        {
+            savedLevel.timeStar |= levelSave.timeStar;
+            savedLevel.coinsStar |= levelSave.coinsStar;
+            savedLevel.chestsStar |= levelSave.chestsStar;
+            savedLevel.cleared |= levelSave.cleared;
+        }
         levels[levelId] = savedLevel;
         IsDirty = true;
     }
 
-    public int GetStarCount(LevelEnum levelId)
+    public bool GetLevelSave(LevelEnum levelId, out LevelSave levelSave)
     {
-        levels.TryGetValue(levelId, out LevelSave levelSave);
-        return levelSave.StarCount;
-    }
-
-    public LevelSave GetLevelSave(LevelEnum levelId)
-    {
-        levels.TryGetValue(levelId, out LevelSave levelSave);
-        return levelSave;
+        return levels.TryGetValue(levelId, out levelSave);
     }
 }
 
@@ -47,6 +47,9 @@ public struct LevelSave
 
     [Key(2)]
     public bool chestsStar;
+
+    [Key(3)]
+    public bool cleared;
 
     [IgnoreMember]
     public int StarCount => (timeStar ? 1 : 0) + (coinsStar ? 1 : 0) + (chestsStar ? 1 : 0);

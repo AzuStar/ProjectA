@@ -15,6 +15,12 @@ public partial class BarrierDoor : Barrier
     [Export]
     public NavigationLink3D navigationLink;
 
+    [Export]
+    public bool unlockableByKey;
+
+    [Export]
+    public AudioStream openCloseEffect;
+
     public override void _Ready()
     {
         base._Ready();
@@ -24,6 +30,9 @@ public partial class BarrierDoor : Barrier
     private void OnBodyEntered(Node3D body)
     {
         if (body is not PlayerCharacterController)
+            return;
+
+        if (!unlockableByKey)
             return;
 
         // Do we have a key to open the door with?
@@ -48,6 +57,8 @@ public partial class BarrierDoor : Barrier
         {
             // Let non-players pass through the door
             navigationLink.Enabled = true;
+
+            AudioPlayerSingleton.Instance.PlaySfx(openCloseEffect, GlobalPosition);
         }
 
         return baseSuccess;
@@ -61,6 +72,8 @@ public partial class BarrierDoor : Barrier
         {
             // Non-players can't walk this anymore
             navigationLink.Enabled = false;
+
+            AudioPlayerSingleton.Instance.PlaySfx(openCloseEffect, GlobalPosition);
         }
 
         return baseSuccess;

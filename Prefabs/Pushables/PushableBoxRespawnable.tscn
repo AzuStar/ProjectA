@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://booc54mipri45"]
+
+[ext_resource type="Script" uid="uid://c0mg4dw37h33x" path="res://Scripts/Pushables/PushableBodyRespawnable.cs" id="1_wltik"]
+[ext_resource type="PackedScene" uid="uid://b20ydpmjje60w" path="res://Assets/CustomModels/WoodenBoxLarge.glb" id="2_o3pow"]
+[ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullInteractible.tres" id="3_1xukc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fupvj"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fupvj"]
+size = Vector3(2, 2, 2)
+
+[node name="PushableBoxRespawnable" type="CharacterBody3D" unique_id=97837123]
+process_priority = 10
+process_physics_priority = 10
+collision_layer = 16
+collision_mask = 47
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_wltik")
+_respondsToRespawnTriggers = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1484006071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_fupvj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=329374611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("BoxMesh_fupvj")
+
+[node name="WoodenBoxLarge2" parent="." unique_id=606934656 instance=ExtResource("2_o3pow")]
+transform = Transform3D(0.49042276, 0, 0, 0, 0.92729646, 0, 0, 0, 0.8966606, 0, 0.9860194, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1101720199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_fupvj")
+surface_material_override/0 = ExtResource("3_1xukc")

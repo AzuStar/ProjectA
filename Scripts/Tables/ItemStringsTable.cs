@@ -15,14 +15,14 @@ public static class ItemStringsTable
         },
         [ItemType.Coin] = new()
         {
-            name = "Coin",
-            inventoryListing = "Coin",
+            name = "Fruit",
+            inventoryListing = "Fruits",
             format = "{0}: x{1}",
         },
         [ItemType.Chest] = new()
         {
             name = "Chest",
-            inventoryListing = "Chest",
+            inventoryListing = "Chests",
             format = "{0}: x{1}",
         },
     };

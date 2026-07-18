@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://cwniokwtugyi2"]
 
 [ext_resource type="Script" uid="uid://d0uknj1drr2gr" path="res://Scripts/Player/PlayerCharacterController.cs" id="1_a44bu"]
+[ext_resource type="AudioStream" uid="uid://h5o57bcpbv4y" path="res://Assets/Audio/stone-steps/Fantozzi-StoneL1.ogg" id="2_r0ovn"]
 [ext_resource type="PackedScene" uid="uid://cvnyeetsnofhd" path="res://Prefabs/Player/MageBody.tscn" id="2_ti05y"]
+[ext_resource type="AudioStream" uid="uid://ornj1bpmemar" path="res://Assets/Audio/stone-steps/Fantozzi-StoneL2.ogg" id="3_htgp1"]
+[ext_resource type="AudioStream" uid="uid://lnp478oqmivo" path="res://Assets/Audio/stone-steps/Fantozzi-StoneL3.ogg" id="4_eegwm"]
 [ext_resource type="ArrayMesh" uid="uid://sx76dr2jwmnc" path="res://Resources/ArmMesh.tres" id="5_ckvs4"]
+[ext_resource type="AudioStream" uid="uid://swhnnp6b0gw4" path="res://Assets/Audio/stone-steps/Fantozzi-StoneR1.ogg" id="5_pn0dl"]
 [ext_resource type="Script" uid="uid://bhsdd1sl61unh" path="res://Scripts/FpsCamera.cs" id="5_ym27m"]
+[ext_resource type="AudioStream" uid="uid://b3lhhe0ctc3ln" path="res://Assets/Audio/stone-steps/Fantozzi-StoneR2.ogg" id="6_dtq8e"]
+[ext_resource type="AudioStream" uid="uid://bw146fktl61sg" path="res://Assets/Audio/stone-steps/Fantozzi-StoneR3.ogg" id="7_40qta"]
 [ext_resource type="PackedScene" uid="uid://jkw3ks5b3n2l" path="res://Prefabs/Cameras/ThirdPersonCameraRig.tscn" id="7_xmhbo"]
 
 [sub_resource type="Animation" id="Animation_7qcwb"]
@@ -655,6 +661,23 @@ tracks/15/path = NodePath("CHAR1_Fixed/Armature/Skeleton3D:LeftLeg")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = PackedFloat32Array(0, 1, -0.12051237, 0.31326735, -4.6971643e-08, 1, 1, -0.06650233, 0.31326735, -2.5939377e-08, 2, 1, -0.12051237, 0.31326735, -4.6971643e-08)
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("..")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"TakeStep"
+}, {
+"args": [],
+"method": &"TakeStep"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7qcwb"]
 _data = {
@@ -669,7 +692,7 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjx35"]
 height = 2.3637695
 
-[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "cameraRig")]
+[node name="MageAgent" type="CharacterBody3D" unique_id=1412306627 node_paths=PackedStringArray("visualRoot", "animationPlayer", "cameraRig", "footstepPlayer")]
 collision_layer = 2
 collision_mask = 23
 script = ExtResource("1_a44bu")
@@ -678,6 +701,8 @@ PushSpeed = 1.25
 visualRoot = NodePath("VisualRoot")
 animationPlayer = NodePath("AnimationPlayer")
 cameraRig = NodePath("ThirdPersonCameraRig")
+footstepPlayer = NodePath("FootstepAudio")
+footstepEffects = Array[AudioStream]([ExtResource("2_r0ovn"), ExtResource("3_htgp1"), ExtResource("4_eegwm"), ExtResource("5_pn0dl"), ExtResource("6_dtq8e"), ExtResource("7_40qta")])
 
 [node name="VisualRoot" type="Node3D" parent="." unique_id=122705956]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -716,3 +741,6 @@ mesh = ExtResource("5_ckvs4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 _minPitchDegrees = -85.0
 _maxPitchDegrees = 85.0
+
+[node name="FootstepAudio" type="AudioStreamPlayer3D" parent="." unique_id=1146951791]
+volume_db = -10.0

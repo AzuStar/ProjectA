@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b6arg82mj1ugh"]
+
+[ext_resource type="PackedScene" uid="uid://vnu5mbwpj73o" path="res://Assets/CustomModels/Bases/Decorations/Rocks/SmallRock4.glb" id="1_ch3gv"]
+[ext_resource type="Material" uid="uid://c2p31wf2qptc5" path="res://Resources/Material/RockMaterial.tres" id="2_sl7i1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ch3gv"]
+size = Vector3(2.0857544, 1.6446018, 1.9909668)
+
+[node name="SmallRock4" unique_id=1704039611 instance=ExtResource("1_ch3gv")]
+
+[node name="Smallrock4" parent="." index="0" unique_id=1934968906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0186728, 0)
+surface_material_override/0 = ExtResource("2_sl7i1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1308141955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0186728, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=191261645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.57095337, -0.18508816, 0.0020751953)
+shape = SubResource("BoxShape3D_ch3gv")
