@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cc1fhwchs462j" path="res://Assets/CustomModels/CharacterModels/Mage/CHAR1_BodyRemakePurple.png" id="1_bisdm"]
 [ext_resource type="Texture2D" uid="uid://6d5d7rf56an" path="res://Assets/CustomModels/CharacterModels/Mage/CHAR1_hat.png" id="2_8iw7n"]
-[ext_resource type="Shader" uid="uid://mxgb31yi5w6u" path="res://Shaders/ToonShader.gdshader" id="3_8iw7n"]
+[ext_resource type="Texture2D" uid="uid://cqro5y1qoa0lt" path="res://Assets/CustomModels/CharacterModels/Mage/CHAR2_BodyRemakePurple.png" id="3_8iw7n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s4rv"]
 resource_name = "Material"
@@ -99,25 +99,8 @@ bind/13/name = &"LowerRightLeg"
 bind/13/bone = -1
 bind/13/pose = Transform3D(1, -3.9402663e-09, 2.3838604e-07, 1.3766768e-14, -0.9998635, -0.016526796, 2.3841856e-07, 0.01652668, -0.99986356, 7.558104e-08, -0.5756097, -0.31700987)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o803r"]
-render_priority = 0
-shader = ExtResource("3_8iw7n")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("1_bisdm")
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 0.698000033155
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = true
-shader_parameter/rim_width = 13.2090006274275
-shader_parameter/rim_color = Color(0.56, 0.9413334, 1, 0.28235295)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o803r"]
+albedo_texture = ExtResource("3_8iw7n")
 
 [node name="CHAR1_Fixed" type="Node3D" unique_id=1218075956]
 
@@ -228,4 +211,4 @@ bones/13/scale = Vector3(1, 0.99999994, 1)
 mesh = SubResource("ArrayMesh_43vy8")
 skin = SubResource("Skin_wh3r7")
 skeleton = NodePath("..")
-surface_material_override/0 = SubResource("ShaderMaterial_o803r")
+surface_material_override/0 = SubResource("StandardMaterial3D_o803r")

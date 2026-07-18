@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bto3va5b8geye"
-path.s3tc="res://.godot/imported/lowresstone.png-c822cd55608fd7deb3590f68d3d07b9f.s3tc.ctex"
+uid="uid://cqro5y1qoa0lt"
+path.s3tc="res://.godot/imported/CHAR2_BodyRemakePurple.png-0fe56e3a7bab14722fffc52f9f9f6df2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/CustomModels/Textures/LowResTextures/lowresstone.png"
-dest_files=["res://.godot/imported/lowresstone.png-c822cd55608fd7deb3590f68d3d07b9f.s3tc.ctex"]
+source_file="res://Assets/CustomModels/CharacterModels/Mage/CHAR2_BodyRemakePurple.png"
+dest_files=["res://.godot/imported/CHAR2_BodyRemakePurple.png-0fe56e3a7bab14722fffc52f9f9f6df2.s3tc.ctex"]
 
 [params]
 
