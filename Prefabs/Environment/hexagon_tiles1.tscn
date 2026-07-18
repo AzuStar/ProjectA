@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://gpcr78hdwj0g" path="res://Assets/CustomModels/Bases/Floors/HexagonalBaseLargeMix_GranitePlaceholderReverse.png" id="1_labys"]
 [ext_resource type="Texture2D" uid="uid://bcwr2thry2elr" path="res://Assets/CustomModels/Bases/Floors/HexagonalBaseLargeMix_AndesitePlaceholderReverse.png" id="2_kdlsq"]
+[ext_resource type="Texture2D" uid="uid://oqwmwmt72p6r" path="res://Assets/CustomModels/Textures/LowResTextures/lowresstone1.png" id="3_45a52"]
+[ext_resource type="Texture2D" uid="uid://bto3va5b8geye" path="res://Assets/CustomModels/Textures/LowResTextures/lowresstone.png" id="4_v03eg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urs71"]
 resource_name = "Stone1"
@@ -70,6 +72,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_opeh5")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daoqn"]
+albedo_texture = ExtResource("3_45a52")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2gf1"]
+albedo_texture = ExtResource("4_v03eg")
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gxfxq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxfxq"]
@@ -79,6 +87,8 @@ shadow_mesh = SubResource("ArrayMesh_opeh5")
 [node name="HexagonalBaseLargeMix" type="MeshInstance3D" parent="." unique_id=24561317]
 transform = Transform3D(1.4298571, 0, 0, 0, 1.0460101, 0, 0, 0, 1.6658902, -0.092895746, 0.07184005, -0.47807252)
 mesh = SubResource("ArrayMesh_emhn3")
+surface_material_override/0 = SubResource("StandardMaterial3D_daoqn")
+surface_material_override/1 = SubResource("StandardMaterial3D_f2gf1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=450957319]
 transform = Transform3D(1.4298571, 0, 0, 0, 1.0460101, 0, 0, 0, 1.6658902, -0.092895746, 0.07184005, -0.47807252)
