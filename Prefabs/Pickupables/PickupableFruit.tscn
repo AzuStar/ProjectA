@@ -9,7 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://cwehjyn84byrs" path="res://Assets/CustomModels/Apple/DefaultMaterial_baseColor.png" id="5_sn8vv"]
 [ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullPickup.tres" id="6_tkomk"]
 [ext_resource type="Script" uid="uid://bfyw2aq1sxbkc" path="res://Scripts/Pickups/PickupSoundEffect.cs" id="9_janfa"]
-[ext_resource type="AudioStream" uid="uid://b4sbvfshdvr6h" path="res://Assets/Audio/coin.wav" id="10_boof0"]
+[ext_resource type="AudioStream" uid="uid://871olbxh8nwp" path="res://Assets/Audio/crunch-tito/crunch.1.ogg" id="10_pq6jh"]
+[ext_resource type="AudioStream" uid="uid://chx2fyenwkhrm" path="res://Assets/Audio/crunch-tito/crunch.2.ogg" id="11_pwmuh"]
+[ext_resource type="AudioStream" uid="uid://nw5gjkocd36y" path="res://Assets/Audio/crunch-tito/crunch.3.ogg" id="12_2awsq"]
+[ext_resource type="AudioStream" uid="uid://djaa82efuydbi" path="res://Assets/Audio/crunch-tito/crunch.4.ogg" id="13_xhoqx"]
+[ext_resource type="AudioStream" uid="uid://b3f0ih8tcxw1e" path="res://Assets/Audio/crunch-tito/crunch.5.ogg" id="14_46lce"]
+[ext_resource type="AudioStream" uid="uid://cpmn0ou5rfowr" path="res://Assets/Audio/crunch-tito/crunch.6.ogg" id="15_c02y1"]
+[ext_resource type="AudioStream" uid="uid://nw25pebgfgrk" path="res://Assets/Audio/crunch-tito/crunch.7.ogg" id="16_7ewdw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnrcr"]
 resource_name = "DefaultMaterial"
@@ -76,7 +82,7 @@ radius = 0.7415121
 [node name="FruitPickup" type="Node3D" unique_id=1007006379]
 
 [node name="Apple" type="MeshInstance3D" parent="." unique_id=846603431]
-transform = Transform3D(-0.14750044, 0.051482864, 0.12487248, 0.06590778, 0.1888284, 3.1255605e-09, -0.11789735, 0.04115034, -0.15622698, 0, 0.2511835, 0)
+transform = Transform3D(-0.0016901763, 0.0005899346, -0.199992, 0.06590778, 0.1888284, 3.1255605e-09, 0.18882084, -0.06590514, -0.0017901731, 0, 0.2511835, 0)
 mesh = SubResource("ArrayMesh_oer3w")
 surface_material_override/0 = SubResource("StandardMaterial3D_hsrh0")
 
@@ -101,4 +107,4 @@ shape = SubResource("SphereShape3D_lprbf")
 
 [node name="SfxPlayer" type="Node" parent="Area3D" unique_id=1433092766]
 script = ExtResource("9_janfa")
-_collectionEffect = ExtResource("10_boof0")
+_collectionEffects = Array[AudioStream]([ExtResource("10_pq6jh"), ExtResource("11_pwmuh"), ExtResource("12_2awsq"), ExtResource("13_xhoqx"), ExtResource("14_46lce"), ExtResource("15_c02y1"), ExtResource("16_7ewdw")])
