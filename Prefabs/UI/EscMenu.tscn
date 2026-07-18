@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://omsfce73as7e"]
 
 [ext_resource type="Script" uid="uid://doxtcc2k7aoc6" path="res://Scripts/UI/UiEscMenu.cs" id="1_3iuiu"]
-[ext_resource type="Texture2D" uid="uid://bxo8j2rxac4pt" path="res://Assets/CustomModels/Textures/LowResTextures/button1img.png" id="2_f0l0o"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_k72eu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rxdy"]
 bg_color = Color(0.3774, 0.51, 0.40392002, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3iuiu"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/button1img.png-cd27e8b77e14533d2f99cc3a1d47809d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k72eu"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/button1img.png-cd27e8b77e14533d2f99cc3a1d47809d.ctex"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5wt0"]
 bg_color = Color(0.53, 0.32224, 0.27029997, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f0l0o"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/button1img.png-cd27e8b77e14533d2f99cc3a1d47809d.ctex"
 
 [node name="EscMenu" type="Control" unique_id=1976083674 node_paths=PackedStringArray("exitButton", "resumeButton", "restartLevelButton")]
 layout_mode = 3
@@ -40,10 +51,9 @@ offset_top = -183.0
 offset_right = 538.0
 offset_bottom = 73.0
 grow_vertical = 0
-scale = Vector2(0.72000027, 0.6)
+scale = Vector2(0.6, 0.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
-icon = ExtResource("2_f0l0o")
-flat = true
+icon = SubResource("CompressedTexture2D_3iuiu")
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="RestartLevel" unique_id=1753207585]
 layout_mode = 1
@@ -73,15 +83,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 326.0
-offset_top = 443.0
-offset_right = -1082.0
-offset_bottom = -381.0
+offset_left = 436.0
+offset_top = 406.0
+offset_right = -972.0
+offset_bottom = -418.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
-icon = ExtResource("2_f0l0o")
-flat = true
+icon = SubResource("CompressedTexture2D_k72eu")
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Resume" unique_id=1471295240]
 layout_mode = 1
@@ -111,15 +121,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1076.0
-offset_top = 443.0
-offset_right = -332.0
-offset_bottom = -381.0
+offset_left = 937.0
+offset_top = 411.0
+offset_right = -471.0
+offset_bottom = -413.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 theme_override_styles/normal = SubResource("StyleBoxFlat_k5wt0")
-icon = ExtResource("2_f0l0o")
-flat = true
+icon = SubResource("CompressedTexture2D_f0l0o")
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="Exit" unique_id=782582317]
 layout_mode = 1

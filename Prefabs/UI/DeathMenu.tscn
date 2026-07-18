@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://bw3er4y3u8cu7"]
 
 [ext_resource type="Script" uid="uid://dghprw43hgvb0" path="res://Scripts/UI/UiDeathMenu.cs" id="1_dipy3"]
-[ext_resource type="Texture2D" uid="uid://bxo8j2rxac4pt" path="res://Assets/CustomModels/Textures/LowResTextures/button1img.png" id="2_5ooi3"]
 [ext_resource type="Script" uid="uid://co0lo02vnu10n" path="res://addons/font_auto_size_labels/auto_size_rich_text_label.gd" id="2_mruv7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rxdy"]
 bg_color = Color(0.3774, 0.51, 0.40392002, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dipy3"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/button1img.png-cd27e8b77e14533d2f99cc3a1d47809d.ctex"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qlpj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mruv7"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/button1img.png-cd27e8b77e14533d2f99cc3a1d47809d.ctex"
 
 [node name="DeathMenu" type="Control" unique_id=597590236 node_paths=PackedStringArray("backtoMainMenu", "restartLevelButton")]
 layout_mode = 3
@@ -34,7 +41,7 @@ offset_bottom = -139.0
 grow_vertical = 0
 scale = Vector2(0.6, 0.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_4rxdy")
-icon = ExtResource("2_5ooi3")
+icon = SubResource("CompressedTexture2D_dipy3")
 flat = true
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="RestartLevel" unique_id=1168156025]
@@ -100,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_7qlpj")
-icon = ExtResource("2_5ooi3")
+icon = SubResource("CompressedTexture2D_mruv7")
 flat = true
 
 [node name="AutoSizeRichTextLabel" type="RichTextLabel" parent="BacktoMainMenu" unique_id=1714941154]
