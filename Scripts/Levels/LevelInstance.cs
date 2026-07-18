@@ -140,19 +140,20 @@ public partial class LevelInstance : Node3D
         if (body is not PlayerCharacterController player)
             return;
 
-        SaveLevelStars();
+        SaveLevelResults();
         GameManagerSingleton.MoveToNextLevel();
     }
 
-    private void SaveLevelStars()
+    private void SaveLevelResults()
     {
         LevelSave levelSave = new()
         {
             timeStar = _elapsedTime < starTimeTreshold,
             coinsStar = inventory.items[(int)ItemType.Coin].quantity >= starCoinCollectedTreshold,
             chestsStar = inventory.items[(int)ItemType.Chest].quantity >= starChestsCollectedTreshold,
+            cleared = true,
         };
 
-        Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().SaveLevelStars(levelId, levelSave);
+        Bootstrap.registry.GetOrCreate<PlayerSaveRegistryV1>().SaveLevelResults(levelId, levelSave);
     }
 }
