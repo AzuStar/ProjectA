@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qn8kn61x6f44"
-path.s3tc="res://.godot/imported/HexagonTiles_GranitePlaceholderReverse.png-cb9c3562e592b53a3398f277d7c056ca.s3tc.ctex"
+path.s3tc="res://.godot/imported/HexagonTiles_GranitePlaceholderReverse.png-72965555ef7027ee7d8e037ce8d6edb3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/CustomModels/HexagonTiles_GranitePlaceholderReverse.png"
-dest_files=["res://.godot/imported/HexagonTiles_GranitePlaceholderReverse.png-cb9c3562e592b53a3398f277d7c056ca.s3tc.ctex"]
+source_file="res://Assets/CustomModels/Textures/HexagonTiles_GranitePlaceholderReverse.png"
+dest_files=["res://.godot/imported/HexagonTiles_GranitePlaceholderReverse.png-72965555ef7027ee7d8e037ce8d6edb3.s3tc.ctex"]
 
 [params]
 
