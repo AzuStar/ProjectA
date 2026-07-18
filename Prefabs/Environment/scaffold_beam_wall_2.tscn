@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dn1lpb8872exc"]
+
+[ext_resource type="PackedScene" uid="uid://bhy8pfskrdafn" path="res://Assets/Dungeon/scaffold_beam_wall.gltf" id="1_xe3o1"]
+
+[node name="scaffold_beam_wall2" unique_id=760901688 instance=ExtResource("1_xe3o1")]
+
+[node name="scaffold_beam_wall" parent="." index="0" unique_id=8153906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6746528)

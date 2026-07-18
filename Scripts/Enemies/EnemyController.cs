@@ -6,9 +6,9 @@ namespace ProjectA.Game.Enemies;
 
 public partial class EnemyController : CharacterBody3D, IEnemyAnimationController
 {
-    public const string IdleAnimation = "KayKitAnim/Idle_A";
-    public const string DeathAnimation = "KayKitAnim/Death_A";
-    public const string WalkingAnimation = "KayKitAnimMovement/Walking_B";
+    public const string IdleAnimation = "idle";
+    public const string WalkingAnimation = "walk";
+    public const string DabbingAnimation = "dabbing";
 
     [Export]
     AnimationPlayer animationPlayer;

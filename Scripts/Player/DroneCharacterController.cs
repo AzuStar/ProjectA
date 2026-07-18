@@ -217,6 +217,7 @@ public partial class DroneCharacterController : CharacterBody3D
 
     public void LeaveThisController()
     {
+        DropCarriedPickup();
         acceptInput = false;
         Visible = false;
         ProcessMode = ProcessModeEnum.Inherit;

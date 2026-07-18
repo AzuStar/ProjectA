@@ -62,17 +62,20 @@ public partial class PlayerCharacterController : CharacterBody3D
 
 		Move(direction, delta);
 
-		// Pushing.
-		for (int i = 0; i < GetSlideCollisionCount(); i++)
-		{
-			KinematicCollision3D? collision = GetSlideCollision(i);
-			if (collision != null && collision.GetCollider() is PushableBody pushable)
-			{
-				Vector3 normal = collision.GetNormal();
-				Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
-				pushable.TryPush(push);
-			}
-		}
+        // Pushing.
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            KinematicCollision3D? collision = GetSlideCollision(i);
+            if (collision != null && collision.GetCollider() is PushableBody pushable)
+            {
+                Vector3 normal = collision.GetNormal();
+                if (Mathf.Abs(normal.Y) <= 0.01f)
+                {
+                    Vector2 push = new Vector2(-normal.X, -normal.Z) * PushSpeed;
+                    pushable.TryPush(push);
+                }
+            }
+        }
 
 		PlayAnimation(direction == Vector3.Zero ? IdleAnimation : WalkingAnimation);
 	}

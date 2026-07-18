@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mqrd1wrymrrh" path="res://Prefabs/Environment/wall_arched_2.tscn" id="5_beeaq"]
 [ext_resource type="PackedScene" uid="uid://3etpceq6dxpv" path="res://Prefabs/Environment/wall_2.tscn" id="6_rhjij"]
 [ext_resource type="PackedScene" uid="uid://cfgklodgpfuho" path="res://Prefabs/Environment/SimpleTorch.tscn" id="7_jh41h"]
-[ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableCoin.tscn" id="9_myruw"]
+[ext_resource type="PackedScene" uid="uid://dfgmeqqieasst" path="res://Prefabs/Pickupables/PickupableFruit.tscn" id="9_myruw"]
 [ext_resource type="Script" uid="uid://cucjq743p7163" path="res://Scripts/Singletons/CameraSpringArmSingleton.cs" id="11_2ht0l"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7qlpj"]

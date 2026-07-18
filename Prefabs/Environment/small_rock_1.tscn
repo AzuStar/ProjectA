@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dhdcjj02lgdbp"]
+
+[ext_resource type="PackedScene" uid="uid://dk8mid201dha7" path="res://Assets/CustomModels/Bases/Decorations/Rocks/SmallRock1.glb" id="1_wijln"]
+
+[node name="SmallRock1" unique_id=632652410 instance=ExtResource("1_wijln")]
+
+[node name="Smallrock1" parent="." index="0" unique_id=848990961]
+transform = Transform3D(-0.99781984, -0.06599574, 0, 0.06599574, -0.99781984, 0, 0, 0, 1, 0, 0, 0)

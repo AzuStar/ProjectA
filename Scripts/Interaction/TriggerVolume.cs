@@ -18,9 +18,20 @@ public partial class TriggerVolume : Area3D
     [Export]
     private bool _oneShot;
 
+    [Export]
+    public Node3D nodeToSquish;
+
+    [Export]
+    public Vector3 squezeTo;
+
+    [Export]
+    public float squishOverTime = 0.25f;
+
+    private Vector3 _unsquishedScale;
+
     public override void _Ready()
     {
-        Debug.Assert(_triggerable != null, $"Trigger volume {Name} has no target triggerable set!");
+        _unsquishedScale = nodeToSquish.Scale;
 
         BodyEntered += OnBodyEntered;
         if (!_oneShot)
@@ -36,8 +47,7 @@ public partial class TriggerVolume : Area3D
             return;
         }
 
-        _triggerable.Activate();
-
+        Activate();
         if (_oneShot)
         {
             // We're done, goodbye!
@@ -52,6 +62,18 @@ public partial class TriggerVolume : Area3D
             return;
         }
 
+        Deactivate();
+    }
+
+    public virtual void Activate()
+    {
+        _triggerable.Activate();
+        CreateTween().TweenProperty(nodeToSquish, "scale", squezeTo, squishOverTime);
+    }
+
+    public virtual void Deactivate()
+    {
         _triggerable.Deactivate();
+        CreateTween().TweenProperty(nodeToSquish, "scale", _unsquishedScale, squishOverTime);
     }
 }

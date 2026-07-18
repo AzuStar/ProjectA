@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://beqexenhicui5"]
+
+[ext_resource type="PackedScene" uid="uid://0nhhdpprakhl" path="res://Assets/CustomModels/Chandelier1.glb" id="1_devmr"]
+[ext_resource type="Texture2D" uid="uid://d2odm3b5jcga1" path="res://Assets/CustomModels/Textures/Decorations/Chandelier/Chandelier1_DefaultMaterial_BaseMap.png" id="2_c4x5g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xj0u"]
+albedo_texture = ExtResource("2_c4x5g")
+
+[node name="Chandelier1" unique_id=32116563 instance=ExtResource("1_devmr")]
+
+[node name="Chandelier" parent="." index="0" unique_id=888034447]
+surface_material_override/0 = SubResource("StandardMaterial3D_3xj0u")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="." index="1" unique_id=305985925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2216768, 1.2932162, 2.2168262)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="." index="2" unique_id=1413497428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8053093, 1.2932162, 2.9558005)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D3" type="OmniLight3D" parent="." index="3" unique_id=821369666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8111968, 1.2932162, 3.009684)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D4" type="OmniLight3D" parent="." index="4" unique_id=2100456117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2275643, 1.2932162, 2.2168264)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D5" type="OmniLight3D" parent="." index="5" unique_id=1128783521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0127244, 1.2932162, 0.8466449)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D6" type="OmniLight3D" parent="." index="6" unique_id=73837856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0358171, 1.2932162, -0.79295397)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D7" type="OmniLight3D" parent="." index="7" unique_id=613753166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.204471, 1.2932162, -2.1939259)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D8" type="OmniLight3D" parent="." index="8" unique_id=1145897748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8111968, 1.2932162, -3.017574)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D9" type="OmniLight3D" parent="." index="9" unique_id=1406607975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81300783, 1.2932162, -3.017574)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D10" type="OmniLight3D" parent="." index="10" unique_id=1693828008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2139797, 1.2932162, -2.209321)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D11" type="OmniLight3D" parent="." index="11" unique_id=1518310212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0222325, 1.2932162, -0.78525615)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
+
+[node name="SpotLight3D12" type="OmniLight3D" parent="." index="12" unique_id=1769808029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0145345, 1.2932162, 0.8543428)
+light_color = Color(1, 0.60784316, 0.23921569, 1)
+light_energy = 2.0
+omni_range = 15.0
+omni_attenuation = 0.103
