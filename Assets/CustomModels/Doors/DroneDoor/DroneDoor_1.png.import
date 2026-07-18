@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpgpox1w3pgaa"
+uid="uid://bduq7bljli60p"
 path.s3tc="res://.godot/imported/DroneDoor_1.png-c545829072e34cd00ad1b86420531366.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "346a253c1afe7e6c1372fd188f094fe7"
 }
 
 [deps]
@@ -29,8 +26,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=8
-roughness/src_normal="res://Assets/CustomModels/Doors/DroneDoor/DroneDoor_2.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

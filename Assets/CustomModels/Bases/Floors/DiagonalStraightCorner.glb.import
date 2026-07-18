@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr7wu8gl418fm"
+uid="uid://b33pf72swhmt5"
 path="res://.godot/imported/DiagonalStraightCorner.glb-312af216e1fb2e8c8414c61ceb3ead1b.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

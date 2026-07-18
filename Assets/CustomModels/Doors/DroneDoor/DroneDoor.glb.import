@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d3761htjcom42"
+uid="uid://ck8m40d6fo687"
 path="res://.godot/imported/DroneDoor.glb-8eb1d0c9158e472bb93d278d61ae85e5.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

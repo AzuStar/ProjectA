@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2fxl6b7bojp1"
+uid="uid://dodjtw0v0t00g"
 path.s3tc="res://.godot/imported/Blender_0.png-ae5afea23cfc320052b8098982e04a17.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "203464597b4258fd46fa8d6aefb8c398"
 }
 
 [deps]

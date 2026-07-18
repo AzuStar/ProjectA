@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bn5au3op1a0oe"
+uid="uid://djfq60x3m050x"
 path="res://.godot/imported/DiagonalStraightLong.glb-88ad887b9c826a7c24697b2da854a768.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

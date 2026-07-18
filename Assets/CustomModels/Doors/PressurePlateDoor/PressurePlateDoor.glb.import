@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dfacqqrvu0w2j"
+uid="uid://csgq841hm5eti"
 path="res://.godot/imported/PressurePlateDoor.glb-cc6a9041bee87288f0533c94af4fefb6.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

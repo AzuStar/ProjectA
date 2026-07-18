@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c13f12l8s6mj1"
+uid="uid://bo3qujev6jkpq"
 path.s3tc="res://.godot/imported/DroneDoor_0.png-5a9e18d0c6ab6cbfdcbcf3e65ac301b8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "4423b01b753462caf7ad6744d19419fb"
 }
 
 [deps]

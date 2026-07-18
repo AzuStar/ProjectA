@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://thnbmxf7igmg"
+uid="uid://drew1nr8iejdi"
 path.s3tc="res://.godot/imported/PlanksDoor1_woodtextures.png-fe79799f3ee5b14384f45de25ded9831.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a24aca01e5e70232a0db884d4d3800c1"
 }
 
 [deps]

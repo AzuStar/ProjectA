@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4k320tnr4jym"
+uid="uid://c4doxtrn3f8w5"
 path.s3tc="res://.godot/imported/DiagonalStraightPerpendicular_woodtextures.png-08196089ba5fcc27e00b7756dba1a1de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a24aca01e5e70232a0db884d4d3800c1"
 }
 
 [deps]

@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n8gxt5wl3xqd"
+uid="uid://botmakk87fqly"
 path.s3tc="res://.godot/imported/DiagonalContinuousBase_woodtextures.png-07da592dd71a66e1ccf0f09d91d2d561.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "a24aca01e5e70232a0db884d4d3800c1"
 }
 
 [deps]

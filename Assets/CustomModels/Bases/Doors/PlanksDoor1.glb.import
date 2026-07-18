@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b23y7f3au4p34"
+uid="uid://cjqpfkxc84lwf"
 path="res://.godot/imported/PlanksDoor1.glb-f720d2a2c5014e47cd3d4a305a834084.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

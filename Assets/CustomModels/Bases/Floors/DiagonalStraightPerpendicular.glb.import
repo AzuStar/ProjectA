@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dlycbur3qm1f7"
+uid="uid://bxfrrry1tqisl"
 path="res://.godot/imported/DiagonalStraightPerpendicular.glb-e25a8bbe412faa6f4484cc988cbee788.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

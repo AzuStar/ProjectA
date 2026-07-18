@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqj2gl23myt2i"
+uid="uid://chva6m21epyye"
 path.s3tc="res://.godot/imported/PressurePlateDoor_0.png-285db38e9b8f226293407f9d94d5d277.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "b7f5880c84e29a0e4b49604fa33021bc"
 }
 
 [deps]

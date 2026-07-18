@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dgdob8r3ombcc"
+uid="uid://c0u6gm7akey3w"
 path="res://.godot/imported/BrickWallWithLargeBricksPartial.glb-ee49b9614939c0cd6c87a85a1cf33e38.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

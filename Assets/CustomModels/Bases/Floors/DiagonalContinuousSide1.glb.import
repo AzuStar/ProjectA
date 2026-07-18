@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://1glhvxc1cmut"
+uid="uid://dkny8b61ee07w"
 path="res://.godot/imported/DiagonalContinuousSide1.glb-d8ecc621615db2ddb0a4e8052bdb1f70.scn"
 
 [deps]
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=1
+gltf/texture_map_mode=0

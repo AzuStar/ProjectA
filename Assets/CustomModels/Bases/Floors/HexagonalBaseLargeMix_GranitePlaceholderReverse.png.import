@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clp3rao3ojsfa"
+uid="uid://gpcr78hdwj0g"
 path.s3tc="res://.godot/imported/HexagonalBaseLargeMix_GranitePlaceholderReverse.png-517bb02f5aed10fa091cc731e14a3c5f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "6ed1e85ed6e7bd03a98df00619fe2918"
 }
 
 [deps]
