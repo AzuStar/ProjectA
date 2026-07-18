@@ -43,6 +43,11 @@ public partial class DroneCharacterController : CharacterBody3D
     [Export]
     public Node3D keyCarryRoot;
 
+    [ExportGroup("Fly Audio")]
+    [Export] public AudioStreamPlayer flyAudioPlayer;
+    [Export] public float flyPitchLower = 1.0f;
+    [Export] public float flyPitchUpper = 1.5f;
+
     public bool acceptInput;
     public float summonCooldownRemaining;
     public float summonCooldownDuration;
@@ -71,6 +76,7 @@ public partial class DroneCharacterController : CharacterBody3D
             return;
         }
 
+        // Turn to face where we're going.
         if (Velocity.X != 0.0f || Velocity.Z != 0.0f)
         {
             float desiredBearing = Mathf.Atan2(-Velocity.X, -Velocity.Z);
@@ -79,6 +85,15 @@ public partial class DroneCharacterController : CharacterBody3D
             visualRoot.GlobalRotation = globalRot;
         }
 
+        ProcessLeash();
+
+        float speedFactor = Velocity.Length() / maxVelocity;
+        float flightPitchScale = Mathf.Lerp(flyPitchLower, flyPitchUpper, speedFactor);
+        flyAudioPlayer.PitchScale = flightPitchScale;
+    }
+
+    private void ProcessLeash()
+    {
         Vector3 leashVector = GlobalPosition - _leashRoot.GlobalPosition;
         float currentLeashLength = leashVector.Length();
         float leashNorm = Mathf.InverseLerp(0.0f, PlayerSingleton.Instance.maxDroneLeashRange, currentLeashLength);
@@ -213,10 +228,14 @@ public partial class DroneCharacterController : CharacterBody3D
         Velocity = Vector3.Zero;
 
         Bootstrap.GetGameSubViewportContainer().Material = droneScreenMaterial;
+
+        flyAudioPlayer.Play();
     }
 
     public void LeaveThisController()
     {
+        flyAudioPlayer.Stop();
+
         DropCarriedPickup();
         acceptInput = false;
         Visible = false;

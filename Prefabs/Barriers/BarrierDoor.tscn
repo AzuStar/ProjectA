@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4dc44nt3damh" path="res://Prefabs/Environment/wall_doorway_2.tscn" id="1_7r6nv"]
 [ext_resource type="Script" uid="uid://bn5mgl4ex4n0c" path="res://Scripts/Barriers/BarrierDoor.cs" id="2_7r6nv"]
+[ext_resource type="AudioStream" uid="uid://biqc1hvwlciw5" path="res://Assets/Audio/door-02.ogg" id="2_nt6m1"]
 [ext_resource type="Material" uid="uid://drbrx1s6minf3" path="res://Resources/Material/DungeonRockyMaterial.tres" id="3_gerni"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_unlock"]
@@ -17,6 +18,7 @@ size = Vector3(1, 4, 1)
 script = ExtResource("2_7r6nv")
 unlockArea = NodePath("UnlockArea")
 navigationLink = NodePath("NavigationLink3D")
+openCloseEffect = ExtResource("2_nt6m1")
 collisionObject = NodePath("DoorBody")
 visualRoot = NodePath("wall_doorway2/wall_doorway/wall_doorway_door")
 

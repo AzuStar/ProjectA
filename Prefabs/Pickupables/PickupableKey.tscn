@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cq7jdvbwfdw13" path="res://Assets/Dungeon/dungeon_texture.png" id="2_s1bah"]
 [ext_resource type="Material" uid="uid://fgl4c36hs1t8" path="res://Resources/Material/InverseHullPickup.tres" id="3_0w31r"]
 [ext_resource type="Script" uid="uid://bqj3xypm2aw7f" path="res://Scripts/ParentAxisOscillator3D.cs" id="3_2w2ct"]
+[ext_resource type="Script" uid="uid://bfyw2aq1sxbkc" path="res://Scripts/Pickups/PickupSoundEffect.cs" id="5_lek8p"]
+[ext_resource type="AudioStream" uid="uid://cthnqtvhj0cnr" path="res://Assets/Audio/key-176034.ogg" id="6_lek8p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gsa5"]
 resource_name = "texture"
@@ -57,7 +59,7 @@ radius = 0.7415121
 [node name="KeyPickup" type="Node3D" unique_id=497665940]
 
 [node name="key_gold2" type="Node3D" parent="." unique_id=1068505073]
-transform = Transform3D(0.37210366, -0.021283897, -0.47019777, 0.04771135, 0.59800446, 0.0106884735, 0.46825483, -0.044018306, 0.37255856, 0, 0.42, 0)
+transform = Transform3D(-0.41335064, 0.06025822, 0.43070903, 0.058985963, 0.5964898, -0.026843047, -0.4308851, 0.023850322, -0.41685644, 0, 0.42, 0)
 
 [node name="key_gold" type="MeshInstance3D" parent="key_gold2" unique_id=955205973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23561096, 0, 0)
@@ -79,3 +81,7 @@ rootNode = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=545002508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77969754, 0)
 shape = SubResource("SphereShape3D_lprbf")
+
+[node name="SfxPlayer" type="Node" parent="Area3D" unique_id=2142794425]
+script = ExtResource("5_lek8p")
+_collectionEffects = Array[AudioStream]([ExtResource("6_lek8p")])
